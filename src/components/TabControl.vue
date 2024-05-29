@@ -3,7 +3,7 @@
         <el-tabs class="ets" v-model="activeName" @tab-click="handleClick">
             <template v-for="item in tabName">
                 <el-tab-pane class="etp" :label="item" :name="item">
-                    <Breadcrumb :urlData="urlData"/>
+                    <Breadcrumb :urlData="urlData" />
                     <!-- <div class="wgdo-in" v-for="tab in tabDatas" :key="tab.hpId">
                         {{ tab.label }}
                     </div> -->
@@ -22,77 +22,69 @@ import { Research } from "@/api/requests.js";
 import { Project } from "@/api/requests.js";
 import { Prize } from "@/api/requests.js";
 import { getWgdo } from '@/api/requests.js'
+import { getHomeAllTitle } from '@/api/requests.js'
 import funs from '@/utils/index.js'
 
 export default {
     components: { Breadcrumb },
     props: ['tabName'],
     data() {
-        let activeName = this.tabName[0]
-        let tabDatas = []
-        let routesData = []
-        let currentRoute = []
-        let urlData = []
-        let aboutmap = {
-            '组织介绍': '1',
-            '组织架构': "2",
-            '重要人物': '3',
-            '联系我们': '4',
-        }
-        let meetmap = {
-            '活动预告': '1',
-            '正在进行': "2",
-            '历届回顾': '3',
-            '活动详情': '4',
-        }
-        let mediamap = {
-            '组织动态': '1',
-            '论坛视频': "2",
-            '媒体报告': '3',
-        }
-        let researchmap = {
-            '绿色设计报告': '1',
-            '绿色设计国际标准': '2',
-            '绿色设计国际实验室': '3',
-            '共享资源': '4',
-            '绿色设计报告详情': '5',
-        }
-        let projectmap = {
-            '绿叶之家': '1',
-            '绿丝带': "2",
-            '绿丝带物资到货记录': "3",
-            '绿丝带行动捐赠光荣榜': "5",
-            '可信供方清单': "4",
-            '抗疫宣传': "7",
-            "联系方式":"6"
-        }
-        let prizemap = {
-            '绿色设计国际大奖': '1',
-            '绿色设计国际贡献奖': "3",
-            '评定规则': "2",
-            '获奖个人': "5",
-            '获奖机构': "5",
-        }
-        let Mapping = {
-            '机构简介': '1',
-            '分支拓建': '2',
-            '品牌服务': '3',
-            '绿色政策': '4',
-            '绿色设计培训': '5',
-        }
         return {
             activeName: '',
-            tabDatas,
-            routesData,
-            currentRoute,
-            urlData,
-            aboutmap,
-            meetmap,
-            mediamap,
-            researchmap,
-            projectmap,
-            prizemap,
-            Mapping,
+            tabDatas: [],
+            routesData: [],
+            currentRoute: [],
+            urlData: [],
+            aboutmap: {
+                '组织介绍': '1',
+                '组织架构': "2",
+                '重要人物': '3',
+                '联系我们': '4',
+            },
+            meetmap: {
+                '活动预告': '1',
+                '正在进行': "2",
+                '历届回顾': '3',
+                '活动详情': '4',
+            },
+            mediamap: {
+                '组织动态': '1',
+                '论坛视频': "2",
+                '媒体报告': '3',
+                '动态详情': '4',
+                '报告详情': '5',
+            },
+            researchmap: {
+                '绿色设计报告': '1',
+                '绿色设计国际标准': '2',
+                '绿色设计国际实验室': '3',
+                '共享资源': '4',
+                '绿色设计报告详情': '5',
+            },
+            projectmap: {
+                '绿叶之家': '1',
+                '绿丝带': "2",
+                '绿丝带物资到货记录': "3",
+                '绿丝带行动捐赠光荣榜': "5",
+                '可信供方清单': "4",
+                '抗疫宣传': "7",
+                "联系方式": "6"
+            },
+            prizemap: {
+                '绿色设计国际大奖': '1',
+                '绿色设计国际贡献奖': "3",
+                '评定规则': "2",
+                '获奖个人': "5",
+                '获奖机构': "5",
+            },
+            Mapping: {
+                '机构简介': '1',
+                '分支拓建': '2',
+                '品牌服务': '3',
+                '绿色政策': '4',
+                '绿色设计培训': '5',
+            },
+            Map: [],
         }
     },
     mounted() {
@@ -113,6 +105,14 @@ export default {
             let currentTabName = tab.$options.propsData.name
             this.urlData.push({ name: currentTabName })
             //在这里发请求 你点哪一个就发哪一个请求
+            for (const key in this.Map) {
+                if (key === this.urlData[1].name) {
+                    this.getHomeAllTitleData(this.Map[key])
+                    this.$emit('tabclickDatas', this.urlData[1].name)
+                    // console.log(this.getAboutusData);
+                    return
+                }
+            };
             // 关于我们
             for (const key in this.aboutmap) {
                 if (key === this.urlData[1].name) {
@@ -158,8 +158,8 @@ export default {
                     return
                 }
             };
-             // 国际绿奖
-             for (const key in this.prizemap) {
+            // 国际绿奖
+            for (const key in this.prizemap) {
                 if (key === this.urlData[1].name) {
                     this.getPrizeData(this.prizemap[key])
                     this.$emit('tabclickDatas', this.urlData[1].name)
@@ -225,6 +225,13 @@ export default {
                 console.log(res.data.rows);
                 this.tabDatas = res.data.rows
                 this.$emit('WgdoData', this.tabDatas)
+            })
+        },
+        getHomeAllTitleData(t,p) {
+            getHomeAllTitle({ parentId: p }).then(res => {
+                console.log(res.data.rows);
+                this.tabDatas = res.data.rows
+                this.$emit('getHomeAllTitle', this.tabDatas)
             })
         }
     }

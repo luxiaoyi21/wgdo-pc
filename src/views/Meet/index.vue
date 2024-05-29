@@ -4,7 +4,7 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @Meet="getMeetData" @tabclickDatas="getTabName" />
+            <TabControl :tabName="tabName" @getHomeAllTitle="getMeetData" @tabclickDatas="getTabName" />
             <!-- 首页传值 -->
             <!-- <Intro :tabDatas="tabDatas" /> -->
             <Preview v-if="tabclickDatas === '活动预告'" :tabDatas="tabDatas" />
@@ -24,45 +24,53 @@ import Headers from "@/components/Headers.vue";
 import TabControl from "@/components/TabControl";
 import Footers from "@/views/Home/Footer/index.vue";
 import { Meet } from "@/api/requests.js";
+import { getHomeAllTitle } from '@/api/requests.js'
 import Preview from "@/views/Meet/preview.vue";
 import Info from "@/views/Meet/info.vue";
 import Doing from "@/views/Meet/doing.vue";
 import Lookback from "@/views/Meet/lookback.vue";
+import funs from "@/utils/index.js"
 
 export default {
     name: "Meet",
     components: { Headers, TabControl, Footers, Preview, Info, Doing, Lookback },
     props: ["urlData"],
     data() {
-        let tabName = [
-            "活动预告",
-            "正在进行",
-            "历届回顾",
-            "活动详情"
-        ];
-        let MeetDatas = [];
-        let tabDatas = [];
-        let tabclickDatas = [];
-        let name = [];
         return {
-            tabName,
-            MeetDatas,
-            tabDatas,
+            tabName: [
+                "活动预告",
+                "正在进行",
+                "历届回顾",
+                // "活动详情"
+            ],
+            MeetDatas: [],
+            tabDatas: [],
             tabclickDatas: '活动预告',
-            name,
+            name: [],
         };
     },
     mounted() {
         this.getMeetData('活动预告');
     },
     methods: {
-        getMeetData(data) {
-            this.tabDatas = data;
-            // console.log(this.tabDatas);
+        async getMeetData(p = this.$store.state.lang.version) {
+            try {
+                // const response = await getHomeAllTitle({ parentId: 3, version: p });
+                this.tabDatas = response.data;
+            } catch {
+
+            }
         },
         getTabName(name) {
             this.tabclickDatas = name;
             console.log(this.tabclickDatas);
+        },
+    },
+    watch: {
+        "$store.state.lang.version": {
+            handler() {
+                funs(this.getMeetData(), this.$store.state.lang.version)
+            }
         },
     },
 };

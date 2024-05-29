@@ -4,7 +4,7 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @Prize="getPrizeData" @tabclickDatas="getTabName" />
+            <TabControl :tabName="tabName" @getHomeAllTitle="getPrizeData" @tabclickDatas="getTabName" />
             <!-- 首页传值 -->
             <!-- <Intro :tabDatas="tabDatas" /> -->
             <Big v-if="tabclickDatas === '绿色设计国际大奖'" :tabDatas="tabDatas" />
@@ -25,46 +25,56 @@ import Headers from "@/components/Headers.vue";
 import TabControl from "@/components/TabControl";
 import Footers from "@/views/Home/Footer/index.vue";
 import { Prize } from "@/api/requests.js";
+import { getHomeAllTitle } from '@/api/requests.js'
 import Big from "@/views/Prize/big.vue";
 import Contribute from "@/views/Prize/contribute.vue";
 import Rule from "@/views/Prize/rule.vue";
 import Personal from "@/views/Prize/personal.vue";
 import Mechanism from "@/views/Prize/mechanism.vue";
+import funs from "@/utils/index.js"
 
 export default {
     name: "Prize",
     components: { Headers, TabControl, Footers, Big, Contribute, Rule, Personal, Mechanism },
     props: ["urlData"],
     data() {
-        let tabName = [
+        return {
+            tabName:[
             "绿色设计国际大奖",
             "绿色设计国际贡献奖",
             // "评定规则",
             // "获奖个人",
             // "获奖机构",
-        ];
-        let PrizeDatas = [];
-        let tabDatas = [];
-        let tabclickDatas = [];
-        let name = [];
-        return {
-            tabName,
-            PrizeDatas,
-            tabDatas,
+        ],
+            PrizeDatas:[],
+            tabDatas:[],
             tabclickDatas: '绿色设计国际大奖',
-            name,
+            name:[],
         };
     },
     mounted() {
         this.getPrizeData('绿色设计国际大奖');
     },
     methods: {
-        getPrizeData(data) {
-            this.tabDatas = data;
-        },
+        async getPrizeData(p = this.$store.state.lang.version) {
+            try {
+                // const response = await getHomeAllTitle({ parentId: 7, version: p });
+                this.tabDatas = response.data;
+                console.log(this.tabDatas);
+            } catch {
+
+            }
+                },
         getTabName(name) {
             this.tabclickDatas = name;
             console.log(this.tabclickDatas);
+        },
+    },
+    watch: {
+        "$store.state.lang.version": {
+            handler() {
+                funs(this.getPrizeData(), this.$store.state.lang.version)
+            }
         },
     },
 };

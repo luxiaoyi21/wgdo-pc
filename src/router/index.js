@@ -86,13 +86,15 @@ const routes = [
                 name: 'Preview',
                 component: () => import('@/views/Meet/preview.vue'),
                 meta: { auth: true },
-            },
-            {
-                // /Meet/info 活动详情
-                path: 'info',
-                name: 'Info',
-                component: () => import('@/views/Meet/info.vue'),
-                meta: { auth: true },
+                children: [
+                    {
+                        // /Meet/info 活动详情
+                        path: 'info',
+                        name: 'Info',
+                        component: () => import('@/views/Meet/info.vue'),
+                        meta: { auth: true },
+                    },
+                ]
             },
             {
                 // /Meet/doing 正在进行
@@ -122,6 +124,15 @@ const routes = [
                 name: 'Dynamic',
                 component: () => import('@/views/Media/dynamic.vue'),
                 meta: { auth: true },
+                children: [
+                    {
+                        // /Media/dynamicinfo 动态详情
+                        path: 'dynamicinfo',
+                        name: 'Dynamicinfo',
+                        component: () => import('@/views/Media/dynamicinfo.vue'),
+                        meta: { auth: true },
+                    },
+                ]
             },
             {
                 // /Media/video 论坛视频
@@ -136,6 +147,15 @@ const routes = [
                 name: 'Report',
                 component: () => import('@/views/Media/report.vue'),
                 meta: { auth: true },
+                children:[
+                    {
+                        // /Media/reportinfo 报告详情
+                        path: 'reportinfo',
+                        name: 'Reportinfo',
+                        component: () => import('@/views/Media/reportinfo.vue'),
+                        meta: { auth: true },
+                    },
+                ]
             },
         ]
     },
@@ -151,7 +171,7 @@ const routes = [
                 name: 'Design',
                 component: () => import('@/views/Research/design.vue'),
                 meta: { auth: true },
-                children:[
+                children: [
                     {
                         // /Research/designinfo 绿色设计报告详情
                         path: 'designinfo',
@@ -233,7 +253,7 @@ const routes = [
                         meta: { auth: true },
                     },
                     {
-                        // /Project/contact 联系方式
+                        // /Project/contactform 联系方式
                         path: 'contactform',
                         name: 'Contactform',
                         component: () => import('@/views/Project/contactform.vue'),
@@ -257,6 +277,15 @@ const routes = [
                 name: 'Big',
                 component: () => import('@/views/Prize/big.vue'),
                 meta: { auth: true },
+                children: [
+                    {
+                        // /Prize/rule 评定规则
+                        path: 'rule',
+                        name: 'Rule',
+                        component: () => import('@/views/Prize/rule.vue'),
+                        meta: { auth: true },
+                    },
+                ]
             },
             {
                 // /Prize/contribute 绿色设计国际贡献奖
@@ -264,27 +293,29 @@ const routes = [
                 name: 'Contribute',
                 component: () => import('@/views/Prize/contribute.vue'),
                 meta: { auth: true },
-            },
-            {
-                // /Prize/rule 评定规则
-                path: 'rule',
-                name: 'Rule',
-                component: () => import('@/views/Prize/rule.vue'),
-                meta: { auth: true },
-            },
-            {
-                // /Prize/personal 获奖个人
-                path: 'personal',
-                name: 'Personal',
-                component: () => import('@/views/Prize/personal.vue'),
-                meta: { auth: true },
-            },
-            {
-                // /Prize/mechanism 获奖机构
-                path: 'mechanism',
-                name: 'Mechanism',
-                component: () => import('@/views/Prize/mechanism.vue'),
-                meta: { auth: true },
+                children: [
+                    {
+                        // /Prize/rule 评定规则
+                        path: 'rule',
+                        name: 'Rule',
+                        component: () => import('@/views/Prize/rule.vue'),
+                        meta: { auth: true },
+                    },
+                    {
+                        // /Prize/personal 获奖个人
+                        path: 'personal',
+                        name: 'Personal',
+                        component: () => import('@/views/Prize/personal.vue'),
+                        meta: { auth: true },
+                    },
+                    {
+                        // /Prize/mechanism 获奖机构
+                        path: 'mechanism',
+                        name: 'Mechanism',
+                        component: () => import('@/views/Prize/mechanism.vue'),
+                        meta: { auth: true },
+                    },
+                ]
             },
         ]
     },

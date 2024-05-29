@@ -15,55 +15,71 @@
                     </div>
 
                     <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
-                    <div class="dsc-line" style=" "></div>
+                    <div class="dsc-line" style=""></div>
 
-                    <div class="info-introall" v-if="!infoDatas">
-                        <!-- <p class="info-title">峰会介绍</p> -->
-                        <p class="info-intro" v-html="info.summitIntroduction"></p>
+                    <div class="info-introall">
+                        <!-- <div class="info-introall" v-if="!infoDatas"> -->
+                        <img src="https://img.js.design/assets/img/665546d2b6575a3ddda1f94c.jpg" alt="">
+                        <div>
+                            <p class="info-title">{{ $t('meet.Summit') }}</p>
+                            <p class="info-intro" v-html="info.summitIntroduction"></p>
+                        </div>
                     </div>
 
                     <!-- <div class="dsc-line" style="margin-top: 30px; margin-bottom: 30px;"></div> -->
 
                     <div class="info-countdown">
-                        <p class="countdown-dsc">峰会倒计时</p>
+                        <p class="countdown-dsc">{{ $t('meet.Countdown') }}</p>
                         <p class="countdown-time">{{ info.summitCountdown }}</p>
                     </div>
 
-                    <div class="dsc-line" style="margin-top: 30px; margin-bottom: 30px;"></div>
+                    <div style="border-bottom: 2px solid rgba(161, 161, 161, 0.3);padding:20px 0;">
+                        <p class="act-dsc">{{ $t('meet.Event') }}</p>
 
-                    <p class="chairman">论坛主席</p>
-
-                    <div class="chairman-all">
-                        <div class="intro-in">
-                            <div class="chairman-img">
-                                <img src="https://img.js.design/assets/img/658a283d24c60bfaf888fd7a.png#efa7891e9abd3f2ad0c66835caee57e8"
-                                    alt="">
-                            </div>
-
-                            <div class="chairman-intro">
-                                <div class="chairman-intro-top">
-                                    布鲁塞尔是比利时的首都，也是欧洲联盟的主要行政机构所在地以及最具投资性的地区之一。“中欧绿色设计合作新机遇”已是必然趋势，中欧两国的绿色创新技术和管理优势起到互补性，我相信此次的国际交流将产生新的合作模式。<br>
-                                </div>
-                                <div class="chairman-intro-buttom">——中国原国务院参事　石定寰</div>
-                            </div>
-                        </div>
-
-                        <div class="intro-in">
-                            <div class="chairman-img">
-                                <img src="https://img.js.design/assets/img/658a281ab25fc345ddafdd08.png#99a749c0399837a293ba982d6b19d0fb"
-                                    alt="">
-                            </div>
-
-                            <div class="chairman-intro">
-                                <div class="chairman-intro-top">
-                                    “绿色设计创新”一直是中欧双方讨论的主题，此次的交流将进一步推动中欧双方在绿色产业发展的进程，因为绿色设计创新在研发和技术转换领域正不断更新，新的合作模式逐渐显现，这将会是一次具有深远意义的合作。<br>
-                                </div>
-                                <div class="chairman-intro-buttom">——欧洲议会对华关系代表团主席议员　乔·莱恩</div>
-                            </div>
+                        <div class="act">
+                            <img src="https://img.js.design/assets/img/665546d2b6575a3ddda1f94c.jpg" alt="">
+                            <img src="https://img.js.design/assets/img/665546d2b6575a3ddda1f94c.jpg" alt="">
+                            <img src="https://img.js.design/assets/img/665546d2b6575a3ddda1f94c.jpg" alt="">
+                            <img src="https://img.js.design/assets/img/665546d2b6575a3ddda1f94c.jpg" alt="">
+                            <img src="https://img.js.design/assets/img/665546d2b6575a3ddda1f94c.jpg" alt="">
+                            <img src="https://img.js.design/assets/img/665546d2b6575a3ddda1f94c.jpg" alt="">
                         </div>
                     </div>
 
-                    <div class="dsc-line" style="margin-top: 30px; margin-bottom: 30px;"></div>
+                    <div style="border-bottom: 2px solid rgba(161, 161, 161, 0.3);padding:20px 0;">
+                        <p class="chairman">{{ $t('meet.chairman') }}</p>
+
+                        <div class="chairman-all">
+                            <div class="intro-in">
+                                <div class="chairman-img">
+                                    <img src="https://img.js.design/assets/img/658a283d24c60bfaf888fd7a.png#efa7891e9abd3f2ad0c66835caee57e8"
+                                        alt="">
+                                </div>
+
+                                <div class="chairman-intro">
+                                    <div class="chairman-intro-top">
+                                        布鲁塞尔是比利时的首都，也是欧洲联盟的主要行政机构所在地以及最具投资性的地区之一。“中欧绿色设计合作新机遇”已是必然趋势，中欧两国的绿色创新技术和管理优势起到互补性，我相信此次的国际交流将产生新的合作模式。<br>
+                                    </div>
+                                    <div class="chairman-intro-buttom">——中国原国务院参事　石定寰</div>
+                                </div>
+                            </div>
+
+                            <div class="intro-in">
+                                <div class="chairman-img">
+                                    <img src="https://img.js.design/assets/img/658a281ab25fc345ddafdd08.png#99a749c0399837a293ba982d6b19d0fb"
+                                        alt="">
+                                </div>
+
+                                <div class="chairman-intro">
+                                    <div class="chairman-intro-top">
+                                        “绿色设计创新”一直是中欧双方讨论的主题，此次的交流将进一步推动中欧双方在绿色产业发展的进程，因为绿色设计创新在研发和技术转换领域正不断更新，新的合作模式逐渐显现，这将会是一次具有深远意义的合作。<br>
+                                    </div>
+                                    <div class="chairman-intro-buttom">——欧洲议会对华关系代表团主席议员　乔·莱恩</div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
 
                     <div class="address">
                         <!-- <div class="address-left">
@@ -71,201 +87,199 @@
                                 alt="">
                         </div> -->
                         <div class="address-right">
-                            <p class="address-title">时间地点及组织机构</p>
+                            <p class="address-title">{{ $t('meet.address') }}</p>
                             <p class="address-intro" v-html="info.tlorganization"></p>
                         </div>
                     </div>
 
-                    <div class="dsc-line" style="margin-top: 30px; margin-bottom: 30px;"></div>
+                    <div style="border-bottom: 2px solid rgba(161, 161, 161, 0.3);padding:20px 0;">
+                        <p class="pre-person">{{ $t('meet.preview') }}</p>
 
-                    <p class="pre-person">拟参会嘉宾</p>
+                        <div class="pre-all">
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/66277836b04e9e24cb45331f.jpg#15730a82d3719e83ca1d337c78c96af2"
+                                        alt="">
+                                </div>
 
-                    <div class="pre-all">
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/66277836b04e9e24cb45331f.jpg#15730a82d3719e83ca1d337c78c96af2"
-                                    alt="">
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">阿罗兹·比特勒 Alojz Peterle</p>
+                                    <p class="pre-in-intro">欧洲议会议员-欧洲人民党党团<br>
+                                        欧洲议会与马其顿共和国联合议会委员会主席</p>
+                                </div>
                             </div>
 
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">阿罗兹·比特勒 Alojz Peterle</p>
-                                <p class="pre-in-intro">欧洲议会议员-欧洲人民党党团<br>
-                                    欧洲议会与马其顿共和国联合议会委员会主席</p>
-                            </div>
-                        </div>
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/66277850db954bccd78bb9b1.jpg#54ea980215ad40430ae972916f6b9c7e"
+                                        alt="">
+                                </div>
 
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/66277850db954bccd78bb9b1.jpg#54ea980215ad40430ae972916f6b9c7e"
-                                    alt="">
-                            </div>
-
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">艾琳·皮维蒂Irene Pivetti</p>
-                                <p class="pre-in-intro">世界绿色设计组织荣誉主席<br>
-                                    意大利前众议院议长</p>
-                            </div>
-                        </div>
-
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/66277859fa2ea2743c4210f4.jpg#c138d9fb02e81b567a9bee071bf8dc13"
-                                    alt="">
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">艾琳·皮维蒂Irene Pivetti</p>
+                                    <p class="pre-in-intro">世界绿色设计组织荣誉主席<br>
+                                        意大利前众议院议长</p>
+                                </div>
                             </div>
 
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">Guus Keder吉斯·达尔</p>
-                                <p class="pre-in-intro">WGDO执委<br>
-                                    比利时新能源与环保科总裁<br>
-                                    Scientific SA-TruEnergy unit Division President</p>
-                            </div>
-                        </div>
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/66277859fa2ea2743c4210f4.jpg#c138d9fb02e81b567a9bee071bf8dc13"
+                                        alt="">
+                                </div>
 
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/6627785ffa2ea2743c421381.jpg#75863f1715d05731a6d786dafaa26c64"
-                                    alt="">
-                            </div>
-
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">周中星 Zhou Zhongxing</p>
-                                <p class="pre-in-intro">世界绿色设计组织意大利分会副主席<br>
-                                    意大利亚得里亚华商会会长<br>
-                                    意大利华商总会执行会长<br>
-                                    意大利里米尼省外籍常务议员</p>
-                            </div>
-                        </div>
-
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/66277864e122a8ca79a4a7b7.jpg#864ae1cadad37d2328a8c8a129486e1b"
-                                    alt="">
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">Guus Keder吉斯·达尔</p>
+                                    <p class="pre-in-intro">WGDO执委<br>
+                                        比利时新能源与环保科总裁<br>
+                                        Scientific SA-TruEnergy unit Division President</p>
+                                </div>
                             </div>
 
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">李肇星 Li Zhaoxing</p>
-                                <p class="pre-in-intro">外交部前部长<br>
-                                    中国公共外交协会会长</p>
-                            </div>
-                        </div>
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/6627785ffa2ea2743c421381.jpg#75863f1715d05731a6d786dafaa26c64"
+                                        alt="">
+                                </div>
 
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/6627786998acf9fc6d478205.jpg#90101f284f7d800f51332b945bd6e862"
-                                    alt="">
-                            </div>
-
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">李秉仁 Lin Bingren</p>
-                                <p class="pre-in-intro">世界绿色设计组织副主席<br>
-                                    住房和城乡建设部原总经济师<br>
-                                    中国建筑装饰协会会长<br>
-                                    大会亮点</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="dsc-line" style="margin-top: 30px; margin-bottom: 30px;"></div>
-
-                    <p class="pre-person">历届参会嘉宾</p>
-
-                    <div class="pre-all">
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/66277836b04e9e24cb45331f.jpg#15730a82d3719e83ca1d337c78c96af2"
-                                    alt="">
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">周中星 Zhou Zhongxing</p>
+                                    <p class="pre-in-intro">世界绿色设计组织意大利分会副主席<br>
+                                        意大利亚得里亚华商会会长<br>
+                                        意大利华商总会执行会长<br>
+                                        意大利里米尼省外籍常务议员</p>
+                                </div>
                             </div>
 
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">阿罗兹·比特勒 Alojz Peterle</p>
-                                <p class="pre-in-intro">欧洲议会议员-欧洲人民党党团<br>
-                                    欧洲议会与马其顿共和国联合议会委员会主席</p>
-                            </div>
-                        </div>
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/66277864e122a8ca79a4a7b7.jpg#864ae1cadad37d2328a8c8a129486e1b"
+                                        alt="">
+                                </div>
 
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/66277850db954bccd78bb9b1.jpg#54ea980215ad40430ae972916f6b9c7e"
-                                    alt="">
-                            </div>
-
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">艾琳·皮维蒂Irene Pivetti</p>
-                                <p class="pre-in-intro">世界绿色设计组织荣誉主席<br>
-                                    意大利前众议院议长</p>
-                            </div>
-                        </div>
-
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/66277859fa2ea2743c4210f4.jpg#c138d9fb02e81b567a9bee071bf8dc13"
-                                    alt="">
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">李肇星 Li Zhaoxing</p>
+                                    <p class="pre-in-intro">外交部前部长<br>
+                                        中国公共外交协会会长</p>
+                                </div>
                             </div>
 
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">Guus Keder吉斯·达尔</p>
-                                <p class="pre-in-intro">WGDO执委<br>
-                                    比利时新能源与环保科总裁<br>
-                                    Scientific SA-TruEnergy unit Division President</p>
-                            </div>
-                        </div>
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/6627786998acf9fc6d478205.jpg#90101f284f7d800f51332b945bd6e862"
+                                        alt="">
+                                </div>
 
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/6627785ffa2ea2743c421381.jpg#75863f1715d05731a6d786dafaa26c64"
-                                    alt="">
-                            </div>
-
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">周中星 Zhou Zhongxing</p>
-                                <p class="pre-in-intro">世界绿色设计组织意大利分会副主席<br>
-                                    意大利亚得里亚华商会会长<br>
-                                    意大利华商总会执行会长<br>
-                                    意大利里米尼省外籍常务议员</p>
-                            </div>
-                        </div>
-
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/66277864e122a8ca79a4a7b7.jpg#864ae1cadad37d2328a8c8a129486e1b"
-                                    alt="">
-                            </div>
-
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">李肇星 Li Zhaoxing</p>
-                                <p class="pre-in-intro">外交部前部长<br>
-                                    中国公共外交协会会长</p>
-                            </div>
-                        </div>
-
-                        <div class="pre-in">
-                            <div class="pre-in-img">
-                                <img src="https://img.js.design/assets/img/6627786998acf9fc6d478205.jpg#90101f284f7d800f51332b945bd6e862"
-                                    alt="">
-                            </div>
-
-                            <div class="pre-in-all">
-                                <p class="pre-in-name">李秉仁 Lin Bingren</p>
-                                <p class="pre-in-intro">世界绿色设计组织副主席<br>
-                                    住房和城乡建设部原总经济师<br>
-                                    中国建筑装饰协会会长<br>
-                                    大会亮点</p>
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">李秉仁 Lin Bingren</p>
+                                    <p class="pre-in-intro">世界绿色设计组织副主席<br>
+                                        住房和城乡建设部原总经济师<br>
+                                        中国建筑装饰协会会长<br>
+                                        大会亮点</p>
+                                </div>
                             </div>
                         </div>
                     </div>
 
-                    <div class="dsc-line" style="margin-top: 30px; margin-bottom: 30px;"></div>
+                    <div style="border-bottom: 2px solid rgba(161, 161, 161, 0.3);padding:20px 0;">
+                        <p class="pre-person">{{ $t('meet.back') }}</p>
 
-                    <p class="Highlights">大会亮点</p>
+                        <div class="pre-all">
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/66277836b04e9e24cb45331f.jpg#15730a82d3719e83ca1d337c78c96af2"
+                                        alt="">
+                                </div>
 
-                    <div class="Highlights-all" v-html="info.conferenceHighlights"></div>
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">阿罗兹·比特勒 Alojz Peterle</p>
+                                    <p class="pre-in-intro">欧洲议会议员-欧洲人民党党团<br>
+                                        欧洲议会与马其顿共和国联合议会委员会主席</p>
+                                </div>
+                            </div>
 
-                    <div class="dsc-line" style="margin-top: 30px; margin-bottom: 30px;"></div>
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/66277850db954bccd78bb9b1.jpg#54ea980215ad40430ae972916f6b9c7e"
+                                        alt="">
+                                </div>
+
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">艾琳·皮维蒂Irene Pivetti</p>
+                                    <p class="pre-in-intro">世界绿色设计组织荣誉主席<br>
+                                        意大利前众议院议长</p>
+                                </div>
+                            </div>
+
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/66277859fa2ea2743c4210f4.jpg#c138d9fb02e81b567a9bee071bf8dc13"
+                                        alt="">
+                                </div>
+
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">Guus Keder吉斯·达尔</p>
+                                    <p class="pre-in-intro">WGDO执委<br>
+                                        比利时新能源与环保科总裁<br>
+                                        Scientific SA-TruEnergy unit Division President</p>
+                                </div>
+                            </div>
+
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/6627785ffa2ea2743c421381.jpg#75863f1715d05731a6d786dafaa26c64"
+                                        alt="">
+                                </div>
+
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">周中星 Zhou Zhongxing</p>
+                                    <p class="pre-in-intro">世界绿色设计组织意大利分会副主席<br>
+                                        意大利亚得里亚华商会会长<br>
+                                        意大利华商总会执行会长<br>
+                                        意大利里米尼省外籍常务议员</p>
+                                </div>
+                            </div>
+
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/66277864e122a8ca79a4a7b7.jpg#864ae1cadad37d2328a8c8a129486e1b"
+                                        alt="">
+                                </div>
+
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">李肇星 Li Zhaoxing</p>
+                                    <p class="pre-in-intro">外交部前部长<br>
+                                        中国公共外交协会会长</p>
+                                </div>
+                            </div>
+
+                            <div class="pre-in">
+                                <div class="pre-in-img">
+                                    <img src="https://img.js.design/assets/img/6627786998acf9fc6d478205.jpg#90101f284f7d800f51332b945bd6e862"
+                                        alt="">
+                                </div>
+
+                                <div class="pre-in-all">
+                                    <p class="pre-in-name">李秉仁 Lin Bingren</p>
+                                    <p class="pre-in-intro">世界绿色设计组织副主席<br>
+                                        住房和城乡建设部原总经济师<br>
+                                        中国建筑装饰协会会长<br>
+                                        大会亮点</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div style="border-bottom: 2px solid rgba(161, 161, 161, 0.3);padding:20px 0;">
+                        <p class="Highlights">{{ $t('meet.Highlights') }}</p>
+
+                        <div class="Highlights-all" v-html="info.conferenceHighlights"></div>
+                    </div>
 
                     <div class="schedule">
                         <div class="schedule-left">
-                            <p class="schedule-title">会议日程</p>
-                            <p class="schedule-all" v-html="info.conferenceSchedule" </p>
+                            <p class="schedule-title">{{ $t('meet.schedule') }}</p>
+                            <p class="schedule-all" v-html="info.conferenceSchedule"></p>
                         </div>
                         <!-- <div class="schedule-right">
                         <img src="https://img.js.design/assets/img/66277b1617da5b2b3506757b.jpg#c8f368a0e271cae196bc0e76e2606fac"
@@ -273,70 +287,71 @@
                     </div> -->
                     </div>
 
-                    <div class="dsc-line" style="margin-top: 30px; margin-bottom: 30px;"></div>
 
-                    <p class="discuss">分论坛讨论议题</p>
+                    <div style="border-bottom: 2px solid rgba(161, 161, 161, 0.3);padding:20px 0;">
+                        <p class="discuss">{{ $t('meet.discuss') }}</p>
 
-                    <div class="discuss-content" v-html="info.subDiscussion"></div>
-
-                    <div class="dsc-line" style="margin-top: 30px; margin-bottom: 30px;"></div>
-
-                    <p class="organization">组织介绍</p>
-
-                    <div class="organization-person">
-                        <div class="organization-in">
-                            <div class="organization-left">
-                                <img src="https://img.js.design/assets/img/66277df46c43aedeb924869b.jpg#ad7737cc94600affb0e1310325010ab4"
-                                    alt="">
-                            </div>
-
-                            <div class="organization-right">
-                                <p class="organization-name">石定寰</p>
-                                <p class="organization-intro">原科技部党组成员秘书长原国务院参事</p>
-                                <p class="organization-intro">WGDO主席</p>
-                            </div>
-                        </div>
-
-                        <div class="organization-in">
-                            <div class="organization-left">
-                                <img src="https://img.js.design/assets/img/66277dfb17da5b2b350781e9.jpg#a0eb47a1aeb9f88042cd9c03fcf396ed"
-                                    alt="">
-                            </div>
-
-                            <div class="organization-right">
-                                <p class="organization-name">牛文元</p>
-                                <p class="organization-intro">中国科学院可持续发展战略研究组组长</p>
-                                <p class="organization-intro">原国务院参事</p>
-                            </div>
-                        </div>
-
-                        <div class="organization-in">
-                            <div class="organization-left">
-                                <img src="https://img.js.design/assets/img/66277e0166a4c636d8bf5ed8.jpg#895aeecce171f1a11860635a64c3ecb2"
-                                    alt="">
-                            </div>
-
-                            <div class="organization-right">
-                                <p class="organization-name">张 琦</p>
-                                <p class="organization-intro">北京光华设计发展基金会理事长</p>
-                                <p class="organization-intro">wgdo组织执委</p>
-                            </div>
-                        </div>
+                        <div class="discuss-content" v-html="info.subDiscussion"></div>
                     </div>
 
-                    <div class="organization-details" v-html="info.introduction"></div>
+                    <div style="border-bottom: 2px solid rgba(161, 161, 161, 0.3);padding:20px 0;">
+                        <p class="organization">{{ $t('meet.organization') }}</p>
 
-                    <div class="dsc-line" style="margin-top: 30px; margin-bottom: 30px;"></div>
+                        <div class="organization-person">
+                            <div class="organization-in">
+                                <div class="organization-left">
+                                    <img src="https://img.js.design/assets/img/66277df46c43aedeb924869b.jpg#ad7737cc94600affb0e1310325010ab4"
+                                        alt="">
+                                </div>
 
-                    <p class="mode">峰会合作方式</p>
+                                <div class="organization-right">
+                                    <p class="organization-name">石定寰</p>
+                                    <p class="organization-intro">原科技部党组成员秘书长原国务院参事</p>
+                                    <p class="organization-intro">WGDO主席</p>
+                                </div>
+                            </div>
 
-                    <div class="partner" v-html="info.summitCooperation"></div>
+                            <div class="organization-in">
+                                <div class="organization-left">
+                                    <img src="https://img.js.design/assets/img/66277dfb17da5b2b350781e9.jpg#a0eb47a1aeb9f88042cd9c03fcf396ed"
+                                        alt="">
+                                </div>
 
-                    <div class="dsc-line" style="margin-top: 30px; margin-bottom: 30px;"></div>
+                                <div class="organization-right">
+                                    <p class="organization-name">牛文元</p>
+                                    <p class="organization-intro">中国科学院可持续发展战略研究组组长</p>
+                                    <p class="organization-intro">原国务院参事</p>
+                                </div>
+                            </div>
 
-                    <p class="guide">参会指南</p>
+                            <div class="organization-in">
+                                <div class="organization-left">
+                                    <img src="https://img.js.design/assets/img/66277e0166a4c636d8bf5ed8.jpg#895aeecce171f1a11860635a64c3ecb2"
+                                        alt="">
+                                </div>
 
-                    <div class="guide-all" v-html="info.attendanceGuide">
+                                <div class="organization-right">
+                                    <p class="organization-name">张 琦</p>
+                                    <p class="organization-intro">北京光华设计发展基金会理事长</p>
+                                    <p class="organization-intro">wgdo组织执委</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="organization-details" v-html="info.introduction"></div>
+                    </div>
+
+                    <div style="border-bottom: 2px solid rgba(161, 161, 161, 0.3);padding:20px 0;">
+                        <p class="mode">{{ $t('meet.mode') }}</p>
+
+                        <div class="partner" v-html="info.summitCooperation"></div>
+                    </div>
+
+                    <div style="border-bottom: 2px solid rgba(161, 161, 161, 0.3);padding:20px 0;">
+                        <p class="guide">{{ $t('meet.guide') }}</p>
+
+                        <div class="guide-all" v-html="info.attendanceGuide">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -516,17 +531,29 @@ export default {
 
 .info-introall {
     width: 100%;
-    opacity: 0.3;
-    margin-bottom: -35px;
-    border-bottom: 2px solid rgba(161, 161, 161, 1);
+    opacity: 1;
+    border-bottom: 2px solid rgba(161, 161, 161, 0.3);
+    display: flex;
+    padding: 15px 0;
+    align-items: center;
+}
+
+.info-introall img {
+    width: 40%;
+    height: 420px;
+    opacity: 1;
+}
+
+.info-introall div {
+    margin-left: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
 }
 
 .info-title {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 26.52px;
-    color: rgba(51, 51, 51, 1);
+    margin: 15px 0;
 }
 
 .info-intro {
@@ -542,9 +569,24 @@ export default {
 .info-countdown {
     width: 100%;
     opacity: 1;
+    padding: 20px 0;
+    display: flex;
+    flex-direction: column;
+    border-bottom: 2px solid rgba(161, 161, 161, 0.3);
 }
 
-.countdown-dsc {
+.countdown-dsc,
+.act-dsc,
+.info-title,
+.chairman,
+.address-title,
+.pre-person,
+.Highlights,
+.schedule-title,
+.discuss,
+.organization,
+.mode,
+.guide {
     font-size: 18px;
     font-weight: 700;
     letter-spacing: 0px;
@@ -562,15 +604,16 @@ export default {
     vertical-align: top;
 }
 
-.chairman {
-    opacity: 1;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 26.52px;
-    color: rgba(51, 51, 51, 1);
-    text-align: left;
-    vertical-align: top;
+.act {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(calc(33.33% - 20px), 1fr));
+    grid-gap: 20px;
+    margin-top: 30px;
+}
+
+.act img {
+    width: 100%;
+    height: 200px;
 }
 
 .chairman-all {
@@ -629,6 +672,7 @@ export default {
 .address {
     display: flex;
     align-items: center;
+    width: 100%;
 }
 
 .address-left {
@@ -647,15 +691,9 @@ export default {
     display: flex;
     flex-direction: column;
     opacity: 1;
-    margin-left: 10px;
-}
-
-.address-title {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 26.52px;
-    color: rgba(51, 51, 51, 1);
+    padding: 20px 0;
+    border-bottom: 2px solid rgba(161, 161, 161, 0.3);
+    width: 100%;
 }
 
 .address-intro {
@@ -665,17 +703,6 @@ export default {
     line-height: 23.87px;
     color: rgba(51, 51, 51, 1);
     text-align: justify;
-    vertical-align: top;
-}
-
-.pre-person {
-    opacity: 1;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 26.52px;
-    color: rgba(51, 51, 51, 1);
-    text-align: left;
     vertical-align: top;
 }
 
@@ -734,17 +761,6 @@ export default {
     margin-top: 15px;
 }
 
-.Highlights {
-    opacity: 1;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 26.52px;
-    color: rgba(51, 51, 51, 1);
-    text-align: left;
-    vertical-align: top;
-}
-
 .Highlights-all {
     margin-top: 30px;
     opacity: 1;
@@ -753,6 +769,7 @@ export default {
     letter-spacing: 0px;
     line-height: 23.87px;
     color: rgba(51, 51, 51, 1);
+    text-align: justify;
 }
 
 .Highlights-all span {
@@ -766,6 +783,8 @@ export default {
 .schedule {
     display: flex;
     justify-content: space-between;
+    border-bottom: 2px solid rgba(161, 161, 161, 0.3);
+    padding: 20px 0;
 }
 
 .schedule-left {
@@ -774,14 +793,6 @@ export default {
     width: 50%;
     opacity: 1;
     justify-content: space-evenly;
-}
-
-.schedule-title {
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 26.52px;
-    color: rgba(51, 51, 51, 1);
 }
 
 .schedule-all {
@@ -807,19 +818,12 @@ export default {
 }
 
 .discuss {
-    opacity: 1;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 26.52px;
-    color: rgba(51, 51, 51, 1);
-    text-align: left;
-    vertical-align: top;
     margin-bottom: 30px;
 }
 
 .discuss-content {
     opacity: 1;
+    text-align: justify;
 }
 
 .discuss-title {
@@ -836,17 +840,6 @@ export default {
     letter-spacing: 0px;
     line-height: 30px;
     color: rgba(51, 51, 51, 1);
-}
-
-.organization {
-    opacity: 1;
-    font-size: 18px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 26.52px;
-    color: rgba(51, 51, 51, 1);
-    text-align: left;
-    vertical-align: top;
 }
 
 .organization-person {
@@ -903,6 +896,7 @@ export default {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
+    text-align: justify;
 }
 
 .organization-title {
@@ -923,21 +917,11 @@ export default {
     vertical-align: top;
 }
 
-.mode {
-    opacity: 1;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 26.52px;
-    color: rgba(51, 51, 51, 1);
-    text-align: left;
-    vertical-align: top;
-}
-
 .partner {
     display: flex;
     flex-direction: column;
     margin-top: 30px;
+    text-align: justify;
 }
 
 .partner-in {
@@ -983,22 +967,12 @@ export default {
     margin-left: 15px;
 }
 
-.guide {
-    opacity: 1;
-    font-size: 22px;
-    font-weight: 700;
-    letter-spacing: 0px;
-    line-height: 26.52px;
-    color: rgba(51, 51, 51, 1);
-    text-align: left;
-    vertical-align: top;
-}
-
 .guide-all {
     display: flex;
     flex-direction: column;
     margin-bottom: 100px;
     margin-top: 30px;
+    text-align: justify;
 }
 
 .guide-in {

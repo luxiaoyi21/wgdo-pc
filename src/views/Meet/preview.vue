@@ -8,8 +8,8 @@
                 <div class="dsc-line" style=" "></div>
 
                 <div class="dynamic-dsc">
-                    <a :href="preview.externalLink" class="dynamic-content" v-for="preview in previewDatas"
-                        :key="preview.conferenceId">
+                    <a :href="isSecondLink(index) ? '/meet/preview/info' : preview.externalLink" class="dynamic-content"
+                        v-for="(preview, index) in previewDatas" :key="preview.conferenceId">
                         <div class="dynamic-img">
                             <img :src="'http://106.3.97.14:9002' + preview.cover" alt="">
                         </div>
@@ -68,6 +68,9 @@ export default {
         this.getPreviewData()
     },
     methods: {
+        isSecondLink(index) {
+            return index === 1;
+        },
         getPreviewData(p = this.$store.state.lang.version) {
             Meet({ moduleType: '1', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {

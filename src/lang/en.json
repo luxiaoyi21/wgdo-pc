@@ -95,7 +95,22 @@
   "thirdNew": {
     "year": "Year"
   },
-  "contact":{
+  "about":{
     "welcome":"Welcome to leave us a message"
+  },
+  "meet":{
+    "Summit":"Summit Introduction",
+    "Countdown":"Summit Countdown",
+    "Event":"Event site",
+    "chairman":"Forum Chairman",
+    "address":"Time, location, and organizational structure",
+    "preview":"Intended attendees",
+    "back":"Previous Guests Attending the Conference",
+    "Highlights": "Highlights of the conference",
+    "schedule": "Meeting schedule",
+    "discuss": "Discussion topics in sub forums",
+    "organization": "Organizational Introduction",
+    "mode": "Summit cooperation mode",
+    "guide": "Attending Guidelines"
   }
 }

@@ -4,7 +4,7 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @Research="getResearchData" @tabclickDatas="getTabName" />
+            <TabControl :tabName="tabName" @getHomeAllTitle="getResearchData" @tabclickDatas="getTabName" />
             <!-- 首页传值 -->
             <!-- <Intro :tabDatas="tabDatas" /> -->
             <Design v-if="tabclickDatas === '绿色设计报告'" :tabDatas="tabDatas" />
@@ -25,51 +25,57 @@ import Headers from "@/components/Headers.vue";
 import TabControl from "@/components/TabControl";
 import Footers from "@/views/Home/Footer/index.vue";
 import { Research } from "@/api/requests.js";
+import { getHomeAllTitle } from '@/api/requests.js'
 import Design from "@/views/Research/design.vue";
 import Standard from "@/views/Research/standard.vue";
 import Laboratory from "@/views/Research/laboratory.vue";
 import Resource from "@/views/Research/resource.vue";
 import Designinfo from "@/views/Research/designinfo.vue";
+import funs from "@/utils/index.js"
 
 export default {
     name: "Research",
-    components: { Headers, TabControl, Footers, Design, Standard, Laboratory,Resource,Designinfo },
+    components: { Headers, TabControl, Footers, Design, Standard, Laboratory, Resource, Designinfo },
     props: ["urlData"],
     data() {
-        let tabName = [
-            "绿色设计报告",
-            "绿色设计国际标准",
-            "绿色设计国际实验室",
-            "共享资源",
-            // "绿色设计报告详情",
-        ];
-        let ResearchDatas = [];
-        let tabDatas = [];
-        let tabclickDatas = [];
-        let name = [];
         return {
-            tabName,
-            ResearchDatas,
-            tabDatas,
-            tabclickDatas:'绿色设计报告',
-            name,
+            tabName: [
+                "绿色设计报告",
+                "绿色设计国际标准",
+                "绿色设计国际实验室",
+                "共享资源",
+                // "绿色设计报告详情",
+            ],
+            ResearchDatas: [],
+            tabDatas: [],
+            tabclickDatas: '绿色设计报告',
+            name: [],
         };
     },
     mounted() {
         this.getResearchData('绿色设计报告');
     },
     methods: {
-        getResearchData(data) {
-            this.tabDatas = data;
-            // console.log(this.tabDatas);
+        async getResearchData(p = this.$store.state.lang.version) {
+            try {
+                // const response = await getHomeAllTitle({ parentId: 5, version: p });
+                this.tabDatas = response.data;
+                console.log(this.tabDatas);
+            } catch {
+
+            }
         },
         getTabName(name) {
             this.tabclickDatas = name;
             console.log(this.tabclickDatas);
         },
-        // switchPage() {
-        //     this.currentPage = this.currentPage === 'intro' ? 'branch' : 'intro';
-        // }
+    },
+    watch: {
+        "$store.state.lang.version": {
+            handler() {
+                funs(this.getResearchData(), this.$store.state.lang.version)
+            }
+        },
     },
 };
 </script>

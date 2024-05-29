@@ -22,7 +22,7 @@
 
             <div class="enroll">
                 <div class="enroll-in">
-                    <p class="message">{{ $t('contact.welcome') }}</p>
+                    <p class="message">{{ $t('about.welcome') }}</p>
                     <div class="enroll-input">
                         <el-input v-model="input" placeholder="" type="textarea" :autosize="{ minRows: 1.8 }"
                             class="enroll-content">

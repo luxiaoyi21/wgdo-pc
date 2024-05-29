@@ -4,7 +4,7 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @WgdoData="getWgdoData" @tabclickDatas="getTabName" />
+            <TabControl :tabName="tabName" @getHomeAllTitle="getWgdoData" @tabclickDatas="getTabName" />
             <!-- 首页传值 -->
             <Intro v-if="tabclickDatas === '机构简介'" :tabDatas="tabDatas" />
             <Branch v-if="tabclickDatas === '分支拓建'" :tabDatas="tabDatas" />
@@ -24,34 +24,31 @@ import Headers from "@/components/Headers.vue";
 import TabControl from "@/components/TabControl";
 import Footers from "@/views/Home/Footer/index.vue";
 import { getWgdo } from "@/api/requests.js";
+import { getHomeAllTitle } from '@/api/requests.js'
 import Intro from "@/views/Wgdo/intro.vue";
 import Branch from '@/views/Wgdo/branch.vue'
 import Service from '@/views/Wgdo/service.vue'
 import Train from '@/views/Wgdo/train.vue'
 import Policy from '@/views/Wgdo/policy.vue'
+import funs from "@/utils/index.js"
 
 export default {
     name: "Wgdo",
     components: { Headers, TabControl, Footers, Intro, Branch, Service, Train, Policy },
     props: ["urlData"],
     data() {
-        let tabName = [
-            "机构简介",
-            "分支拓建",
-            "品牌服务",
-            "绿色设计培训",
-            "绿色政策",
-        ];
-        let wgdoDatas = [];
-        let tabDatas = [];
-        let tabclickDatas = [];
-        let name = [];
         return {
-            tabName,
-            wgdoDatas,
-            tabDatas,
+            tabName: [
+                "机构简介",
+                "分支拓建",
+                "品牌服务",
+                "绿色设计培训",
+                "绿色政策",
+            ],
+            wgdoDatas: [],
+            tabDatas: [],
             tabclickDatas: '机构简介',
-            name,
+            name: [],
         };
     },
     mounted() {
@@ -60,12 +57,25 @@ export default {
         this.getWgdoData('机构简介');
     },
     methods: {
-        getWgdoData(data) {
-            this.tabDatas = data;
+        async getWgdoData(p = this.$store.state.lang.version) {
+            try {
+                // const response = await getHomeAllTitle({ parentId: 8, version: p });
+                this.tabDatas = response.data;
+                console.log(this.tabDatas);
+            } catch {
+
+            }
         },
         getTabName(name) {
             this.tabclickDatas = name;
             console.log(this.tabclickDatas);
+        },
+    },
+    watch: {
+        "$store.state.lang.version": {
+            handler() {
+                funs(this.getWgdoData(), this.$store.state.lang.version)
+            }
         },
     },
 };

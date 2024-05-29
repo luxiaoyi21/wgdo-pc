@@ -95,7 +95,22 @@
   "thirdNew": {
     "year": "年"
   },
-  "contact":{
-    "welcome":"欢迎给我们留言"
+  "about": {
+    "welcome": "欢迎给我们留言"
+  },
+  "meet": {
+    "Summit": "峰会介绍",
+    "Countdown": "峰会倒计时",
+    "Event": "活动现场",
+    "chairman": "论坛主席",
+    "address": "时间地点及组织机构",
+    "preview": "拟参会嘉宾",
+    "back": "历届参会嘉宾",
+    "Highlights": "大会亮点",
+    "schedule": "会议日程",
+    "discuss": "分论坛讨论议题",
+    "organization": "组织介绍",
+    "mode": "峰会合作方式",
+    "guide": "参会指南"
   }
 }

@@ -4,7 +4,7 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @Project="getProjectData" @tabclickDatas="getTabName" />
+            <TabControl :tabName="tabName" @getHomeAllTitle="getProjectData" @tabclickDatas="getTabName" />
             <!-- 首页传值 -->
             <!-- <Intro :tabDatas="tabDatas" /> -->
             <Greenhome v-if="tabclickDatas === '绿叶之家'" :tabDatas="tabDatas" />
@@ -27,6 +27,7 @@ import Headers from "@/components/Headers.vue";
 import TabControl from "@/components/TabControl";
 import Footers from "@/views/Home/Footer/index.vue";
 import { Project } from "@/api/requests.js";
+import { getHomeAllTitle } from '@/api/requests.js'
 import Greenhome from "@/views/Project/greenhome.vue";
 import Publicity from "@/views/Project/publicity.vue";
 import Record from "@/views/Project/record.vue";
@@ -34,44 +35,52 @@ import Glory from "@/views/Project/glory.vue";
 import Inventory from "@/views/Project/inventory.vue";
 import Disseminate from "@/views/Project/disseminate.vue";
 import Contactform from "@/views/Project/contactform.vue";
+import funs from "@/utils/index.js"
 
 export default {
     name: "Project",
-    components: { Headers, TabControl, Footers, Greenhome, Publicity, Record, Glory, Inventory, Disseminate ,Contactform},
+    components: { Headers, TabControl, Footers, Greenhome, Publicity, Record, Glory, Inventory, Disseminate, Contactform },
     props: ["urlData"],
     data() {
-        let tabName = [
-            "绿叶之家",
-            "绿丝带",
-            // "绿丝带物资到货记录",
-            // "绿丝带行动捐赠光荣榜",
-            // "可信供方清单",
-            // "抗疫宣传",
-            // "联系方式",
-        ];
-        let ProjectDatas = [];
-        let tabDatas = [];
-        let tabclickDatas = [];
-        let name = [];
         return {
-            tabName,
-            ProjectDatas,
-            tabDatas,
+            tabName: [
+                "绿叶之家",
+                "绿丝带",
+                // "绿丝带物资到货记录",
+                // "绿丝带行动捐赠光荣榜",
+                // "可信供方清单",
+                // "抗疫宣传",
+                // "联系方式",
+            ],
+            ProjectDatas: [],
+            tabDatas: [],
             tabclickDatas: '绿叶之家',
-            name,
+            name: [],
         };
     },
     mounted() {
         this.getProjectData('绿叶之家');
     },
     methods: {
-        getProjectData(data) {
-            this.tabDatas = data;
-            // console.log(this.tabDatas);
+        async getProjectData(p = this.$store.state.lang.version) {
+            try {
+                // const response = await getHomeAllTitle({ parentId: 6, version: p });
+                this.tabDatas = response.data;
+                console.log(this.tabDatas);
+            } catch {
+
+            }
         },
         getTabName(name) {
             this.tabclickDatas = name;
             console.log(this.tabclickDatas);
+        },
+    },
+    watch: {
+        "$store.state.lang.version": {
+            handler() {
+                funs(this.getProjectData(), this.$store.state.lang.version)
+            }
         },
     },
 };
