@@ -65,7 +65,7 @@
             }
         },
         mounted() {
-            this.$store.commit('getVersion')
+            // this.$store.commit('getVersion')
             this.getHeaderNav()
         },
         methods: {

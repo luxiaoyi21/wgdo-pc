@@ -41,10 +41,10 @@ export default {
         return {
             tabName:[
             "组织动态",
-            "动态详情",
+            // "动态详情",
             "论坛视频",
             "媒体报告",
-            "报告详情",
+            // "报告详情",
         ],
             MediaDatas:[],
             tabDatas:[],

@@ -371,7 +371,7 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    store.commit('getLocalLang')
+    // store.commit('getLocalLang')
     if (to.meta.isAuth) {
         let token = localStorage.getItem('token')
         let stoken = sessionStorage.getItem('stoken')

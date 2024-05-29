@@ -43,7 +43,6 @@
             }
         },
         mounted() {
-            console.log(this.$route.params.orders);
             if (typeof (this.$route.params.orders) === 'string') {
                 this.getSecondData()
             } else {
@@ -52,13 +51,14 @@
             }
             this.urlDatas.push(
                 {
-                    path: this.$route.params.fromPath,
-                    name: this.$route.params.fromName
+                    path: '/',
+                    name: 'Home'
                 },
                 {
                     path: this.$route.path,
                     name: this.$route.name
-                })
+                }
+            )
         },
         methods: {
             getSecondData(currentIndex = '', p = this.$store.state.lang.version) {

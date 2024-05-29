@@ -37,21 +37,28 @@
                 urlDatas,
                 detData,
                 types,
-                indexs
+                indexs,
+                currentIndexSession: Number(sessionStorage.getItem('currentIndex'))
             }
         },
         mounted() {
+            if (!isNaN(this.currentIndexSession)) {
+                this.getCurrentData(this.currentIndexSession, this.$store.state.lang.version, sessionStorage.getItem('currentType'));
+            }
             this.types = this.$route.params.types
             if (this.types === 'fourAll' || this.types === 'fiveAll') {
                 this.getCurrentData()
-            } else {
+            } else if (this.types === 'fourList' || this.types === 'fiveList') {
                 this.indexs = this.$route.params.orders
+                window.sessionStorage.setItem('currentIndex', this.$route.params.orders);
+                window.sessionStorage.setItem('currentType', this.$route.params.types)
+                this.currentIndexSession = Number(sessionStorage.getItem('currentIndex'));
                 this.getCurrentData(this.indexs)
             }
             this.urlDatas.push(
                 {
-                    path: this.$route.params.fromPath,
-                    name: this.$route.params.fromName
+                    path: '/',
+                    name: 'Home'
                 },
                 {
                     path: this.$route.path,
@@ -60,9 +67,9 @@
             )
         },
         methods: {
-            getCurrentData(currentIndex = '', p = this.$store.state.lang.version) {
+            getCurrentData(currentIndex = '', p = this.$store.state.lang.version, type) {
                 let that = this
-                switch (that.types) {
+                switch (type || that.types) {
                     case 'fourAll':
                         getContentList({ "moduleType": "5", "status": "1", version: p }).then(res => {
                             if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
@@ -116,8 +123,16 @@
                     } else {
                         funs(this.getCurrentData(this.indexs), this.$store.state.lang.version)
                     }
+                    if (!isNaN(this.currentIndexSession)) {
+                        this.getCurrentData(this.currentIndexSession, this.$store.state.lang.version, sessionStorage.getItem('currentType'));
+                    }
                 }
             }
+        },
+        beforeRouteLeave(to, from, next) {
+            sessionStorage.removeItem('currentIndex');
+            sessionStorage.removeItem('currentType');
+            next();
         }
     }
 </script>

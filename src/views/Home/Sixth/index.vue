@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <div class="boxa">
-            <div class="boxaTitle">{{ newTitle[9] }}</div>
+            <div class="boxaTitle">{{ newTitle[10] }}</div>
             <div class="boxaDsc">{{ $t('six.dsc') }}</div>
             <div class="contentInfo">
                 <logoPic :logoPicData="sixOne" />
@@ -9,7 +9,7 @@
         </div>
         <div class="boxb">
             <div class="boxbTop">
-                <TitleStyle :isTitle="newTitle[10]" :styles="boxTitleStyleB" :style2="style2" />
+                <TitleStyle :isTitle="newTitle[11]" :styles="boxTitleStyleB" :style2="style2" />
             </div>
             <div class="boxbContent">
                 <div class="boxbContentItem" v-for="t in sixTwo" :key="t.hpId">
@@ -20,7 +20,7 @@
         </div>
         <div class="boxc">
             <div class="boxcTitle">
-                <TitleStyle :isTitle="newTitle[10]" :styles="boxTitleStyleB" :style2="style2" />
+                <TitleStyle :isTitle="newTitle[12]" :styles="boxTitleStyleB" :style2="style2" />
             </div>
             <div class="boxcContent">
                 <logoPic :logoPicData="sixThree" />
@@ -28,7 +28,7 @@
         </div>
         <div class="boxd">
             <div class="boxdTitle">
-                <TitleStyle :isTitle="newTitle[11]" :styles="boxTitleStyleB" :style2="style2" />
+                <TitleStyle :isTitle="newTitle[13]" :styles="boxTitleStyleB" :style2="style2" />
             </div>
             <div class="boxdContent">
                 <logoPic :logoPicData="sixFour" />

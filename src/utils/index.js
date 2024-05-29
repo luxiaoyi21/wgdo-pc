@@ -17,8 +17,8 @@ export const getTitle = function (p = store.state.lang.version) {
                 temps.push(v.classifyName)
             })
             window.sessionStorage.setItem('titles', JSON.stringify(temps))
-            let ressss = sessionStorage.getItem('titles')
-            console.log(JSON.parse(ressss));
+            // let ressss = sessionStorage.getItem('titles')
+            // console.log(JSON.parse(ressss));
         }
     })
 }

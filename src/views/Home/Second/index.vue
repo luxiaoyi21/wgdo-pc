@@ -20,7 +20,7 @@
                                 <div class="titlethr">
                                     {{item.title}}
                                 </div>
-                                <div class="titlefour">
+                                <div :class=" $store.state.lang.isEn === 'en' ?    'titlefourEN' :'titlefour' ">
                                     {{item.intro}}
                                 </div>
                             </a>
@@ -46,7 +46,7 @@
                     <div class="rightListTitle">
                         {{i.title}}
                     </div>
-                    <div class="rightListContent">
+                    <div :class=" $store.state.lang.isEn === 'en' ? 'rightListContentEN' :'rightListContent' ">
                         {{i.intro}}
                     </div>
                     <div class="rightListLine"></div>
@@ -87,6 +87,7 @@
                 getContentList({ "moduleType": "2", "status": "1", version: p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.rightData = res.data.rows.slice(0, 4)
+                        // console.log(this.rightData[1]);
                     }
                 })
             },
@@ -295,7 +296,7 @@
 
     .titlethr {
         margin-top: 31px;
-        width: 500.05px;
+        width: 579.05px;
         height: 35.05px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -309,6 +310,24 @@
     }
 
     .titlefour {
+        margin-top: 11px;
+        width: 548.05px;
+        height: 41.15px;
+        opacity: 1;
+        font-size: 15.24px;
+        font-weight: 400;
+        letter-spacing: 0.76px;
+        line-height: 20.21px;
+        color: rgba(255, 255, 255, 0.8);
+        text-align: left;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 4;
+    }
+
+    .titlefourEN {
         margin-top: 11px;
         left: 143.25px;
         top: 1292.32px;
@@ -326,6 +345,7 @@
         text-overflow: ellipsis;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 4;
+        text-align: justify;
     }
 
     /* right */
@@ -336,7 +356,6 @@
         border-left: 1px snow sienna;
         overflow: hidden;
         max-height: 650px;
-        /* border: 1px solid hotpink; */
     }
 
     .right .titone {
@@ -412,14 +431,25 @@
 
     .right .rightList .rightListContent {
         margin-top: 8px;
-        width: 496.05px;
+        width: 507px;
         font-size: 15.24px;
         font-weight: 400;
         letter-spacing: 0.76px;
         line-height: 20.21px;
         color: rgba(255, 255, 255, 0.8);
-        text-align: left;
-        vertical-align: top;
+    }
+
+    .rightListContentEN {
+        margin-top: 8px;
+        width: 507px;
+        font-size: 15.24px;
+        font-weight: 400;
+        letter-spacing: 0.76px;
+        line-height: 20.21px;
+        color: rgba(255, 255, 255, 0.8);
+        text-align: justify;
+        word-break: keep-all;
+        text-align-last: left;
     }
 
     .right .rightList .rightListLine {

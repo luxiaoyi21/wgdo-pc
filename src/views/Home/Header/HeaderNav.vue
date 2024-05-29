@@ -78,9 +78,7 @@
                 lang,
             }
         },
-        mounted() {
-            this.changeLang()
-        },
+        mounted() { },
         methods: {
             changeLang() {
                 this.$store.state.lang.isText1Visible == true ? this.lang = '中文' : this.lang = 'En'

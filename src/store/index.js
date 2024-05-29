@@ -28,6 +28,7 @@ const state = {
 const mutations = {
     getLocalLang({ lang }, l) {
         if (l) {
+            console.log(l);
             lang.isEn = l === '中文' ? 'en' : 'zh'
             i18n.locale = lang.isEn
         }
@@ -99,7 +100,14 @@ export default new Vuex.Store({
     actions,
     plugins: [
         createPersistedState({
-            paths: ['lang']
+            key: 'langData',
+            storage: window.sessionStorage,
+            reducer(val) {
+                return {
+                    lang: val.lang,
+                    isEn: val.isEn
+                }
+            }
         })
     ]
 })

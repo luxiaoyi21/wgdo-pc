@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <div class="boxa">
-            <div class="boxaTitle">{{ newTitle[5] }}</div>
+            <div class="boxaTitle">{{ newTitle[6] }}</div>
             <div class="boxaDsc">{{ $t('five.dsc') }}</div>
             <div class="tomore">
                 <a href="/prize">
@@ -43,7 +43,7 @@
         <div class="boxb">
             <div class="boxbTitle">{{ $t('five.mingdan') }}</div>
             <div class="boxbDsc">
-                <TitleStyle :isTitle="newTitle[7]" :styles="boxTitleStyleB" :style2="style2" />
+                <TitleStyle :isTitle="newTitle[8]" :styles="boxTitleStyleB" :style2="style2" />
             </div>
             <div class="boxbInfo">
                 <div class="boxbInfoItem" v-for="i in getPrice" :key="i.hpId">
@@ -56,7 +56,7 @@
         </div>
         <div class="boxc">
             <div class="boxcDsc">
-                <TitleStyle :isTitle="newTitle[8]" :styles="boxTitleStyleB" :style2="style2" />
+                <TitleStyle :isTitle="newTitle[9]" :styles="boxTitleStyleB" :style2="style2" />
             </div>
             <div class="boxcInfo">
                 <div class="boxcInfoItem" v-for="t in awardWinningOrganization" :key="t.hpId">
@@ -118,7 +118,6 @@
         },
         mounted() {
             this.getFiveData();
-            console.log(this.newTitle, 'ddd');
         },
         methods: {
             getFiveData(p = this.$store.state.lang.version) {
@@ -133,7 +132,6 @@
                     this.getPrice = res.data.rows
                 })
                 getContentList({ "moduleType": "8", "status": "1", version: p }).then(res => {
-                    console.log(this.awardWinningOrganization);
                     this.awardWinningOrganization = res.data.rows
                 })
             },

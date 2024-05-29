@@ -13,7 +13,7 @@
                     </div>
                 </div>
                 <div class="titlethrid">{{topDatas.title}}</div>
-                <div class="leftdsc">
+                <div :class=" $store.state.lang.isEn === 'en' ? 'leftdscEN' : 'leftdsc'">
                     {{topDatas.intro}}
                 </div>
                 <div class="ook" @click="detailsRoute(topDatas.type)">
@@ -207,6 +207,7 @@
         text-overflow: ellipsis;
     }
 
+
     .leftdsc {
         margin-top: 15px;
         width: 496.05px;
@@ -222,6 +223,23 @@
         -webkit-line-clamp: 4;
         display: -webkit-box;
         -webkit-box-orient: vertical;
+    }
+
+    .leftdscEN {
+        margin-top: 15px;
+        width: 496.05px;
+        height: 81.53px;
+        font-size: 15.24px;
+        font-weight: 400;
+        letter-spacing: 0.76px;
+        line-height: 20.21px;
+        color: rgba(255, 255, 255, 0.8);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 4;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        text-align: justify;
     }
 
     .ook {
