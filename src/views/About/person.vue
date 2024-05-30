@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="dynamic">重要人物</p>
+                <p class="dynamic">{{$t('about.figures')}}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
@@ -69,7 +69,6 @@ export default {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.personDatas = res.data.rows
                     this.totalItems = res.data.rows.length;
-                    console.log(this.personDatas);
                 }
             })
         },

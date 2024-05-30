@@ -55,16 +55,33 @@
                 this.currentIndexSession = Number(sessionStorage.getItem('currentIndex'));
                 this.getCurrentData(this.indexs)
             }
-            this.urlDatas.push(
-                {
-                    path: '/',
-                    name: 'Home'
-                },
-                {
-                    path: this.$route.path,
-                    name: this.$route.name
+            if (this.$store.state.lang.isEn !== 'en') {
+                this.urlDatas = []
+                if (this.types === 'fourList' || this.types === 'fourAll') {
+                    this.urlDatas.push(
+                        { path: '/', name: '首页' },
+                        { path: this.$route.path, name: '世界绿色设计园' }
+                    )
+                } else {
+                    this.urlDatas.push(
+                        { path: '/', name: '首页' },
+                        { path: this.$route.path, name: '品牌项目' }
+                    )
                 }
-            )
+            } else {
+                this.urlDatas = []
+                if (this.types === 'fourList' || this.types === 'fourAll') {
+                    this.urlDatas.push(
+                        { path: '/', name: 'Home' },
+                        { path: this.$route.path, name: 'World Green Design Park' }
+                    )
+                } else {
+                    this.urlDatas.push(
+                        { path: '/', name: 'Home' },
+                        { path: this.$route.path, name: 'Brand Project' }
+                    )
+                }
+            }
         },
         methods: {
             getCurrentData(currentIndex = '', p = this.$store.state.lang.version, type) {
@@ -125,6 +142,57 @@
                     }
                     if (!isNaN(this.currentIndexSession)) {
                         this.getCurrentData(this.currentIndexSession, this.$store.state.lang.version, sessionStorage.getItem('currentType'));
+                    }
+                    if (this.$store.state.lang.isEn !== 'en') {
+                        this.urlDatas = []
+                        if (this.types === 'fourList' || this.types === 'fourAll') {
+                            this.urlDatas.push(
+                                {
+                                    path: '/',
+                                    name: '首页'
+                                },
+                                {
+                                    path: this.$route.path,
+                                    name: '世界绿色设计园'
+                                }
+                            )
+                        } else {
+                            this.urlDatas.push(
+                                {
+                                    path: '/',
+                                    name: '首页'
+                                },
+                                {
+                                    path: this.$route.path,
+                                    name: '品牌项目'
+                                }
+                            )
+                        }
+                    } else {
+                        this.urlDatas = []
+                        if (this.types === 'fourList' || this.types === 'fourAll') {
+                            this.urlDatas.push(
+                                {
+                                    path: '/',
+                                    name: 'Home'
+                                },
+                                {
+                                    path: this.$route.path,
+                                    name: 'World Green Design Park'
+                                }
+                            )
+                        } else {
+                            this.urlDatas.push(
+                                {
+                                    path: '/',
+                                    name: 'Home'
+                                },
+                                {
+                                    path: this.$route.path,
+                                    name: 'Brand Project'
+                                }
+                            )
+                        }
                     }
                 }
             }

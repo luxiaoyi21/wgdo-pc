@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="dynamic">正在进行</p>
+                <p class="dynamic">{{$t('meet.doing')}}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=""></div>
@@ -42,7 +42,6 @@ export default {
             Meet({ moduleType: '2', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.doingDatas = res.data.rows
-                    console.log(this.doingDatas);
                 }
             })
         }

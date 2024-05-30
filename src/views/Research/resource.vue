@@ -3,12 +3,12 @@
         <div class="content">
             <div class="content-in">
                 <div class="titleintro">
-                    <p class="dynamic">共享资源</p>
+                    <p class="dynamic">{{$t('research.resource')}}</p>
                     <div style="display: flex;">
                         <div style="display: flex;margin-right:15px" v-if="showCheckbox" class="batch-download-btn">
-                            <el-button type="primary" @click="batchDownload">下载文件</el-button>
+                            <el-button type="primary" @click="batchDownload">{{$t('research.document')}}</el-button>
                         </div>
-                        <el-button type="text" @click="toggleCheckbox">批量下载</el-button>
+                        <el-button type="text" @click="toggleCheckbox">{{$t('research.download')}}</el-button>
                     </div>
 
                 </div>
@@ -84,7 +84,6 @@ export default {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.resourceDatas = res.data.rows
                     this.totalItems = res.data.rows.length;
-                    console.log(this.resourceDatas);
                 }
             })
         },
@@ -93,7 +92,6 @@ export default {
         },
         async downloadFile(url) {
             if (!url) {
-                console.error('URL is invalid');
                 return;
             }
 
@@ -118,7 +116,7 @@ export default {
                     URL.revokeObjectURL(link.href);
                 }, 100);
             } catch (error) {
-                console.error('There was a problem with the download operation:', error);
+
             }
         },
         toggleCheckbox() {

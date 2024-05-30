@@ -109,7 +109,6 @@ export default {
                 if (key === this.urlData[1].name) {
                     this.getHomeAllTitleData(this.Map[key])
                     this.$emit('tabclickDatas', this.urlData[1].name)
-                    // console.log(this.getAboutusData);
                     return
                 }
             };
@@ -118,7 +117,6 @@ export default {
                 if (key === this.urlData[1].name) {
                     this.getAboutusData(this.aboutmap[key])
                     this.$emit('tabclickDatas', this.urlData[1].name)
-                    // console.log(this.getAboutusData);
                     return
                 }
             };
@@ -127,7 +125,6 @@ export default {
                 if (key === this.urlData[1].name) {
                     this.getMeetData(this.meetmap[key])
                     this.$emit('tabclickDatas', this.urlData[1].name)
-                    // console.log(key);
                     return
                 }
             };
@@ -136,7 +133,6 @@ export default {
                 if (key === this.urlData[1].name) {
                     this.getMediaData(this.mediamap[key])
                     this.$emit('tabclickDatas', this.urlData[1].name)
-                    // console.log(key);
                     return
                 }
             };
@@ -145,7 +141,6 @@ export default {
                 if (key === this.urlData[1].name) {
                     this.getResearchData(this.researchmap[key])
                     this.$emit('tabclickDatas', this.urlData[1].name)
-                    // console.log(key);
                     return
                 }
             };
@@ -154,7 +149,6 @@ export default {
                 if (key === this.urlData[1].name) {
                     this.getProjectData(this.projectmap[key])
                     this.$emit('tabclickDatas', this.urlData[1].name)
-                    // console.log(key);
                     return
                 }
             };
@@ -163,7 +157,6 @@ export default {
                 if (key === this.urlData[1].name) {
                     this.getPrizeData(this.prizemap[key])
                     this.$emit('tabclickDatas', this.urlData[1].name)
-                    // console.log(key);
                     return
                 }
             };
@@ -172,7 +165,6 @@ export default {
                 if (key === this.urlData[1].name) {
                     this.getWgdoData(this.Mapping[key])
                     this.$emit('tabclickDatas', this.urlData[1].name)
-                    // console.log(key);
                     return
                 }
             };
@@ -180,61 +172,60 @@ export default {
         },
         getAboutusData(p) {
             Aboutus({ moduleType: p, status: '1' }).then(res => {
-                console.log(res.data.rows);
                 this.tabDatas = res.data.rows
                 this.$emit('Aboutus', this.tabDatas)
             })
         },
         getMeetData(p) {
             Meet({ moduleType: p, status: '1' }).then(res => {
-                console.log(res.data.rows);
                 this.tabDatas = res.data.rows
                 this.$emit('Meet', this.tabDatas)
             })
         },
         getMediaData(p) {
             Media({ moduleType: p, status: '1' }).then(res => {
-                console.log(res.data.rows);
                 this.tabDatas = res.data.rows
                 this.$emit('Media', this.tabDatas)
             })
         },
         getResearchData(p) {
             Research({ moduleType: p, status: '1' }).then(res => {
-                console.log(res.data.rows);
                 this.tabDatas = res.data.rows
                 this.$emit('Research', this.tabDatas)
             })
         },
         getProjectData(p) {
             Project({ moduleType: p, status: '1' }).then(res => {
-                console.log(res.data.rows);
                 this.tabDatas = res.data.rows
                 this.$emit('Project', this.tabDatas)
             })
         },
         getPrizeData(p) {
             Prize({ moduleType: p, status: '1' }).then(res => {
-                console.log(res.data.rows);
                 this.tabDatas = res.data.rows
                 this.$emit('Prize', this.tabDatas)
             })
         },
         getWgdoData(p) {
             getWgdo({ moduleType: p, status: '1' }).then(res => {
-                console.log(res.data.rows);
                 this.tabDatas = res.data.rows
                 this.$emit('WgdoData', this.tabDatas)
             })
         },
-        getHomeAllTitleData(t,p) {
+        getHomeAllTitleData(t, p) {
             getHomeAllTitle({ parentId: p }).then(res => {
-                console.log(res.data.rows);
                 this.tabDatas = res.data.rows
                 this.$emit('getHomeAllTitle', this.tabDatas)
             })
         }
-    }
+    },
+    // watch: {
+    //     "$store.state.lang.version": {
+    //         handler() {
+    //             funs(this.getMeetData(), this.$store.state.lang.version)
+    //         }
+    //     },
+    // },
 }
 </script>
 

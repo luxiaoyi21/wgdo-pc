@@ -27,29 +27,30 @@
                 </div>
             </div>
         </div>
-        <div class="hBottom" :class=" $store.state.lang.isEn === 'en' ? 'isBottom' : 'hBottom' ">
-            <a href="/about" :class=" $store.state.lang.isEn === 'en' ? 'isEn' : 'ha' ">
+        <div ref="changeLangue" :class=" $store.state.lang.langs === '中文' ? 'zhBottom' : 'enBottom' ">
+            <a href="/about" ref="changeLanguea" :class=" $store.state.lang.langs === '中文' ? 'ens' : 'zhs' ">
                 {{$t('headernav.Aboutus')}}
             </a>
-            <a href="/meet" :class=" $store.state.lang.isEn === 'en' ? 'isEn' : 'ha' ">
+            <a href="/meet" ref="changeLanguea" :class=" $store.state.lang.langs === '中文' ? 'ens' : 'zhs' ">
                 {{$t('headernav.Conferenceactivity')}}
             </a>
-            <a href="/media" :class=" $store.state.lang.isEn === 'en' ? 'isEn' : 'ha' ">
+            <a href="/media" ref="changeLanguea" :class=" $store.state.lang.langs === '中文' ? 'ens' : 'zhs' ">
                 {{$t('headernav.Mediacenter')}}
             </a>
-            <a href="/research" :class=" $store.state.lang.isEn === 'en' ? 'isEn' : 'ha' ">
+            <a href="/research" ref="changeLanguea" :class=" $store.state.lang.langs === '中文' ? 'ens' : 'zhs' ">
                 {{$t('headernav.Academicresearch')}}
             </a>
-            <a href="/project" :class=" $store.state.lang.isEn === 'en' ? 'isEn' : 'ha' ">
+            <a href="/project" ref="changeLanguea" :class=" $store.state.lang.langs === '中文' ? 'ens' : 'zhs' ">
                 {{$t('headernav.Publicwelfareproject')}}
             </a>
-            <a href="/prize" :class=" $store.state.lang.isEn === 'en' ? 'isEn' : 'ha' ">
+            <a href="/prize" ref="changeLanguea" :class=" $store.state.lang.langs === '中文' ? 'ens' : 'zhs' ">
                 {{$t('headernav.InternationalGreenAward')}}
             </a>
-            <a href="/wgdo" :class=" $store.state.lang.isEn === 'en' ? 'isEn' : 'ha' ">
+            <a href="/wgdo" ref="changeLanguea" :class=" $store.state.lang.langs === '中文' ? 'ens' : 'zhs' ">
                 {{$t('headernav.WGDOGreenResearchInstitute')}}
             </a>
-            <a href="http://lyb.wgdo.net/" :class=" $store.state.lang.isEn === 'en' ? 'isEn' : 'ha' ">
+            <a href="http://lyb.wgdo.net/" ref="changeLanguea"
+                :class=" $store.state.lang.langs === '中文' ? 'ens' : 'zhs' ">
                 {{$t('headernav.Greenleaflabel')}}
             </a>
         </div>
@@ -61,29 +62,45 @@
         name: 'HeaderNav',
         data() {
             let searchInp = ''
-            let bannerNavList = [
-                '关于我们',
-                '会议活动',
-                '媒体中心',
-                '学术研究',
-                '公益项目',
-                '国际绿奖',
-                'WGDO绿研院',
-                '绿叶标'
-            ]
-            let lang = 'En'
+            let lang = '中文'
             return {
                 searchInp,
-                bannerNavList,
                 lang,
             }
         },
-        mounted() { },
+        mounted() {
+            this.lang = this.$store.state.lang.langs;
+            this.setLanguageStyles();
+        },
         methods: {
             changeLang() {
-                this.$store.state.lang.isText1Visible == true ? this.lang = '中文' : this.lang = 'En'
-                this.$store.commit('getLocalLang', this.lang);
+                this.$store.commit('getLocalLang');
                 this.$store.commit('getVersion')
+            },
+            setLanguageStyles() {
+                if (this.$store.state.lang.langs === '中文') {
+                    this.$refs.changeLangue.classList.remove('enBottom');
+                    this.$refs.changeLangue.classList.add('zhBottom');
+                    this.$refs.changeLanguea.forEach(a => {
+                        a.classList.remove('ens');
+                        a.classList.add('zhs');
+                    });
+                } else {
+                    this.$refs.changeLangue.classList.remove('zhBottom');
+                    this.$refs.changeLangue.classList.add('enBottom');
+                    this.$refs.changeLanguea.forEach(a => {
+                        a.classList.remove('zhs');
+                        a.classList.add('ens');
+                    });
+                }
+            }
+        },
+        watch: {
+            "$store.state.lang.isText1Visible": {
+                handler() {
+                    this.lang = this.$store.state.lang.langs
+                    this.setLanguageStyles();
+                }
             }
         }
     }
@@ -147,26 +164,27 @@
         letter-spacing: 3.84px;
         line-height: 20.21px;
         color: rgba(255, 255, 255, 1);
-        text-align: left;
+        text-align: justify;
     }
 
     .hTop .logo .logoDsc .logoDscBot {
         left: 204.02px;
         top: 49.53px;
-        width: 100%;
+        width: 150px;
         height: 12.19px;
         font-size: 9.14px;
         font-weight: 500;
-        letter-spacing: 0px;
         line-height: 12.12px;
         color: rgba(255, 255, 255, 1);
-        text-align: left;
+        text-align: justify;
+        overflow: hidden;
     }
 
     .right {
         flex: 1;
         display: flex;
         justify-content: flex-end;
+        align-items: center;
     }
 
     .right .search {
@@ -231,12 +249,11 @@
     }
 
     .right .rightList .sed {
-        margin: 40px 0px 0 11px;
+        margin: 39.3px 0px 0 11px;
         height: 18.29px;
         font-size: 13.72px;
         font-weight: 400;
         letter-spacing: 0.76px;
-        line-height: 16.19px;
         /* color: rgba(166, 225, 99, 1); */
         color: rgba(255, 255, 255, 1);
     }
@@ -267,19 +284,30 @@
     }
 
     /* bottom */
-    .hBottom {
+    .zhBottom {
         margin: 0 auto;
-        width: 85.5vw;
-        max-width: 86.2vw;
+        /* width: 85.5vw; */
+        max-width: 90.2vw;
         height: 79.25px;
         display: grid;
-        grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1.2fr .8fr;
+        grid-template-columns: .7fr .9fr .8fr .9fr 1fr 1.3fr 1.4fr .8fr;
         gap: 10px;
         overflow: hidden;
         font-size: 16.76px;
+        /* border: 1px solid rgb(37, 77, 211); */
     }
 
-    .ha {
+    .enBottom {
+        margin: 0 auto;
+        max-width: 85.5vw;
+        height: 79.25px;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr 1.1fr 1.2fr 1.1fr 1.5fr .8fr;
+        overflow: hidden;
+        /* border: 1px solid rgb(228, 47, 98); */
+    }
+
+    .zhs {
         position: relative;
         display: flex;
         align-items: center;
@@ -296,19 +324,9 @@
         white-space: nowrap;
     }
 
-    .isBottom {
-        margin: 0 auto;
-        width: 85.5vw;
-        max-width: 90.2vw;
-        height: 79.25px;
-        display: grid;
-        grid-template-columns: .7fr 1.1fr 1fr 1.1fr 1.4fr 1.5fr 1.8fr .8fr;
-        overflow: hidden;
-    }
-
-    .isEn {
+    .ens {
         position: relative;
-        display: inline-flex;
+        display: flex;
         align-items: center;
         justify-content: center;
         font-size: 14px;
@@ -322,11 +340,11 @@
         white-space: nowrap;
     }
 
-    .hBottom a:hover {
+    .zhBottom a:hover {
         color: rgba(166, 225, 99, 1);
     }
 
-    .hBottom a::after {
+    .zhBottom a::after {
         content: "";
         position: absolute;
         height: 12px;
@@ -335,7 +353,24 @@
         right: 0;
     }
 
-    .hBottom a:last-child::after {
+    .zhBottom a:last-child::after {
+        background-color: rgba(255, 255, 255, 0);
+    }
+
+    .enBottom a:hover {
+        color: rgba(166, 225, 99, 1);
+    }
+
+    .enBottom a::after {
+        content: "";
+        position: absolute;
+        height: 12px;
+        width: 1px;
+        background-color: #FFFFFF;
+        right: 0;
+    }
+
+    .enBottom a:last-child::after {
         background-color: rgba(255, 255, 255, 0);
     }
 </style>

@@ -8,9 +8,9 @@
             <!-- 首页传值 -->
             <!-- <Intro :tabDatas="tabDatas" /> -->
             <Dynamic v-if="tabclickDatas === '组织动态'" :tabDatas="tabDatas" />
-            <Dynamicinfo v-if="tabclickDatas === '动态详情'" :tabDatas="tabDatas" />
             <Video v-if="tabclickDatas === '论坛视频'" :tabDatas="tabDatas" />
             <Report v-if="tabclickDatas === '媒体报告'" :tabDatas="tabDatas" />
+            <Dynamicinfo v-if="tabclickDatas === '动态详情'" :tabDatas="tabDatas" />
             <Reportinfo v-if="tabclickDatas === '报告详情'" :tabDatas="tabDatas" />
         </div>
         <!-- footer -->
@@ -35,45 +35,49 @@ import funs from "@/utils/index.js"
 
 export default {
     name: "Media",
-    components: { Headers, TabControl, Footers, Dynamic, Video, Report,Dynamicinfo,Reportinfo },
+    components: { Headers, TabControl, Footers, Dynamic, Video, Report, Dynamicinfo, Reportinfo },
     props: ["urlData"],
     data() {
         return {
-            tabName:[
-            "组织动态",
-            // "动态详情",
-            "论坛视频",
-            "媒体报告",
-            // "报告详情",
-        ],
-            MediaDatas:[],
-            tabDatas:[],
+            tabName: [
+                // "动态详情",
+                // "报告详情", 
+            ],
+            MediaDatas: [],
+            tabDatas: [],
             tabclickDatas: '组织动态',
-            name:[],
+            name: [],
         };
     },
     mounted() {
         this.getMediaData('组织动态');
+        this.getTabNameData()
     },
     methods: {
-        async getMediaData(p = this.$store.state.lang.version) {
-            try {
-                // const response = await getHomeAllTitle({ parentId: 4, version: p });
-                this.tabDatas = response.data;
-                console.log(this.tabDatas);
-            } catch {
-
-            }
+        getMediaData(p = this.$store.state.lang.version) {
+            getHomeAllTitle({ parentId: '4', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+        },
+        getTabNameData(p = this.$store.state.lang.version) {
+            getHomeAllTitle({ parentId: '4', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    let resss = res.data.rows[0].children
+                    this.tabName = resss.map(v => v.classifyName);
+                }
+            })
         },
         getTabName(name) {
             this.tabclickDatas = name;
-            console.log(this.tabclickDatas);
+            // console.log(name);
         },
     },
     watch: {
         "$store.state.lang.version": {
             handler() {
-                funs(this.getMediaData(), this.$store.state.lang.version)
+                funs(this.getTabNameData(), this.$store.state.lang.version)
             }
         },
     },

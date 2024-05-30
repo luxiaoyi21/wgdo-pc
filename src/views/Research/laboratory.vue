@@ -37,7 +37,6 @@ export default {
             Research({ moduleType: '3', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.labDatas = res.data.rows
-                    console.log(this.labDatas);
                 }
             })
         }

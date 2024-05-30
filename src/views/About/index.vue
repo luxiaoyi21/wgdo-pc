@@ -36,44 +36,45 @@ export default {
     props: ["urlData"],
     data() {
         return {
-            tabName: [
-                "组织介绍",
-                "组织架构",
-                "重要人物",
-                "联系我们",
-            ],
-            AboutDatas: [],
+            tabName: [],
+            // AboutDatas: [],
             tabDatas: [],
             tabclickDatas: '组织介绍',
-            name: [],
+            // name: [],
         };
     },
     mounted() {
         this.getAboutusData('组织介绍');
+        this.getTabNameData()
     },
     methods: {
-        async getAboutusData(p = this.$store.state.lang.version) {
-            try {
-                // const response = await getHomeAllTitle({ parentId: 2, version: p });
-                this.tabDatas = response.data;
-                console.log(this.tabDatas);
-            } catch {
-
-            }
+        getAboutusData(p = this.$store.state.lang.version) {
+            getHomeAllTitle({ parentId: '2', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+        },
+        getTabNameData(p = this.$store.state.lang.version) {
+            getHomeAllTitle({ parentId: '2', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    let resss = res.data.rows[0].children
+                    this.tabName = resss.map(v => v.classifyName);
+                }
+            })
         },
         getTabName(name) {
             this.tabclickDatas = name;
-            console.log(name);
         },
     },
     watch: {
         "$store.state.lang.version": {
             handler() {
-                funs(this.getAboutusData(), this.$store.state.lang.version)
+                funs(this.getTabNameData(), this.$store.state.lang.version)
             }
         },
     },
-};
+}
 </script>
 
 <style scoped>

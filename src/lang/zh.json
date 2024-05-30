@@ -96,9 +96,18 @@
     "year": "年"
   },
   "about": {
-    "welcome": "欢迎给我们留言"
+    "welcome": "欢迎给我们留言",
+    "Introduction":"组织介绍",
+    "structure":"组织架构",
+    "figures":"重要人物",
+    "contact":"联系我们"
   },
   "meet": {
+    "previewact": "活动预告",
+    "doing": "正在进行",
+    "lookback": "历届回顾",
+    "browser": "浏览次数",
+    "create": "发布时间",
     "Summit": "峰会介绍",
     "Countdown": "峰会倒计时",
     "Event": "活动现场",
@@ -112,5 +121,23 @@
     "organization": "组织介绍",
     "mode": "峰会合作方式",
     "guide": "参会指南"
+  },
+  "dynamic":{
+    "dynamics": "组织动态",
+    "report": "媒体报道",
+    "video": "论坛视频"
+  },
+  "research":{
+    "design": "绿色设计报告",
+    "download": "批量下载",
+    "document": "下载文件",
+    "resource": "共享资源"
+  },
+  "wgdo":{
+    "intro": "机构简介",
+    "branch": "分支拓建",
+    "service": "品牌服务",
+    "train": "绿色设计培训",
+    "policy": "绿色政策"
   }
 }

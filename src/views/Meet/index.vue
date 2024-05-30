@@ -38,9 +38,6 @@ export default {
     data() {
         return {
             tabName: [
-                "活动预告",
-                "正在进行",
-                "历届回顾",
                 // "活动详情"
             ],
             MeetDatas: [],
@@ -51,25 +48,32 @@ export default {
     },
     mounted() {
         this.getMeetData('活动预告');
+        this.getTabNameData()
     },
     methods: {
-        async getMeetData(p = this.$store.state.lang.version) {
-            try {
-                // const response = await getHomeAllTitle({ parentId: 3, version: p });
-                this.tabDatas = response.data;
-            } catch {
-
-            }
+        getMeetData(p = this.$store.state.lang.version) {
+            getHomeAllTitle({ parentId: '3', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+        },
+        getTabNameData(p = this.$store.state.lang.version) {
+            getHomeAllTitle({ parentId: '3', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    let resss = res.data.rows[0].children
+                    this.tabName = resss.map(v => v.classifyName);
+                }
+            })
         },
         getTabName(name) {
             this.tabclickDatas = name;
-            console.log(this.tabclickDatas);
         },
     },
     watch: {
         "$store.state.lang.version": {
             handler() {
-                funs(this.getMeetData(), this.$store.state.lang.version)
+                funs(this.getTabNameData(), this.$store.state.lang.version)
             }
         },
     },

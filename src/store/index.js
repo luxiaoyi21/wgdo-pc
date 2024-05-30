@@ -21,18 +21,16 @@ const state = {
     lang: {
         isEn: 'en',
         version: '2',
-        isText1Visible: false
+        isText1Visible: false,
+        langs: '中文'
     }
 }
 
 const mutations = {
-    getLocalLang({ lang }, l) {
-        if (l) {
-            console.log(l);
-            lang.isEn = l === '中文' ? 'en' : 'zh'
-            i18n.locale = lang.isEn
-        }
+    getLocalLang({ lang }) {
         lang.isText1Visible = !lang.isText1Visible
+        lang.isText1Visible === false ? lang.langs = '中文' : lang.langs = 'En'
+        lang.isText1Visible === true ? lang.isEn = 'zh' : lang.isEn = 'en'
         i18n.locale = lang.isEn
         getTitle(lang.version)
     },
@@ -42,6 +40,10 @@ const mutations = {
         } else if (lang.isEn === 'en') {
             lang.version = '2'
         }
+    },
+    changeLang({ lang }) {
+        // console.trace()
+        lang.isEn === 'en' ? lang.isText1Visible = false : lang.isText1Visible = true
     }
 }
 

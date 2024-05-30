@@ -1,12 +1,15 @@
 import Vue from 'vue'
 import VueI18n from 'vue-i18n'
-import zh from '@/lang/zh.json'
 import en from '@/lang/en.json'
+import zh from '@/lang/zh.json'
 
 Vue.use(VueI18n)
 
+const langData = JSON.parse(sessionStorage.getItem('langData'))
+const defaultLocale = langData && langData.lang && langData.lang.isEn ? langData.lang.isEn : 'en'
+
 export const i18n = new VueI18n({
-    locale: 'en',
+    locale: defaultLocale,
     messages: {
         en,
         zh

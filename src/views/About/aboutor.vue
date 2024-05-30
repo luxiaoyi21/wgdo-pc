@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="aintro">组织架构</p>
+                <p class="aintro">{{$t('about.structure')}}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
@@ -43,7 +43,6 @@ export default {
             Aboutus({ moduleType: '2', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.orDatas = res.data.rows
-                    console.log(this.orDatas);
                 }
             })
         },

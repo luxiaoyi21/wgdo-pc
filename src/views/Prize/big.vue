@@ -54,7 +54,6 @@ export default {
             Prize({ moduleType: '1', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.bigDatas = res.data.rows
-                    console.log(this.bigDatas);
                 }
             })
         },

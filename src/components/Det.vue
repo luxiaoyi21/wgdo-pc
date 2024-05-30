@@ -49,16 +49,19 @@
                 this.orders = this.$route.params.orders
                 this.getSecondData(this.orders)
             }
-            this.urlDatas.push(
-                {
-                    path: '/',
-                    name: 'Home'
-                },
-                {
-                    path: this.$route.path,
-                    name: this.$route.name
-                }
-            )
+            if (this.$store.state.lang.isEn !== 'en') {
+                this.urlDatas = []
+                this.urlDatas.push(
+                    { path: '/', name: '首页' },
+                    { path: this.$route.path, name: '组织动态' }
+                )
+            } else {
+                this.urlDatas = []
+                this.urlDatas.push(
+                    { path: '/', name: 'Home' },
+                    { path: this.$route.path, name: 'Organizational dynamics' }
+                )
+            }
         },
         methods: {
             getSecondData(currentIndex = '', p = this.$store.state.lang.version) {
@@ -81,6 +84,19 @@
                         funs(this.getSecondData(), this.$store.state.lang.version)
                     } else {
                         funs(this.getSecondData(this.orders), this.$store.state.lang.version)
+                    }
+                    if (this.$store.state.lang.isEn !== 'en') {
+                        this.urlDatas = []
+                        this.urlDatas.push(
+                            { path: '/', name: '首页' },
+                            { path: this.$route.path, name: '组织动态' }
+                        )
+                    } else {
+                        this.urlDatas = []
+                        this.urlDatas.push(
+                            { path: '/', name: 'Home' },
+                            { path: this.$route.path, name: 'Organizational dynamics' }
+                        )
                     }
                 }
             }

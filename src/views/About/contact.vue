@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="aintro">联系我们</p>
+                <p class="aintro">{{$t('about.contact')}}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
@@ -58,7 +58,6 @@ export default {
         getContactData(p = this.$store.state.lang.version) {
             Aboutus({ moduleType: '4', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    console.log(res.data.rows);
                     this.contactDatas = res.data.rows
                 }
             })
@@ -90,14 +89,14 @@ export default {
                 });
             }
         },
-        watch: {
-            "$store.state.lang.version": {
-                handler() {
-                    funs(this.getContactData(), this.$store.state.lang.version)
-                }
+    },
+    watch: {
+        "$store.state.lang.version": {
+            handler() {
+                funs(this.getContactData(), this.$store.state.lang.version)
             }
-        },
-    }
+        }
+    },
 }
 </script>
 

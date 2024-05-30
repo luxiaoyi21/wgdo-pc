@@ -38,13 +38,7 @@ export default {
     props: ["urlData"],
     data() {
         return {
-            tabName: [
-                "机构简介",
-                "分支拓建",
-                "品牌服务",
-                "绿色设计培训",
-                "绿色政策",
-            ],
+            tabName: [],
             wgdoDatas: [],
             tabDatas: [],
             tabclickDatas: '机构简介',
@@ -55,26 +49,32 @@ export default {
     },
     created() {
         this.getWgdoData('机构简介');
+        this.getTabNameData()
     },
     methods: {
-        async getWgdoData(p = this.$store.state.lang.version) {
-            try {
-                // const response = await getHomeAllTitle({ parentId: 8, version: p });
-                this.tabDatas = response.data;
-                console.log(this.tabDatas);
-            } catch {
-
-            }
+        getWgdoData(p = this.$store.state.lang.version) {
+            getHomeAllTitle({ 'parentId': '8', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+        },
+        getTabNameData(p = this.$store.state.lang.version) {
+            getHomeAllTitle({ 'parentId': '8', 'version': p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    let resss = res.data.rows[0].children
+                    this.tabName = resss.map(v => v.classifyName);
+                }
+            })
         },
         getTabName(name) {
             this.tabclickDatas = name;
-            console.log(this.tabclickDatas);
         },
     },
     watch: {
         "$store.state.lang.version": {
             handler() {
-                funs(this.getWgdoData(), this.$store.state.lang.version)
+                funs(this.getTabNameData(), this.$store.state.lang.version)
             }
         },
     },

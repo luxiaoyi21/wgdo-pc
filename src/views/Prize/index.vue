@@ -39,41 +39,45 @@ export default {
     props: ["urlData"],
     data() {
         return {
-            tabName:[
-            "绿色设计国际大奖",
-            "绿色设计国际贡献奖",
-            // "评定规则",
-            // "获奖个人",
-            // "获奖机构",
-        ],
-            PrizeDatas:[],
-            tabDatas:[],
+            tabName: [
+                // "评定规则",
+                // "获奖个人",
+                // "获奖机构",
+            ],
+            PrizeDatas: [],
+            tabDatas: [],
             tabclickDatas: '绿色设计国际大奖',
-            name:[],
+            name: [],
         };
     },
     mounted() {
         this.getPrizeData('绿色设计国际大奖');
+        this.getTabNameData()
     },
     methods: {
         async getPrizeData(p = this.$store.state.lang.version) {
-            try {
-                // const response = await getHomeAllTitle({ parentId: 7, version: p });
-                this.tabDatas = response.data;
-                console.log(this.tabDatas);
-            } catch {
-
-            }
-                },
+            getHomeAllTitle({ 'parentId': '7', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+        },
+        getTabNameData(p = this.$store.state.lang.version) {
+            getHomeAllTitle({ 'parentId': '7', 'version': p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    let resss = res.data.rows[0].children
+                    this.tabName = resss.map(v => v.classifyName);
+                }
+            })
+        },
         getTabName(name) {
             this.tabclickDatas = name;
-            console.log(this.tabclickDatas);
         },
     },
     watch: {
         "$store.state.lang.version": {
             handler() {
-                funs(this.getPrizeData(), this.$store.state.lang.version)
+                funs(this.getTabNameData(), this.$store.state.lang.version)
             }
         },
     },

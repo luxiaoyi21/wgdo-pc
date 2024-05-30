@@ -96,9 +96,18 @@
     "year": "Year"
   },
   "about":{
+    "Introduction":"Organizational Introduction",
+    "structure":"Organizational structure",
+    "figures":"Important figures",
+    "contact":"Contact us",
     "welcome":"Welcome to leave us a message"
   },
   "meet":{
+    "previewact": "Event trailer",
+    "doing": "In progress",
+    "lookback": "Previous reviews",
+    "browser": "Number of views",
+    "create": "Release time",
     "Summit":"Summit Introduction",
     "Countdown":"Summit Countdown",
     "Event":"Event site",
@@ -112,5 +121,23 @@
     "organization": "Organizational Introduction",
     "mode": "Summit cooperation mode",
     "guide": "Attending Guidelines"
+  },
+  "dynamic":{
+    "dynamics": "Organizational dynamics",
+    "report": "Media coverage ",
+    "video": "Forum video"
+  },
+  "research":{
+    "design": "Green Design Report",
+    "download": "Batch Download",
+    "document": "Download files",
+    "resource": "Shared resource"
+  },
+  "wgdo":{
+    "intro": "Institutional Introduction",
+    "branch": "Branch expansion and construction",
+    "train": "Green design training",
+    "policy": "Green policies",
+    "service": "Brand services"
   }
 }

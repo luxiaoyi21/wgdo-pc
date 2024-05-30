@@ -24,14 +24,14 @@
                 </div>
                 <div class="dynamic-data">
                     <div class="dynamic-data-num">
-                        <!-- <div class="data-page">第{{ currentPage }}页</div> -->
+                        <div class="data-page">第{{ currentPage }}页</div>
                         <div class="data-limit">共{{ totalItems }}条</div>
                     </div>
-                    <!-- <div class="devide-page">
+                    <div class="devide-page">
                         <el-pagination background layout="prev, pager, next" :total="totalItems" :page-size="pageSize"
                             :current-page.sync="currentPage" @current-change="handlePageChange">>
                         </el-pagination>
-                    </div> -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -57,31 +57,33 @@
             let totalItems = 0
             return {
                 moredetDatas,
-                // currentPage: 1,
+                currentPage: 1,
                 totalItems: 0,
-                // pageSize: 10,
+                pageSize: 10,
                 urlData
             };
         },
         mounted() {
             this.getMoredetData()
-            this.urlData.push(
-                {
-                    path: '/',
-                    name: 'Home'
-                },
-                {
-                    path: '/sedmore',
-                    name: '绿色设计观点'
-                }
-            )
+            if (this.$store.state.lang.version = '1') {
+                this.urlData.push(
+                    {
+                        path: '/',
+                        name: '首页'
+                    },
+                    {
+                        path: '/sedmore',
+                        name: '绿色设计观点'
+                    }
+                )
+            }
         },
         computed: {
-            // currentTabDatas() {
-            //     const start = (this.currentPage - 1) * this.pageSize;
-            //     const end = start + this.pageSize;
-            //     return this.moredetDatas.slice(start, end);
-            // }
+            currentTabDatas() {
+                const start = (this.currentPage - 1) * this.pageSize;
+                const end = start + this.pageSize;
+                return this.moredetDatas.slice(start, end);
+            }
         },
         methods: {
             getMoredetData(p = this.$store.state.lang.version) {

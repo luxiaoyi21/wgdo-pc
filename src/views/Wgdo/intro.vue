@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="aintro">机构简介</p>
+                <p class="aintro">{{$t('wgdo.intro')}}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
@@ -47,7 +47,6 @@ export default {
             getWgdo({ moduleType: '1', status: '1',version:p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.introDatas = res.data.rows
-                    console.log(this.introDatas);
                 }
             })
         }

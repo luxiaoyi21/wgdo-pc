@@ -44,8 +44,6 @@ export default {
     data() {
         return {
             tabName: [
-                "绿叶之家",
-                "绿丝带",
                 // "绿丝带物资到货记录",
                 // "绿丝带行动捐赠光荣榜",
                 // "可信供方清单",
@@ -60,16 +58,23 @@ export default {
     },
     mounted() {
         this.getProjectData('绿叶之家');
+        this.getTabNameData()
     },
     methods: {
-        async getProjectData(p = this.$store.state.lang.version) {
-            try {
-                // const response = await getHomeAllTitle({ parentId: 6, version: p });
-                this.tabDatas = response.data;
-                console.log(this.tabDatas);
-            } catch {
-
-            }
+        getProjectData(p = this.$store.state.lang.version) {
+            getHomeAllTitle({ 'parentId': '6', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+        },
+        getTabNameData(p = this.$store.state.lang.version) {
+            getHomeAllTitle({ 'parentId': '6', 'version': p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    let resss = res.data.rows[0].children
+                    this.tabName = resss.map(v => v.classifyName);
+                }
+            })
         },
         getTabName(name) {
             this.tabclickDatas = name;
@@ -79,7 +84,7 @@ export default {
     watch: {
         "$store.state.lang.version": {
             handler() {
-                funs(this.getProjectData(), this.$store.state.lang.version)
+                funs(this.getTabNameData(), this.$store.state.lang.version)
             }
         },
     },

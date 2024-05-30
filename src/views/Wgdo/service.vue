@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="aintro">品牌服务</p>
+                <p class="aintro">{{$t('wgdo.service')}}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
@@ -37,7 +37,6 @@ export default {
             getWgdo({ moduleType: '3', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.serviceDatas = res.data.rows
-                    console.log(this.serviceDatas);
                 }
             })
         },

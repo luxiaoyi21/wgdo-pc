@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="dynamic">组织动态</p>
+                <p class="dynamic">{{$t('dynamic.dynamics')}}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=""></div>
@@ -82,7 +82,6 @@ export default {
                         };
                     });
                     this.totalItems = res.data.rows.length;
-                    console.log(this.dynamicDatas);
                 }
             })
         },

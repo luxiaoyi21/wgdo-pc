@@ -29,8 +29,10 @@
                     <div class="boxaImgsRItem" v-for="(item,index) in rightImgLists" :key="item.hpId">
                         <img :src="'http://106.3.97.14:9002' + item.cover">
                         <div class="boxaTimgsRItemm">
-                            <div class="boxaTmgsRItemmTitle">{{item.title}}</div>
-                            <div class="boxaTmgsRItemmMore" @click="getIndex(index)">
+                            <div
+                                :class="$store.state.lang.isEn === 'en' ? 'boxaTmgsRItemmTitleEN' :'boxaTmgsRItemmTitle'">
+                                {{item.title}}</div>
+                            <div class=" boxaTmgsRItemmMore" @click="getIndex(index)">
                                 <div :class=" $store.state.lang.isEn === 'en' ? 'learnMoresEN' :'learnMores' ">
                                     <span>{{$t('LearnMore.learnmore')}}<i class="iconfont icon-youjiantou"></i></span>
                                 </div>
@@ -438,6 +440,8 @@
     .boxaTimgsRItemm:hover {
         opacity: 1;
     }
+
+    .aaaa {}
 
     .boxaTimgsRItemm .boxaTmgsRItemmTitle {
         margin-top: 57px;

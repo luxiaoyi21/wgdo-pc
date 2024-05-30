@@ -77,7 +77,6 @@ export default {
             Project({ moduleType: '6', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.contactDatas = res.data.rows
-                    console.log(this.contactDatas);
                 }
             })
         }

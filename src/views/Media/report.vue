@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="dynamic">媒体报道</p>
+                <p class="dynamic">{{$t('dynamic.report')}}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" "></div>
@@ -55,7 +55,6 @@ export default {
                             timer: timeData.timer
                         };
                     });
-                    console.log(this.reportDatas);
                 }
             })
         },
