@@ -27,7 +27,8 @@
                 </div>
             </div>
         </div>
-        <div ref="changeLangue" :class=" $store.state.lang.langs === '中文' ? 'zhBottom' : 'enBottom' ">
+        <div ref="changeLangue" :class=" $store.state.lang.langs === '中文' ? 'zhBottom' : 'enBottom' "
+            @click="getCurrentSelect($event)">
             <a href="/about" ref="changeLanguea" :class=" $store.state.lang.langs === '中文' ? 'ens' : 'zhs' ">
                 {{$t('headernav.Aboutus')}}
             </a>
@@ -58,6 +59,9 @@
 </template>
 
 <script>
+    import { getTitle } from '@/utils/index.js'
+    import i18n from '@/lang/index.js'
+
     export default {
         name: 'HeaderNav',
         data() {
@@ -65,7 +69,7 @@
             let lang = '中文'
             return {
                 searchInp,
-                lang,
+                lang
             }
         },
         mounted() {
@@ -81,14 +85,14 @@
                 if (this.$store.state.lang.langs === '中文') {
                     this.$refs.changeLangue.classList.remove('enBottom');
                     this.$refs.changeLangue.classList.add('zhBottom');
-                    this.$refs.changeLanguea.forEach(a => {
+                    document.querySelectorAll('.changeLanguea').forEach(a => {
                         a.classList.remove('ens');
                         a.classList.add('zhs');
                     });
                 } else {
                     this.$refs.changeLangue.classList.remove('zhBottom');
                     this.$refs.changeLangue.classList.add('enBottom');
-                    this.$refs.changeLanguea.forEach(a => {
+                    document.querySelectorAll('.changeLanguea').forEach(a => {
                         a.classList.remove('zhs');
                         a.classList.add('ens');
                     });
@@ -100,6 +104,11 @@
                 handler() {
                     this.lang = this.$store.state.lang.langs
                     this.setLanguageStyles();
+                    if (this.$store.state.lang.version === '2') {
+                        getTitle('143')
+                    } else {
+                        getTitle('1')
+                    }
                 }
             }
         }
@@ -107,6 +116,10 @@
 </script>
 
 <style scoped>
+    a:active {
+        color: rgba(166, 225, 99, 1);
+    }
+
     .box {
         width: 100vw;
         height: 143.25px;

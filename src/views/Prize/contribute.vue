@@ -4,24 +4,24 @@
             <div class="big-leader">
                 <a href="/prize/contribute"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
-                    <span>绿色设计国际贡献奖</span>
+                    <span>{{$t('prize.contribute')}}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
                 <a href="/prize/rule"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
-                    <span>评定规则</span>
+                    <span>{{$t('prize.rule')}}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
                 <a href="/prize/personal"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
-                    <span>2011国际贡献奖获奖个人</span>
+                    <span>{{$t('prize.person')}}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
                 <a href="" style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
-                    <span>2011国际贡献奖获奖机构</span>
+                    <span>{{$t('prize.mechanism')}}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
             </div>
@@ -123,8 +123,7 @@ export default {
 .big-leader {
     left: 5px;
     top: 440px;
-    /*width: 230px;
-    height: 180px;*/
+    width: 230px;
     opacity: 1;
     border-radius: 6px;
     background: rgba(220, 235, 192, 1);
@@ -133,6 +132,10 @@ export default {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+}
+
+.big-leader a {
+    margin: 8px 0;
 }
 
 .content-in {

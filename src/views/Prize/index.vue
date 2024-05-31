@@ -56,14 +56,20 @@ export default {
     },
     methods: {
         async getPrizeData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ 'parentId': '7', version: p }).then(res => {
+            getHomeAllTitle({ parentId: '7', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows
                 }
             })
         },
         getTabNameData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ 'parentId': '7', 'version': p }).then(res => {
+            getHomeAllTitle({ parentId: '7', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    let resss = res.data.rows[0].children
+                    this.tabName = resss.map(v => v.classifyName);
+                }
+            })
+            getHomeAllTitle({ parentId: '149', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     let resss = res.data.rows[0].children
                     this.tabName = resss.map(v => v.classifyName);

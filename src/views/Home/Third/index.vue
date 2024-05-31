@@ -2,6 +2,7 @@
     <div class="box">
         <div class="top">
             <div class="title">{{ $t('headernav.Conferenceactivity') }}</div>
+            <!-- <div class="title">{{$store.state.lang.titles[3]}}</div> -->
             <div class="dsc">
                 {{ $t('third.dsc') }} </div>
             <div class="tomore">
@@ -24,8 +25,8 @@
             </div>
             <div class="contentRight">
                 <div class="contentRightTop">
-                    <div class="contentRightTile">
-                        {{ $t('third.active') }} </div>
+                    <!-- <div class="contentRightTile"> {{ $t('third.active') }} </div> -->
+                    <div class="title">{{$store.state.lang.titles[3]}}</div>
                     <div class="tmore">
                         <a href="/meet/preview">{{ $t('third.tomore') }}<i class="iconfont icon-youjiantou"></i></a>
                     </div>
@@ -96,15 +97,15 @@
             let carouselData = []
             let rightListDatas = []
             let time = []
-            let newTitle = []
             return {
                 carouselData,
                 rightListDatas,
                 time,
-                newTitle
             }
         },
-        mounted() { this.getThirdData() },
+        mounted() {
+            this.getThirdData()
+        },
         methods: {
             getThirdData(p = this.$store.state.lang.version) {
                 getContentList({ "moduleType": "3", "status": "1", version: p }).then(res => {
@@ -137,7 +138,6 @@
             "$store.state.lang.version": {
                 handler() {
                     funs(this.getThirdData(), this.$store.state.lang.version)
-                    this.newTitle = JSON.parse(window.sessionStorage.getItem('titles'))
                 }
             }
         }

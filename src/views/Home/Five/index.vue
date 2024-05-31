@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <div class="boxa">
-            <div class="boxaTitle">{{ newTitle[6] }}</div>
+            <div class="boxaTitle">{{ $store.state.lang.titles[6] }}</div>
             <div class="boxaDsc">{{ $t('five.dsc') }}</div>
             <div class="tomore">
                 <a href="/prize">
@@ -45,7 +45,7 @@
         <div class="boxb">
             <div class="boxbTitle">{{ $t('five.mingdan') }}</div>
             <div class="boxbDsc">
-                <TitleStyle :isTitle="newTitle[8]" :styles="boxTitleStyleB" :style2="style2" />
+                <TitleStyle :isTitle="$store.state.lang.titles[7]" :styles="boxTitleStyleB" :style2="style2" />
             </div>
             <div class="boxbInfo">
                 <div class="boxbInfoItem" v-for="i in getPrice" :key="i.hpId">
@@ -58,7 +58,7 @@
         </div>
         <div class="boxc">
             <div class="boxcDsc">
-                <TitleStyle :isTitle="newTitle[9]" :styles="boxTitleStyleB" :style2="style2" />
+                <TitleStyle :isTitle="$store.state.lang.titles[8]" :styles="boxTitleStyleB" :style2="style2" />
             </div>
             <div class="boxcInfo">
                 <div class="boxcInfoItem" v-for="t in awardWinningOrganization" :key="t.hpId">
@@ -107,15 +107,13 @@
             let rightImgLists = []
             let getPrice = []
             let awardWinningOrganization = []
-            let newTitle = []
             return {
                 boxTitleStyleB,
                 style2,
                 leftImg,
                 rightImgLists,
                 getPrice,
-                awardWinningOrganization,
-                newTitle
+                awardWinningOrganization
             }
         },
         mounted() {
@@ -169,7 +167,6 @@
             "$store.state.lang.version": {
                 handler() {
                     funs(this.getFiveData(), this.$store.state.lang.version)
-                    this.newTitle = JSON.parse(window.sessionStorage.getItem('titles'))
                 }
             }
         }

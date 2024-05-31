@@ -53,14 +53,20 @@ export default {
     },
     methods: {
         getWgdoData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ 'parentId': '8', version: p }).then(res => {
+            getHomeAllTitle({ parentId: '8', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows
                 }
             })
         },
         getTabNameData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ 'parentId': '8', 'version': p }).then(res => {
+            getHomeAllTitle({ parentId: '8', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    let resss = res.data.rows[0].children
+                    this.tabName = resss.map(v => v.classifyName);
+                }
+            })
+            getHomeAllTitle({ parentId: '150', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     let resss = res.data.rows[0].children
                     this.tabName = resss.map(v => v.classifyName);

@@ -133,6 +133,24 @@
     "document": "Download files",
     "resource": "Shared resource"
   },
+  "project":{
+    "record": "Green Ribbon Material Arrival Record",
+    "require": "Requirement filling",
+    "inventory": "Trusted Supplier List",
+    "publicity": "Donation Publicity",
+    "news": "News Center",
+    "disseminate": "Anti epidemic propaganda",
+    "contactform": "Contact information",
+    "glory": "Green Ribbon Action Donation Honor List"
+  },
+  "prize":{
+    "big": "International Green Design Award",
+    "rule": "Evaluation rules",
+    "persons": "2015 International Award Winner Individual",
+    "contribute": "International Contribution Award for Green Design",
+    "mechanism": "2011 International Contribution Award Awarding Institution",
+    "person": "Individual recipient of the 2011 International Contribution Award"
+  },
   "wgdo":{
     "intro": "Institutional Introduction",
     "branch": "Branch expansion and construction",

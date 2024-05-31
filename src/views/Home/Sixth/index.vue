@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <div class="boxa">
-            <div class="boxaTitle">{{ newTitle[10] }}</div>
+            <div class="boxaTitle">{{ $store.state.lang.titles[9] }}</div>
             <div class="boxaDsc">{{ $t('six.dsc') }}</div>
             <div class="contentInfo">
                 <logoPic :logoPicData="sixOne" />
@@ -9,18 +9,22 @@
         </div>
         <div class="boxb">
             <div class="boxbTop">
-                <TitleStyle :isTitle="newTitle[11]" :styles="boxTitleStyleB" :style2="style2" />
+                <TitleStyle :isTitle="$store.state.lang.titles[10]" :styles="boxTitleStyleB" :style2="style2" />
             </div>
             <div class="boxbContent">
-                <div class="boxbContentItem" v-for="t in sixTwo" :key="t.hpId">
-                    <img :src="'http://106.3.97.14:9002' + t.cover " alt="">
-                    <div class="dsc">{{t.title}}</div>
-                </div>
+                <vue-seamless-scroll :data="sixTwo" :class-option="classOption">
+                    <ul class="ul-item">
+                        <li class=" boxbContentItem" v-for="t in sixTwo" :key="t.hpId">
+                            <img :src="'http://106.3.97.14:9002' + t.cover " alt="">
+                            <div class="dsc">{{t.title}}</div>
+                        </li>
+                    </ul>
+                </vue-seamless-scroll>
             </div>
         </div>
         <div class="boxc">
             <div class="boxcTitle">
-                <TitleStyle :isTitle="newTitle[12]" :styles="boxTitleStyleB" :style2="style2" />
+                <TitleStyle :isTitle="$store.state.lang.titles[11]" :styles="boxTitleStyleB" :style2="style2" />
             </div>
             <div class="boxcContent">
                 <logoPic :logoPicData="sixThree" />
@@ -28,7 +32,7 @@
         </div>
         <div class="boxd">
             <div class="boxdTitle">
-                <TitleStyle :isTitle="newTitle[13]" :styles="boxTitleStyleB" :style2="style2" />
+                <TitleStyle :isTitle="$store.state.lang.titles[12]" :styles="boxTitleStyleB" :style2="style2" />
             </div>
             <div class="boxdContent">
                 <logoPic :logoPicData="sixFour" />
@@ -38,15 +42,15 @@
 </template>
 
 <script>
-    import { mounted } from 'vue'
     import { getContentList } from '@/api/requests.js'
     import TitleStyle from '@/components/TitleStyle.vue'
     import logoPic from '@/components/logoPic.vue'
     import funs from '@/utils/index.js'
+    import vueSeamlessScroll from 'vue-seamless-scroll'
 
     export default {
         name: 'Sixth',
-        components: { TitleStyle, logoPic },
+        components: { TitleStyle, logoPic, vueSeamlessScroll },
         data() {
             const boxTitleStyleB = {
                 'margin': '0 30px',
@@ -67,7 +71,6 @@
             let sixTwo = []
             let sixThree = []
             let sixFour = []
-            let newTitle = []
             return {
                 boxTitleStyleB,
                 style2,
@@ -75,7 +78,14 @@
                 sixTwo,
                 sixThree,
                 sixFour,
-                newTitle
+                classOption: {
+                    step: .3,
+                    limitMoveNum: 0,
+                    hoverStop: true,
+                    direction: 2,
+                    switchOffset: 10,
+                    switchSingleStep: 134
+                }
             }
         },
         mounted() {
@@ -91,6 +101,7 @@
                 getContentList({ "moduleType": "10", "status": "1", version: p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.sixTwo = res.data.rows
+                        this.classOption.limitMoveNum = this.sixTwo.length
                     }
                 })
                 getContentList({ "moduleType": "11", "status": "1", version: p }).then(res => {
@@ -109,7 +120,6 @@
             "$store.state.lang.version": {
                 handler() {
                     funs(this.getSixData(), this.$store.state.lang.version)
-                    this.newTitle = JSON.parse(window.sessionStorage.getItem('titles'))
                 }
             }
         }
@@ -176,19 +186,30 @@
         align-items: center;
     }
 
+
     .boxb .boxbContent {
         margin-top: 50px;
         width: 100vw;
-        display: grid;
+        height: 199px;
+        overflow: hidden;
+        /* display: grid;
         justify-content: space-between;
         grid-template-columns: repeat(auto-fill, 285px);
-        gap: 10px 0;
+        gap: 10px 0; */
+    }
+
+    .boxb .boxbContent .ul-item {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        width: calc(285.04px * 5);
     }
 
     .boxb .boxbContent .boxbContentItem {
         position: relative;
-        width: 285.04px;
+        width: 305.04px;
         height: 198.11px;
+        margin: 0 5px;
     }
 
     .boxb .boxbContent .boxbContentItem img {
@@ -197,6 +218,7 @@
         height: 100%;
         background-size: cover;
         background-position: center;
+        object-fit: cover;
     }
 
     .boxb .boxbContent .boxbContentItem .dsc {

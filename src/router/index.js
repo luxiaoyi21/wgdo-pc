@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import store from '@/store/index.js'
 import Home from '@/views/Home/index.vue'
 
 Vue.use(VueRouter)
@@ -17,14 +16,18 @@ const routes = [
     {
         path: '/sedmore',
         name: 'SedMore',
-        component: () => import('@/views/Home/Second/components/MoreDet.vue')
+        component: () => import('@/views/Home/Second/components/MoreDet.vue'),
+        meta: {
+            toTop: true
+        }
     },
     {
         path: '/details',
         name: 'Details',
         component: () => import('@/components/Details.vue'),
         meta: {
-            isAuth: false
+            isAuth: false,
+            toTop: true
         }
     },
     {
@@ -32,7 +35,8 @@ const routes = [
         name: 'Det',
         component: () => import('@/components/Det.vue'),
         meta: {
-            isAuth: false
+            isAuth: false,
+            toTop: true
         }
     },
     {
@@ -147,7 +151,7 @@ const routes = [
                 name: 'Report',
                 component: () => import('@/views/Media/report.vue'),
                 meta: { auth: true },
-                children:[
+                children: [
                     {
                         // /Media/reportinfo 报告详情
                         path: 'reportinfo',
@@ -281,7 +285,7 @@ const routes = [
                     {
                         // /Prize/rule 评定规则
                         path: 'rule',
-                        name: 'Rule',
+                        name: 'bRule',
                         component: () => import('@/views/Prize/rule.vue'),
                         meta: { auth: true },
                     },
@@ -297,7 +301,7 @@ const routes = [
                     {
                         // /Prize/rule 评定规则
                         path: 'rule',
-                        name: 'Rule',
+                        name: 'cRule',
                         component: () => import('@/views/Prize/rule.vue'),
                         meta: { auth: true },
                     },
@@ -371,7 +375,6 @@ const router = new VueRouter({
 })
 
 router.beforeEach((to, from, next) => {
-    // store.commit('getLocalLang')
     if (to.meta.isAuth) {
         let token = localStorage.getItem('token')
         let stoken = sessionStorage.getItem('stoken')
@@ -380,6 +383,11 @@ router.beforeEach((to, from, next) => {
         } else {
             next('/login')
         }
+    } else {
+        next()
+    }
+    if (to.meta.toTop) {
+        window.scrollTo(0, 0)
     } else {
         next()
     }

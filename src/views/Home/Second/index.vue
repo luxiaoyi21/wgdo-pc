@@ -4,7 +4,7 @@
             <div class="left">
                 <div class="titleone">Organizational dynamics</div>
                 <div class="titletwo">
-                    <span class="titletwoF">{{ newTitle[1]}}</span>
+                    <span class="titletwoF">{{ $store.state.lang.titles[1]}}</span>
                     <span class="titletwoS">
                         <a href="/media/dynamic">{{ $t('second.more') }}<i class="iconfont icon-youjiantou"></i></a>
                     </span>
@@ -32,7 +32,7 @@
                 <div class="titone">
                     <div class="tiltonel">
                         <img src="@/static/imgs/lights.png">
-                        <span>{{ newTitle[2] }}</span>
+                        <span>{{ $store.state.lang.titles[2] }}</span>
                     </div>
                     <div class="tiltoner">
                         <router-link :to="toSencondDetAll">
@@ -63,15 +63,12 @@
 
     export default {
         name: 'Second',
-        // props:['tabDatas'],
         data() {
             let leftData = []
             let rightData = []
-            let newTitle = []
             return {
                 leftData,
                 rightData,
-                newTitle
             }
         },
         mounted() {
@@ -87,7 +84,6 @@
                 getContentList({ "moduleType": "2", "status": "1", version: p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.rightData = res.data.rows.slice(0, 4)
-                        // console.log(this.rightData[1]);
                     }
                 })
             },
@@ -122,7 +118,6 @@
             "$store.state.lang.version": {
                 handler() {
                     funs(this.getSecondData(), this.$store.state.lang.version)
-                    this.newTitle = JSON.parse(window.sessionStorage.getItem('titles'))
                 }
             }
         }

@@ -65,16 +65,15 @@
         },
         mounted() {
             this.getMoredetData()
-            if (this.$store.state.lang.version = '1') {
+            if (this.$store.state.lang.isEn !== 'en') {
                 this.urlData.push(
-                    {
-                        path: '/',
-                        name: '首页'
-                    },
-                    {
-                        path: '/sedmore',
-                        name: '绿色设计观点'
-                    }
+                    { path: '/', name: '首页' },
+                    { path: '', name: '绿色设计观点' }
+                )
+            } else {
+                this.urlData.push(
+                    { path: '/', name: 'Home' },
+                    { path: '', name: 'Green design perspective' }
                 )
             }
         },
@@ -119,9 +118,21 @@
             "$store.state.lang.version": {
                 handler() {
                     funs(this.getMoredetData(), this.$store.state.lang.version)
+                    this.urlData = []
+                    if (this.$store.state.lang.isEn !== 'en') {
+                        this.urlData.push(
+                            { path: '/', name: '首页' },
+                            { path: '', name: '绿色设计观点' }
+                        )
+                    } else {
+                        this.urlData.push(
+                            { path: '/', name: 'Home' },
+                            { path: '', name: 'Green design perspective' }
+                        )
+                    }
                 }
             }
-        },
+        }
     }
 </script>
 

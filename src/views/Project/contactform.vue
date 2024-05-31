@@ -3,43 +3,43 @@
         <div class="content">
             <div class="big-leader">
                 <a href="" style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>需求填报</span>
+                    <span>{{ $t('project.require') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
                 <a href="/project/inventory"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>可信供方清单</span>
+                    <span>{{ $t('project.inventory') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
                 <a href="/project/publicity"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>捐赠公示</span>
+                    <span>{{ $t('project.publicity') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
                 <a href="" style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>新闻中心</span>
+                    <span>{{ $t('project.news') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
                 <a href="/project/disseminate"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>抗疫宣传</span>
+                    <span>{{ $t('project.disseminate') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
-                <a href="/project/contact"
+                <a href="/project/contactform"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>联系方式</span>
+                    <span>{{ $t('project.contactform') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
             </div>
 
             <!-- <div class="content-in" v-for="invent in contactDatas" :key="invent.benefitId"> -->
             <div class="content-in">
-                <p class="dynamic">联系方式</p>
+                <p class="dynamic">{{$t('project.contactform')}}</p>
                 <!-- <p class="dynamic">{{invent.title}}</p> -->
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>

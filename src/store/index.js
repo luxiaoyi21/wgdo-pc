@@ -4,7 +4,7 @@ import router from '@/router/index.js'
 import { i18n } from '@/lang/index.js'
 import { getPrimaryImg, toLogin } from '@/api/requests.js'
 import createPersistedState from 'vuex-persistedstate';
-import { getTitle } from '@/utils/index.js'
+// import { getTitle } from '@/utils/index.js'
 
 Vue.use(Vuex)
 
@@ -22,7 +22,8 @@ const state = {
         isEn: 'en',
         version: '2',
         isText1Visible: false,
-        langs: '中文'
+        langs: '中文',
+        titles: []
     }
 }
 
@@ -32,7 +33,6 @@ const mutations = {
         lang.isText1Visible === false ? lang.langs = '中文' : lang.langs = 'En'
         lang.isText1Visible === true ? lang.isEn = 'zh' : lang.isEn = 'en'
         i18n.locale = lang.isEn
-        getTitle(lang.version)
     },
     getVersion({ lang }) {
         if (lang.isEn === 'zh') {
@@ -41,9 +41,8 @@ const mutations = {
             lang.version = '2'
         }
     },
-    changeLang({ lang }) {
-        // console.trace()
-        lang.isEn === 'en' ? lang.isText1Visible = false : lang.isText1Visible = true
+    getST({ lang }, datas) {
+        lang.titles = datas
     }
 }
 

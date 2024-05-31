@@ -68,6 +68,12 @@ export default {
                     this.tabName = resss.map(v => v.classifyName);
                 }
             })
+            getHomeAllTitle({ parentId: '146', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    let resss = res.data.rows[0].children
+                    this.tabName = resss.map(v => v.classifyName);
+                }
+            })
         },
         getTabName(name) {
             this.tabclickDatas = name;

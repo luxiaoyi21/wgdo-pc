@@ -45,6 +45,7 @@
 </template>
 
 <script>
+    import Vue from 'vue'
     import { getContentList } from '@/api/requests.js'
     import HeaderNav from '@/views/Home/Header/HeaderNav.vue'
     import Second from '@/views/Home/Second/index.vue'
@@ -61,11 +62,16 @@
         data() {
             let carouselData = []
             return {
-                carouselData,
+                carouselData
             }
         },
         mounted() {
             this.getHeaderNav()
+            if (this.$store.state.lang.version === '2') {
+                getTitle('143')
+            } else {
+                getTitle('1')
+            }
         },
         methods: {
             getHeaderNav(p = this.$store.state.lang.version) {
@@ -74,7 +80,6 @@
                         this.carouselData = res.data.rows
                     }
                 })
-                getTitle(p)
             }
         },
         watch: {

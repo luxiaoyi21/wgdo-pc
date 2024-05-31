@@ -4,7 +4,7 @@
             <div class="left">
                 <div class="titleone">World Green Design Park</div>
                 <div class="titletwo">
-                    <div class="titletwoL">{{ newTitle[5] }}</div>
+                    <div class="titletwoL">{{ $store.state.lang.titles[5] }}</div>
                     <div class="tomore">
                         <router-link :to="detailsRouteALL">
                             {{ $t('third.tomore') }}
@@ -46,11 +46,9 @@
         data() {
             let topDatas = []
             let bottomItemDatas = []
-            let newTitle = []
             return {
                 topDatas,
-                bottomItemDatas,
-                newTitle
+                bottomItemDatas
             }
         },
         mounted() {
@@ -107,8 +105,7 @@
         watch: {
             "$store.state.lang.version": {
                 handler() {
-                    funs(this.getFourthData(), this.$store.state.lang.version),
-                        this.newTitle = JSON.parse(window.sessionStorage.getItem('titles'))
+                    funs(this.getFourthData(), this.$store.state.lang.version)
                 }
             }
         }

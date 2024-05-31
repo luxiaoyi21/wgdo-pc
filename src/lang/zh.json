@@ -133,6 +133,24 @@
     "document": "下载文件",
     "resource": "共享资源"
   },
+  "project":{
+    "record": "绿丝带物资到货记录",
+    "require": "需求填报",
+    "inventory": "可信供方清单",
+    "publicity": "捐赠公示",
+    "news": "新闻中心",
+    "disseminate": "抗疫宣传",
+    "contactform": "联系方式",
+    "glory": "绿丝带行动捐赠光荣榜"
+  },
+  "prize":{
+    "big": "绿色设计国际大奖",
+    "rule": "评定规则",
+    "persons": "2015国际奖获奖个人",
+    "contribute": "绿色设计国际贡献奖",
+    "mechanism": "2011国际贡献奖获奖机构",
+    "person": "2011国际贡献奖获奖个人"
+  },
   "wgdo":{
     "intro": "机构简介",
     "branch": "分支拓建",

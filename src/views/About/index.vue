@@ -46,10 +46,20 @@ export default {
     mounted() {
         this.getAboutusData('组织介绍');
         this.getTabNameData()
+        if (this.$store.state.lang.version === '2') {
+            getTitle('144')
+        } else {
+            getTitle('2')
+        }
     },
     methods: {
         getAboutusData(p = this.$store.state.lang.version) {
             getHomeAllTitle({ parentId: '2', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+            getHomeAllTitle({ parentId: '144', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows
                 }
@@ -61,6 +71,12 @@ export default {
                     let resss = res.data.rows[0].children
                     this.tabName = resss.map(v => v.classifyName);
                 }
+                getHomeAllTitle({ parentId: '144', version: p }).then(res => {
+                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                        let resss = res.data.rows[0].children
+                        this.tabName = resss.map(v => v.classifyName);
+                    }
+                })
             })
         },
         getTabName(name) {
