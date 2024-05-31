@@ -39,10 +39,7 @@ export default {
     props: ["urlData"],
     data() {
         return {
-            tabName: [
-                // "动态详情",
-                // "报告详情", 
-            ],
+            tabName: [],
             MediaDatas: [],
             tabDatas: [],
             tabclickDatas: '组织动态',

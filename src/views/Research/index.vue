@@ -39,9 +39,7 @@ export default {
     props: ["urlData"],
     data() {
         return {
-            tabName: [
-                // "绿色设计报告详情",
-            ],
+            tabName: [],
             ResearchDatas: [],
             tabDatas: [],
             tabclickDatas: '绿色设计报告',

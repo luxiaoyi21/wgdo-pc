@@ -43,13 +43,7 @@ export default {
     props: ["urlData"],
     data() {
         return {
-            tabName: [
-                // "绿丝带物资到货记录",
-                // "绿丝带行动捐赠光荣榜",
-                // "可信供方清单",
-                // "抗疫宣传",
-                // "联系方式",
-            ],
+            tabName: [],
             ProjectDatas: [],
             tabDatas: [],
             tabclickDatas: '绿叶之家',

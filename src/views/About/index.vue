@@ -4,7 +4,7 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @getHomeAllTitle="getAboutusData" @tabclickDatas="getTabName" />
+            <TabControl :tabName="tabName" @Aboutus="getAboutusData" @tabclickDatas="getTabName" />
             <!-- 首页传值 -->
             <Aboutintro v-if="tabclickDatas === '组织介绍'" :tabDatas="tabDatas" />
             <Aboutor v-if="tabclickDatas === '组织架构'" :tabDatas="tabDatas" />
@@ -28,7 +28,7 @@ import Aboutintro from "@/views/About/aboutintro.vue";
 import Aboutor from "@/views/About/aboutor.vue";
 import Person from "@/views/About/person.vue";
 import Contact from "@/views/About/contact.vue";
-import funs from "@/utils/index.js"
+import funs, { getTitle } from "@/utils/index.js"
 
 export default {
     name: "Aboutus",
@@ -41,6 +41,7 @@ export default {
             tabDatas: [],
             tabclickDatas: '组织介绍',
             // name: [],
+            getTitle: []
         };
     },
     mounted() {
@@ -54,16 +55,20 @@ export default {
     },
     methods: {
         getAboutusData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ parentId: '2', version: p }).then(res => {
+            let tempTabDatas = [];
+            Aboutus({ parentId: '2' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.tabDatas = res.data.rows
+                    tempTabDatas = res.data.rows
                 }
-            })
-            getHomeAllTitle({ parentId: '144', version: p }).then(res => {
+                return Aboutus({ parentId: '144' });
+            }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.tabDatas = res.data.rows
+                    tempTabDatas = tempTabDatas.concat(res.data.rows);
                 }
-            })
+                this.tabDatas = tempTabDatas;
+            }).catch(error => {
+
+            });
         },
         getTabNameData(p = this.$store.state.lang.version) {
             getHomeAllTitle({ parentId: '2', version: p }).then(res => {
@@ -71,12 +76,12 @@ export default {
                     let resss = res.data.rows[0].children
                     this.tabName = resss.map(v => v.classifyName);
                 }
-                getHomeAllTitle({ parentId: '144', version: p }).then(res => {
-                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                        let resss = res.data.rows[0].children
-                        this.tabName = resss.map(v => v.classifyName);
-                    }
-                })
+            })
+            getHomeAllTitle({ parentId: '144', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    let resss = res.data.rows[0].children
+                    this.tabName = resss.map(v => v.classifyName);
+                }
             })
         },
         getTabName(name) {
@@ -86,6 +91,7 @@ export default {
     watch: {
         "$store.state.lang.version": {
             handler() {
+                funs(this.getAboutusData(), this.$store.state.lang.version)
                 funs(this.getTabNameData(), this.$store.state.lang.version)
             }
         },

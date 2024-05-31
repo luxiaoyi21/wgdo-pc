@@ -84,7 +84,15 @@ export default {
                 '绿色政策': '4',
                 '绿色设计培训': '5',
             },
-            Map: [],
+            Map: {
+                ...this.aboutmap,
+                ...this.meetmap,
+                ...this.mediamap,
+                ...this.researchmap,
+                ...this.projectmap,
+                ...this.prizemap,
+                ...this.Mapping,
+            },
         }
     },
     mounted() {
@@ -212,7 +220,7 @@ export default {
                 this.$emit('WgdoData', this.tabDatas)
             })
         },
-        getHomeAllTitleData(t, p) {
+        getHomeAllTitleData( p) {
             getHomeAllTitle({ parentId: p }).then(res => {
                 this.tabDatas = res.data.rows
                 this.$emit('getHomeAllTitle', this.tabDatas)

@@ -39,11 +39,7 @@ export default {
     props: ["urlData"],
     data() {
         return {
-            tabName: [
-                // "评定规则",
-                // "获奖个人",
-                // "获奖机构",
-            ],
+            tabName: [],
             PrizeDatas: [],
             tabDatas: [],
             tabclickDatas: '绿色设计国际大奖',

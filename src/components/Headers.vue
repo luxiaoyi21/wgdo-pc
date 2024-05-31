@@ -66,7 +66,7 @@
         name: 'HeaderNav',
         data() {
             let searchInp = ''
-            let lang
+            let lang = '中文'
             return {
                 searchInp,
                 lang,
@@ -89,7 +89,7 @@
             changeLang() {
                 this.$store.commit('getLocalLang');
                 this.$store.commit('getVersion')
-            }
+            },
         },
         watch: {
             "$store.state.lang.isText1Visible": {

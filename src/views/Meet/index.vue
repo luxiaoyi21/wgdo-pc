@@ -37,22 +37,31 @@ export default {
     props: ["urlData"],
     data() {
         return {
-            tabName: [
-                // "活动详情"
-            ],
+            tabName: [],
             MeetDatas: [],
             tabDatas: [],
             tabclickDatas: '活动预告',
             name: [],
+            getTitle:[]
         };
     },
     mounted() {
         this.getMeetData('活动预告');
         this.getTabNameData()
+        if (this.$store.state.lang.version === '2') {
+            getTitle('145')
+        } else {
+            getTitle('3')
+        }
     },
     methods: {
         getMeetData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ parentId: '3', version: p }).then(res => {
+            Meet({ parentId: '3' }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+            Meet({ parentId: '145' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows
                 }
