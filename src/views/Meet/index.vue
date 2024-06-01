@@ -42,17 +42,11 @@ export default {
             tabDatas: [],
             tabclickDatas: '活动预告',
             name: [],
-            getTitle:[]
         };
     },
     mounted() {
         this.getMeetData('活动预告');
         this.getTabNameData()
-        if (this.$store.state.lang.version === '2') {
-            getTitle('145')
-        } else {
-            getTitle('3')
-        }
     },
     methods: {
         getMeetData(p = this.$store.state.lang.version) {

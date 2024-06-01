@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="dynamic">{{$t('about.figures')}}</p>
+                <p class="dynamic">{{ $t('about.figures') }}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
@@ -62,6 +62,7 @@ export default {
     },
     mounted() {
         this.getPersonData()
+        this.handlePageChange()
     },
     methods: {
         getPersonData(p = this.$store.state.lang.version) {

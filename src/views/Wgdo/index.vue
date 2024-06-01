@@ -52,8 +52,13 @@ export default {
         this.getTabNameData()
     },
     methods: {
-        getWgdoData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ parentId: '8', version: p }).then(res => {
+        getWgdoData() {
+            getHomeAllTitle({ parentId: '8' }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+            getHomeAllTitle({ parentId: '150' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows
                 }

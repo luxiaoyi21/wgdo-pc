@@ -31,31 +31,31 @@
                 </div>
             </div>
             <div ref="changeLangue" :class=" $store.state.lang.langs === '中文' ? 'zhBottom' : 'enBottom' ">
-                <a href="/about" ref="changeLanguea" :class=" $store.state.lang.isEn === 'zh' ? 'ha' : 'isEn' ">
-                    {{ $t('headernav.Aboutus') }}
-                </a>
-                <a href="/meet" ref="changeLanguea" :class=" $store.state.lang.isEn === 'zh' ? 'ha' : 'isEn' ">
-                    {{ $t('headernav.Conferenceactivity') }}
-                </a>
-                <a href="/media" ref="changeLanguea" :class=" $store.state.lang.isEn === 'zh' ? 'ha' : 'isEn' ">
-                    {{ $t('headernav.Mediacenter') }}
-                </a>
-                <a href="/research" ref="changeLanguea" :class=" $store.state.lang.isEn === 'zh' ? 'ha' : 'isEn' ">
-                    {{ $t('headernav.Academicresearch') }}
-                </a>
-                <a href="/project" ref="changeLanguea" :class=" $store.state.lang.isEn === 'zh' ? 'ha' : 'isEn' ">
-                    {{ $t('headernav.Publicwelfareproject') }}
-                </a>
-                <a href="/prize" ref="changeLanguea" :class=" $store.state.lang.isEn === 'zh' ? 'ha' : 'isEn' ">
-                    {{ $t('headernav.InternationalGreenAward') }}
-                </a>
-                <a href="/wgdo" ref="changeLanguea" :class=" $store.state.lang.isEn === 'zh' ? 'ha' : 'isEn' ">
-                    {{ $t('headernav.WGDOGreenResearchInstitute') }}
-                </a>
-                <a href="http://lyb.wgdo.net/" ref="changeLanguea"
-                    :class=" $store.state.lang.isEn === 'zh' ? 'ha' : 'isEn' ">
-                    {{ $t('headernav.Greenleaflabel') }}
-                </a>
+                <router-link to="/about" ref="changeLanguea"
+                :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/about' }">
+                {{ $t('headernav.Aboutus') }}
+            </router-link>
+            <router-link to="/meet" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/meet' }">
+                {{ $t('headernav.Conferenceactivity') }}
+            </router-link>
+            <router-link to="/media" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/media' }">
+                {{ $t('headernav.Mediacenter') }}
+            </router-link>
+            <router-link to="/research" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/research' }">
+                {{ $t('headernav.Academicresearch') }}
+            </router-link>
+            <router-link to="/project" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/project' }">
+                {{ $t('headernav.Publicwelfareproject') }}
+            </router-link>
+            <router-link to="/prize" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/prize' }">
+                {{ $t('headernav.InternationalGreenAward') }}
+            </router-link>
+            <router-link to="/wgdo" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/wgdo' }">
+                {{ $t('headernav.WGDOGreenResearchInstitute') }}
+            </router-link>
+            <router-link to="http://lyb.wgdo.net/" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en'}">
+                {{ $t('headernav.Greenleaflabel') }}
+            </router-link>
             </div>
         </div>
     </div>
@@ -338,6 +338,10 @@
     }
 
     .zhBottom a:hover {
+        color: rgba(166, 225, 99, 1);
+    }
+
+    .active {
         color: rgba(166, 225, 99, 1);
     }
 

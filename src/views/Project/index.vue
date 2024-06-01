@@ -4,7 +4,7 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @getHomeAllTitle="getProjectData" @tabclickDatas="getTabName" />
+            <TabControl :tabName="tabName" @Project="getProjectData" @tabclickDatas="getTabName" />
             <!-- 首页传值 -->
             <!-- <Intro :tabDatas="tabDatas" /> -->
             <Greenhome v-if="tabclickDatas === '绿叶之家'" :tabDatas="tabDatas" />
@@ -55,8 +55,13 @@ export default {
         this.getTabNameData()
     },
     methods: {
-        getProjectData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ parentId: '6', version: p }).then(res => {
+        getProjectData() {
+            getHomeAllTitle({ parentId: '6' }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+            getHomeAllTitle({ parentId: '148' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows
                 }
@@ -67,6 +72,7 @@ export default {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     let resss = res.data.rows[0].children
                     this.tabName = resss.map(v => v.classifyName);
+                    console.log(this.tabName)
                 }
             })
             getHomeAllTitle({ parentId: '148', version: p }).then(res => {
@@ -78,7 +84,6 @@ export default {
         },
         getTabName(name) {
             this.tabclickDatas = name;
-            console.log(this.tabclickDatas);
         },
     },
     watch: {

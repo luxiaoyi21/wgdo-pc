@@ -51,8 +51,13 @@ export default {
         this.getTabNameData()
     },
     methods: {
-        async getPrizeData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ parentId: '7', version: p }).then(res => {
+        getPrizeData() {
+            getHomeAllTitle({ parentId: '7' }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+            getHomeAllTitle({ parentId: '149' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows
                 }

@@ -51,8 +51,13 @@ export default {
         this.getTabNameData()
     },
     methods: {
-        getMediaData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ parentId: '4', version: p }).then(res => {
+        getMediaData() {
+            getHomeAllTitle({ parentId: '4' }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+            getHomeAllTitle({ parentId: '146' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows
                 }

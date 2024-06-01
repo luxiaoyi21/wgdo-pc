@@ -41,34 +41,24 @@ export default {
             tabDatas: [],
             tabclickDatas: '组织介绍',
             // name: [],
-            getTitle: []
         };
     },
     mounted() {
         this.getAboutusData('组织介绍');
         this.getTabNameData()
-        if (this.$store.state.lang.version === '2') {
-            getTitle('144')
-        } else {
-            getTitle('2')
-        }
     },
     methods: {
-        getAboutusData(p = this.$store.state.lang.version) {
-            let tempTabDatas = [];
-            Aboutus({ parentId: '2' }).then(res => {
+        getAboutusData() {
+            getHomeAllTitle({ parentId: '2' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    tempTabDatas = res.data.rows
+                    this.tabDatas = res.data.rows
                 }
-                return Aboutus({ parentId: '144' });
-            }).then(res => {
+            })
+            getHomeAllTitle({ parentId: '144' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    tempTabDatas = tempTabDatas.concat(res.data.rows);
+                    this.tabDatas = res.data.rows
                 }
-                this.tabDatas = tempTabDatas;
-            }).catch(error => {
-
-            });
+            })
         },
         getTabNameData(p = this.$store.state.lang.version) {
             getHomeAllTitle({ parentId: '2', version: p }).then(res => {

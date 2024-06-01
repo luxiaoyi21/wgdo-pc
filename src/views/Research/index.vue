@@ -51,8 +51,13 @@ export default {
         this.getTabNameData()
     },
     methods: {
-        getResearchData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ parentId: '5', version: p }).then(res => {
+        getResearchData() {
+            getHomeAllTitle({ parentId: '5' }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
+            getHomeAllTitle({ parentId: '147' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows
                 }
