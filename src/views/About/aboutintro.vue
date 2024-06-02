@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="aintro">{{$t('about.Introduction')}}</p>
+                <p class="aintro">{{ $t('about.Introduction') }}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
@@ -40,7 +40,7 @@ export default {
     },
     methods: {
         getAboutintroData(p = this.$store.state.lang.version) {
-            Aboutus({  "moduleType": "1", "status": "1", version: p }).then(res => {
+            Aboutus({ "moduleType": "1", "status": "1", version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.introDatas = res.data.rows
                 }

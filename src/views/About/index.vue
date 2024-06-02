@@ -48,17 +48,17 @@ export default {
         this.getTabNameData()
     },
     methods: {
-        getAboutusData() {
-            getHomeAllTitle({ parentId: '2' }).then(res => {
+        getAboutusData(p = this.$store.state.lang.version) {
+            Aboutus({ parentId: '2', "moduleType": "1", "status": "1", version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.tabDatas = res.data.rows
+                    this.introDatas = res.data.rows
                 }
             })
-            getHomeAllTitle({ parentId: '144' }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.tabDatas = res.data.rows
-                }
-            })
+            // Aboutus({ parentId: '144', "moduleType": "1", "status": "1", version: p }).then(res => {
+            //     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+            //         this.introDatas = res.data.rows
+            //     }
+            // })
         },
         getTabNameData(p = this.$store.state.lang.version) {
             getHomeAllTitle({ parentId: '2', version: p }).then(res => {
