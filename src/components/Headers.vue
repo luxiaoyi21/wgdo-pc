@@ -31,31 +31,31 @@
                 </div>
             </div>
             <div ref="changeLangue" :class=" $store.state.lang.langs === '中文' ? 'zhBottom' : 'enBottom' ">
-                <router-link to="/about" ref="changeLanguea"
-                :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/about' }">
-                {{ $t('headernav.Aboutus') }}
-            </router-link>
-            <router-link to="/meet" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/meet' }">
-                {{ $t('headernav.Conferenceactivity') }}
-            </router-link>
-            <router-link to="/media" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/media' }">
-                {{ $t('headernav.Mediacenter') }}
-            </router-link>
-            <router-link to="/research" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/research' }">
-                {{ $t('headernav.Academicresearch') }}
-            </router-link>
-            <router-link to="/project" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/project' }">
-                {{ $t('headernav.Publicwelfareproject') }}
-            </router-link>
-            <router-link to="/prize" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/prize' }">
-                {{ $t('headernav.InternationalGreenAward') }}
-            </router-link>
-            <router-link to="/wgdo" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/wgdo' }">
-                {{ $t('headernav.WGDOGreenResearchInstitute') }}
-            </router-link>
-            <router-link to="http://lyb.wgdo.net/" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en'}">
-                {{ $t('headernav.Greenleaflabel') }}
-            </router-link>
+               <router-link to="/about" ref="changeLanguea"
+                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/about' }">
+                    {{ $t('headernav.Aboutus') }}
+                </router-link>
+                <router-link to="/meet" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/meet' }">
+                    {{ $t('headernav.Conferenceactivity') }}
+                </router-link>
+                <router-link to="/media" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/media' }">
+                    {{ $t('headernav.Mediacenter') }}
+                </router-link>
+                <router-link to="/research" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/research' }">
+                    {{ $t('headernav.Academicresearch') }}
+                </router-link>
+                <router-link to="/project" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/project' }">
+                    {{ $t('headernav.Publicwelfareproject') }}
+                </router-link>
+                <router-link to="/prize" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/prize' }">
+                    {{ $t('headernav.InternationalGreenAward') }}
+                </router-link>
+                <router-link to="/wgdo" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/wgdo' }">
+                    {{ $t('headernav.WGDOGreenResearchInstitute') }}
+                </router-link>
+                <router-link to="http://lyb.wgdo.net/" ref="changeLanguea" :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en'}">
+                    {{ $t('headernav.Greenleaflabel') }}
+                </router-link>
             </div>
         </div>
     </div>

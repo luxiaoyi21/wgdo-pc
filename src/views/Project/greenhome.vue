@@ -52,7 +52,6 @@ export default {
             style.innerHTML = `
                 .content-in img {
                     width: 100%;
-                    height: 280px;
                     opacity: 1;
                     margin: auto;
                     display:flex;

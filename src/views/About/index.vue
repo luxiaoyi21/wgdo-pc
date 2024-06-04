@@ -46,19 +46,24 @@ export default {
     mounted() {
         this.getAboutusData('组织介绍');
         this.getTabNameData()
+        // if (this.$store.state.lang.version === '2') {
+        //     getTitle('144')
+        // } else {
+        //     getTitle('2')
+        // }
     },
     methods: {
         getAboutusData(p = this.$store.state.lang.version) {
-            Aboutus({ parentId: '2', "moduleType": "1", "status": "1", version: p }).then(res => {
+            Aboutus({ parentId: '2' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.introDatas = res.data.rows
+                    this.tabDatas = res.data.rows
                 }
             })
-            // Aboutus({ parentId: '144', "moduleType": "1", "status": "1", version: p }).then(res => {
-            //     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-            //         this.introDatas = res.data.rows
-            //     }
-            // })
+            Aboutus({ parentId: '144' }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.tabDatas = res.data.rows
+                }
+            })
         },
         getTabNameData(p = this.$store.state.lang.version) {
             getHomeAllTitle({ parentId: '2', version: p }).then(res => {

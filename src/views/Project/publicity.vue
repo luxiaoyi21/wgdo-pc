@@ -82,17 +82,12 @@ export default {
                 }
             })
         },
-        toNext(pub) {
-            this.$router.push({
-                path: '/record',
-                name: 'Record',
-                params: {
-                    fromPath: this.$route.path,
-                    fromName: this.$route.name,
-                    datas: this.pubDatas[pub],
-                    orders: pub
-                }
-            })
+        toNext(index) {
+            if (index === 0) {
+                this.$router.push({ path: '/Project/publicity/record' });
+            } else if (index === 1) {
+                this.$router.push({ path: '/Project/publicity/glory' });
+            } else { }
         }
     },
     watch: {

@@ -4,7 +4,7 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @getHomeAllTitle="getMediaData" @tabclickDatas="getTabName" />
+            <TabControl :tabName="tabName" @Media="getMediaData" @tabclickDatas="getTabName" />
             <!-- 首页传值 -->
             <!-- <Intro :tabDatas="tabDatas" /> -->
             <Dynamic v-if="tabclickDatas === '组织动态'" :tabDatas="tabDatas" />
@@ -52,12 +52,12 @@ export default {
     },
     methods: {
         getMediaData() {
-            getHomeAllTitle({ parentId: '4' }).then(res => {
+            Media({ parentId: '4' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows
                 }
             })
-            getHomeAllTitle({ parentId: '146' }).then(res => {
+            Media({ parentId: '146' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows
                 }

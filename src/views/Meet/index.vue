@@ -32,6 +32,10 @@ import Lookback from "@/views/Meet/lookback.vue";
 import funs from "@/utils/index.js"
 
 export default {
+    // onLoad(){
+    //     this.getMeetData('活动预告');
+    //     this.getTabNameData()
+    // },
     name: "Meet",
     components: { Headers, TabControl, Footers, Preview, Info, Doing, Lookback },
     props: ["urlData"],
@@ -43,6 +47,10 @@ export default {
             tabclickDatas: '活动预告',
             name: [],
         };
+    },
+    created() {
+        // this.getMeetData('活动预告');
+        // this.getTabNameData()
     },
     mounted() {
         this.getMeetData('活动预告');

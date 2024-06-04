@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="dynamic">{{$t('meet.previewact')}}</p>
+                <p class="dynamic">{{ $t('meet.previewact') }}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" "></div>
@@ -67,9 +67,12 @@ export default {
     mounted() {
         this.getPreviewData()
     },
+    created() {
+        // this.getPreviewData()
+    },
     methods: {
         isSecondLink(index) {
-            return index === 1;
+            return index === 0;
         },
         getPreviewData(p = this.$store.state.lang.version) {
             Meet({ moduleType: '1', status: '1', version: p }).then(res => {
