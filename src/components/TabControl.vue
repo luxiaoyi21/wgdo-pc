@@ -1,8 +1,8 @@
 <template>
     <div class="box">
         <el-tabs class="ets" v-model="activeName" @tab-click="handleClick">
-            <template v-for="item in tabName">
-                <el-tab-pane class="etp" :label="item" :name="item">
+            <template v-for="(item, index) in tabName">
+                <el-tab-pane class="etp" :label="item" :name="item" :key="index">
                     <Breadcrumb :urlData="urlData" />
                     <!-- <div class="wgdo-in" v-for="tab in tabDatas" :key="tab.hpId">
                         {{ tab.label }}
@@ -15,14 +15,7 @@
 
 <script>
 import Breadcrumb from '@/components/Breadcrumb'
-import { Aboutus } from "@/api/requests.js";
-import { Meet } from "@/api/requests.js";
-import { Media } from "@/api/requests.js";
-import { Research } from "@/api/requests.js";
-import { Project } from "@/api/requests.js";
-import { Prize } from "@/api/requests.js";
-import { getWgdo } from '@/api/requests.js'
-import { getHomeAllTitle } from '@/api/requests.js'
+import { Aboutus, Meet, Media, Research, Project, Prize, getWgdo, getHomeAllTitle } from "@/api/requests.js";
 import funs from '@/utils/index.js'
 
 export default {
@@ -96,6 +89,8 @@ export default {
         }
     },
     mounted() {
+        // this.activeName = this.tabName[0];
+
         this.routesData = this.$router.options.routes
         this.currentRoute = this.$router.history.current
         this.routesData.forEach(v => {
@@ -107,6 +102,8 @@ export default {
     methods: {
         // 点击选项卡
         handleClick(tab, event) {
+            // sessionStorage.setItem(this.activeName);
+
             if (this.urlData.length > 1) {
                 this.urlData.pop()
             }
@@ -220,7 +217,7 @@ export default {
                 this.$emit('WgdoData', this.tabDatas)
             })
         },
-        getHomeAllTitleData( p) {
+        getHomeAllTitleData(p) {
             getHomeAllTitle({ parentId: p }).then(res => {
                 this.tabDatas = res.data.rows
                 this.$emit('getHomeAllTitle', this.tabDatas)

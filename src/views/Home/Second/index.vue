@@ -426,12 +426,13 @@
 
     .right .rightList .rightListContent {
         margin-top: 8px;
-        width: 507px;
+        width: 100%;
         font-size: 15.24px;
         font-weight: 400;
         letter-spacing: 0.76px;
         line-height: 20.21px;
         color: rgba(255, 255, 255, 0.8);
+        text-align: justify;
     }
 
     .rightListContentEN {

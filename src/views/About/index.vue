@@ -46,11 +46,6 @@ export default {
     mounted() {
         this.getAboutusData('组织介绍');
         this.getTabNameData()
-        // if (this.$store.state.lang.version === '2') {
-        //     getTitle('144')
-        // } else {
-        //     getTitle('2')
-        // }
     },
     methods: {
         getAboutusData(p = this.$store.state.lang.version) {
