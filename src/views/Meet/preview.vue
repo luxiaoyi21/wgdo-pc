@@ -1,4 +1,5 @@
 <template>
+    <!-- <router-view></router-view> -->
     <div class="item">
         <div class="content">
             <div class="content-in">

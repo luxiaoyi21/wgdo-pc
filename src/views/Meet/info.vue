@@ -10,8 +10,8 @@
                     <p class="dynamic">{{ info.title }}</p>
 
                     <div class="info">
-                        <div class="info-browser">{{$t('meet.browser')}}：{{ info.clickVolume }}</div>
-                        <div class="info-create">{{$t('meet.create')}}：{{ info.releaseTime }}</div>
+                        <div class="info-browser">{{ $t('meet.browser') }}：{{ info.clickVolume }}</div>
+                        <div class="info-create">{{ $t('meet.create') }}：{{ info.releaseTime }}</div>
                     </div>
 
                     <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
