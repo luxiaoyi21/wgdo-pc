@@ -165,6 +165,12 @@ export default {
     color: rgba(0, 0, 0, 1);
     text-align: center;
     vertical-align: top;
+    margin-top: 10px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
 }
 
 .dynamic-data {

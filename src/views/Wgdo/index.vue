@@ -7,7 +7,7 @@
             <TabControl :tabName="tabName" @getHomeAllTitle="getWgdoData" @tabclickDatas="getTabName" />
             <!-- 首页传值 -->
             <Intro v-if="tabclickDatas === '机构简介'" :tabDatas="tabDatas" />
-            <Branch v-if="tabclickDatas === '分支拓建'" :tabDatas="tabDatas" />
+            <Branch v-if="tabclickDatas === '分支扩建'" :tabDatas="tabDatas" />
             <Service v-if="tabclickDatas === '品牌服务'" :tabDatas="tabDatas" />
             <Train v-if="tabclickDatas === '绿色设计培训'" :tabDatas="tabDatas" />
             <Policy v-if="tabclickDatas === '绿色政策'" :tabDatas="tabDatas" />

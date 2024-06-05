@@ -4,11 +4,11 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @getHomeAllTitle="getPrizeData" @tabclickDatas="getTabName" />
+            <TabControl :tabName="tabName" @Prize="getPrizeData" @tabclickDatas="getTabName" />
             <!-- 首页传值 -->
             <!-- <Intro :tabDatas="tabDatas" /> -->
             <Big v-if="tabclickDatas === '绿色设计国际大奖'" :tabDatas="tabDatas" />
-            <Contribute v-if="tabclickDatas === '绿色设计国际贡献奖'" :tabDatas="tabDatas" />
+            <Contribute v-if="tabclickDatas === '绿色设计国际贡献大奖'" :tabDatas="tabDatas" />
             <Rule v-if="tabclickDatas === '评定规则'" :tabDatas="tabDatas" />
             <Personal v-if="tabclickDatas === '获奖个人'" :tabDatas="tabDatas" />
             <Mechanism v-if="tabclickDatas === '获奖机构'" :tabDatas="tabDatas" />
