@@ -288,6 +288,13 @@ const routes = [
                         component: () => import('@/views/Prize/rule.vue'),
                         meta: { auth: true },
                     },
+                    {
+                        // /Prize/personal 获奖个人
+                        path: 'personal',
+                        name: 'bPersonal',
+                        component: () => import('@/views/Prize/personal.vue'),
+                        meta: { auth: true },
+                    },
                 ]
             },
             {
@@ -307,7 +314,7 @@ const routes = [
                     {
                         // /Prize/personal 获奖个人
                         path: 'personal',
-                        name: 'Personal',
+                        name: 'cPersonal',
                         component: () => import('@/views/Prize/personal.vue'),
                         meta: { auth: true },
                     },

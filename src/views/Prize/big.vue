@@ -2,23 +2,23 @@
     <div class="item">
         <div class="content">
             <div class="big-leader">
-                <a href="/prize/big"
+                <router-link :to="{ name: 'Big' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('prize.big') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
 
-                <a href="/prize/rule"
+                <router-link :to="{ name: 'bRule' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('prize.rule') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
 
-                <a href="/prize/personal"
+                <router-link :to="{ name: 'bPersonal' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('prize.persons') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
             </div>
 
             <div class="content-in" v-for="big in bigDatas" :key="big.greenawardId">

@@ -7,34 +7,34 @@
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
-                <a href="/project/inventory"
+                <router-link :to="{ name: 'Inventory' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.inventory') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
 
-                <a href="/project/publicity"
+                <router-link :to="{ name: 'Publicity' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.publicity') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
 
                 <a href="" style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.news') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
-                <a href="/project/disseminate"
+                <router-link :to="{ name: 'Disseminate' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.disseminate') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
 
-                <a href="/project/contactform"
+                <router-link :to="{ name: 'Contactform' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.contactform') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
             </div>
 
             <!-- <div class="content-in" v-for="invent in contactDatas" :key="invent.benefitId"> -->

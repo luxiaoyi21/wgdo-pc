@@ -2,28 +2,29 @@
     <div class="item">
         <div class="content">
             <div class="big-leader">
-                <a href="/prize/contribute"
+                <router-link :to="{ name: 'Contribute' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
-                    <span>{{$t('prize.contribute')}}</span>
+                    <span>{{ $t('prize.contribute') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
 
-                <a href="/prize/rule"
+                <router-link :to="{ name: 'cRule' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
-                    <span>{{$t('prize.rule')}}</span>
+                    <span>{{ $t('prize.rule') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
 
-                <a href="/prize/personal"
+                <router-link :to="{ name: 'cPersonal' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
-                    <span>{{$t('prize.person')}}</span>
+                    <span>{{ $t('prize.person') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
 
-                <a href="" style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
-                    <span>{{$t('prize.mechanism')}}</span>
+                <router-link :to="{ name: 'Mechanism' }"
+                    style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
+                    <span>{{ $t('prize.mechanism') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
             </div>
 
             <div class="content-in" v-for="contri in contriDatas" :key="contri.greenawardId">

@@ -89,7 +89,7 @@ export default {
         }
     },
     mounted() {
-        // this.activeName = this.tabName[0];
+        this.activeName = this.tabName[0];
 
         this.routesData = this.$router.options.routes
         this.currentRoute = this.$router.history.current

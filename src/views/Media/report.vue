@@ -8,7 +8,7 @@
                 <div class="dsc-line" style=" "></div>
 
                 <div class="dynamic-dsc">
-                    <a :href="video.externalLink" class="dynamic-content" v-for="video in reportDatas"
+                    <router-link :to="{ name: 'Reportinfo'}" class="dynamic-content" v-for="video in reportDatas"
                         :key="video.mediacenterId">
                         <div class="dynamic-time">
                             <div class="dynamic-time-top">{{video.timer}}</div>
@@ -21,7 +21,7 @@
                             <div class="dynamic-dscall-top">{{ video.title }}</div>
                             <div class="dynamic-dscall-buttom">{{ video.intro }}</div>
                         </div>
-                    </a>
+                    </router-link>
                 </div>
             </div>
         </div>

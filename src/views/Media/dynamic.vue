@@ -8,7 +8,7 @@
                 <div class="dsc-line" style=""></div>
 
                 <div class="dynamic-dsc">
-                    <a :href="dym.externalLink" class="dynamic-content" v-for="dym in dynamicDatas"
+                    <router-link :to="{ name: 'Dynamicinfo'}" class="dynamic-content" v-for="dym in dynamicDatas"
                         :key="dym.mediacenterId">
                         <div class="dynamic-time">
                             <div class="dynamic-time-top">{{ dym.timer }}</div>
@@ -21,7 +21,7 @@
                             <div class="dynamic-dscall-top">{{ dym.title }}</div>
                             <div class="dynamic-dscall-buttom">{{ dym.intro }}</div>
                         </div>
-                    </a>
+                    </router-link>
                 </div>
 
                 <div class="dynamic-data">
@@ -52,12 +52,16 @@ export default {
     data() {
         return {
             dynamicDatas: [...this.tabDatas],
+            // externalLink: this.$route.query.link,
             currentPage: 1,
             totalItems: 0,
             pageSize: 10,
             time: [],
             day: [],
         };
+    },
+    created() {
+        // console.log(this.externalLink); 
     },
     mounted() {
         this.getMediaData()

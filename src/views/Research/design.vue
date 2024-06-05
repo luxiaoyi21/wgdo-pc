@@ -3,18 +3,19 @@
         <div class="content">
             <div class="content-in">
 
-                <p class="dynamic">{{$t('research.design')}}</p>
+                <p class="dynamic">{{ $t('research.design') }}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
 
                 <div class="dynamic-dsc">
-                    <div class="doing-in" v-for="design in designDatas" :key="design.academicId">
+                    <router-link :to="{ name: 'Designinfo' }" class="doing-in" v-for="design in designDatas"
+                        :key="design.academicId">
                         <div class="doing-img">
                             <img :src="'http://106.3.97.14:9002' + design.cover" alt="">
                         </div>
                         <div class="image-caption">{{ design.title }}</div>
-                    </div>
+                    </router-link>
                 </div>
 
                 <div class="dynamic-data">
@@ -165,7 +166,7 @@ export default {
     margin-top: 10px;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 2; 
+    -webkit-line-clamp: 2;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
 }

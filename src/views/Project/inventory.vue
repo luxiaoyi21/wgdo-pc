@@ -3,38 +3,38 @@
         <div class="content">
             <div class="big-leader">
                 <a href="" style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>需求填报</span>
+                    <span>{{ $t('project.require') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
-                <a href="/project/inventory"
+                <router-link :to="{ name: 'Inventory' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>可信供方清单</span>
+                    <span>{{ $t('project.inventory') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
 
-                <a href="/project/publicity"
+                <router-link :to="{ name: 'Publicity' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>捐赠公示</span>
+                    <span>{{ $t('project.publicity') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
 
                 <a href="" style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>新闻中心</span>
+                    <span>{{ $t('project.news') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
-                <a href="/project/disseminate"
+                <router-link :to="{ name: 'Disseminate' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>抗疫宣传</span>
+                    <span>{{ $t('project.disseminate') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
 
-                <a href="/project/contact"
+                <router-link :to="{ name: 'Contactform' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
-                    <span>联系方式</span>
+                    <span>{{ $t('project.contactform') }}</span>
                     <i class="el-icon-arrow-right"></i>
-                </a>
+                </router-link>
             </div>
 
             <div class="content-in" v-for="invent in inventDatas" :key="invent.benefitId">

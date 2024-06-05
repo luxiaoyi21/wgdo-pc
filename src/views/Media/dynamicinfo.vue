@@ -95,7 +95,11 @@ export default {
     data() {
         return {
             dynamicinfoDatas: [...this.tabDatas],
+            // externalLink: this.$route.query.link,
         };
+    },
+    created() {
+        // console.log(this.externalLink); 
     },
     mounted() {
         this.getDynamicinfoData()
