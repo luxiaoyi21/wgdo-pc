@@ -19,7 +19,7 @@
                         </div>
                         <div class="dynamic-dscall">
                             <div class="dynamic-dscall-top">{{ video.title }}</div>
-                            <div class="dynamic-dscall-buttom">{{ video.intro }}</div>
+                            <div class="dynamic-dscall-buttom" :title="video.intro">{{ video.intro }}</div>
                         </div>
                     </router-link>
                 </div>

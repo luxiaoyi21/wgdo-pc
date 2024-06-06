@@ -8,7 +8,7 @@
             <!-- 首页传值 -->
             <!-- <Intro :tabDatas="tabDatas" /> -->
             <Preview v-if="tabclickDatas === '活动预告'" :tabDatas="tabDatas" />
-            <Info v-if="tabclickDatas === '活动详情'" :tabDatas="tabDatas" />
+            <!-- <Info v-if="tabclickDatas === '活动详情'" :tabDatas="tabDatas" /> -->
             <Doing v-if="tabclickDatas === '正在进行'" :tabDatas="tabDatas" />
             <Lookback v-if="tabclickDatas === '历届回顾'" :tabDatas="tabDatas" />
         </div>

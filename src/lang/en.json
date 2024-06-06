@@ -120,7 +120,13 @@
     "discuss": "Discussion topics in sub forums",
     "organization": "Organizational Introduction",
     "mode": "Summit cooperation mode",
-    "guide": "Attending Guidelines"
+    "guide": "Attending Guidelines",
+    "name": "Name",
+    "gender": "Gender",
+    "nationality": "Nationality",
+    "contact": "Contact phone number",
+    "remark": "Remarks",
+    "register": "Register Now"
   },
   "dynamic":{
     "dynamics": "Organizational dynamics",

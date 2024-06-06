@@ -19,7 +19,7 @@
                         </div>
                         <div class="dynamic-dscall">
                             <div class="dynamic-dscall-top">{{ dym.title }}</div>
-                            <div class="dynamic-dscall-buttom">{{ dym.intro }}</div>
+                            <div class="dynamic-dscall-buttom" :title="dym.intro">{{ dym.intro }}</div>
                         </div>
                     </router-link>
                 </div>

@@ -361,28 +361,28 @@
             <div class="enroll-in">
                 <div class="enroll-input">
                     <div>
-                        <p class="enroll-title">姓名</p>
+                        <p class="enroll-title">{{ $t('meet.name') }}</p>
                         <el-input v-model="input" placeholder="请填写姓名"></el-input>
                     </div>
 
                     <div>
-                        <p class="enroll-title">性别</p>
+                        <p class="enroll-title">{{ $t('meet.gender') }}</p>
                         <el-input v-model="input" placeholder="请填写性别"></el-input>
                     </div>
 
                     <div>
-                        <p class="enroll-title">国籍</p>
+                        <p class="enroll-title">{{ $t('meet.nationality') }}</p>
                         <el-input v-model="input" placeholder="请填写国籍"></el-input>
                     </div>
 
                     <div>
-                        <p class="enroll-title">联系电话</p>
+                        <p class="enroll-title">{{ $t('meet.contact') }}</p>
                         <el-input v-model="input" placeholder="请填写联系电话"></el-input>
                     </div>
                 </div>
 
                 <div class="Remarks">
-                    <div class="enroll-ps">备注</div>
+                    <div class="enroll-ps">{{ $t('meet.remark') }}</div>
                     <el-input type="textarea" :rows="2" placeholder="请输入内容" v-model="textarea">
                     </el-input>
                 </div>
@@ -390,7 +390,7 @@
                 <div style="display: flex;width:100%;justify-content: center;">
                     <el-button type="success" @click="send" round>
                         <img src="@/static/imgs/send.png" alt="">
-                        <p>立即报名</p>
+                        <p>{{ $t('meet.register') }}</p>
                     </el-button>
                 </div>
             </div>
@@ -412,12 +412,16 @@ export default {
             textarea: '',
         };
     },
+    created() {
+        this.getInfoData();
+    },
     mounted() {
         this.getInfoData()
     },
     methods: {
         getInfoData(p = this.$store.state.lang.version) {
-            Meet({ moduleType: '1', status: '1', version: p }).then(res => {
+            const id = this.$route.params.id;
+            Meet({ moduleType: '1', status: '1', version: p, id: id }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.infoDatas = res.data.rows
                 }
@@ -431,6 +435,12 @@ export default {
         "$store.state.lang.version": {
             handler() {
                 funs(this.getInfoData(), this.$store.state.lang.version)
+            }
+        },
+        '$route': {
+            immediate: true,
+            handler(to, from) {
+                this.getInfoData();
             }
         }
     },

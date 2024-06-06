@@ -1,7 +1,7 @@
 <template>
-    <!-- <router-view></router-view> -->
     <div class="item">
         <div class="content">
+
             <div class="content-in">
                 <p class="dynamic">{{ $t('meet.previewact') }}</p>
 
@@ -9,19 +9,20 @@
                 <div class="dsc-line" style=" "></div>
 
                 <div class="dynamic-dsc">
-                    <a :href="isSecondLink(index) ? '/meet/preview/info' : preview.externalLink" class="dynamic-content"
-                        v-for="(preview, index) in previewDatas" :key="preview.conferenceId">
+                    <router-link
+                        :to="isSecondLink(index) ? { name: 'Info', params: { id: preview.conferenceId } } : { path: preview.externalLink }"
+                        class="dynamic-content" v-for="(preview, index) in previewDatas" :key="preview.conferenceId">
                         <div class="dynamic-img">
                             <img :src="'http://106.3.97.14:9002' + preview.cover" alt="">
                         </div>
                         <div class="dynamic-dscall">
                             <div class="dscall-top">
                                 <div class="dscall-title">{{ preview.title }}</div>
-                                <div class="dscall-content">{{ preview.intro }}</div>
+                                <div class="dscall-content" :title="preview.intro">{{ preview.intro }}</div>
                             </div>
                             <div class="dscall-time">{{ preview.releaseTime }}</div>
                         </div>
-                    </a>
+                    </router-link>
                 </div>
 
                 <div class="dynamic-data">
@@ -73,7 +74,7 @@ export default {
     },
     methods: {
         isSecondLink(index) {
-            return index === 0;
+            return index % 2 === 0;
         },
         getPreviewData(p = this.$store.state.lang.version) {
             Meet({ moduleType: '1', status: '1', version: p }).then(res => {
@@ -214,6 +215,7 @@ export default {
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     text-overflow: ellipsis;
+    transition: all 0.3s ease;
 }
 
 .dscall-time {

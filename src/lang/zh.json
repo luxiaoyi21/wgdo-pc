@@ -120,7 +120,13 @@
     "discuss": "分论坛讨论议题",
     "organization": "组织介绍",
     "mode": "峰会合作方式",
-    "guide": "参会指南"
+    "guide": "参会指南",
+    "name": "姓名",
+    "gender": "性别",
+    "nationality": "国籍",
+    "contact": "联系电话",
+    "remark": "备注",
+    "register": "立即报名"
   },
   "dynamic":{
     "dynamics": "组织动态",
