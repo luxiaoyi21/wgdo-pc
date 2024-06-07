@@ -1,7 +1,9 @@
 <template>
     <div class="item">
-        <div class="content">
-
+        <!-- <router-view @hook:mounted="onRouterViewMounted" @hook:updated="onRouterViewUpdated"></router-view> -->
+        <router-view><router-view></router-view></router-view>
+        <!-- <div v-if="!isRouterViewActive" class="content"> -->
+            <div class="content">
             <div class="content-in">
                 <p class="dynamic">{{ $t('meet.previewact') }}</p>
 
@@ -10,7 +12,7 @@
 
                 <div class="dynamic-dsc">
                     <router-link
-                        :to="isSecondLink(index) ? { name: 'Info', params: { id: preview.conferenceId } } : { path: preview.externalLink }"
+                        :to="isSecondLink(index) ? { name: 'Info', query: { id: preview.conferenceId } } : { path: preview.externalLink }"
                         class="dynamic-content" v-for="(preview, index) in previewDatas" :key="preview.conferenceId">
                         <div class="dynamic-img">
                             <img :src="'http://106.3.97.14:9002' + preview.cover" alt="">
@@ -23,18 +25,19 @@
                             <div class="dscall-time">{{ preview.releaseTime }}</div>
                         </div>
                     </router-link>
-                </div>
 
-                <div class="dynamic-data">
-                    <div class="dynamic-data-num">
-                        <div class="data-page">第{{ currentPage }}页</div>
-                        <div class="data-limit">共{{ totalItems }}条</div>
-                    </div>
+                    <div class="dynamic-data">
+                        <div class="dynamic-data-num">
+                            <div class="data-page">第{{ currentPage }}页</div>
+                            <div class="data-limit">共{{ totalItems }}条</div>
+                        </div>
 
-                    <div class="devide-page">
-                        <el-pagination background layout="prev, pager, next" :total="totalItems" :page-size="pageSize"
-                            :current-page.sync="currentPage" @current-change="handlePageChange">>
-                        </el-pagination>
+                        <div class="devide-page">
+                            <el-pagination background layout="prev, pager, next" :total="totalItems"
+                                :page-size="pageSize" :current-page.sync="currentPage"
+                                @current-change="handlePageChange">>
+                            </el-pagination>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -57,6 +60,7 @@ export default {
             currentPage: 1,
             totalItems: 0,
             pageSize: 10,
+            // isRouterViewActive: false,
         };
     },
     computed: {
@@ -73,6 +77,12 @@ export default {
         // this.getPreviewData()
     },
     methods: {
+        // onRouterViewMounted() {
+        //     this.isRouterViewActive = true;
+        // },
+        // onRouterViewUpdated() {
+        //     this.isRouterViewActive = true;
+        // },
         isSecondLink(index) {
             return index % 2 === 0;
         },

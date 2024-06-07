@@ -1,8 +1,8 @@
 <template>
     <div class="box">
         <el-tabs class="ets" v-model="activeName" @tab-click="handleClick">
-            <template v-for="(item, index) in tabName">
-                <el-tab-pane class="etp" :label="item" :name="item" :key="index">
+            <template>
+                <el-tab-pane v-for="(item, index) in tabName" class="etp" :label="item" :name="item" :key="index">
                     <Breadcrumb :urlData="urlData" />
                     <!-- <div class="wgdo-in" v-for="tab in tabDatas" :key="tab.hpId">
                         {{ tab.label }}
