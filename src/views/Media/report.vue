@@ -1,5 +1,7 @@
 <template>
     <div class="item">
+        <router-view><router-view></router-view></router-view>
+
         <div class="content">
             <div class="content-in">
                 <p class="dynamic">{{$t('dynamic.report')}}</p>

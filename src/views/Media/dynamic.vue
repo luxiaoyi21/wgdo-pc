@@ -1,5 +1,7 @@
 <template>
     <div class="item">
+        <router-view><router-view></router-view></router-view>
+
         <div class="content">
             <div class="content-in">
                 <p class="dynamic">{{$t('dynamic.dynamics')}}</p>
@@ -8,7 +10,7 @@
                 <div class="dsc-line" style=""></div>
 
                 <div class="dynamic-dsc">
-                    <router-link :to="{ name: 'Dynamicinfo'}" class="dynamic-content" v-for="dym in dynamicDatas"
+                    <router-link :to="{ name: 'Dynamicinfo', query: { id: dym.mediacenterId } }" class="dynamic-content" v-for="dym in dynamicDatas"
                         :key="dym.mediacenterId">
                         <div class="dynamic-time">
                             <div class="dynamic-time-top">{{ dym.timer }}</div>

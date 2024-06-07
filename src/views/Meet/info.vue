@@ -362,28 +362,28 @@
                 <div class="enroll-input">
                     <div>
                         <p class="enroll-title">{{ $t('meet.name') }}</p>
-                        <el-input v-model="input" placeholder="请填写姓名"></el-input>
+                        <el-input v-model="name" placeholder="请填写姓名"></el-input>
                     </div>
 
                     <div>
                         <p class="enroll-title">{{ $t('meet.gender') }}</p>
-                        <el-input v-model="input" placeholder="请填写性别"></el-input>
+                        <el-input v-model="gender" placeholder="请填写性别"></el-input>
                     </div>
 
                     <div>
                         <p class="enroll-title">{{ $t('meet.nationality') }}</p>
-                        <el-input v-model="input" placeholder="请填写国籍"></el-input>
+                        <el-input v-model="nationality" placeholder="请填写国籍"></el-input>
                     </div>
 
                     <div>
                         <p class="enroll-title">{{ $t('meet.contact') }}</p>
-                        <el-input v-model="input" placeholder="请填写联系电话"></el-input>
+                        <el-input v-model="contact" placeholder="请填写联系电话"></el-input>
                     </div>
                 </div>
 
                 <div class="Remarks">
                     <div class="enroll-ps">{{ $t('meet.remark') }}</div>
-                    <el-input type="textarea" :rows="2" placeholder="请输入内容" v-model="textarea">
+                    <el-input type="textarea" :rows="2" placeholder="请输入内容" v-model="remark">
                     </el-input>
                 </div>
 
@@ -408,8 +408,11 @@ export default {
     data() {
         return {
             infoDatas: [...this.tabDatas],
-            input: '',
-            textarea: '',
+            name: '',
+            gender: '',
+            nationality: '',
+            contact: '',
+            remark: '',
         };
     },
     created() {
@@ -428,7 +431,13 @@ export default {
             })
         },
         async send() {
-            console.log(111)
+            console.log('提交的信息：', {
+                name: this.name,
+                gender: this.gender,
+                nationality: this.nationality,
+                contact: this.contact,
+                remark: this.remark,
+            });
         }
     },
     watch: {
@@ -437,12 +446,6 @@ export default {
                 funs(this.getInfoData(), this.$store.state.lang.version)
             }
         },
-        '$route': {
-            immediate: true,
-            handler(to, from) {
-                this.getInfoData();
-            }
-        }
     },
 }
 </script>

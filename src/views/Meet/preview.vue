@@ -103,7 +103,7 @@ export default {
             handler() {
                 funs(this.getPreviewData(), this.$store.state.lang.version)
             }
-        }
+        },
     },
 }
 </script>
