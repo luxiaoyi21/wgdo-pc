@@ -1,14 +1,12 @@
 <template>
     <div class="box">
         <el-tabs class="ets" v-model="activeName" @tab-click="handleClick">
-            <template>
-                <el-tab-pane v-for="(item, index) in tabName" class="etp" :label="item" :name="item" :key="index">
-                    <Breadcrumb :urlData="urlData" />
-                    <!-- <div class="wgdo-in" v-for="tab in tabDatas" :key="tab.hpId">
+            <el-tab-pane v-for="(item, index) in tabName" class="etp" :label="item" :name="item" :key="index">
+                <Breadcrumb :urlData="urlData" />
+                <!-- <div class="wgdo-in" v-for="tab in tabDatas" :key="tab.hpId">
                         {{ tab.label }}
                     </div> -->
-                </el-tab-pane>
-            </template>
+            </el-tab-pane>
         </el-tabs>
     </div>
 </template>
@@ -97,7 +95,9 @@ export default {
             if (v.name === this.currentRoute.name) {
                 this.urlData.push(v)
             }
-        })
+        });
+
+        this.handleClick({ $options: { propsData: { name: this.activeName } } });
     },
     methods: {
         // 点击选项卡
@@ -110,70 +110,31 @@ export default {
             let currentTabName = tab.$options.propsData.name
             this.urlData.push({ name: currentTabName })
             //在这里发请求 你点哪一个就发哪一个请求
-            for (const key in this.Map) {
-                if (key === this.urlData[1].name) {
-                    this.getHomeAllTitleData(this.Map[key])
-                    this.$emit('tabclickDatas', this.urlData[1].name)
-                    return
-                }
-            };
-            // 关于我们
-            for (const key in this.aboutmap) {
-                if (key === this.urlData[1].name) {
-                    this.getAboutusData(this.aboutmap[key])
-                    this.$emit('tabclickDatas', this.urlData[1].name)
-                    return
-                }
-            };
-            // 会议活动
-            for (const key in this.meetmap) {
-                if (key === this.urlData[1].name) {
-                    this.getMeetData(this.meetmap[key])
-                    this.$emit('tabclickDatas', this.urlData[1].name)
-                    return
-                }
-            };
-            // 媒体中心
-            for (const key in this.mediamap) {
-                if (key === this.urlData[1].name) {
-                    this.getMediaData(this.mediamap[key])
-                    this.$emit('tabclickDatas', this.urlData[1].name)
-                    return
-                }
-            };
-            // 学术研究
-            for (const key in this.researchmap) {
-                if (key === this.urlData[1].name) {
-                    this.getResearchData(this.researchmap[key])
-                    this.$emit('tabclickDatas', this.urlData[1].name)
-                    return
-                }
-            };
-            // 公益项目
-            for (const key in this.projectmap) {
-                if (key === this.urlData[1].name) {
-                    this.getProjectData(this.projectmap[key])
-                    this.$emit('tabclickDatas', this.urlData[1].name)
-                    return
-                }
-            };
-            // 国际绿奖
-            for (const key in this.prizemap) {
-                if (key === this.urlData[1].name) {
-                    this.getPrizeData(this.prizemap[key])
-                    this.$emit('tabclickDatas', this.urlData[1].name)
-                    return
-                }
-            };
-            // WGDO绿研院
-            for (const key in this.Mapping) {
-                if (key === this.urlData[1].name) {
-                    this.getWgdoData(this.Mapping[key])
-                    this.$emit('tabclickDatas', this.urlData[1].name)
-                    return
-                }
-            };
-
+            if (this.Map[currentTabName]) {
+                this.getHomeAllTitleData(this.Map[currentTabName]);
+                this.$emit('tabclickDatas', currentTabName);
+            } else if (this.aboutmap[currentTabName]) {
+                this.getAboutusData(this.aboutmap[currentTabName]);
+                this.$emit('tabclickDatas', currentTabName);
+            } else if (this.meetmap[currentTabName]) {
+                this.getMeetData(this.meetmap[currentTabName]);
+                this.$emit('tabclickDatas', currentTabName);
+            } else if (this.mediamap[currentTabName]) {
+                this.getMediaData(this.mediamap[currentTabName]);
+                this.$emit('tabclickDatas', currentTabName);
+            } else if (this.researchmap[currentTabName]) {
+                this.getResearchData(this.researchmap[currentTabName]);
+                this.$emit('tabclickDatas', currentTabName);
+            } else if (this.projectmap[currentTabName]) {
+                this.getProjectData(this.projectmap[currentTabName]);
+                this.$emit('tabclickDatas', currentTabName);
+            } else if (this.prizemap[currentTabName]) {
+                this.getPrizeData(this.prizemap[currentTabName]);
+                this.$emit('tabclickDatas', currentTabName);
+            } else if (this.Mapping[currentTabName]) {
+                this.getWgdoData(this.Mapping[currentTabName]);
+                this.$emit('tabclickDatas', currentTabName);
+            }
         },
         getAboutusData(p) {
             Aboutus({ moduleType: p, status: '1' }).then(res => {
@@ -224,13 +185,14 @@ export default {
             })
         }
     },
-    // watch: {
-    //     "$store.state.lang.version": {
-    //         handler() {
-    //             funs(this.getMeetData(), this.$store.state.lang.version)
-    //         }
-    //     },
-    // },
+    watch: {
+        tabName(newVal) {
+            if (newVal && newVal.length > 0) {
+                this.activeName = newVal[0];
+                this.handleClick({ $options: { propsData: { name: this.activeName } } });
+            }
+        }
+    },
 }
 </script>
 

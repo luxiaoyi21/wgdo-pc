@@ -81,16 +81,36 @@ export default {
     },
     created() {
         this.lang = this.$store.state.lang.langs
-        if (this.$store.state.lang.langs === '中文') {
-            this.$refs.changeLangue.classList.add('enBottom');
-            this.$refs.changeLanguea.classList.add('ens')
-        } else {
-            this.$refs.changeLangue.classList.add('zhBottom');
-            this.$refs.changeLanguea.classList.add('zhs')
-        }
+        // if (this.$store.state.lang.langs === '中文') {
+        //     this.$refs.changeLangue.classList.add('enBottom');
+        //     this.$refs.changeLanguea.classList.add('ens')
+        // } else {
+        //     this.$refs.changeLangue.classList.add('zhBottom');
+        //     this.$refs.changeLanguea.classList.add('zhs')
+        // }
     },
     mounted() {
-        this.lang = this.$store.state.lang.langs
+        // this.lang = this.$store.state.lang.langs
+        this.$nextTick(() => {
+            const classToAddLangue = this.lang === '中文' ? 'zhBottom' : 'enBottom';
+            const classToAddLanguea = this.lang === '中文' ? 'ens' : 'zhs';
+
+            // Adding classes to changeLangue
+            if (this.$refs.changeLangue) {
+                this.$refs.changeLangue.classList.add(classToAddLangue);
+            } else {
+
+            }
+
+            // Adding classes to changeLanguea
+            if (this.$refs.changeLanguea && this.$refs.changeLanguea.length) {
+                this.$refs.changeLanguea.forEach(ref => {
+                    ref.classList.add(classToAddLanguea);
+                });
+            } else {
+
+            }
+        });
     },
     methods: {
         changeLang() {

@@ -72,7 +72,6 @@ export default {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     let resss = res.data.rows[0].children
                     this.tabName = resss.map(v => v.classifyName);
-                    console.log(this.tabName)
                 }
             })
             getHomeAllTitle({ parentId: '148', version: p }).then(res => {

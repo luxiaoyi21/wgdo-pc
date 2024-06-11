@@ -61,18 +61,20 @@ export default {
             })
         },
         getTabNameData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ parentId: '2', version: p }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    let resss = res.data.rows[0].children
-                    this.tabName = resss.map(v => v.classifyName);
+            Promise.all([
+                getHomeAllTitle({ parentId: '2', version: p }),
+                getHomeAllTitle({ parentId: '144', version: p })
+            ]).then(([res1, res2]) => {
+                let tabNames1 = [];
+                let tabNames2 = [];
+                if (res1.data && Array.isArray(res1.data.rows) && res1.data.rows.length > 0) {
+                    tabNames1 = res1.data.rows[0].children.map(v => v.classifyName);
                 }
-            })
-            getHomeAllTitle({ parentId: '144', version: p }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    let resss = res.data.rows[0].children
-                    this.tabName = resss.map(v => v.classifyName);
+                if (res2.data && Array.isArray(res2.data.rows) && res2.data.rows.length > 0) {
+                    tabNames2 = res2.data.rows[0].children.map(v => v.classifyName);
                 }
-            })
+                this.tabName = [...tabNames1, ...tabNames2];
+            });
         },
         getTabName(name) {
             this.tabclickDatas = name;
