@@ -163,5 +163,14 @@
     "service": "品牌服务",
     "train": "绿色设计培训",
     "policy": "绿色政策"
+  },
+  "breadcrumb":{
+    "about": "关于我们",
+    "meet": "会议活动",
+    "media": "媒体中心",
+    "research": "学术研究",
+    "project": "公益项目",
+    "prize": "国际绿奖",
+    "wgdo": "WGDo绿研院"
   }
 }

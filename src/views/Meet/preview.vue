@@ -74,15 +74,9 @@ export default {
         this.getPreviewData()
     },
     created() {
-        // this.getPreviewData()
+
     },
     methods: {
-        // onRouterViewMounted() {
-        //     this.isRouterViewActive = true;
-        // },
-        // onRouterViewUpdated() {
-        //     this.isRouterViewActive = true;
-        // },
         isSecondLink(index) {
             return index % 2 === 0;
         },

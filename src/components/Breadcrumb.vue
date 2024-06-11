@@ -11,12 +11,30 @@
 </template>
 
 <script>
+import { getHomeAllTitle } from '@/api/requests.js'
+
 export default {
     name: 'Breadcrumb',
     props: ['urlData'],
+    // data() {
+    //     return {
+    //         urlData: [],
+    //     }
+    // },
     mounted() {
-        // console.log(this.urlData, 'url')
-    }
+        // this.BreadcrumbData();
+    },
+    // methods: {
+    //     async BreadcrumbData() {
+    //         try {
+    //             const params = {};
+    //             const ress = await getHomeAllTitle(params);
+    //             this.urlData = ress.data.row;
+    //         } catch (error) {
+
+    //         }
+    //     }
+    // }
 }
 </script>
 

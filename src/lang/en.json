@@ -163,5 +163,14 @@
     "train": "Green design training",
     "policy": "Green policies",
     "service": "Brand services"
+  },
+  "breadcrumb":{
+    "about": "About",
+    "meet": "Meet",
+    "media": "Media",
+    "research": "Research",
+    "project": "Project",
+    "prize": "Prize",
+    "wgdo": "Wgdo"
   }
 }
