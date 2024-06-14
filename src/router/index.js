@@ -120,7 +120,12 @@ const routes = [
     {
         path: '/media',
         name: 'Media',
+        // name: '媒体中心',
         component: () => import('@/views/Media/index'),
+        // meta: {
+        //     name_zh: '媒体中心',
+        //     name_en: 'Media',
+        // },
         children: [
             {
                 // /Media/dynamic 组织动态

@@ -1,20 +1,19 @@
 <template>
     <div class="item">
         <div class="content">
-            <!-- <div class="content-in" v-for="save in saveDatas" :key="save.benefitId"> -->
-            <div class="content-in">
-                <p class="dynamic">2022世界绿设计论坛成功举办</p>
-                <!-- <p class="dynamic">{{ save.title }}</p> -->
+            <div class="content-in" v-for="dyninfo in dynamicinfoDatas" :key="dyninfo.mediacenterId">
+                <!-- <div class="content-in"> -->
+                <p class="dynamic">{{ dyninfo.title }}</p>
 
                 <div class="info">
-                    <div class="info-browser">{{$t('meet.browser')}}：1214</div>
-                    <div class="info-create">{{$t('meet.create')}}：2018-05-18 08:27:46</div>
+                    <div class="info-browser">{{ $t('meet.browser') }}：{{ dyninfo.clickVolume }}</div>
+                    <div class="info-create">{{ $t('meet.create') }}：{{ dyninfo.releaseTime }}</div>
                 </div>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
 
-                <!-- <div class="dynamic-dsc">
+                <div class="dynamic-dsc">
                     <div style="opacity: 1;
                     font-size: 15px;
                     font-weight: 400;
@@ -22,10 +21,10 @@
                     line-height: 25px;
                     color: rgba(51, 51, 51, 1);
                     text-align: justify;
-                    vertical-align: top;" v-html="save.contentDetails"></div>
-                </div> -->
+                    vertical-align: top;" v-html="dyninfo.contentDetails"></div>
+                </div>
 
-                <div class="dynamic-dsc">
+                <!-- <div class="dynamic-dsc">
                     <div class="dsc-intro">
                         正如联合国环境规划署执行主任英格.安德森在COP27埃及峰会前所言：“到2030年减碳45%控制升温1.5度以内”的全人类目标已经迫在眉睫，且很不足够！没有人可置身事外；我们要更强有力的国家承诺，更强有力的实施方案，来减少排放。倘若不处理损失损害的问题，公正便绝无可能。每年1000亿美元的融资承诺，现在必须兑现。G20必须在节能减排方面起到带头作用。<br>
                         ----气候变化问题并非出现在地平线，并非刚来到我们家门口，它已经进到我们的家中，我们必须紧急采取相应行动，并加速推进。从现在开始<br><br>
@@ -79,7 +78,7 @@
                         国务院原参事、世界绿色设计组织石定寰做闭幕致辞。他指出，论坛各位专家分享了绿色设计推动绿色发展各个领域的成果，为未来绿色发展增加创新活力和动力。加强国际合作，坚持不断创新，持续推动经济绿色转型与发展。同时，推动建立适合绿色低碳循环经济体系，推动各级政府、企业重视绿色设计，通过绿色设计源头推动产业创新。<br>
                         2022年世界绿色设计论坛洽在中国疫情防控措施优化、国际合作环境迎向春天复苏的季节召开。 期待来年的世界绿色设计论坛与各界联手，一同推动全球绿色设计的引领和担当。
                     </div>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -95,7 +94,7 @@ export default {
     data() {
         return {
             dynamicinfoDatas: [...this.tabDatas],
-            // externalLink: this.$route.query.link,
+            id: this.$route.query.id,
         };
     },
     created() {
@@ -106,9 +105,10 @@ export default {
     },
     methods: {
         getDynamicinfoData(p = this.$store.state.lang.version) {
+            // const id = this.$route.query.id;
             Media({ moduleType: '4', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.saveDatas = res.data.rows
+                    this.dynamicinfoDatas = res.data.rows
                 }
             })
         },
@@ -118,8 +118,15 @@ export default {
             handler() {
                 funs(this.getDynamicinfoData(), this.$store.state.lang.version)
             }
-        }
-    },
+        },
+        '$route.query.id': {
+            handler(newId) {
+                this.id = newId;
+                this.getDynamicinfoData(newId);
+            },
+            immediate: true
+        },
+    }
 }
 </script>
 

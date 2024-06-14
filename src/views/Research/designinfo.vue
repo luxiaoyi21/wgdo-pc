@@ -1,20 +1,20 @@
 <template>
     <div class="item">
         <div class="content">
-            <!-- <div class="content-in" v-for="save in saveDatas" :key="save.benefitId"> -->
-            <div class="content-in">
-                <p class="dynamic">世界环境日丨从源头保护我们的地球</p>
-                <!-- <p class="dynamic">{{ save.title }}</p> -->
+            <div class="content-in" v-for="designinfo in designinfoDatas" :key="designinfo.academicId">
+            <!-- <div class="content-in"> -->
+                <!-- <p class="dynamic">世界环境日丨从源头保护我们的地球</p> -->
+                <p class="dynamic">{{ designinfo.title }}</p>
 
                 <div class="info">
-                    <div class="info-browser">浏览次数：1214</div>
-                    <div class="info-create">发布时间：2018-05-18 08:27:46</div>
+                    <div class="info-browser">{{ $t('meet.browser') }}：{{ dyninfo.clickVolume }}</div>
+                    <div class="info-create">{{ $t('meet.create') }}：{{ dyninfo.releaseTime }}</div>
                 </div>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
 
-                <!-- <div class="dynamic-dsc">
+                <div class="dynamic-dsc">
                     <div style="opacity: 1;
                     font-size: 15px;
                     font-weight: 400;
@@ -22,10 +22,10 @@
                     line-height: 25px;
                     color: rgba(51, 51, 51, 1);
                     text-align: justify;
-                    vertical-align: top;" v-html="save.contentDetails"></div>
-                </div> -->
+                    vertical-align: top;" v-html="designinfo.contentDetails"></div>
+                </div>
 
-                <div class="dynamic-dsc">
+                <!-- <div class="dynamic-dsc">
                     正如联合国环境规划署执行主任英格.安德森在COP27埃及峰会前所言：“到2030年减碳45%控制升温1.5度以内”的全人类目标已经迫在眉睫，且很不足够！没有人可置身事外；我们要更强有力的国家承诺，更强有力的实施方案，来减少排放。倘若不处理损失损害的问题，公正便绝无可能。每年1000亿美元的融资承诺，现在必须兑现。G20必须在节能减排方面起到带头作用。<br>
                     ----气候变化问题并非出现在地平线，并非刚来到我们家门口，它已经进到我们的家中，我们必须紧急采取相应行动，并加速推进。从现在开始<br>
                     在此大背景下，维护全球绿色、和平、可持续发展成为当下世界各国各部门各行业领域的共同呼声。减碳、减排，维护地球绿色生态平衡成为各国政府、机构、企业和公民个人的使命担当。从《欧洲绿色新政》和高密度出台的一揽子与之配套的包括强制性碳关税在内的法律法规的出台，再到中国双碳目标战略和二十大“绿色发展”的驱使下，九大部委成立“双碳领导小组”，从中央到地方，都在以前所未有的力度贯彻实施“全面节约战略，发展绿色低碳产业，倡导绿色消费，统筹产业结构调整、污染治理、生态保护、应对气候变化，加快发展方式绿色转型”策略。<br>
@@ -34,7 +34,7 @@
                     论坛围绕“绿色设计赋能产业转型”主题，邀请国内外专家、企业家代表探讨在当下充满挑战的国际环境中，如何以绿色设计手段加速我国双碳目标的实现路径，探索产业绿色化转型的经济增长极的关键点，积极推动中国及全球的可持续发展。<br>
                     国务院原参事、世界绿色设计组织石定寰，世界绿色设计组织执委AugustKeder，世界绿色设计组织学术委员会主席辛向阳，全球生态可持续发展联盟轮值主席、全球气候创新与治理研究中心研究员、跨国公司碳中和50人论坛常务理事车巍，俄罗斯工程院院士、中国科协海智专家马昕，中国地质大学(武汉)可持续能源实验室主任、国家“千人计划”特聘教授、国家“特聘专家”程寒松，国际能源机构（IEA）能源效率政策分析师ConorGask
                     ，广东合一新材料研究院董事长王伟，北京中创碳投科技有限公司总经理、国家发改委CDM项目审核理事会专家、联合国开发计划署（UNDP）专家库成员唐人虎，环境标准联盟执行主任JustingWilkes，奈琦尔董事长姜明和来自意大利、法国、德国、比利时、美国等代表出席了会议。论坛由世界绿色设计组织（比利时）北京代表处国际合作总监于爱华主持。
-                </div>
+                </div> -->
             </div>
         </div>
     </div>

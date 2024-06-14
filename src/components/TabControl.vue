@@ -183,7 +183,10 @@ export default {
                 this.tabDatas = res.data.rows
                 this.$emit('getHomeAllTitle', this.tabDatas)
             })
-        }
+        },
+        // updateUrlData(newUrlData) {
+        //     this.urlData = newUrlData;
+        // }
     },
     watch: {
         tabName(newVal) {

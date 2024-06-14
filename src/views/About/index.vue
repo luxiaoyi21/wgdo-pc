@@ -40,15 +40,24 @@ export default {
             // AboutDatas: [],
             tabDatas: [],
             tabclickDatas: '组织介绍',
-            // name: [],
         };
     },
     mounted() {
         this.getAboutusData('组织介绍');
         this.getTabNameData()
+        if (this.$store.state.lang.isEn === 'en') {
+            this.getAboutusData('144')
+        } else {
+            this.getAboutusData('2')
+        }
     },
     methods: {
-        getAboutusData(p = this.$store.state.lang.version) {
+        getAboutusData(par) {
+            // Aboutus({ parentId: par }).then(res => {
+            //     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+            //         this.tabDatas = res.data.rows
+            //     }
+            // })
             Aboutus({ parentId: '2' }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.tabDatas = res.data.rows

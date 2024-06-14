@@ -1,14 +1,14 @@
 <template>
     <div class="item">
         <div class="content">
-            <!-- <div class="content-in" v-for="save in saveDatas" :key="save.benefitId"> -->
-            <div class="content-in">
-                <p class="dynamic">中华人民共和国科学技术部新闻报道</p>
-                <!-- <p class="dynamic">{{ save.title }}</p> -->
+            <div class="content-in" v-for="reportinfo in reportinfoData" :key="reportinfo.mediacenterId">
+                <!-- <div class="content-in"> -->
+                <!-- <p class="dynamic">中华人民共和国科学技术部新闻报道</p> -->
+                <p class="dynamic">{{ reportinfo.title }}</p>
 
                 <div class="info">
-                    <div class="info-browser">{{$t('meet.browser')}}：1214</div>
-                    <div class="info-create">{{$t('meet.create')}}：2018-05-18 08:27:46</div>
+                    <div class="info-browser">{{ $t('meet.browser') }}：{{ dyninfo.clickVolume }}</div>
+                    <div class="info-create">{{ $t('meet.create') }}：{{ dyninfo.releaseTime }}</div>
                 </div>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
@@ -42,7 +42,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            getReportinfoData: [...this.tabDatas],
+            reportinfoData: [...this.tabDatas],
         };
     },
     mounted() {
@@ -153,9 +153,8 @@ export default {
     margin-bottom: 140px;
 }
 
-.dynamic-dsc img{
+.dynamic-dsc img {
     width: 100%;
     height: 821px;
 }
-
 </style>

@@ -6,7 +6,6 @@
         <div class="content">
             <TabControl :tabName="tabName" @Media="getMediaData" @tabclickDatas="getTabName" />
             <!-- 首页传值 -->
-            <!-- <Intro :tabDatas="tabDatas" /> -->
             <Dynamic v-if="tabclickDatas === '组织动态'" :tabDatas="tabDatas" />
             <Video v-if="tabclickDatas === '论坛视频'" :tabDatas="tabDatas" />
             <Report v-if="tabclickDatas === '媒体报道'" :tabDatas="tabDatas" />
