@@ -8,9 +8,11 @@
             <!-- 首页传值 -->
             <!-- <Intro :tabDatas="tabDatas" /> -->
             <Preview v-if="tabclickDatas === '活动预告'" :tabDatas="tabDatas" />
-            <!-- <Info v-if="tabclickDatas === '活动详情'" :tabDatas="tabDatas" /> -->
+            <Previewinfo v-if="tabclickDatas === '活动预告详情'" :tabDatas="tabDatas" />
             <Doing v-if="tabclickDatas === '正在进行'" :tabDatas="tabDatas" />
+            <Doinginfo v-if="tabclickDatas === '正在进行详情'" :tabDatas="tabDatas" />
             <Lookback v-if="tabclickDatas === '历届回顾'" :tabDatas="tabDatas" />
+            <Lookbackinfo v-if="tabclickDatas === '历届回顾详情'" :tabDatas="tabDatas" />
         </div>
         <!-- footer -->
         <div class="foot">
@@ -26,9 +28,11 @@ import Footers from "@/views/Home/Footer/index.vue";
 import { Meet } from "@/api/requests.js";
 import { getHomeAllTitle } from '@/api/requests.js'
 import Preview from "@/views/Meet/preview.vue";
-import Info from "@/views/Meet/info.vue";
+import Previewinfo from "@/views/Meet/previewinfo.vue";
 import Doing from "@/views/Meet/doing.vue";
+import Doinginfo from "@/views/Meet/doinginfo.vue";
 import Lookback from "@/views/Meet/lookback.vue";
+import Lookbackinfo from "@/views/Meet/lookbackinfo.vue";
 import funs from "@/utils/index.js"
 
 export default {
@@ -37,7 +41,7 @@ export default {
     //     this.getTabNameData()
     // },
     name: "Meet",
-    components: { Headers, TabControl, Footers, Preview, Info, Doing, Lookback },
+    components: { Headers, TabControl, Footers, Preview, Previewinfo, Doing, Doinginfo, Lookback, Lookbackinfo },
     props: ["urlData"],
     data() {
         return {

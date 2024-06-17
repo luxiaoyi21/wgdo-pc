@@ -8,9 +8,8 @@
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=""></div>
 
-                <div class="dynamic-dsc">
+                <div class="dynamic-dsc" v-for="dym in currentTabDatas" :key="dym.mediacenterId">
                     <router-link :to="{ name: 'Dynamicinfo', query: { id: dym.mediacenterId } }" class="dynamic-content"
-                        v-for="dym in currentTabDatas" :key="dym.mediacenterId"
                         @click.native="handleLinkClick(dym.mediacenterId)">
                         <div class="dynamic-time">
                             <div class="dynamic-time-top">{{ dym.timer }}</div>

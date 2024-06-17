@@ -3,7 +3,7 @@ import router from '@/router/index.js'
 
 const instanceRequest = axios.create({
     baseURL: 'http://106.3.97.14:9002/prod-api/',
-    timeout: 10000,
+    timeout: 20000,
     headers: {
         'Content-Type': 'application/json'
     }

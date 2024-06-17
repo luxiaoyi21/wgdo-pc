@@ -88,14 +88,16 @@ const routes = [
                 // /Meet/preview 活动预告
                 path: 'preview',
                 name: 'Preview',
+                // component: {render(c){return c('router-view')}},
+                // redirect:'preview',
                 component: () => import('@/views/Meet/preview.vue'),
                 meta: { auth: true },
                 children: [
                     {
-                        // /Meet/info 活动详情
-                        path: 'info',
-                        name: 'Info',
-                        component: () => import('@/views/Meet/info.vue'),
+                        // /Meet/previewinfo 活动预告详情
+                        path: 'previewinfo',
+                        name: 'Previewinfo',
+                        component: () => import('@/views/Meet/previewinfo.vue'),
                         meta: { auth: true },
                     },
                 ]
@@ -106,6 +108,15 @@ const routes = [
                 name: 'Doing',
                 component: () => import('@/views/Meet/doing.vue'),
                 meta: { auth: true },
+                children: [
+                    {
+                        // /Meet/doinginfo 正在进行详情
+                        path: 'doinginfo',
+                        name: 'Doinginfo',
+                        component: () => import('@/views/Meet/doinginfo.vue'),
+                        meta: { auth: true },
+                    },
+                ]
             },
             {
                 // /Meet/lookback 历届回顾
@@ -113,6 +124,15 @@ const routes = [
                 name: 'Lookback',
                 component: () => import('@/views/Meet/lookback.vue'),
                 meta: { auth: true },
+                children: [
+                    {
+                        // /Meet/lookbackinfo 历届回顾详情
+                        path: 'lookbackinfo',
+                        name: 'Lookbackinfo',
+                        component: () => import('@/views/Meet/lookbackinfo.vue'),
+                        meta: { auth: true },
+                    },
+                ]
             }
         ]
     },

@@ -1,9 +1,9 @@
 <template>
     <div class="item">
         <!-- <router-view @hook:mounted="onRouterViewMounted" @hook:updated="onRouterViewUpdated"></router-view> -->
-        <router-view><router-view></router-view></router-view>
+        <!-- <router-view><router-view></router-view></router-view> -->
         <!-- <div v-if="!isRouterViewActive" class="content"> -->
-            <div class="content">
+        <div class="content">
             <div class="content-in">
                 <p class="dynamic">{{ $t('meet.previewact') }}</p>
 
@@ -12,7 +12,7 @@
 
                 <div class="dynamic-dsc">
                     <router-link
-                        :to="isSecondLink(index) ? { name: 'Info', query: { id: preview.conferenceId } } : { path: preview.externalLink }"
+                        :to="isSecondLink(index) ? { name: 'Previewinfo', query: { id: preview.conferenceId } } : { path: preview.externalLink }"
                         class="dynamic-content" v-for="(preview, index) in previewDatas" :key="preview.conferenceId">
                         <div class="dynamic-img">
                             <img :src="'http://106.3.97.14:9002' + preview.cover" alt="">
@@ -47,19 +47,20 @@
 
 <script>
 import { Meet } from "@/api/requests.js";
-import { Info } from "@/views/Meet/info.vue";
+import { Previewinfo } from "@/views/Meet/previewinfo.vue";
 import funs from '@/utils/index.js'
 
 export default {
     name: "Preview",
     props: ['tabDatas'],
-    components: { Info },
+    components: { Previewinfo },
     data() {
         return {
             previewDatas: [...this.tabDatas],
             currentPage: 1,
             totalItems: 0,
             pageSize: 10,
+            // conferenceId: 0,
             // isRouterViewActive: false,
         };
     },
