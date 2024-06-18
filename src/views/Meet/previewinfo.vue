@@ -446,6 +446,7 @@ export default {
                 funs(this.getPreviewinfoData(), this.$store.state.lang.version)
             }
         },
+        immediate: true
     },
 }
 </script>

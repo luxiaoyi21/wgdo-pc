@@ -99,6 +99,7 @@ export default {
                 funs(this.getPreviewData(), this.$store.state.lang.version)
             }
         },
+        immediate: true
     },
 }
 </script>
