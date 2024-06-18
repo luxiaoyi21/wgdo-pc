@@ -9,7 +9,7 @@
 
                 <div class="dynamic-dsc">
                     <router-link
-                        :to="isSecondLink(index) ? { path: '/lookback/lookbackinfo', query: { id: back.conferenceId } } : { path: back.externalLink }"
+                        :to="isSecondLink(index) ? { name: 'Lookbackinfo', query: { id: back.conferenceId } } : { path: back.externalLink }"
                         class="doing-in" v-for="(back, index) in lookbackDatas" :key="back.conferenceId">
                         <div class="doing-img">
                             <img :src="'http://106.3.97.14:9002' + back.cover" alt="">

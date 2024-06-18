@@ -9,7 +9,7 @@
                 <div class="dsc-line" style=" "></div>
 
                 <div class="dynamic-dsc">
-                    <router-link :to="{ path: '/report/reportinfo', query: { id: video.mediacenterId } }"
+                    <router-link :to="{ name: 'Reportinfo', query: { id: video.mediacenterId } }"
                         class="dynamic-content" v-for="video in reportDatas" :key="video.mediacenterId">
                         <div class="dynamic-time">
                             <div class="dynamic-time-top">{{ video.timer }}</div>

@@ -10,7 +10,7 @@
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
 
                 <div class="dynamic-dsc">
-                    <router-link :to="{ path: '/design/designinfo', query: { id: design.academicId } }" class="doing-in"
+                    <router-link :to="{ name: 'Designinfo', query: { id: design.academicId } }" class="doing-in"
                         v-for="design in designDatas" :key="design.academicId">
                         <div class="doing-img">
                             <img :src="'http://106.3.97.14:9002' + design.cover" alt="">

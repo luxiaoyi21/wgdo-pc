@@ -7,7 +7,7 @@
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
-                <router-link :to="{ path: '/publicity/inventory' }"
+                <router-link :to="{ name: 'Inventory' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.inventory') }}</span>
                     <i class="el-icon-arrow-right"></i>
@@ -24,13 +24,13 @@
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
-                <router-link :to="{ path: '/publicity/disseminate' }"
+                <router-link :to="{ name: 'Disseminate' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.disseminate') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
-                <router-link :to="{ path: '/publicity/contactform' }"
+                <router-link :to="{ name: 'Contactform' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.contactform') }}</span>
                     <i class="el-icon-arrow-right"></i>
@@ -41,8 +41,8 @@
                 <p class="dynamic">{{ save.title }}</p>
 
                 <div class="info">
-                    <div class="info-browser">{{$t('meet.browser')}}：1214</div>
-                    <div class="info-create">{{$t('meet.create')}}：2018-05-18 08:27:46</div>
+                    <div class="info-browser">{{ $t('meet.browser') }}：1214</div>
+                    <div class="info-create">{{ $t('meet.create') }}：2018-05-18 08:27:46</div>
                 </div>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
