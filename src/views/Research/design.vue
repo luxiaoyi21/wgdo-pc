@@ -1,7 +1,6 @@
 <template>
     <div class="item">
-        <router-view><router-view></router-view></router-view>
-
+        <!-- <router-view><router-view></router-view></router-view> -->
         <div class="content">
             <div class="content-in">
 
@@ -11,8 +10,8 @@
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
 
                 <div class="dynamic-dsc">
-                    <router-link :to="{ name: 'Designinfo' }" class="doing-in" v-for="design in designDatas"
-                        :key="design.academicId">
+                    <router-link :to="{ path: '/design/designinfo', query: { id: design.academicId } }" class="doing-in"
+                        v-for="design in designDatas" :key="design.academicId">
                         <div class="doing-img">
                             <img :src="'http://106.3.97.14:9002' + design.cover" alt="">
                         </div>

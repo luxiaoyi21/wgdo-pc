@@ -8,19 +8,19 @@
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
-                <router-link :to="{ name: 'cRule' }"
+                <router-link :to="{ path: '/contribute/rule' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
                     <span>{{ $t('prize.rule') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
-                <router-link :to="{ name: 'cPersonal' }"
+                <router-link :to="{ path: '/contribute/personal' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
                     <span>{{ $t('prize.person') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
-                <router-link :to="{ name: 'Mechanism' }"
+                <router-link :to="{ path: '/contribute/mechanism' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
                     <span>{{ $t('prize.mechanism') }}</span>
                     <i class="el-icon-arrow-right"></i>

@@ -8,13 +8,13 @@
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
-                <router-link :to="{ name: 'bRule' }"
+                <router-link :to="{ path: '/big/rule' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('prize.rule') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
-                <router-link :to="{ name: 'bPersonal' }"
+                <router-link :to="{ path: '/big/personal' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('prize.persons') }}</span>
                     <i class="el-icon-arrow-right"></i>

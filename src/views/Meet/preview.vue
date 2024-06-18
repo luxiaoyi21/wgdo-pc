@@ -12,7 +12,7 @@
 
                 <div class="dynamic-dsc">
                     <router-link
-                        :to="isSecondLink(index) ? { name: 'Previewinfo', query: { id: preview.conferenceId } } : { path: preview.externalLink }"
+                        :to="isSecondLink(index) ? { path: '/preview/previewinfo', query: { id: preview.conferenceId } } : { path: preview.externalLink }"
                         class="dynamic-content" v-for="(preview, index) in previewDatas" :key="preview.conferenceId">
                         <div class="dynamic-img">
                             <img :src="'http://106.3.97.14:9002' + preview.cover" alt="">

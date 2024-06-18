@@ -2,19 +2,21 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="dynamic">{{$t('meet.doing')}}</p>
+                <p class="dynamic">{{ $t('meet.doing') }}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=""></div>
 
                 <div class="dynamic-dsc">
-                    <a :href="doing.externalLink" class="doing-in" v-for="doing in doingDatas" :key="doing.conferenceId">
+                    <router-link
+                        :to="isSecondLink(index) ? { path: '/doing/doinginfo', query: { id: doing.conferenceId } } : { path: doing.externalLink }"
+                        class="doing-in" v-for="(doing, index) in doingDatas" :key="doing.conferenceId">
                         <div class="doing-img">
                             <img :src="'http://106.3.97.14:9002' + doing.cover" alt="">
                         </div>
 
                         <p class="doing-intro">{{ doing.title }}</p>
-                    </a>
+                    </router-link>
                 </div>
             </div>
         </div>
@@ -34,11 +36,13 @@ export default {
         };
     },
     mounted() {
-        this.getMeetData()
-
+        this.getDoingData()
     },
     methods: {
-        getMeetData(p = this.$store.state.lang.version) {
+        isSecondLink(index) {
+            return index % 2 === 0;
+        },
+        getDoingData(p = this.$store.state.lang.version) {
             Meet({ moduleType: '2', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.doingDatas = res.data.rows
@@ -49,7 +53,7 @@ export default {
     watch: {
         "$store.state.lang.version": {
             handler() {
-                funs(this.getMeetData(), this.$store.state.lang.version)
+                funs(this.getDoingData(), this.$store.state.lang.version)
             }
         }
     },

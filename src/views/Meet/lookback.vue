@@ -2,19 +2,21 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="dynamic">{{$t('meet.lookback')}}</p>
+                <p class="dynamic">{{ $t('meet.lookback') }}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
 
                 <div class="dynamic-dsc">
-                    <a :href="back.externalLink" class="doing-in" v-for="back in lookbackDatas" :key="back.conferenceId">
+                    <router-link
+                        :to="isSecondLink(index) ? { path: '/lookback/lookbackinfo', query: { id: back.conferenceId } } : { path: back.externalLink }"
+                        class="doing-in" v-for="(back, index) in lookbackDatas" :key="back.conferenceId">
                         <div class="doing-img">
                             <img :src="'http://106.3.97.14:9002' + back.cover" alt="">
                         </div>
 
                         <p class="doing-intro">{{ back.title }}</p>
-                    </a>
+                    </router-link>
                 </div>
 
                 <div class="dynamic-data">
@@ -60,6 +62,9 @@ export default {
         this.getLookbackData()
     },
     methods: {
+        isSecondLink(index) {
+            return index % 2 === 0;
+        },
         getLookbackData(p = this.$store.state.lang.version) {
             Meet({ moduleType: '3', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {

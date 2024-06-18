@@ -1,20 +1,19 @@
 <template>
     <div class="item">
-        <router-view><router-view></router-view></router-view>
-
+        <!-- <router-view><router-view></router-view></router-view> -->
         <div class="content">
             <div class="content-in">
-                <p class="dynamic">{{$t('dynamic.report')}}</p>
+                <p class="dynamic">{{ $t('dynamic.report') }}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" "></div>
 
                 <div class="dynamic-dsc">
-                    <router-link :to="{ name: 'Reportinfo'}" class="dynamic-content" v-for="video in reportDatas"
-                        :key="video.mediacenterId">
+                    <router-link :to="{ path: '/report/reportinfo', query: { id: video.mediacenterId } }"
+                        class="dynamic-content" v-for="video in reportDatas" :key="video.mediacenterId">
                         <div class="dynamic-time">
-                            <div class="dynamic-time-top">{{video.timer}}</div>
-                            <div class="dynamic-time-buttom">{{video.year}}</div>
+                            <div class="dynamic-time-top">{{ video.timer }}</div>
+                            <div class="dynamic-time-buttom">{{ video.year }}</div>
                         </div>
                         <div class="dynamic-blank">
                             <div class="dynamic-blankin"></div>

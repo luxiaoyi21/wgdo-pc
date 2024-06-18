@@ -7,7 +7,7 @@
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
-                <router-link :to="{ name: 'Inventory' }"
+                <router-link :to="{ path: '/publicity/inventory' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.inventory') }}</span>
                     <i class="el-icon-arrow-right"></i>
@@ -24,13 +24,13 @@
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
-                <router-link :to="{ name: 'Disseminate' }"
+                <router-link :to="{ path: '/publicity/disseminate' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.disseminate') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
-                <router-link :to="{ name: 'Contactform' }"
+                <router-link :to="{ path: '/publicity/contactform' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.contactform') }}</span>
                     <i class="el-icon-arrow-right"></i>
@@ -39,7 +39,7 @@
 
             <!-- <div class="content-in" v-for="invent in contactDatas" :key="invent.benefitId"> -->
             <div class="content-in">
-                <p class="dynamic">{{$t('project.contactform')}}</p>
+                <p class="dynamic">{{ $t('project.contactform') }}</p>
                 <!-- <p class="dynamic">{{invent.title}}</p> -->
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>

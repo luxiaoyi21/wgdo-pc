@@ -7,7 +7,7 @@
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
-                <router-link :to="{ name: 'Inventory' }"
+                <router-link :to="{ path: '/publicity/inventory' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.inventory') }}</span>
                     <i class="el-icon-arrow-right"></i>
@@ -24,13 +24,13 @@
                     <i class="el-icon-arrow-right"></i>
                 </a>
 
-                <router-link :to="{ name: 'Disseminate' }"
+                <router-link :to="{ path: '/publicity/disseminate' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.disseminate') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
-                <router-link :to="{ name: 'Contactform' }"
+                <router-link :to="{ path: '/publicity/contactform' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.contactform') }}</span>
                     <i class="el-icon-arrow-right"></i>
