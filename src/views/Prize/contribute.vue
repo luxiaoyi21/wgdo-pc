@@ -1,5 +1,6 @@
 <template>
     <div class="item">
+        <!-- <router-view></router-view> -->
         <div class="content">
             <div class="big-leader">
                 <router-link :to="{ name: 'Contribute' }"
@@ -26,7 +27,6 @@
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
             </div>
-
             <div class="content-in" v-for="contri in contriDatas" :key="contri.greenawardId">
 
                 <p class="dynamic">{{ contri.title }}</p>

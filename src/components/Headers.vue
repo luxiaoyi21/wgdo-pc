@@ -5,12 +5,13 @@
             <div class="hTop">
                 <a href="/">
                     <div class="logo">
-                        <img class="logoImg"
+                        <!-- <img class="logoImg"
                             src="https://img.js.design/assets/img/656e8dc581ed4034e8a418ee.png#680cdd771a71f03f8da7ef2659786ac3">
                         <div class="logoDsc">
                             <div class="logoDscTop">世界绿色设计组织</div>
                             <div class="logoDscBot">World Green Design Organization</div>
-                        </div>
+                        </div> -->
+                        <img src="@/static/imgs/alllogo.png" alt="">
                     </div>
                 </a>
                 <div class="right">
@@ -162,6 +163,18 @@ export default {
 
 /* logo */
 .hTop .logo {
+    margin-top: 23px;
+    width: 221px;
+    height: 53px;
+}
+
+.hTop .logo img {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+/*
+.hTop .logo {
     display: flex;
     left: 0;
 }
@@ -202,6 +215,7 @@ export default {
     color: rgba(255, 255, 255, 1);
     text-align: justify;
 }
+*/
 
 .right {
     flex: 1;
@@ -211,7 +225,7 @@ export default {
 
 .right .search {
     display: flex;
-    margin-top: 33.53px;
+    margin-top: 40px;
     width: 131.06px;
     height: 30.48px;
     border-radius: 15.24px;
