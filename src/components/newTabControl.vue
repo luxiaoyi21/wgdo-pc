@@ -5,7 +5,8 @@
                 :name="item.classifyName" :key="index">
                 <Breadcrumb :urlData="urlData" />
 
-                <!-- <div v-for="i in localtabDatas" :key="i.category" style="font-size: 12px;">{{ i.title }}</div> -->
+                <div v-for="i in localtabDatas" :key="i.category" style="font-size: 12px;">{{ i.title }}</div>
+                <router-view></router-view>
             </el-tab-pane>
         </el-tabs>
     </div>
@@ -18,25 +19,32 @@ import Breadcrumb from '@/components/Breadcrumb'
 export default {
     name: 'newtabcontrol',
     components: { Breadcrumb },
-    props: ['tabName', 'tabDatas'],
+    props: ['tabName','tabDatas'],
     data() {
         return {
             activeName: '',
             localtabDatas: [],
             urlData: [],
+            currentNums: [],
         }
     },
     mounted() {
         // console.log(this.tabName)
-        this.activeName = this.tabName[0];
+        this.activeName = this.tabName && this.tabName.length > 0 ? this.tabName[0] : '';
 
-        this.routesData = this.$router.options.routes
-        this.currentRoute = this.$router.history.current
+        this.routesData = this.$router.options.routes;
+        this.currentRoute = this.$router.history.current;
         this.routesData.forEach(v => {
             if (v.name === this.currentRoute.name) {
-                this.urlData.push(v)
+                this.urlData.push(v);
             }
         });
+
+        const currentNumsString = sessionStorage.getItem('currentNums');
+        if (currentNumsString !== null) {
+            const currentNums = JSON.parse(currentNumsString);
+            this.currentNums = currentNums;
+        }
 
         this.handleClick({ $options: { propsData: { name: this.activeName } } });
     },
@@ -47,6 +55,7 @@ export default {
             }
             let currentTabName = tab.$options.propsData.name
             this.urlData.push({ name: currentTabName })
+            // console.log(this.urlData);
 
             let gi = Number(tab.index) + 1
             sessionStorage.setItem('currentNums', JSON.stringify(tab.index))
@@ -56,7 +65,8 @@ export default {
         },
         getMediaData(i, p = this.$store.state.lang.version) {
             Media({ 'moduleType': i, 'version': p, 'status': '1' }).then(res => {
-                this.localtabDatas = res.data.rows
+                this.tabDatas = res.data.rows
+                // console.log(this.localtabDatas);
             })
         }
     },
