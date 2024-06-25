@@ -10,7 +10,7 @@
                 <div class="dynamic-dsc">
                     <div class="dsc-in" v-for="person in personDatas" :key="person.aboutusId">
                         <div class="dsc-left">
-                            <img :src="'http://106.3.97.14:9002' + person.figureHeadportrait" alt="">
+                            <img :src="'http://www.wgdo.net' + person.figureHeadportrait" alt="">
                         </div>
 
                         <div class="dsc-right">

@@ -14,7 +14,7 @@
                 <el-carousel class="contenetEl">
                     <el-carousel-item v-for="item in carouselData" :key="item.hpId">
                         <a href="/meet/preview">
-                            <img :src="'http://106.3.97.14:9002' + item.cover">
+                            <img :src="'http://www.wgdo.net' + item.cover">
                             <div class="contentCarouselL">
                                 <div class="contentCarouselLTitle">{{ item.title }}</div>
                                 <div class="contentCarouselLDsc">{{ item.intro }}</div>

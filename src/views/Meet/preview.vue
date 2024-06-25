@@ -15,7 +15,7 @@
                         :to="isSecondLink(index) ? { name: 'Previewinfo', query: { id: preview.conferenceId } } : { path: preview.externalLink }"
                         class="dynamic-content" v-for="(preview, index) in previewDatas" :key="preview.conferenceId">
                         <div class="dynamic-img">
-                            <img :src="'http://106.3.97.14:9002' + preview.cover" alt="">
+                            <img :src="'http://www.wgdo.net' + preview.cover" alt="">
                         </div>
                         <div class="dynamic-dscall">
                             <div class="dscall-top">

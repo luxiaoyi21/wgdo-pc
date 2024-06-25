@@ -6,7 +6,7 @@
                 <Breadcrumb :urlData="urlData" />
 
                 <div v-for="i in localtabDatas" :key="i.category" style="font-size: 12px;">{{ i.title }}</div>
-                <router-view></router-view>
+                <!-- <router-view></router-view> -->
             </el-tab-pane>
         </el-tabs>
     </div>
@@ -65,7 +65,7 @@ export default {
         },
         getMediaData(i, p = this.$store.state.lang.version) {
             Media({ 'moduleType': i, 'version': p, 'status': '1' }).then(res => {
-                this.tabDatas = res.data.rows
+                this.localtabDatas = res.data.rows
                 // console.log(this.localtabDatas);
             })
         }

@@ -10,7 +10,7 @@
                 <div class="dynamic-dsc">
                     <a :href="train.externalLink" class="doing-in" v-for="train in trainDatas" :key="train.greeninstituteId">
                         <div class="doing-img">
-                            <img :src="'http://106.3.97.14:9002' + train.cover">
+                            <img :src="'http://www.wgdo.net' + train.cover">
                             <div class="image-caption">
                                 <p class="image-title">{{ train.title }}</p>
                                 <p class="image-content"> {{ train.intro }}

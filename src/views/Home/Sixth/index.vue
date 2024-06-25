@@ -15,7 +15,7 @@
                 <vue-seamless-scroll :data="sixTwo" :class-option="classOption">
                     <ul class="ul-item">
                         <li class=" boxbContentItem" v-for="t in sixTwo" :key="t.hpId">
-                            <img :src="'http://106.3.97.14:9002' + t.cover " alt="">
+                            <img :src="'http://www.wgdo.net' + t.cover " alt="">
                             <div class="dsc">{{t.title}}</div>
                         </li>
                     </ul>

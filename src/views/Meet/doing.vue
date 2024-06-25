@@ -12,7 +12,7 @@
                         :to="isSecondLink(index) ? { name: 'Doinginfo', query: { id: doing.conferenceId } } : { path: doing.externalLink }"
                         class="doing-in" v-for="(doing, index) in doingDatas" :key="doing.conferenceId">
                         <div class="doing-img">
-                            <img :src="'http://106.3.97.14:9002' + doing.cover" alt="">
+                            <img :src="'http://www.wgdo.net' + doing.cover" alt="">
                         </div>
 
                         <p class="doing-intro">{{ doing.title }}</p>

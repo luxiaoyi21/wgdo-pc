@@ -11,7 +11,7 @@
                     <div v-for="(branch, index) in branchDatas" :key="branch.greeninstituteId">
                         <div class="intro">
                             <div class="left" ref="left1">
-                                <img :src="'http://106.3.97.14:9002' + branch.cover">
+                                <img :src="'http://www.wgdo.net' + branch.cover">
                             </div>
 
                             <div class="right">

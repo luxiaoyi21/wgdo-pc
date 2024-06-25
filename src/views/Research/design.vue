@@ -13,7 +13,7 @@
                     <router-link :to="{ name: 'Designinfo', query: { id: design.academicId } }" class="doing-in"
                         v-for="design in designDatas" :key="design.academicId">
                         <div class="doing-img">
-                            <img :src="'http://106.3.97.14:9002' + design.cover" alt="">
+                            <img :src="'http://www.wgdo.net' + design.cover" alt="">
                         </div>
                         <div class="image-caption">{{ design.title }}</div>
                     </router-link>

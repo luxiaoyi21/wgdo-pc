@@ -14,7 +14,7 @@
                         <el-carousel-item v-for="item in leftData" :key="item.hpId">
                             <a href="/media/dynamic">
                                 <div class="leftimg">
-                                    <img :src="'http://106.3.97.14:9002' + item.cover" alt="">
+                                    <img :src="'http://www.wgdo.net' + item.cover" alt="">
                                 </div>
                                 <div class="leftline"></div>
                                 <div class="titlethr">

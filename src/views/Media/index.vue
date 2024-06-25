@@ -37,7 +37,7 @@ import funs from "@/utils/index.js"
 
 export default {
     name: "Media",
-    components: { Headers, TabControl, Footers, Dynamic, Video, Report, Dynamicinfo, Reportinfo },
+    components: { Headers, newTabControl, TabControl, Footers, Dynamic, Video, Report, Dynamicinfo, Reportinfo },
     props: ["urlData"],
     data() {
         return {
@@ -143,6 +143,6 @@ export default {
 }
 
 .foot {
-    background: rgba(166, 225, 99,1);
+    background: rgba(166, 225, 99, 1);
 }
 </style>

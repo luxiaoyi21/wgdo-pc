@@ -248,8 +248,8 @@ export default {
 }
 
 /* 下划线颜色 */
-:deep(.el-tabs__active-bar) {
-    color: rgba(62, 73, 56, 1);
+::v-deep .el-tabs__active-bar {
+    background-color: rgba(62, 73, 56, 1);
 }
 
 /* 修改底部最长的边颜色 */

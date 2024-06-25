@@ -10,7 +10,7 @@
             </div>
             <div class="boxaImgs">
                 <div class="boxaImgsL">
-                    <img :src=" 'http://106.3.97.14:9002' + leftImg.cover" alt="">
+                    <img :src=" 'http://www.wgdo.net' + leftImg.cover" alt="">
                     <div class="boxaImgsLl">
                         <div :class=" $store.state.lang.isEn === 'en' ? 'boxaImgsLlTitleEN' :'boxaImgsLlTitle' ">
                             {{leftImg.title}}</div>
@@ -27,7 +27,7 @@
                 </div>
                 <div class="boxaImgsR">
                     <div class="boxaImgsRItem" v-for="(item,index) in rightImgLists" :key="item.hpId">
-                        <img :src="'http://106.3.97.14:9002' + item.cover">
+                        <img :src="'http://www.wgdo.net' + item.cover">
                         <div class="boxaTimgsRItemm">
                             <div
                                 :class="$store.state.lang.isEn === 'en' ? 'boxaTmgsRItemmTitleEN' :'boxaTmgsRItemmTitle'">
@@ -50,7 +50,7 @@
             <div class="boxbInfo">
                 <div class="boxbInfoItem" v-for="i in getPrice" :key="i.hpId">
                     <!-- <a href="#"> -->
-                    <img :src=" 'http://106.3.97.14:9002' + i.cover">
+                    <img :src=" 'http://www.wgdo.net' + i.cover">
                     <span>{{i.title}}</span>
                     <!-- </a> -->
                 </div>
@@ -63,7 +63,7 @@
             <div class="boxcInfo">
                 <div class="boxcInfoItem" v-for="t in awardWinningOrganization" :key="t.hpId">
                     <!-- <a href="#"> -->
-                    <img :src="'http://106.3.97.14:9002' + t.cover " alt="">
+                    <img :src="'http://www.wgdo.net' + t.cover " alt="">
                     <span :class="  $store.state.lang.isEn === 'en' ? 'isEn' : 'isZn' ">{{t.title}}</span>
                     <!-- </a> -->
                 </div>

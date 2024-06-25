@@ -182,7 +182,7 @@
     .cont .dsc {
         margin-top: 15px;
         font-size: 15px;
-        font-weight: 300;
+        font-weight: 400;
         letter-spacing: 0px;
         line-height: 25px;
         color: rgba(51, 51, 51, 1);

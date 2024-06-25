@@ -9,7 +9,7 @@
 
                 <div class="intro" v-for="intro in introDatas" :key="intro.greeninstituteId">
                     <div class="left">
-                        <img :src="'http://106.3.97.14:9002' + intro.cover">
+                        <img :src="'http://www.wgdo.net' + intro.cover">
                     </div>
 
                     <div class="right">

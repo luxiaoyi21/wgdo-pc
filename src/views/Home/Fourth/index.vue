@@ -21,14 +21,14 @@
                 </div>
             </div>
             <div class="right">
-                <img :src="'http://106.3.97.14:9002' + topDatas.cover" alt="">
+                <img :src="'http://www.wgdo.net' + topDatas.cover" alt="">
             </div>
         </div>
         <div class="bottoms">
             <div class="bootomsItem" v-for="item in bottomItemDatas" :key="item.hpId" :id="item.hpId"
                 @mouseover="handleMouseOver">
                 <div class="botImgs bottmsIsActive">
-                    <img :src="'http://106.3.97.14:9002' + item.cover" alt="">
+                    <img :src="'http://www.wgdo.net' + item.cover" alt="">
                 </div>
                 <div class="botTitle bottomsTitleActive">{{item.title}}</div>
             </div>

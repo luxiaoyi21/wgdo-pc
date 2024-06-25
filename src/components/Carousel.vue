@@ -2,7 +2,7 @@
     <div class="box">
         <el-carousel class="elc" :indicator-position="indicatorPosition || '' ">
             <el-carousel-item v-for="item in carouselData" :key="item.hpId">
-                <img :src="'http://106.3.97.14:9002' + item.cover" :style="`width: ${width}; height: ${height};`">
+                <img :src="'http://www.wgdo.net' + item.cover" :style="`width: ${width}; height: ${height};`">
                 <div class="texts" v-if="item.intro">
                     <div class="textOne">
                         {{item.intro.slice(0,8)}}

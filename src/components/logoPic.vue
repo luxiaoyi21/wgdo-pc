@@ -2,7 +2,7 @@
     <div class="box">
         <div class="boxItem" v-for="t in logoPicData" :key="t.hpId">
             <!-- <a href=""> -->
-            <img :src="'http://106.3.97.14:9002' + t.cover" alt="">
+            <img :src="'http://www.wgdo.net' + t.cover" alt="">
             <!-- </a> -->
         </div>
     </div>

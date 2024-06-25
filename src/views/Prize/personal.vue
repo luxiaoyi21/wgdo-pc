@@ -39,7 +39,7 @@
                     <div class="person">
                         <div class="person-in" v-for="per in perDatas">
                             <div class="avatar">
-                                <img :src="'http://106.3.97.14:9002' + per.cover" alt="">
+                                <img :src="'http://www.wgdo.net' + per.cover" alt="">
                             </div>
 
                             <div class="intro">

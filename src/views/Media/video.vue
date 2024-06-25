@@ -10,8 +10,8 @@
                 <div class="dynamic-dsc">
                     <div class="doing-in" v-for="video in videoDatas" :key="video.mediacenterId">
                         <div class="doing-img">
-                            <img :src="'http://106.3.97.14:9002' + video.cover" alt="">
-                            <!-- <video controls :src="'http://106.3.97.14:9002' + video.videoUrl" alt=""></video> -->
+                            <img :src="'http://www.wgdo.net' + video.cover" alt="">
+                            <!-- <video controls :src="'http://www.wgdo.net' + video.videoUrl" alt=""></video> -->
                         </div>
 
                         <p class="doing-intro">{{ video.title }}</p>
