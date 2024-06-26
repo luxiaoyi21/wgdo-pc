@@ -185,6 +185,8 @@ export default {
     color: rgba(102, 102, 102, 1);
     text-align: left;
     vertical-align: top;
+    margin-top: 12px;
+    white-space: pre-line;
 }
 
 .dynamic-data {
