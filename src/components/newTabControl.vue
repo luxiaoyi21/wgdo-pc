@@ -5,7 +5,7 @@
                 :name="item.classifyName" :key="index">
                 <Breadcrumb :urlData="urlData" />
 
-                <div v-for="i in localtabDatas" :key="i.category" style="font-size: 12px;">{{ i.title }}</div>
+                <!-- <div v-for="i in localtabDatas" :key="i.category" style="font-size: 12px;">{{ i.title }}</div> -->
                 <!-- <router-view></router-view> -->
             </el-tab-pane>
         </el-tabs>
@@ -19,7 +19,7 @@ import Breadcrumb from '@/components/Breadcrumb'
 export default {
     name: 'newtabcontrol',
     components: { Breadcrumb },
-    props: ['tabName','tabDatas'],
+    props: ['tabName', 'tabDatas'],
     data() {
         return {
             activeName: '',
@@ -40,11 +40,11 @@ export default {
             }
         });
 
-        const currentNumsString = sessionStorage.getItem('currentNums');
-        if (currentNumsString !== null) {
-            const currentNums = JSON.parse(currentNumsString);
-            this.currentNums = currentNums;
-        }
+        // const currentNumsString = sessionStorage.getItem('currentNums');
+        // if (currentNumsString !== null) {
+        //     const currentNums = JSON.parse(currentNumsString);
+        //     this.currentNums = currentNums;
+        // }
 
         this.handleClick({ $options: { propsData: { name: this.activeName } } });
     },
@@ -73,15 +73,32 @@ export default {
     watch: {
         'tabName': {
             handler() {
-                const currentNums = JSON.parse(sessionStorage.getItem('currentNums'));
-                if (this.tabName && this.tabName[0]?.children) {
-                    if (currentNums) {
-                        this.activeName = this.tabName[0]?.children[Number(currentNums)].classifyName;
-                    } else {
-                        this.activeName = this.tabName[0]?.children[0].classifyName;
+                // const currentNums = JSON.parse(sessionStorage.getItem('currentNums'));
+                // if (this.tabName && this.tabName[0]?.children) {
+                //     if (currentNums) {
+                //         this.activeName = this.tabName[0]?.children[Number(currentNums)].classifyName;
+                //     } else {
+                //         this.activeName = this.tabName[0]?.children[0].classifyName;
+                //     }
+                // }
+                // this.getMediaData(currentNums)
+                try {
+                    const currentNums = JSON.parse(sessionStorage.getItem('currentNums'));
+                    if (this.tabName && this.tabName[0]?.children) {
+                        if (currentNums) {
+                            if (currentNums >= 0 && currentNums < this.tabName[0].children.length) {
+                                this.activeName = this.tabName[0]?.children[currentNums].classifyName;
+                            } else {
+                                this.activeName = this.tabName[0].children[0].classifyName;
+                            }
+                        } else {
+                            this.activeName = this.tabName[0]?.children[0].classifyName;
+                        }
                     }
+                    this.getMediaData(currentNums);
+                } catch (error) {
+
                 }
-                this.getMediaData(currentNums)
             },
             deep: true
         }

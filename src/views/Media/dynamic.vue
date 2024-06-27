@@ -1,6 +1,6 @@
 <template>
     <div class="item">
-        <!-- <router-view><router-view></router-view></router-view> -->
+        <!-- <router-view></router-view> -->
         <div class="content">
             <div class="content-in">
                 <p class="dynamic">{{ $t('dynamic.dynamics') }}</p>
@@ -48,10 +48,10 @@ import funs from '@/utils/index.js'
 
 export default {
     name: "Dynamic",
-    props: ['tabDatas'],
+    props: ['TabDatas'],
     data() {
         return {
-            dynamicDatas: [...this.tabDatas],
+            dynamicDatas: [...this.TabDatas],
             // externalLink: this.$route.query.link,
             currentPage: 1,
             totalItems: 0,

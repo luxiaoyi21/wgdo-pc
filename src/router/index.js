@@ -88,9 +88,9 @@ const routes = [
                 // /Meet/preview 活动预告
                 path: 'preview',
                 name: 'Preview',
-                // component: {render(c){return c('router-view')}},
-                // redirect:'preview',
-                component: () => import('@/views/Meet/preview.vue'),
+                component: { render(c) { return c('router-view') } },
+                redirect: 'previewinfo',
+                // component: () => import('@/views/Meet/preview.vue'),
                 meta: { auth: true },
                 children: [
                     {
@@ -102,6 +102,13 @@ const routes = [
                     },
                 ]
             },
+            // {
+            //     // /Meet/previewinfo 活动预告详情
+            //     path: 'previewinfo',
+            //     name: 'Previewinfo',
+            //     component: () => import('@/views/Meet/previewinfo.vue'),
+            //     meta: { auth: true },
+            // },
             {
                 // /Meet/doing 正在进行
                 path: 'doing',

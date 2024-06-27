@@ -1,7 +1,7 @@
 <template>
     <div class="item">
         <!-- <router-view @hook:mounted="onRouterViewMounted" @hook:updated="onRouterViewUpdated"></router-view> -->
-        <!-- <router-view><router-view></router-view></router-view> -->
+        <!-- <router-view></router-view> -->
         <!-- <div v-if="!isRouterViewActive" class="content"> -->
         <div class="content">
             <div class="content-in">
@@ -60,8 +60,8 @@ export default {
             currentPage: 1,
             totalItems: 0,
             pageSize: 10,
-            // conferenceId: 0,
-            // isRouterViewActive: false,
+            conferenceId: 0,
+            isRouterViewActive: false,
         };
     },
     computed: {
