@@ -13,10 +13,10 @@
         </div> -->
         <div class="content">
             <newTabControl :tabName="tabName" @gindex="getGindex" :TabDatas="TabDatas" />
-            <!-- <Dynamic v-if="tabclickDatas === '组织动态'" :TabDatas="TabDatas" /> -->
-            <!-- <Video v-if="tabclickDatas === '论坛视频'" :tabDatas="TabDatas" /> -->
-            <!-- <Report v-if="tabclickDatas === '媒体报道'" :tabDatas="TabDatas" /> -->
-            <router-view></router-view>
+            <!-- <Dynamic v-if="gindex === '1'" :TabDatas="tabDatas" />
+            <Video v-if="gindex === '2'" :TabDatas="tabDatas" />
+            <Report v-if="gindex === '3'" :TabDatas="tabDatas" /> -->
+            <!-- <router-view></router-view> -->
         </div>
         <!-- footer -->
         <div class="foot">

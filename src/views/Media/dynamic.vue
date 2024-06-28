@@ -48,10 +48,10 @@ import funs from '@/utils/index.js'
 
 export default {
     name: "Dynamic",
-    props: ['TabDatas'],
+    props: ['tabDatas'],
     data() {
         return {
-            dynamicDatas: [...this.TabDatas],
+            dynamicDatas: [...this.tabDatas],
             // externalLink: this.$route.query.link,
             currentPage: 1,
             totalItems: 0,
