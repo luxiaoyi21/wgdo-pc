@@ -94,7 +94,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            dynamicinfoDatas: [...this.tabDatas],
+            dynamicinfoDatas: [],
             id: this.$route.query.id,
         };
     },
