@@ -4,16 +4,7 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @Project="getProjectData" @tabclickDatas="getTabName" />
-            <!-- 首页传值 -->
-            <!-- <Intro :tabDatas="tabDatas" /> -->
-            <Greenhome v-if="tabclickDatas === '绿叶之家'" :tabDatas="tabDatas" />
-            <Publicity v-if="tabclickDatas === '绿丝带'" :tabDatas="tabDatas" />
-            <Record v-if="tabclickDatas === '绿丝带物资到货记录'" :tabDatas="tabDatas" />
-            <Glory v-if="tabclickDatas === '绿丝带行动捐赠光荣榜'" :tabDatas="tabDatas" />
-            <Inventory v-if="tabclickDatas === '可信供方清单'" :tabDatas="tabDatas" />
-            <Disseminate v-if="tabclickDatas === '抗疫宣传'" :tabDatas="tabDatas" />
-            <Contactform v-if="tabclickDatas === '联系方式'" :tabDatas="tabDatas" />
+            <newTabControl :tabName="tabName" :tabDatas="tabDatas" v-if="tabName, tabDatas" @gindex="getGindex" />
         </div>
         <!-- footer -->
         <div class="foot">
@@ -24,7 +15,7 @@
 
 <script>
 import Headers from "@/components/Headers.vue";
-import TabControl from "@/components/TabControl";
+import newTabControl from "@/views/Project/newTabControl";
 import Footers from "@/views/Home/Footer/index.vue";
 import { Project } from "@/api/requests.js";
 import { getHomeAllTitle } from '@/api/requests.js'
@@ -39,58 +30,72 @@ import funs from "@/utils/index.js"
 
 export default {
     name: "Project",
-    components: { Headers, TabControl, Footers, Greenhome, Publicity, Record, Glory, Inventory, Disseminate, Contactform },
+    components: { Headers, newTabControl, Footers, Greenhome, Publicity, Record, Glory, Inventory, Disseminate, Contactform },
     props: ["urlData"],
     data() {
         return {
             tabName: [],
             ProjectDatas: [],
             tabDatas: [],
-            tabclickDatas: '绿叶之家',
+            // tabclickDatas: '绿叶之家',
+            currentNum: 1,
             name: [],
+            gindex: -1,
         };
     },
     mounted() {
-        this.getProjectData('绿叶之家');
-        this.getTabNameData()
+        if (this.$store.state.lang.isEn === 'en') {
+            this.getTabNameData('148')
+        } else {
+            this.getTabNameData('6')
+        }
+        this.getProjectData()
     },
     methods: {
-        getProjectData() {
-            getHomeAllTitle({ parentId: '6' }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.tabDatas = res.data.rows
-                }
-            })
-            getHomeAllTitle({ parentId: '148' }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.tabDatas = res.data.rows
-                }
+        //获取TabName
+        getTabNameData(v) {
+            if (v === '6') {
+                getHomeAllTitle({ parentId: 6 }).then(res => {
+                    this.tabName = res.data.rows
+                });
+            } else if (v === '148') {
+                getHomeAllTitle({ parentId: 148 }).then(res => {
+                    this.tabName = res.data.rows
+                    // console.log(this.tabName);
+                });
+            }
+        },
+        //获取对应数据
+        getProjectData(i, p = this.$store.state.lang.version) {
+            Project({ 'moduleType': i, 'version': p, 'status': '1' }).then(res => {
+                this.tabDatas = res.data.rows
+                // this.$emit('tabDatas',this.tabDatas)
+                // console.log(this.tabDatas)
             })
         },
-        getTabNameData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ parentId: '6', version: p }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    let resss = res.data.rows[0].children
-                    this.tabName = resss.map(v => v.classifyName);
-                }
-            })
-            getHomeAllTitle({ parentId: '148', version: p }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    let resss = res.data.rows[0].children
-                    this.tabName = resss.map(v => v.classifyName);
-                }
-            })
-        },
-        getTabName(name) {
-            this.tabclickDatas = name;
+        getGindex(i) {
+            this.gindex = i
+            // console.log(this.gindex)
         },
     },
     watch: {
         "$store.state.lang.version": {
             handler() {
                 funs(this.getTabNameData(), this.$store.state.lang.version)
+                if (this.$store.state.lang.isEn === 'en') {
+                    this.getTabNameData('148')
+                } else {
+                    this.getTabNameData('6')
+                }
+                this.getProjectData(this.gindex, this.$store.state.lang.version)
             }
         },
+        "gindex": {
+            handler() {
+                this.getProjectData(this.gindex, this.$store.state.lang.version)
+                // console.log(this.currentNum);
+            }
+        }
     },
 };
 </script>

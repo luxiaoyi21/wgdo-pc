@@ -3,12 +3,12 @@
         <div class="content">
             <div class="content-in">
                 <div class="titleintro">
-                    <p class="dynamic">{{$t('research.resource')}}</p>
+                    <p class="dynamic">{{ $t('research.resource') }}</p>
                     <div style="display: flex;">
                         <div style="display: flex;margin-right:15px" v-if="showCheckbox" class="batch-download-btn">
-                            <el-button type="primary" @click="batchDownload">{{$t('research.document')}}</el-button>
+                            <el-button type="primary" @click="batchDownload">{{ $t('research.document') }}</el-button>
                         </div>
-                        <el-button type="text" @click="toggleCheckbox">{{$t('research.download')}}</el-button>
+                        <el-button type="text" @click="toggleCheckbox">{{ $t('research.download') }}</el-button>
                     </div>
 
                 </div>
@@ -23,8 +23,8 @@
                             <div class="dynamic-dscall-buttom">{{ res.createTime }}</div>
                         </div>
 
-                        <el-checkbox v-if="showCheckbox" v-model="selectedFiles"
-                            :label="file">{{ file.iii }}</el-checkbox>
+                        <el-checkbox v-if="showCheckbox" v-model="selectedFiles" :label="file">{{ file.iii
+                            }}</el-checkbox>
                         <el-button v-if="!showCheckbox" type="" @click="downloadFile(file.url)">
                             <i class="el-icon--right">
                                 <img src="@/static/imgs/download.png" style="width: 30px;height:30px;" />
@@ -33,7 +33,7 @@
                     </div>
                 </div>
 
-                <div class="dynamic-data">
+                <!-- <div class="dynamic-data">
                     <div class="dynamic-data-num">
                         <div class="data-page">第{{ currentPage }}页</div>
                         <div class="data-limit">共{{ totalItems }}条</div>
@@ -44,7 +44,9 @@
                             :current-page.sync="currentPage" @current-change="handlePageChange">>
                         </el-pagination>
                     </div>
-                </div>
+                </div> -->
+                <Pagination :tabDatas="tabDatas" :pageSize="pageSize" :currentPage="currentPage"
+                    :totalItems="totalItems" @currentTabDatas="currentTabDatas" />
             </div>
         </div>
     </div>
@@ -54,10 +56,12 @@
 import { Research } from "@/api/requests.js";
 import funs from '@/utils/index.js'
 import axios from 'axios';
+import Pagination from "@/components/Pagination.vue";
 
 export default {
     name: "Resource",
     props: ['tabDatas'],
+    components: { Pagination },
     data() {
         return {
             resourceDatas: [...this.tabDatas],
@@ -165,7 +169,7 @@ export default {
 }
 
 .content-in {
-    width: 67%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }

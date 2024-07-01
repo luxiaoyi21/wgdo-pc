@@ -26,7 +26,7 @@
                         </div>
                     </router-link>
 
-                    <div class="dynamic-data">
+                    <!-- <div class="dynamic-data">
                         <div class="dynamic-data-num">
                             <div class="data-page">第{{ currentPage }}页</div>
                             <div class="data-limit">共{{ totalItems }}条</div>
@@ -38,7 +38,8 @@
                                 @current-change="handlePageChange">>
                             </el-pagination>
                         </div>
-                    </div>
+                    </div> -->
+                    <Pagination :tabDatas="tabDatas" :pageSize="pageSize" :currentPage="currentPage" :totalItems="totalItems" @currentTabDatas="currentTabDatas"/>
                 </div>
             </div>
         </div>
@@ -48,18 +49,19 @@
 <script>
 import { Meet } from "@/api/requests.js";
 import { Previewinfo } from "@/views/Meet/previewinfo.vue";
+import Pagination from "@/components/Pagination.vue"
 import funs from '@/utils/index.js'
 
 export default {
     name: "Preview",
     props: ['tabDatas'],
-    components: { Previewinfo },
+    components: { Previewinfo, Pagination },
     data() {
         return {
             previewDatas: [...this.tabDatas],
             currentPage: 1,
             totalItems: 0,
-            pageSize: 10,
+            pageSize: 5,
             conferenceId: 0,
             isRouterViewActive: false,
         };
@@ -128,7 +130,7 @@ export default {
 }
 
 .content-in {
-    width: 67%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }

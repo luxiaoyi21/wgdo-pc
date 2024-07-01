@@ -152,7 +152,7 @@ export default {
 }
 
 .content-in {
-    width: 67%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }

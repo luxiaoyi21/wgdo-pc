@@ -11,6 +11,7 @@
                     <p style="opacity: 1;
                     font-size: 15px;
                     font-weight: 400;
+                    font-family: 'Misans-Medium';
                     letter-spacing: 0px;
                     line-height: 25px;
                     color: rgba(51, 51, 51, 1);
@@ -95,7 +96,7 @@ export default {
 }
 
 .content-in {
-    width: 67%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }

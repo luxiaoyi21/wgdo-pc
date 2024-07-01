@@ -21,7 +21,7 @@
                     </div>
                 </div>
 
-                <div class="dynamic-data">
+                <!-- <div class="dynamic-data">
                     <div class="dynamic-data-num">
                         <div class="data-page">第{{ currentPage }}页</div>
                         <div class="data-limit">共{{ totalItems }}条</div>
@@ -32,7 +32,9 @@
                             :current-page.sync="currentPage" @current-change="handlePageChange">>
                         </el-pagination>
                     </div>
-                </div>
+                </div> -->
+                <Pagination :tabDatas="tabDatas" :pageSize="pageSize" :currentPage="currentPage"
+                    :totalItems="totalItems" @currentTabDatas="currentTabDatas" />
             </div>
         </div>
     </div>
@@ -41,10 +43,12 @@
 <script>
 import { Aboutus } from '@/api/requests.js'
 import funs from '@/utils/index.js'
+import Pagination from '@/components/Pagination.vue';
 
 export default {
     name: "Person",
     props: ['tabDatas'],
+    components: { Pagination },
     data() {
         return {
             personDatas: [...this.tabDatas],
@@ -111,7 +115,7 @@ export default {
 }
 
 .content-in {
-    width: 67%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }

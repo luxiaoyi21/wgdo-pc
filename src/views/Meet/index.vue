@@ -4,16 +4,7 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @getHomeAllTitle="getMeetData" @tabclickDatas="getTabName" />
-            <!-- 首页传值 -->
-            <!-- <Intro :tabDatas="tabDatas" /> -->
-            <Preview v-if="tabclickDatas === '活动预告'" :tabDatas="tabDatas" />
-            <Previewinfo v-if="tabclickDatas === '活动预告详情'" :tabDatas="tabDatas" />
-            <Doing v-if="tabclickDatas === '正在进行'" :tabDatas="tabDatas" />
-            <Doinginfo v-if="tabclickDatas === '正在进行详情'" :tabDatas="tabDatas" />
-            <Lookback v-if="tabclickDatas === '历届回顾'" :tabDatas="tabDatas" />
-            <Lookbackinfo v-if="tabclickDatas === '历届回顾详情'" :tabDatas="tabDatas" />
-            <!-- <router-view></router-view> -->
+            <newTabControl :tabName="tabName" :tabDatas="tabDatas" v-if="tabName, tabDatas" @gindex="getGindex" />
         </div>
         <!-- footer -->
         <div class="foot">
@@ -24,7 +15,7 @@
 
 <script>
 import Headers from "@/components/Headers.vue";
-import TabControl from "@/components/TabControl";
+import newTabControl from "@/views/Meet/newTabControl";
 import Footers from "@/views/Home/Footer/index.vue";
 import { Meet } from "@/api/requests.js";
 import { getHomeAllTitle } from '@/api/requests.js'
@@ -37,20 +28,18 @@ import Lookbackinfo from "@/views/Meet/lookbackinfo.vue";
 import funs from "@/utils/index.js"
 
 export default {
-    // onLoad(){
-    //     this.getMeetData('活动预告');
-    //     this.getTabNameData()
-    // },
     name: "Meet",
-    components: { Headers, TabControl, Footers, Preview, Previewinfo, Doing, Doinginfo, Lookback, Lookbackinfo },
+    components: { Headers, newTabControl, Footers, Preview, Previewinfo, Doing, Doinginfo, Lookback, Lookbackinfo },
     props: ["urlData"],
     data() {
         return {
             tabName: [],
             MeetDatas: [],
             tabDatas: [],
-            tabclickDatas: '活动预告',
+            // tabclickDatas: '活动预告',
+            currentNum: 1,
             name: [],
+            gindex: -1,
         };
     },
     created() {
@@ -58,46 +47,58 @@ export default {
         // this.getTabNameData()
     },
     mounted() {
-        this.getMeetData('活动预告');
-        this.getTabNameData()
+        if (this.$store.state.lang.isEn === 'en') {
+            this.getTabNameData('145')
+        } else {
+            this.getTabNameData('3')
+        }
+        this.getMeetData()
     },
     methods: {
-        getMeetData(p = this.$store.state.lang.version) {
-            Meet({ parentId: '3' }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.tabDatas = res.data.rows
-                }
-            })
-            Meet({ parentId: '145' }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.tabDatas = res.data.rows
-                }
+        //获取TabName
+        getTabNameData(v) {
+            if (v === '3') {
+                getHomeAllTitle({ parentId: 3 }).then(res => {
+                    this.tabName = res.data.rows
+                });
+            } else if (v === '145') {
+                getHomeAllTitle({ parentId: 145 }).then(res => {
+                    this.tabName = res.data.rows
+                    // console.log(this.tabName);
+                });
+            }
+        },
+        //获取对应数据
+        getMeetData(i, p = this.$store.state.lang.version) {
+            Meet({ 'moduleType': i, 'version': p, 'status': '1' }).then(res => {
+                this.tabDatas = res.data.rows
+                // this.$emit('tabDatas',this.tabDatas)
+                // console.log(this.tabDatas)
             })
         },
-        getTabNameData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ parentId: '3', version: p }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    let resss = res.data.rows[0].children
-                    this.tabName = resss.map(v => v.classifyName);
-                }
-            })
-            getHomeAllTitle({ parentId: '145', version: p }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    let resss = res.data.rows[0].children
-                    this.tabName = resss.map(v => v.classifyName);
-                }
-            })
-        },
-        getTabName(name) {
-            this.tabclickDatas = name;
+        getGindex(i) {
+            this.gindex = i
+            // console.log(this.gindex)
         },
     },
     watch: {
         "$store.state.lang.version": {
             handler() {
                 funs(this.getTabNameData(), this.$store.state.lang.version)
+                if (this.$store.state.lang.isEn === 'en') {
+                    this.getTabNameData('145')
+                } else {
+                    this.getTabNameData('3')
+                }
+                this.getMeetData(this.gindex, this.$store.state.lang.version)
             }
         },
+        "gindex": {
+            handler() {
+                this.getMeetData(this.gindex, this.$store.state.lang.version)
+                // console.log(this.currentNum);
+            }
+        }
     },
 };
 </script>

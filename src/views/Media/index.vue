@@ -5,14 +5,17 @@
         <!-- content -->
         <!-- <div class="content">
             <TabControl :tabName="tabName" @Media="getMediaData" @tabclickDatas="getTabName" />
-            <Dynamic v-if="tabclickDatas === '组织动态'" :tabDatas="tabDatas" />
-            <Video v-if="tabclickDatas === '论坛视频'" :tabDatas="tabDatas" />
-            <Report v-if="tabclickDatas === '媒体报道'" :tabDatas="tabDatas" />
+            <Dynamic v-if="currentNum === 1" :tabDatas="tabDatas" />
+            <Video v-if="currentNum === '2" :tabDatas="tabDatas" />
+            <Report v-if="currentNum === 3" :tabDatas="tabDatas" />
             <Dynamicinfo v-if="tabclickDatas === '动态详情'" :tabDatas="tabDatas" />
             <Reportinfo v-if="tabclickDatas === '报告详情'" :tabDatas="tabDatas" />
         </div> -->
         <div class="content">
             <newTabControl :tabName="tabName" :tabDatas="tabDatas" v-if="tabName, tabDatas" @gindex="getGindex" />
+            <!-- <Dynamic v-if="currentNum === 1" :tabDatas="tabDatas" />
+            <Video v-if="currentNum === 2" :tabDatas="tabDatas" />
+            <Report v-if="currentNum === 3" :tabDatas="tabDatas" /> -->
         </div>
         <!-- footer -->
         <div class="foot">
@@ -24,7 +27,8 @@
 <script>
 import Headers from "@/components/Headers.vue";
 import TabControl from "@/components/TabControl";
-import newTabControl from "@/components/newTabControl";
+// import newTabControl from "@/components/newTabControl";
+import newTabControl from "@/views/Media/newTabControl";
 import Footers from "@/views/Home/Footer/index.vue";
 import { Media } from "@/api/requests.js";
 import { getHomeAllTitle } from '@/api/requests.js'
@@ -43,7 +47,8 @@ export default {
         return {
             MediaDatas: [],
             tabDatas: [],
-            tabclickDatas: '组织动态',
+            // tabclickDatas: '组织动态',
+            currentNum: 1,
             name: [],
             tabName: [],
             gindex: -1,
@@ -68,6 +73,7 @@ export default {
             } else if (v === '146') {
                 getHomeAllTitle({ parentId: 146 }).then(res => {
                     this.tabName = res.data.rows
+                    // console.log(this.tabName);
                 });
             }
         },
@@ -75,6 +81,7 @@ export default {
         getMediaData(i, p = this.$store.state.lang.version) {
             Media({ 'moduleType': i, 'version': p, 'status': '1' }).then(res => {
                 this.tabDatas = res.data.rows
+                // this.$emit('tabDatas',this.tabDatas)
                 // console.log(this.tabDatas)
             })
         },
@@ -129,6 +136,7 @@ export default {
         "gindex": {
             handler() {
                 this.getMediaData(this.gindex, this.$store.state.lang.version)
+                // console.log(this.currentNum);
             }
         }
     },

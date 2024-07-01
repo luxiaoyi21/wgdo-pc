@@ -4,14 +4,14 @@
         <Headers />
         <!-- content -->
         <div class="content">
-            <TabControl :tabName="tabName" @getHomeAllTitle="getResearchData" @tabclickDatas="getTabName" />
+            <newTabControl :tabName="tabName" :tabDatas="tabDatas" v-if="tabName, tabDatas" @gindex="getGindex" />
             <!-- 首页传值 -->
             <!-- <Intro :tabDatas="tabDatas" /> -->
-            <Design v-if="tabclickDatas === '绿色设计报告'" :tabDatas="tabDatas" />
+            <!-- <Design v-if="tabclickDatas === '绿色设计报告'" :tabDatas="tabDatas" />
             <Designinfo v-if="tabclickDatas === '绿色设计报告详情'" :tabDatas="tabDatas" />
             <Standard v-if="tabclickDatas === '绿色设计国际标准'" :tabDatas="tabDatas" />
             <Laboratory v-if="tabclickDatas === '绿色设计国际实验室'" :tabDatas="tabDatas" />
-            <Resource v-if="tabclickDatas === '共享资源'" :tabDatas="tabDatas" />
+            <Resource v-if="tabclickDatas === '共享资源'" :tabDatas="tabDatas" /> -->
         </div>
         <!-- footer -->
         <div class="foot">
@@ -22,7 +22,7 @@
 
 <script>
 import Headers from "@/components/Headers.vue";
-import TabControl from "@/components/TabControl";
+import newTabControl from "@/views/Research/newTabControl";
 import Footers from "@/views/Home/Footer/index.vue";
 import { Research } from "@/api/requests.js";
 import { getHomeAllTitle } from '@/api/requests.js'
@@ -35,58 +35,72 @@ import funs from "@/utils/index.js"
 
 export default {
     name: "Research",
-    components: { Headers, TabControl, Footers, Design, Standard, Laboratory, Resource, Designinfo },
+    components: { Headers, newTabControl, Footers, Design, Standard, Laboratory, Resource, Designinfo },
     props: ["urlData"],
     data() {
         return {
             tabName: [],
             ResearchDatas: [],
             tabDatas: [],
-            tabclickDatas: '绿色设计报告',
+            // tabclickDatas: '绿色设计报告',
+            currentNum: 1,
             name: [],
+            gindex: -1,
         };
     },
     mounted() {
-        this.getResearchData('绿色设计报告');
-        this.getTabNameData()
+        if (this.$store.state.lang.isEn === 'en') {
+            this.getTabNameData('147')
+        } else {
+            this.getTabNameData('5')
+        }
+        this.getResearchData()
     },
     methods: {
-        getResearchData() {
-            getHomeAllTitle({ parentId: '5' }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.tabDatas = res.data.rows
-                }
-            })
-            getHomeAllTitle({ parentId: '147' }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.tabDatas = res.data.rows
-                }
+        //获取TabName
+        getTabNameData(v) {
+            if (v === '5') {
+                getHomeAllTitle({ parentId: 5 }).then(res => {
+                    this.tabName = res.data.rows
+                });
+            } else if (v === '147') {
+                getHomeAllTitle({ parentId: 147 }).then(res => {
+                    this.tabName = res.data.rows
+                    // console.log(this.tabName);
+                });
+            }
+        },
+        //获取对应数据
+        getResearchData(i, p = this.$store.state.lang.version) {
+            Research({ 'moduleType': i, 'version': p, 'status': '1' }).then(res => {
+                this.tabDatas = res.data.rows
+                // this.$emit('tabDatas',this.tabDatas)
+                // console.log(this.tabDatas)
             })
         },
-        getTabNameData(p = this.$store.state.lang.version) {
-            getHomeAllTitle({ parentId: '5', version: p }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    let resss = res.data.rows[0].children
-                    this.tabName = resss.map(v => v.classifyName);
-                }
-            })
-            getHomeAllTitle({ parentId: '147', version: p }).then(res => {
-                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    let resss = res.data.rows[0].children
-                    this.tabName = resss.map(v => v.classifyName);
-                }
-            })
-        },
-        getTabName(name) {
-            this.tabclickDatas = name;
+        getGindex(i) {
+            this.gindex = i
+            // console.log(this.gindex)
         },
     },
     watch: {
         "$store.state.lang.version": {
             handler() {
                 funs(this.getTabNameData(), this.$store.state.lang.version)
+                if (this.$store.state.lang.isEn === 'en') {
+                    this.getTabNameData('147')
+                } else {
+                    this.getTabNameData('5')
+                }
+                this.getResearchData(this.gindex, this.$store.state.lang.version)
             }
         },
+        "gindex": {
+            handler() {
+                this.getResearchData(this.gindex, this.$store.state.lang.version)
+                // console.log(this.currentNum);
+            }
+        }
     },
 };
 </script>
