@@ -13,6 +13,7 @@
             <Doinginfo v-if="tabclickDatas === '正在进行详情'" :tabDatas="tabDatas" />
             <Lookback v-if="tabclickDatas === '历届回顾'" :tabDatas="tabDatas" />
             <Lookbackinfo v-if="tabclickDatas === '历届回顾详情'" :tabDatas="tabDatas" />
+            <!-- <router-view></router-view> -->
         </div>
         <!-- footer -->
         <div class="foot">

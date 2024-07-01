@@ -50,14 +50,13 @@ export default {
         };
     },
     mounted() {
-        this.getMediaData('组织动态');
-        this.getTabNameData()
+        this.getTabNameData('组织动态')
         if (this.$store.state.lang.isEn === 'en') {
             this.getTabNameData('146')
         } else {
             this.getTabNameData('4')
         }
-        this.getMediaData('1')
+        this.getMediaData()
     },
     methods: {
         //获取TabName

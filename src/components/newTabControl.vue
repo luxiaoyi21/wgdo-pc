@@ -5,7 +5,8 @@
                 :label="item.classifyName" :name="item.classifyName">
                 <Breadcrumb :urlData="urlData" />
                 <!-- <Breadcrumb /> -->
-                <div style="font-size: small;" v-for="(i, index) in localDatas" :key="i.classifyId">{{ i.title }}</div>
+                <div style="font-size: 14px;line-height:20px" v-for="(i, index) in localDatas" :key="i.classifyId">{{
+            i.title }}</div>
             </el-tab-pane>
         </el-tabs>
     </div>
@@ -23,8 +24,8 @@ export default {
         return {
             activeName: '',
             currentNum: 1,
-            localName: [...this.tabName],
-            localDatas: [...this.tabDatas],
+            localName: [],
+            localDatas: [],
             routesData: [],
             currentRoute: [],
             urlData: [],
@@ -33,7 +34,10 @@ export default {
     mounted() {
         this.getCurrentData()
 
-        this.activeName = this.tabName[0]?.children[0]?.classifyName;
+        setTimeout(() => {
+            this.activeName = this.tabName[0]?.children[0]?.classifyName;
+            this.handleClick({ $options: { propsData: { name: this.activeName, index: 0 } } });
+        }, 500);
 
         this.routesData = this.$router.options.routes
         this.currentRoute = this.$router.history.current
@@ -42,13 +46,10 @@ export default {
                 this.urlData.push(v)
             }
         });
-
-        this.handleClick({ $options: { propsData: { name: this.activeName } } });
     },
     methods: {
         handleClick(tab) {
             this.currentNum = Number(tab.index) + 1
-            console.log(this.currentNum);
             sessionStorage.setItem('currentNums', this.currentNum)
 
             if (this.urlData.length > 1) {
@@ -56,11 +57,12 @@ export default {
             }
             let currentTabName = tab.$options.propsData.name
             this.urlData.push({ name: currentTabName })
+            // this.$forceUpdate()
         },
         getCurrentData() {
             let cn = sessionStorage.getItem('currentNums')
-            // this.localName = this.tabName
-            // this.localDatas = this.tabDatas
+            this.localName = this.tabName
+            this.localDatas = this.tabDatas
             let ln = JSON.parse(sessionStorage.getItem('ln'))
 
             if (!ln) {
@@ -80,14 +82,17 @@ export default {
                 //         this.activeName = v.classifyName
                 //     }
                 // })
-                if (ln[0] && ln[0].children) {
-                    ln[0].children.forEach((v, indexs) => {
-                        if (Number(indexs) + 1 === this.currentNum) {
-                            this.activeName = v.classifyName;
-                        }
-                    });
+                if (ln && ln[0] && ln[0].children && ln[0].children.length > 0) {
+                    let currentChild = ln[0].children.find(child => Number(child.index) === Number(this.currentNum));
+                    if (currentChild) {
+                        this.activeName = currentChild.classifyName;
+                    }
                 }
             }
+
+            this.$nextTick(() => {
+                // this.activeName = this.tabName[0]?.children[0]?.classifyName;
+            })
         },
         getTabNameData(v) {
             if (v === '4') {

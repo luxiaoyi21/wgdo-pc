@@ -31,7 +31,7 @@
                         <a href="/meet/preview">{{ $t('third.tomore') }}<i class="iconfont icon-youjiantou"></i></a>
                     </div>
                 </div>
-                <div class="contentRightCont" @click="handleinfo()" v-if="rightListDatas.length > 0">
+                <div class="contentRightCont" @click="handleinfo(0)" v-if="rightListDatas.length > 0">
                     <div class="contentRightContItem" style="background: rgba(165, 214, 63, 0.6);">
                         <div class="contentRightL">
                             <div class="contentRightLMou">{{ time[0].timer }}</div>
@@ -47,7 +47,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="contentRightCont" v-if="rightListDatas.length > 1">
+                <div class="contentRightCont" @click="handleinfo(1)" v-if="rightListDatas.length > 1">
                     <div class="contentRightContItem" style="background-color: rgba(165,214,63,0.4);;">
                         <div class="contentRightL">
                             <div class="contentRightLMou">{{ time[1].timer }}</div>
@@ -63,7 +63,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="contentRightCont" v-if="rightListDatas.length > 2">
+                <div class="contentRightCont" @click="handleinfo(2)" v-if="rightListDatas.length > 2">
                     <div class="contentRightContItem" style="background:rgba(165,214,63,0.2);">
                         <div class="contentRightL">
                             <div class="contentRightLMou">{{ time[1].timer }}</div>
@@ -79,23 +79,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- <div class="contentRightCont" v-for="third in rightListDatas" @click="handleinfo()"
-                    v-if="rightListDatas.length > 0">
-                    <div class="contentRightContItem" style="background: rgba(165, 214, 63, 0.6);">
-                        <div class="contentRightL">
-                            <div class="contentRightLMou">{{ third.timer }}</div>
-                            <div class="contentRightLYear">
-                                <span>{{ third.year }}</span><span>{{ $t('thirdNew.year') }}</span>
-                            </div>
-                        </div>
-                        <div class="contentRightR" v-if="rightListDatas.length > 0">
-                            <div class="contentRightRTitle">{{ third.title }}</div>
-                            <div class="contentRightRText">
-                                {{ third.intro }}
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
             </div>
         </div>
     </div>
@@ -152,7 +135,7 @@ export default {
         },
         handleinfo(i) {
             this.$router.push({
-                path: '/doinginfo',
+                // path: '/doinginfo',
                 name: 'Doinginfo',
                 params: {
                     fromPath: this.$route.path,
