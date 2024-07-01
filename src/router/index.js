@@ -102,18 +102,12 @@ const routes = [
                     },
                 ]
             },
-            // {
-            //     // /Meet/previewinfo 活动预告详情
-            //     path: 'previewinfo',
-            //     name: 'Previewinfo',
-            //     component: () => import('@/views/Meet/previewinfo.vue'),
-            //     meta: { auth: true },
-            // },
             {
                 // /Meet/doing 正在进行
                 path: 'doing',
                 name: 'Doing',
-                component: () => import('@/views/Meet/doing.vue'),
+                // component: () => import('@/views/Meet/doing.vue'),
+                component: { render(c) { return c('router-view') } },
                 meta: { auth: true },
                 children: [
                     {
@@ -129,7 +123,8 @@ const routes = [
                 // /Meet/lookback 历届回顾
                 path: 'lookback',
                 name: 'Lookback',
-                component: () => import('@/views/Meet/lookback.vue'),
+                // component: () => import('@/views/Meet/lookback.vue'),
+                component: { render(c) { return c('router-view') } },
                 meta: { auth: true },
                 children: [
                     {
@@ -183,7 +178,8 @@ const routes = [
                 // /Media/report 媒体报告
                 path: 'report',
                 name: 'Report',
-                component: () => import('@/views/Media/report.vue'),
+                // component: () => import('@/views/Media/report.vue'),
+                component: { render(c) { return c('router-view') } },
                 meta: { auth: true },
                 children: [
                     {
@@ -207,7 +203,8 @@ const routes = [
                 // /Research/design 绿色设计报告
                 path: 'design',
                 name: 'Design',
-                component: () => import('@/views/Research/design.vue'),
+                // component: () => import('@/views/Research/design.vue'),
+                component: { render(c) { return c('router-view') } },
                 meta: { auth: true },
                 children: [
                     {
@@ -259,7 +256,8 @@ const routes = [
                 // /Project/publicity 捐赠公示
                 path: 'publicity',
                 name: 'Publicity',
-                component: () => import('@/views/Project/publicity.vue'),
+                // component: () => import('@/views/Project/publicity.vue'),
+                component: { render(c) { return c('router-view') } },
                 meta: { auth: true },
                 children: [
                     {
@@ -312,7 +310,8 @@ const routes = [
                 // /Prize/big
                 path: 'big',
                 name: 'Big',
-                component: () => import('@/views/Prize/big.vue'),
+                // component: () => import('@/views/Prize/big.vue'),
+                component: { render(c) { return c('router-view') } },
                 meta: { auth: true },
                 children: [
                     {
@@ -335,7 +334,8 @@ const routes = [
                 // /Prize/contribute 绿色设计国际贡献奖
                 path: 'contribute',
                 name: 'Contribute',
-                component: () => import('@/views/Prize/contribute.vue'),
+                // component: () => import('@/views/Prize/contribute.vue'),
+                component: { render(c) { return c('router-view') } },
                 meta: { auth: true },
                 children: [
                     {

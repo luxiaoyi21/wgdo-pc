@@ -1,6 +1,7 @@
 <template>
     <div class="item">
-        <div class="content">
+        <router-view v-if="showChild"></router-view>
+        <div class="content" v-if="!showChild">
             <div class="content-in">
                 <p class="dynamic">{{ $t('meet.doing') }}</p>
 
@@ -10,7 +11,7 @@
                 <div class="dynamic-dsc">
                     <router-link
                         :to="isSecondLink(index) ? { name: 'Doinginfo', query: { id: doing.conferenceId } } : { path: doing.externalLink }"
-                        class="doing-in" v-for="(doing, index) in doingDatas" :key="doing.conferenceId">
+                        class="doing-in" @click.native="handleLinkClick()" v-for="(doing, index) in doingDatas" :key="doing.conferenceId">
                         <div class="doing-img">
                             <img :src="'http://www.wgdo.net' + doing.cover" alt="">
                         </div>
@@ -33,6 +34,7 @@ export default {
     data() {
         return {
             doingDatas: [...this.tabDatas],
+            showChild: false,
         };
     },
     mounted() {
@@ -48,6 +50,16 @@ export default {
                     this.doingDatas = res.data.rows
                 }
             })
+        },
+        handleLinkClick(id) {
+            const currentQuery = this.$route.query;
+            this.showChild = true;
+            if (!currentQuery) {
+                this.$router.push({ name: 'Doinginfo' });
+            } else {
+                // alert('已经跳转.');
+            }
+            // console.log('Navigating to Dynamicinfo with id:', id);
         }
     },
     watch: {

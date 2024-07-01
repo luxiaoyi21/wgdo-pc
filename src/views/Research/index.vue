@@ -5,13 +5,6 @@
         <!-- content -->
         <div class="content">
             <newTabControl :tabName="tabName" :tabDatas="tabDatas" v-if="tabName, tabDatas" @gindex="getGindex" />
-            <!-- 首页传值 -->
-            <!-- <Intro :tabDatas="tabDatas" /> -->
-            <!-- <Design v-if="tabclickDatas === '绿色设计报告'" :tabDatas="tabDatas" />
-            <Designinfo v-if="tabclickDatas === '绿色设计报告详情'" :tabDatas="tabDatas" />
-            <Standard v-if="tabclickDatas === '绿色设计国际标准'" :tabDatas="tabDatas" />
-            <Laboratory v-if="tabclickDatas === '绿色设计国际实验室'" :tabDatas="tabDatas" />
-            <Resource v-if="tabclickDatas === '共享资源'" :tabDatas="tabDatas" /> -->
         </div>
         <!-- footer -->
         <div class="foot">

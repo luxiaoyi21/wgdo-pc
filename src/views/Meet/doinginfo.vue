@@ -4,7 +4,7 @@
             <div class="content-in">
                 <div v-for="info in infoDatas" :key="info.conferenceId">
                     <div class="info-img">
-                        <img :src="'http://106.3.97.14:9002' + info.cover" alt="">
+                        <img :src="'http://www.wgdo.net' + info.cover" alt="">
                     </div>
 
                     <p class="dynamic">{{ info.title }}</p>
@@ -424,7 +424,7 @@ export default {
     methods: {
         getDoinginfoData(p = this.$store.state.lang.version) {
             const id = this.$route.query.id;
-            Meet({ status: '1', version: p, id: id }).then(res => {
+            Meet({ moduleType: '2', status: '1', version: p, id: id }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.infoDatas = res.data.rows
                 }

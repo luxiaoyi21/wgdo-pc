@@ -1,9 +1,7 @@
 <template>
     <div class="item">
-        <!-- <router-view @hook:mounted="onRouterViewMounted" @hook:updated="onRouterViewUpdated"></router-view> -->
-        <!-- <router-view></router-view> -->
-        <!-- <div v-if="!isRouterViewActive" class="content"> -->
-        <div class="content">
+        <router-view v-if="showChild"></router-view>
+        <div class="content" v-if="!showChild">
             <div class="content-in">
                 <p class="dynamic">{{ $t('meet.previewact') }}</p>
 
@@ -13,7 +11,8 @@
                 <div class="dynamic-dsc">
                     <router-link
                         :to="isSecondLink(index) ? { name: 'Previewinfo', query: { id: preview.conferenceId } } : { path: preview.externalLink }"
-                        class="dynamic-content" v-for="(preview, index) in previewDatas" :key="preview.conferenceId">
+                        class="dynamic-content" @click.native="handleLinkClick()"
+                        v-for="(preview, index) in previewDatas" :key="preview.conferenceId">
                         <div class="dynamic-img">
                             <img :src="'http://www.wgdo.net' + preview.cover" alt="">
                         </div>
@@ -26,20 +25,8 @@
                         </div>
                     </router-link>
 
-                    <!-- <div class="dynamic-data">
-                        <div class="dynamic-data-num">
-                            <div class="data-page">第{{ currentPage }}页</div>
-                            <div class="data-limit">共{{ totalItems }}条</div>
-                        </div>
-
-                        <div class="devide-page">
-                            <el-pagination background layout="prev, pager, next" :total="totalItems"
-                                :page-size="pageSize" :current-page.sync="currentPage"
-                                @current-change="handlePageChange">>
-                            </el-pagination>
-                        </div>
-                    </div> -->
-                    <Pagination :tabDatas="tabDatas" :pageSize="pageSize" :currentPage="currentPage" :totalItems="totalItems" @currentTabDatas="currentTabDatas"/>
+                    <Pagination :tabDatas="tabDatas" :pageSize="pageSize" :currentPage="currentPage"
+                        :totalItems="totalItems" @currentTabDatas="currentTabDatas" />
                 </div>
             </div>
         </div>
@@ -63,7 +50,7 @@ export default {
             totalItems: 0,
             pageSize: 5,
             conferenceId: 0,
-            isRouterViewActive: false,
+            showChild: false,
         };
     },
     computed: {
@@ -93,6 +80,16 @@ export default {
         },
         handlePageChange(newPage) {
             this.currentPage = newPage;
+        },
+        handleLinkClick(id) {
+            const currentQuery = this.$route.query;
+            this.showChild = true;
+            if (!currentQuery) {
+                this.$router.push({ name: 'Previewinfo' });
+            } else {
+                // alert('已经跳转.');
+            }
+            // console.log('Navigating to Dynamicinfo with id:', id);
         }
     },
     watch: {

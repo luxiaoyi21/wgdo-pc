@@ -1,7 +1,7 @@
 <template>
     <div class="item">
-        <!-- <router-view><router-view></router-view></router-view> -->
-        <div class="content">
+        <router-view v-if="showChild"></router-view>
+        <div class="content" v-if="!showChild">
             <div class="content-in">
 
                 <p class="dynamic">{{ $t('research.design') }}</p>
@@ -11,7 +11,7 @@
 
                 <div class="dynamic-dsc">
                     <router-link :to="{ name: 'Designinfo', query: { id: design.academicId } }" class="doing-in"
-                        v-for="design in designDatas" :key="design.academicId">
+                        v-for="design in designDatas" @click.native="handleLinkClick()" :key="design.academicId">
                         <div class="doing-img">
                             <img :src="'http://www.wgdo.net' + design.cover" alt="">
                         </div>
@@ -19,18 +19,6 @@
                     </router-link>
                 </div>
 
-                <!-- <div class="dynamic-data">
-                    <div class="dynamic-data-num">
-                        <div class="data-page">第{{ currentPage }}页</div>
-                        <div class="data-limit">共{{ totalItems }}条</div>
-                    </div>
-
-                    <div class="devide-page">
-                        <el-pagination background layout="prev, pager, next" :total="totalItems" :page-size="pageSize"
-                            :current-page.sync="currentPage" @current-change="handlePageChange">>
-                        </el-pagination>
-                    </div>
-                </div> -->
                 <Pagination :tabDatas="tabDatas" :pageSize="pageSize" :currentPage="currentPage"
                     :totalItems="totalItems" @currentTabDatas="currentTabDatas" />
             </div>
@@ -53,6 +41,7 @@ export default {
             currentPage: 1,
             totalItems: 0,
             pageSize: 9,
+            showChild: false,
         };
     },
     computed: {
@@ -76,6 +65,16 @@ export default {
         },
         handlePageChange(newPage) {
             this.currentPage = newPage;
+        },
+        handleLinkClick(id) {
+            const currentQuery = this.$route.query;
+            this.showChild = true;
+            if (!currentQuery) {
+                this.$router.push({ name: 'Designinfo' });
+            } else {
+                // alert('已经跳转.');
+            }
+            // console.log('Navigating to Dynamicinfo with id:', id);
         }
     },
     watch: {

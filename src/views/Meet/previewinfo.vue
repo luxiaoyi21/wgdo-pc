@@ -4,7 +4,7 @@
             <div class="content-in">
                 <div v-for="info in infoDatas" :key="info.conferenceId">
                     <div class="info-img">
-                        <img :src="'http://106.3.97.14:9002' + info.cover" alt="">
+                        <img :src="'http://www.wgdo.net' + info.cover" alt="">
                     </div>
 
                     <p class="dynamic">{{ info.title }}</p>
@@ -474,7 +474,7 @@ export default {
 }
 
 .content-in {
-    width: 67%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -1090,7 +1090,7 @@ export default {
 }
 
 .el-button img {
-    scale: 0.7;
+    scale: 0.4;
 }
 
 .el-button.is-round {

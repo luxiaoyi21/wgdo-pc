@@ -1,7 +1,7 @@
 <template>
     <div class="item">
-        <!-- <router-view><router-view></router-view></router-view> -->
-        <div class="content">
+        <router-view v-if="showChild"></router-view>
+        <div class="content" v-if="!showChild">
             <div class="content-in">
                 <p class="dynamic">{{ $t('dynamic.report') }}</p>
 
@@ -10,7 +10,7 @@
 
                 <div class="dynamic-dsc">
                     <router-link :to="{ name: 'Reportinfo', query: { id: video.mediacenterId } }"
-                        class="dynamic-content" v-for="video in reportDatas" :key="video.mediacenterId">
+                        class="dynamic-content" @click.native="handleLinkClick()" v-for="video in reportDatas" :key="video.mediacenterId">
                         <div class="dynamic-time">
                             <div class="dynamic-time-top">{{ video.timer }}</div>
                             <div class="dynamic-time-buttom">{{ video.year }}</div>
@@ -38,7 +38,8 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            reportDatas: [...this.tabDatas],
+            reportDatas: [],
+            showChild: false,
         };
     },
     mounted() {
@@ -69,6 +70,16 @@ export default {
                 timer: month + "-" + day,
             };
         },
+        handleLinkClick(id) {
+            const currentQuery = this.$route.query;
+            this.showChild = true;
+            if (!currentQuery) {
+                this.$router.push({ name: 'Reportinfo' });
+            } else {
+                // alert('已经跳转.');
+            }
+            // console.log('Navigating to Dynamicinfo with id:', id);
+        }
     },
     watch: {
         "$store.state.lang.version": {

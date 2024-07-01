@@ -1,6 +1,7 @@
 <template>
     <div class="item">
-        <div class="content">
+        <router-view v-if="showChild"></router-view>
+        <div class="content" v-if="!showChild">
             <div class="content-in">
                 <p class="dynamic">{{ $t('meet.lookback') }}</p>
 
@@ -10,7 +11,7 @@
                 <div class="dynamic-dsc">
                     <router-link
                         :to="isSecondLink(index) ? { name: 'Lookbackinfo', query: { id: back.conferenceId } } : { path: back.externalLink }"
-                        class="doing-in" v-for="(back, index) in lookbackDatas" :key="back.conferenceId">
+                        class="doing-in" @click.native="handleLinkClick()" v-for="(back, index) in lookbackDatas" :key="back.conferenceId">
                         <div class="doing-img">
                             <img :src="'http://www.wgdo.net' + back.cover" alt="">
                         </div>
@@ -19,18 +20,6 @@
                     </router-link>
                 </div>
 
-                <!-- <div class="dynamic-data">
-                    <div class="dynamic-data-num">
-                        <div class="data-page">第{{ currentPage }}页</div>
-                        <div class="data-limit">共{{ totalItems }}条</div>
-                    </div>
-
-                    <div class="devide-page">
-                        <el-pagination background layout="prev, pager, next" :total="totalItems" :page-size="pageSize"
-                            :current-page.sync="currentPage" @current-change="handlePageChange">>
-                        </el-pagination>
-                    </div>
-                </div> -->
                 <Pagination :tabDatas="tabDatas" :pageSize="pageSize" :currentPage="currentPage"
                     :totalItems="totalItems" @currentTabDatas="currentTabDatas" />
             </div>
@@ -53,6 +42,7 @@ export default {
             currentPage: 1,
             totalItems: 0,
             pageSize: 9,
+            showChild: false,
         };
     },
     computed: {
@@ -78,7 +68,17 @@ export default {
             })
         },
         handlePageChange(newPage) {
-            this.currentPage = newPage;
+            this.c,urrentPage = newPage;
+        },
+        handleLinkClick(id) {
+            const currentQuery = this.$route.query;
+            this.showChild = true;
+            if (!currentQuery) {
+                this.$router.push({ name: 'Lookbackinfo' });
+            } else {
+                // alert('已经跳转.');
+            }
+            // console.log('Navigating to Dynamicinfo with id:', id);
         }
     },
     watch: {

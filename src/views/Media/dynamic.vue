@@ -9,7 +9,7 @@
                 <div class="dsc-line" style=""></div>
 
                 <div class="dynamic-dsc" v-for="dym in dynamicDatas" :key="dym.mediacenterId">
-                    <router-link :to="{ name: 'Dynamicinfo' }" class="dynamic-content"
+                    <router-link :to="{ name: 'Dynamicinfo', query: { id: dym.mediacenterId } }" class="dynamic-content"
                         @click.native="handleLinkClick()">
                         <div class="dynamic-time">
                             <div class="dynamic-time-top">{{ dym.timer }}</div>
@@ -25,18 +25,6 @@
                     </router-link>
                 </div>
 
-                <!-- <div class="dynamic-data">
-                    <div class="dynamic-data-num">
-                        <div class="data-page">第{{ currentPage }}页</div>
-                        <div class="data-limit">共{{ totalItems }}条</div>
-                    </div>
-
-                    <div class="devide-page">
-                        <el-pagination background layout="prev, pager, next" :total="totalItems" :page-size="pageSize"
-                            :current-page.sync="currentPage" @current-change="handlePageChange">>
-                        </el-pagination>
-                    </div>
-                </div> -->
                 <Pagination :tabDatas="tabDatas" :pageSize="pageSize" :currentPage="currentPage"
                     :totalItems="totalItems" @currentTabDatas="currentTabDatas" />
             </div>

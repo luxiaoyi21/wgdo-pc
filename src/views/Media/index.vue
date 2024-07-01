@@ -3,19 +3,8 @@
         <!-- header -->
         <Headers />
         <!-- content -->
-        <!-- <div class="content">
-            <TabControl :tabName="tabName" @Media="getMediaData" @tabclickDatas="getTabName" />
-            <Dynamic v-if="currentNum === 1" :tabDatas="tabDatas" />
-            <Video v-if="currentNum === '2" :tabDatas="tabDatas" />
-            <Report v-if="currentNum === 3" :tabDatas="tabDatas" />
-            <Dynamicinfo v-if="tabclickDatas === '动态详情'" :tabDatas="tabDatas" />
-            <Reportinfo v-if="tabclickDatas === '报告详情'" :tabDatas="tabDatas" />
-        </div> -->
         <div class="content">
             <newTabControl :tabName="tabName" :tabDatas="tabDatas" v-if="tabName, tabDatas" @gindex="getGindex" />
-            <!-- <Dynamic v-if="currentNum === 1" :tabDatas="tabDatas" />
-            <Video v-if="currentNum === 2" :tabDatas="tabDatas" />
-            <Report v-if="currentNum === 3" :tabDatas="tabDatas" /> -->
         </div>
         <!-- footer -->
         <div class="foot">

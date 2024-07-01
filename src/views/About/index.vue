@@ -5,11 +5,6 @@
         <!-- content -->
         <div class="content">
             <newTabControl :tabName="tabName" :tabDatas="tabDatas" v-if="tabName, tabDatas" @gindex="getGindex" />
-            <!-- 首页传值 -->
-            <!-- <Aboutintro v-if="tabclickDatas === '组织介绍'" :tabDatas="tabDatas" />
-            <Aboutor v-if="tabclickDatas === '组织架构'" :tabDatas="tabDatas" />
-            <Person v-if="tabclickDatas === '重要人物'" :tabDatas="tabDatas" />
-            <Contact v-if="tabclickDatas === '联系我们'" :tabDatas="tabDatas" /> -->
         </div>
         <!-- footer -->
         <div class="foot">
