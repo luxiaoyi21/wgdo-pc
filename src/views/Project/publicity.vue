@@ -69,6 +69,7 @@ export default {
     data() {
         return {
             pubDatas: [...this.tabDatas],
+            show: false,
         };
     },
     mounted() {
@@ -83,6 +84,7 @@ export default {
             })
         },
         toNext(index) {
+            // this.show = true
             if (index === 0) {
                 this.$router.push({ path: '/Project/publicity/record' });
             } else if (index === 1) {

@@ -89,7 +89,7 @@ const routes = [
                 path: 'preview',
                 name: 'Preview',
                 component: { render(c) { return c('router-view') } },
-                redirect: 'previewinfo',
+                // redirect: 'previewinfo',
                 // component: () => import('@/views/Meet/preview.vue'),
                 meta: { auth: true },
                 children: [
@@ -158,7 +158,9 @@ const routes = [
                 // /Media/dynamic 组织动态
                 path: 'dynamic',
                 name: 'Dynamic',
-                component: () => import('@/views/Media/dynamic.vue'),
+                component: { render(c) { return c('router-view') } },
+                // redirect: 'dynamicinfo',
+                // component: () => import('@/views/Media/dynamic.vue'),
                 meta: { auth: true },
                 children: [
                     {

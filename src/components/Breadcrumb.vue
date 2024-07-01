@@ -5,7 +5,6 @@
             <el-breadcrumb-item v-for="item in urlData" :to="{ path: item.path }">
                 <i class="iconfont icon-zuojiantou" id="lef"></i>
                 {{ item.name }}
-                <!-- {{ getBreadcrumbName(item) }} -->
             </el-breadcrumb-item>
         </el-breadcrumb>
     </div>
@@ -19,30 +18,15 @@ export default {
     props: ['urlData'],
     data() {
         return {
-            // urlData: [
-            //     { path: '/about', name_zh: '关于我们', name_en: 'About' },
-            //     { path: '/meet', name_zh: '会议活动', name_en: 'Meet' },
-            //     { path: '/media', name_zh: '媒体中心', name_en: 'Media' },
-            //     { path: '/research', name_zh: '学术研究', name_en: 'Research' },
-            //     { path: '/project', name_zh: '公益项目', name_en: 'Project' },
-            //     { path: '/prize', name_zh: '国际绿奖', name_en: 'Prize' },
-            //     { path: '/wgdo', name_zh: 'WGDO绿研院', name_en: 'Wgdo' }
-            // ],
-            // language: 'zh',
         }
     },
     mounted() {
-        // this.getBreadcrumbName();
+
     },
     computed: {
-        // propUrlData() {
-        //     return this.$router.options.routes;
-        // }
+      
     },
     methods: {
-        // getBreadcrumbName(item) {
-        //     return this.language === 'zh' ? item.name_zh : item.name_en;
-        // },
         addBreadcrumb(item) {
             const newItem = { name: '组织动态详情', path: `${item.path}/dynamicinfo` };
             this.$emit('update:urlData', [...this.urlData, newItem]);

@@ -104,11 +104,12 @@ export default {
     },
     mounted() {
         this.getDynamicinfoData()
+        // console.log(1111);
     },
     methods: {
         getDynamicinfoData(p = this.$store.state.lang.version) {
-            const id = this.$route.query.id;
-            Media({ moduleType: '1', status: '1', version: p, id: id }).then(res => {
+            // const id = this.$route.query.id;
+            Media({ moduleType: '1', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.dynamicinfoDatas = res.data.rows
                 }

@@ -12,11 +12,7 @@
             <Reportinfo v-if="tabclickDatas === '报告详情'" :tabDatas="tabDatas" />
         </div> -->
         <div class="content">
-            <newTabControl :tabName="tabName" @gindex="getGindex" :TabDatas="TabDatas" />
-            <!-- <Dynamic v-if="gindex === '1'" :TabDatas="tabDatas" />
-            <Video v-if="gindex === '2'" :TabDatas="tabDatas" />
-            <Report v-if="gindex === '3'" :TabDatas="tabDatas" /> -->
-            <!-- <router-view></router-view> -->
+            <newTabControl :tabName="tabName" :tabDatas="tabDatas" v-if="tabName, tabDatas" @gindex="getGindex" />
         </div>
         <!-- footer -->
         <div class="foot">
@@ -51,7 +47,6 @@ export default {
             name: [],
             tabName: [],
             gindex: -1,
-            TabDatas: [],
         };
     },
     mounted() {
@@ -80,13 +75,13 @@ export default {
         //获取对应数据
         getMediaData(i, p = this.$store.state.lang.version) {
             Media({ 'moduleType': i, 'version': p, 'status': '1' }).then(res => {
-                this.TabDatas = res.data.rows
-                // console.log(this.TabDatas)
+                this.tabDatas = res.data.rows
+                // console.log(this.tabDatas)
             })
         },
         getGindex(i) {
-            this.gindex = Number(i) + 1
-            console.log(this.gindex)
+            this.gindex = i
+            // console.log(this.gindex)
         },
 
         // getMediaData() {
@@ -115,10 +110,10 @@ export default {
         //         }
         //     })
         // },
-        getTabName(name) {
-            this.tabclickDatas = name;
-            // console.log(name);
-        },
+        // getTabName(name) {
+        //     this.tabclickDatas = name;
+        //     // console.log(name);
+        // },
     },
     watch: {
         "$store.state.lang.version": {

@@ -1,12 +1,11 @@
 <template>
-    <div class="newtabcontrol">
+    <div class="tc">
         <el-tabs class="ets" v-model="activeName" @tab-click="handleClick">
-            <el-tab-pane class="etp" v-for="(item, index) in tabName[0]?.children" :label="item.classifyName"
-                :name="item.classifyName" :key="index">
+            <el-tab-pane class="etp" v-for="(item, index) in tabName[0]?.children" :key="index"
+                :label="item.classifyName" :name="item.classifyName">
                 <Breadcrumb :urlData="urlData" />
-
-                <!-- <div v-for="i in localtabDatas" :key="i.category" style="font-size: 12px;">{{ i.title }}</div> -->
-                <!-- <router-view></router-view> -->
+                <!-- <Breadcrumb /> -->
+                <div style="font-size: small;" v-for="(i, index) in localDatas" :key="i.classifyId">{{ i.title }}</div>
             </el-tab-pane>
         </el-tabs>
     </div>
@@ -14,104 +13,135 @@
 
 <script>
 import { Aboutus, Meet, Media, Research, Project, Prize, getWgdo, getHomeAllTitle } from "@/api/requests.js";
-import Breadcrumb from '@/components/Breadcrumb'
+import Breadcrumb from '@/components/Breadcrumb';
 
 export default {
-    name: 'newtabcontrol',
+    name: 'Tc',
     components: { Breadcrumb },
     props: ['tabName', 'tabDatas'],
     data() {
         return {
             activeName: '',
-            localtabDatas: [],
+            currentNum: 1,
+            localName: [...this.tabName],
+            localDatas: [...this.tabDatas],
+            routesData: [],
+            currentRoute: [],
             urlData: [],
-            currentNums: [],
         }
     },
     mounted() {
-        // console.log(this.tabName)
-        this.activeName = this.tabName && this.tabName.length > 0 ? this.tabName[0] : '';
+        this.getCurrentData()
 
-        this.routesData = this.$router.options.routes;
-        this.currentRoute = this.$router.history.current;
+        this.activeName = this.tabName[0]?.children[0]?.classifyName;
+
+        this.routesData = this.$router.options.routes
+        this.currentRoute = this.$router.history.current
         this.routesData.forEach(v => {
             if (v.name === this.currentRoute.name) {
-                this.urlData.push(v);
+                this.urlData.push(v)
             }
         });
-
-        // const currentNumsString = sessionStorage.getItem('currentNums');
-        // if (currentNumsString !== null) {
-        //     const currentNums = JSON.parse(currentNumsString);
-        //     this.currentNums = currentNums;
-        // }
 
         this.handleClick({ $options: { propsData: { name: this.activeName } } });
     },
     methods: {
         handleClick(tab) {
+            this.currentNum = Number(tab.index) + 1
+            console.log(this.currentNum);
+            sessionStorage.setItem('currentNums', this.currentNum)
+
             if (this.urlData.length > 1) {
                 this.urlData.pop()
             }
             let currentTabName = tab.$options.propsData.name
             this.urlData.push({ name: currentTabName })
-            // console.log(this.urlData);
-
-            let gi = Number(tab.index) + 1
-            sessionStorage.setItem('currentNums', JSON.stringify(tab.index))
-            // const currentNums = sessionStorage.getItem('currentNums') ? JSON.parse(sessionStorage.getItem('currentNums')) : null;
-            this.$emit('gindex', tab.index)
-            this.getMediaData(gi)
         },
-        getMediaData(i, p = this.$store.state.lang.version) {
-            Media({ 'moduleType': i, 'version': p, 'status': '1' }).then(res => {
-                this.localtabDatas = res.data.rows
-                // console.log(this.localtabDatas);
-            })
+        getCurrentData() {
+            let cn = sessionStorage.getItem('currentNums')
+            // this.localName = this.tabName
+            // this.localDatas = this.tabDatas
+            let ln = JSON.parse(sessionStorage.getItem('ln'))
+
+            if (!ln) {
+                sessionStorage.setItem('ln', JSON.stringify(this.localName))
+                let ln = JSON.parse(sessionStorage.getItem('ln'))
+            }
+
+            this.$emit('gindex', this.currentNum);
+
+            if (cn === undefined) {
+                this.currentNum = 1
+                this.activeName = ln[0].children[0].classifyName
+            } else {
+                this.currentNum = cn
+                // ln[0].children.forEach((v, indexs) => {
+                //     if ((Number(indexs) + 1) == this.currentNum) {
+                //         this.activeName = v.classifyName
+                //     }
+                // })
+                if (ln[0] && ln[0].children) {
+                    ln[0].children.forEach((v, indexs) => {
+                        if (Number(indexs) + 1 === this.currentNum) {
+                            this.activeName = v.classifyName;
+                        }
+                    });
+                }
+            }
+        },
+        getTabNameData(v) {
+            if (v === '4') {
+                getHomeAllTitle({ parentId: 4 }).then(res => {
+                    this.localName = res.data.rows
+                    sessionStorage.setItem('ln', JSON.stringify(this.localName))
+                })
+            } else if (v === '146') {
+                getHomeAllTitle({ parentId: 146 }).then(res => {
+                    this.localName = res.data.rows
+                    sessionStorage.setItem('ln', JSON.stringify(this.localName))
+                })
+            }
         }
     },
     watch: {
-        'tabName': {
+        'currentNum': {
             handler() {
-                // const currentNums = JSON.parse(sessionStorage.getItem('currentNums'));
-                // if (this.tabName && this.tabName[0]?.children) {
-                //     if (currentNums) {
-                //         this.activeName = this.tabName[0]?.children[Number(currentNums)].classifyName;
-                //     } else {
-                //         this.activeName = this.tabName[0]?.children[0].classifyName;
-                //     }
-                // }
-                // this.getMediaData(currentNums)
-                try {
-                    const currentNums = JSON.parse(sessionStorage.getItem('currentNums'));
-                    if (this.tabName && this.tabName[0]?.children) {
-                        if (currentNums) {
-                            if (currentNums >= 0 && currentNums < this.tabName[0].children.length) {
-                                this.activeName = this.tabName[0]?.children[currentNums].classifyName;
-                            } else {
-                                this.activeName = this.tabName[0].children[0].classifyName;
-                            }
-                        } else {
-                            this.activeName = this.tabName[0]?.children[0].classifyName;
-                        }
+                this.$emit('gindex', this.currentNum)
+                let ln = JSON.parse(sessionStorage.getItem('ln'))
+                // this.activeName = ln[0].children[(Number(this.currentNum) - 1)].classifyName
+                if (ln && ln[0] && ln[0].children && ln[0].children.length > 0) {
+                    let currentChild = ln[0].children.find(child => Number(child.index) === Number(this.currentNum));
+                    if (currentChild) {
+                        this.activeName = currentChild.classifyName;
                     }
-                    this.getMediaData(currentNums);
-                } catch (error) {
-
                 }
-            },
-            deep: true
+            }
+        },
+        "tabDatas": {
+            handler(n) {
+                this.localDatas = n
+            }
+        },
+        "$store.state.lang.version": {
+            handler() {
+                if (this.$store.state.lang.isEn === 'en') {
+                    this.getTabNameData('146')
+                } else {
+                    this.getTabNameData('4')
+                }
+            }
         }
     },
     beforeRouteLeave(to, from, next) {
         sessionStorage.removeItem('currentNums')
+        sessionStorage.removeItem('ln')
         next();
     }
 }
 </script>
 
 <style scoped>
-.newtabcontrol {
+.tc {
     width: 100%;
     display: flex;
     flex-direction: row;
@@ -132,7 +162,6 @@ export default {
     text-align: left;
     vertical-align: top;
     /* background-color: #ffd; */
-    height: 550px;
 }
 
 /*未选中时字体颜色*/
@@ -160,8 +189,8 @@ export default {
 }
 
 /* 下划线颜色 */
-:deep(.el-tabs__active-bar) {
-    color: rgba(62, 73, 56, 1);
+::v-deep .el-tabs__active-bar {
+    background-color: rgba(62, 73, 56, 1);
 }
 
 /* 修改底部最长的边颜色 */
@@ -173,16 +202,5 @@ export default {
     padding: 0;
     position: relative;
     margin: 0;
-}
-
-.wgdo-in {
-    display: flex;
-    font-size: 18px;
-    font-weight: 400;
-    letter-spacing: 0px;
-    line-height: 23.87px;
-    color: rgba(51, 51, 51, 1);
-    text-align: justify;
-    vertical-align: top;
 }
 </style>

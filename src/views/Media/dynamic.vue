@@ -1,16 +1,16 @@
 <template>
     <div class="item">
-        <!-- <router-view></router-view> -->
-        <div class="content">
+        <router-view v-if="showChild"></router-view>
+        <div class="content" v-if="!showChild">
             <div class="content-in">
                 <p class="dynamic">{{ $t('dynamic.dynamics') }}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=""></div>
 
-                <div class="dynamic-dsc" v-for="dym in currentTabDatas" :key="dym.mediacenterId">
-                    <router-link :to="{ name: 'Dynamicinfo', query: { id: dym.mediacenterId } }" class="dynamic-content"
-                        @click.native="handleLinkClick(dym.mediacenterId)">
+                <div class="dynamic-dsc" v-for="dym in dynamicDatas" :key="dym.mediacenterId">
+                    <router-link :to="{ name: 'Dynamicinfo' }" class="dynamic-content"
+                        @click.native="handleLinkClick()">
                         <div class="dynamic-time">
                             <div class="dynamic-time-top">{{ dym.timer }}</div>
                             <div class="dynamic-time-buttom">{{ dym.year }}</div>
@@ -58,6 +58,7 @@ export default {
             pageSize: 10,
             time: [],
             day: [],
+            showChild: false,
         };
     },
     created() {
@@ -71,7 +72,10 @@ export default {
             const start = (this.currentPage - 1) * this.pageSize;
             const end = start + this.pageSize;
             return this.dynamicDatas.slice(start, end);
-        }
+        },
+        // Route() {
+        //     return router.currentRoute.value.fullPath;
+        // }
     },
     methods: {
         getMediaData(p = this.$store.state.lang.version) {
@@ -104,10 +108,11 @@ export default {
         },
         handleLinkClick(id) {
             const currentQuery = this.$route.query;
-            if (currentQuery.id !== id) {
-                this.$router.push({ name: 'Dynamicinfo', query: { id } });
+            this.showChild = true;
+            if (!currentQuery) {
+                this.$router.push({ name: 'Dynamicinfo' });
             } else {
-                // alert('Already on the target page.');
+                // alert('已经跳转.');
             }
             // console.log('Navigating to Dynamicinfo with id:', id);
         }
@@ -124,7 +129,12 @@ export default {
     //         this.getMediaData();
     //     }
     //     next();
-    // }
+    // },
+    // beforeRouteEnter(to, from, next) {
+    //     next(vm => {
+    //         vm.getMediaData();
+    //     });
+    // },
 }
 </script>
 

@@ -31,7 +31,7 @@
                         <a href="/meet/preview">{{ $t('third.tomore') }}<i class="iconfont icon-youjiantou"></i></a>
                     </div>
                 </div>
-                <div class="contentRightCont" v-if="rightListDatas.length > 0">
+                <div class="contentRightCont" @click="handleinfo()" v-if="rightListDatas.length > 0">
                     <div class="contentRightContItem" style="background: rgba(165, 214, 63, 0.6);">
                         <div class="contentRightL">
                             <div class="contentRightLMou">{{ time[0].timer }}</div>
@@ -79,6 +79,23 @@
                         </div>
                     </div>
                 </div>
+                <!-- <div class="contentRightCont" v-for="third in rightListDatas" @click="handleinfo()"
+                    v-if="rightListDatas.length > 0">
+                    <div class="contentRightContItem" style="background: rgba(165, 214, 63, 0.6);">
+                        <div class="contentRightL">
+                            <div class="contentRightLMou">{{ third.timer }}</div>
+                            <div class="contentRightLYear">
+                                <span>{{ third.year }}</span><span>{{ $t('thirdNew.year') }}</span>
+                            </div>
+                        </div>
+                        <div class="contentRightR" v-if="rightListDatas.length > 0">
+                            <div class="contentRightRTitle">{{ third.title }}</div>
+                            <div class="contentRightRText">
+                                {{ third.intro }}
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
             </div>
         </div>
     </div>
@@ -132,6 +149,18 @@ export default {
                 year: year,
                 timer: month + "-" + day,
             };
+        },
+        handleinfo(i) {
+            this.$router.push({
+                path: '/doinginfo',
+                name: 'Doinginfo',
+                params: {
+                    fromPath: this.$route.path,
+                    fromName: this.$route.name,
+                    datas: this.rightListDatas[i],
+                    orders: i
+                }
+            })
         }
     },
     watch: {

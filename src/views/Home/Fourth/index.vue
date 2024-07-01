@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="bottoms">
-            <div class="bootomsItem" v-for="item in bottomItemDatas" :key="item.hpId" :id="item.hpId"
+            <div class="bootomsItem" v-for="item in bottomItemDatas" @click="toNext()" :key="item.hpId" :id="item.hpId"
                 @mouseover="handleMouseOver">
                 <div class="botImgs bottmsIsActive">
                     <img :src="'http://www.wgdo.net' + item.cover" alt="">
@@ -75,6 +75,19 @@
                 })
             },
             detailsRoute(i) {
+                this.$router.push({
+                    path: '/details',
+                    name: 'Details',
+                    params: {
+                        datas: this.topDatas,
+                        fromPath: this.$route.path,
+                        fromName: this.$route.name,
+                        types: 'fourList',
+                        orders: Number(i)
+                    }
+                })
+            },
+            toNext(i){
                 this.$router.push({
                     path: '/details',
                     name: 'Details',
