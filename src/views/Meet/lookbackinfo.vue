@@ -355,9 +355,24 @@
                     </div>
                 </div>
             </div>
+
+            <div class="leader">
+                <div class="leader-in">峰会介绍</div>
+                <div class="leader-in">峰会倒计时</div>
+                <div class="leader-in">论坛主席</div>
+                <div class="leader-in">拟参会嘉宾</div>
+                <div class="leader-in">历届参会嘉宾</div>
+                <div class="leader-in">大会亮点</div>
+                <div class="leader-in">会议日程</div>
+                <div class="leader-in">分论坛讨论议题</div>
+                <div class="leader-in">分论坛讨论议题</div>
+                <div class="leader-in">组织介绍</div>
+                <div class="leader-in">峰会合作方式</div>
+                <div class="leader-in">参会指南</div>
+            </div>
         </div>
 
-        <div class="enroll">
+        <!-- <div class="enroll">
             <div class="enroll-in">
                 <div class="enroll-input">
                     <div>
@@ -394,7 +409,7 @@
                     </el-button>
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </template>
 
@@ -478,6 +493,46 @@ export default {
     flex-direction: column;
 }
 
+.leader {
+    width: 280px;
+    height: 20%;
+    opacity: 1;
+    border-radius: 6px;
+    background: linear-gradient(180deg, rgba(220, 235, 192, 1) 0%, rgba(203, 232, 139, 1) 100%);
+    margin: 16px 0 0 18px;
+}
+
+.leader-in {
+    width: 100%;
+    padding: 15px 0;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 26.52px;
+    color: rgba(19, 98, 0, 1);
+    text-align: center;
+    vertical-align: top;
+    border-bottom: 1px solid #fff;
+}
+
+.leader-in:last-child {
+    border-bottom: none;
+}
+
+.leader-in:active {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 26.52px;
+    color: rgba(165, 214, 63, 1);
+    text-align: center;
+    vertical-align: top;
+}
+
 .dynamic {
     opacity: 1;
     font-size: 24px;
@@ -499,7 +554,6 @@ export default {
 }
 
 .info-browser {
-    width: 15%;
     opacity: 1;
     font-size: 15px;
     font-weight: 400;
@@ -508,10 +562,10 @@ export default {
     color: rgba(153, 153, 153, 1);
     text-align: center;
     vertical-align: top;
+    margin-right: 10px;
 }
 
 .info-create {
-    width: 28%;
     opacity: 1;
     font-size: 15px;
     font-weight: 400;
@@ -1102,6 +1156,7 @@ export default {
     border-radius: 2px;
     background: rgba(255, 255, 255, 0.1);
     width: 200%;
+    color: #fff;
 }
 
 .el-textarea {
@@ -1110,6 +1165,7 @@ export default {
 
 :deep(.el-textarea__inner) {
     background: rgba(255, 255, 255, 0.1);
+    color: #fff;
 }
 
 .el-button img {

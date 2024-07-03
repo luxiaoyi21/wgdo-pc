@@ -107,7 +107,7 @@ export default {
 
 .leader {
     width: 230px;
-    height: 220px;
+    height: 20%;
     opacity: 1;
     border-radius: 6px;
     background: rgba(220, 235, 192, 1);

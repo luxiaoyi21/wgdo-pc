@@ -4,25 +4,25 @@
         <div class="content">
             <div class="big-leader">
                 <router-link :to="{ name: 'Contribute' }"
-                    style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
+                    style="display: flex; align-items: center;justify-content: space-between;width:95%;">
                     <span>{{ $t('prize.contribute') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
                 <router-link :to="{ name: 'cRule' }"
-                    style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
+                    style="display: flex; align-items: center;justify-content: space-between;width:95%;">
                     <span>{{ $t('prize.rule') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
                 <router-link :to="{ name: 'cPersonal' }"
-                    style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
+                    style="display: flex; align-items: center;justify-content: space-between;width:95%;">
                     <span>{{ $t('prize.person') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
                 <router-link :to="{ name: 'Mechanism' }"
-                    style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
+                    style="display: flex; align-items: center;justify-content: space-between;width:95%;">
                     <span>{{ $t('prize.mechanism') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
@@ -122,26 +122,25 @@ export default {
 }
 
 .big-leader {
-    left: 5px;
-    top: 440px;
     width: 230px;
+    height: 20%;
     opacity: 1;
     border-radius: 6px;
     background: rgba(220, 235, 192, 1);
-    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     z-index: 999;
+    margin: 17px 20px 0 0;
 }
 
 .big-leader a {
-    margin: 8px 0;
+    margin: 10px 0;
 }
 
 .content-in {
-    width: 100%;
+    width: 75%;
     display: flex;
     flex-direction: column;
 }

@@ -12,7 +12,7 @@
                             <div class="logoDscBot">World Green Design Organization</div>
                         </div> -->
                         <img src="@/static/imgs/alllogo.png" alt="">
-                        <!-- <img src="@/static/imgs/logoen.png" alt=""> -->
+                        <!-- <img src="@/static/imgs/logoen.png" style="scale:0.9" alt=""> -->
                     </div>
                 </a>
                 <div class="right">
@@ -165,7 +165,6 @@ export default {
 /* logo */
 .hTop .logo {
     margin-top: 23px;
-    width: 221px;
     height: 53px;
 }
 
@@ -174,6 +173,7 @@ export default {
     width: 100%;
     height: 100%;
 }
+
 /*
 .hTop .logo {
     display: flex;

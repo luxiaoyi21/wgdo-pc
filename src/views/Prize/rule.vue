@@ -1,7 +1,7 @@
 <template>
     <div class="item">
         <div class="content">
-            <div class="big-leader">
+            <!-- <div class="big-leader">
                 <router-link :to="{ name: 'Contribute' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;margin:10px 10px">
                     <span>{{ $t('prize.contribute') }}</span>
@@ -25,7 +25,7 @@
                     <span>{{ $t('prize.mechanism') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
-            </div>
+            </div> -->
 
             <div class="content-in" v-for="rule in ruleDatas" :key="rule.greenawardId">
                 <p class="dynamic">{{ rule.title }}</p>
@@ -106,18 +106,17 @@ export default {
 }
 
 .big-leader {
-    left: 10px;
-    top: 440px;
     width: 220px;
+    height: 20%;
     opacity: 1;
     border-radius: 6px;
     background: rgba(220, 235, 192, 1);
-    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     z-index: 999;
+    margin: 17px 20px 0 0;
 }
 
 .big-leader a {

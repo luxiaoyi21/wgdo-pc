@@ -108,18 +108,17 @@ export default {
 }
 
 .big-leader {
-    left: 22px;
-    top: 440px;
     width: 210px;
+    height: 20%;
     opacity: 1;
     border-radius: 6px;
     background: rgba(220, 235, 192, 1);
-    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     z-index: 999;
+    margin: 17px 20px 0 0;
 }
 
 .big-leader a {
@@ -127,7 +126,7 @@ export default {
 }
 
 .content-in {
-    width: 100%;
+    width: 75%;
     display: flex;
     flex-direction: column;
 }

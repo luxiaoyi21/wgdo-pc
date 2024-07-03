@@ -1,7 +1,7 @@
 <template>
     <div class="item">
         <div class="content">
-            <div class="big-leader">
+            <!-- <div class="big-leader">
                 <a href="" style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.require') }}</span>
                     <i class="el-icon-arrow-right"></i>
@@ -35,7 +35,7 @@
                     <span>{{ $t('project.contactform') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
-            </div>
+            </div> -->
 
             <div class="content-in" v-for="record in recordDatas" :key="record.benefitId">
 
@@ -119,19 +119,17 @@ export default {
 }
 
 .big-leader {
-    left: 25px;
-    top: 440px;
     width: 200px;
-    height: 220px;
+    height: 20%;
     opacity: 1;
     border-radius: 6px;
     background: rgba(220, 235, 192, 1);
-    position: absolute;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
     z-index: 999;
+    margin: 17px 20px 0 0;
 }
 
 .content-in {

@@ -172,7 +172,7 @@
                 </div>
                 <div class="phone">
                     <i class="iconfont icon-weixin"></i>
-                    <span>15801587585</span>
+                    <span>WGDO2014</span>
                 </div>
                 <div class="face">
                     <i class="iconfont icon-facebook-fill"></i>
@@ -328,6 +328,7 @@
 
     .botLeft div {
         margin-bottom: 8px;
+        display: flex;
     }
 
     .botLeft div i {
@@ -339,7 +340,6 @@
     }
 
     .botLeft div span {
-        width: 406.13px;
         font-size: 13.72px;
         font-weight: 400;
         letter-spacing: 0.76px;
