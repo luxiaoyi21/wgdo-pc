@@ -1,5 +1,28 @@
 <template>
     <div class="item">
+        <div class="leader">
+            <div class="leader-in">
+                <span>组织介绍</span>
+                <i class="el-icon-arrow-right"></i>
+            </div>
+            <div class="leader-in">
+                <span>韩国分会</span>
+                <i class="el-icon-arrow-right"></i>
+            </div>
+            <div class="leader-in">
+                <span>英国分会</span>
+                <i class="el-icon-arrow-right"></i>
+            </div>
+            <div class="leader-in">
+                <span>德国分会</span>
+                <i class="el-icon-arrow-right"></i>
+            </div>
+            <div class="leader-in">
+                <span>挪威分会</span>
+                <i class="el-icon-arrow-right"></i>
+            </div>
+        </div>
+
         <div class="content">
             <div class="content-in">
                 <p class="aintro">{{ $t('about.structure') }}</p>
@@ -31,7 +54,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            orDatas: [...this.tabDatas]
+            orDatas: []
         };
     },
     mounted() {
@@ -78,9 +101,47 @@ export default {
 .item {
     width: 100%;
     opacity: 1;
-    background: rgba(255, 255, 255, 1);
+    display: flex;
+    justify-content: space-between;
+}
+
+.leader {
+    width: 230px;
+    height: 220px;
+    opacity: 1;
+    border-radius: 6px;
+    background: rgba(220, 235, 192, 1);
+    margin: 16px 18px 0 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.leader-in {
+    width: 100%;
+    margin: 10px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 18.56px;
+    color: rgba(102, 102, 102, 1);
+    text-align: left;
+    vertical-align: top;
+}
+
+.leader-in:active {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 19.89px;
+    color: rgba(51, 51, 51, 1);
+    text-align: left;
+    vertical-align: top;
 }
 
 .content {
@@ -90,6 +151,7 @@ export default {
     display: flex;
     justify-content: center;
     align-content: center;
+    flex-direction: column;
 }
 
 .content-in {

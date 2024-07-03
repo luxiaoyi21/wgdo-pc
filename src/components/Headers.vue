@@ -12,6 +12,7 @@
                             <div class="logoDscBot">World Green Design Organization</div>
                         </div> -->
                         <img src="@/static/imgs/alllogo.png" alt="">
+                        <!-- <img src="@/static/imgs/logoen.png" alt=""> -->
                     </div>
                 </a>
                 <div class="right">

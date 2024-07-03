@@ -110,6 +110,7 @@ export default {
         getThirdData(p = this.$store.state.lang.version) {
             getContentList({ "moduleType": "3", "status": "1", version: p }).then(res => {
                 this.carouselData = res.data.rows
+                // console.log($store.state.lang.titles);
             })
             getContentList({ "moduleType": "4", "status": "1", version: p }).then(res => {
                 let that = this
@@ -177,6 +178,7 @@ export default {
     opacity: 1;
     font-size: 32px;
     font-weight: 700;
+    font-family: 'Misans-Medium';
     letter-spacing: 0.76px;
     line-height: 42.43px;
     color: rgba(51, 51, 51, 1);
@@ -324,11 +326,12 @@ export default {
     height: 71px;
 }
 
-.content .contentRight .contentRightTop .contentRightTile {
+.content .contentRight .contentRightTop .title {
     margin: 19px 0 19px 0px;
     height: 32.77px;
-    font-size: 24.38px;
+    font-size: 22px;
     font-weight: 600;
+    font-family: 'Misans-Medium';
     letter-spacing: 0.76px;
     line-height: 32.33px;
     color: rgba(16, 16, 16, 1);

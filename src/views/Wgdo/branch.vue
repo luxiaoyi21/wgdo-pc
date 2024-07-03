@@ -58,7 +58,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            branchDatas: [...this.tabDatas],
+            branchDatas: [],
         };
     },
     mounted() {

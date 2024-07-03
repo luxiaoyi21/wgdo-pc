@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="aintro">{{$t('about.contact')}}</p>
+                <p class="aintro">{{ $t('about.contact') }}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
@@ -47,7 +47,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            contactDatas: [...this.tabDatas],
+            contactDatas: [],
             input: ''
         };
     },
@@ -190,7 +190,6 @@ export default {
 
 .el-input {
     width: 86%;
-
 }
 
 :deep(.el-input__inner) {
@@ -211,7 +210,8 @@ export default {
 
 .el-button img {
     opacity: 1;
-    scale: 0.6;
+    scale: 0.5;
+    margin-top: -10px;
 }
 
 .el-input__inner {

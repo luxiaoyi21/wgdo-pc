@@ -38,7 +38,7 @@ export default {
     components: { Pagination },
     data() {
         return {
-            lookbackDatas: [...this.tabDatas],
+            lookbackDatas: [],
             currentPage: 1,
             totalItems: 0,
             pageSize: 9,

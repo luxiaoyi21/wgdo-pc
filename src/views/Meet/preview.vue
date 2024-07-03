@@ -45,7 +45,7 @@ export default {
     components: { Previewinfo, Pagination },
     data() {
         return {
-            previewDatas: [...this.tabDatas],
+            previewDatas: [],
             currentPage: 1,
             totalItems: 0,
             pageSize: 5,
@@ -168,7 +168,6 @@ export default {
     width: 350px;
     height: 180px;
     opacity: 1;
-    background: rgba(204, 204, 204, 1);
 }
 
 .dynamic-img img {

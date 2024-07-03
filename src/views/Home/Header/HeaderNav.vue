@@ -232,6 +232,7 @@ a:active {
 .right .search .searchIn {
     margin-left: -5px;
     width: 104px;
+    color: #fff;
 }
 
 :deep(.el-input__wrapper) {
@@ -243,6 +244,7 @@ a:active {
     background-color: rgba(255, 255, 255, 0);
     height: 30.48px;
     border: none;
+    color: #fff;
 }
 
 .right .rightList {

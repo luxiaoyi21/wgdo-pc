@@ -32,7 +32,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            ghomeDatas: [...this.tabDatas],
+            ghomeDatas: [],
         };
     },
     mounted() {

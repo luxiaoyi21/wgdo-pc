@@ -61,7 +61,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            inventDatas: [...this.tabDatas],
+            inventDatas: [],
         };
     },
     mounted() {
@@ -141,6 +141,7 @@ export default {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 999;
 }
 
 .content-in {

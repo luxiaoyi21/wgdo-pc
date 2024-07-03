@@ -64,7 +64,7 @@ export default {
     components: { Pagination },
     data() {
         return {
-            resourceDatas: [...this.tabDatas],
+            resourceDatas: [],
             currentPage: 1,
             totalItems: 0,
             pageSize: 10,

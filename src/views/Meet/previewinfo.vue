@@ -407,7 +407,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            infoDatas: [...this.tabDatas],
+            infoDatas: [],
             name: '',
             gender: '',
             nationality: '',
@@ -420,6 +420,7 @@ export default {
     },
     mounted() {
         this.getPreviewinfoData()
+        this.ImageStyles()
     },
     methods: {
         getPreviewinfoData(p = this.$store.state.lang.version) {
@@ -429,6 +430,21 @@ export default {
                     this.infoDatas = res.data.rows
                 }
             })
+        },
+        ImageStyles() {
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                .address-intro img {
+                    width: 100%;
+                    height:100%;
+                    
+                    background-size: cover;
+                    background-position: center;
+                    object-fit: cover;
+                }
+            `;
+            document.head.appendChild(style);
         },
         async send() {
             console.log('提交的信息：', {
@@ -512,7 +528,7 @@ export default {
 }
 
 .info-create {
-    width: 27%;
+    width: 28%;
     opacity: 1;
     font-size: 15px;
     font-weight: 400;
@@ -540,6 +556,9 @@ export default {
     width: 100%;
     height: 280px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .info-introall {
@@ -555,6 +574,9 @@ export default {
     width: 40%;
     height: 420px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .info-introall div {
@@ -627,6 +649,9 @@ export default {
 .act img {
     width: 100%;
     height: 200px;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .chairman-all {
@@ -651,6 +676,9 @@ export default {
     width: 120px;
     height: 160px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .chairman-intro {
@@ -742,6 +770,9 @@ export default {
     width: 120px;
     height: 160px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .pre-in-all {
@@ -874,6 +905,9 @@ export default {
     width: 120.88px;
     height: 160.96px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .organization-right {
@@ -1079,6 +1113,7 @@ export default {
     border-radius: 2px;
     background: rgba(255, 255, 255, 0.1);
     width: 200%;
+    color: #fff;
 }
 
 .el-textarea {
@@ -1087,6 +1122,7 @@ export default {
 
 :deep(.el-textarea__inner) {
     background: rgba(255, 255, 255, 0.1);
+    color: #fff;
 }
 
 .el-button img {
@@ -1096,7 +1132,7 @@ export default {
 .el-button.is-round {
     border-radius: 21px;
     padding: 0.82023vw 1.57211vw;
-    width: 20%;
+    width: 26%;
     height: 42px;
     display: flex;
     align-items: center;

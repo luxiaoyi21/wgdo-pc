@@ -37,23 +37,24 @@
                 </router-link>
             </div>
 
-            <div class="content-in">
+            <div class="content-in" v-for="glory in gloryDatas" :key="glory.benefitId">
 
-                <p class="dynamic">{{$t('project.glory')}}</p>
+                <p class="dynamic">{{ $t('project.glory') }}</p>
 
                 <div class="info">
-                    <div class="info-browser">{{$t('meet.browser')}}：1173</div>
-                    <div class="info-create">{{$t('meet.create')}}：2020-05-18 08:25:21</div>
+                    <div class="info-browser">{{ $t('meet.browser') }}：{{ glory.clickVolume }}</div>
+                    <div class="info-create">{{ $t('meet.create') }}：{{ glory.releaseTime }}</div>
                 </div>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div class="grip">
-                    <div class="grip-img">
+                    <div v-html="glory.contentDetails"></div>
+                    <!-- <div class="grip-img">
                         <img src="https://img.js.design/assets/img/66278ae9281eb183ff7d307f.png#2d18c10b6d0ce36b67dc2225e0c9a04f"
                             alt="">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -69,7 +70,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            gloryDatas: [...this.tabDatas],
+            gloryDatas: [],
         };
     },
     mounted() {
@@ -130,6 +131,7 @@ export default {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 999;
 }
 
 .content-in {

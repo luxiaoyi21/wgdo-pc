@@ -42,7 +42,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            bigDatas: [...this.tabDatas],
+            bigDatas: [],
         };
     },
     mounted() {
@@ -119,6 +119,7 @@ export default {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 999;
 }
 
 .big-leader a {

@@ -33,7 +33,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            policyDatas: [...this.tabDatas],
+            policyDatas: [],
         };
     },
     mounted() {

@@ -120,7 +120,7 @@ export default {
 }
 
 .info-browser {
-    width: 17%;
+    width: 15%;
     height: 22px;
     opacity: 1;
     font-size: 15px;
@@ -133,7 +133,7 @@ export default {
 }
 
 .info-create {
-    width: 29%;
+    width: 28%;
     height: 22px;
     opacity: 1;
     font-size: 15px;

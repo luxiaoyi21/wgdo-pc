@@ -18,18 +18,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="dynamic-data">
-                    <div class="dynamic-data-num">
-                        <div class="data-page">第{{ currentPage }}页</div>
-                        <div class="data-limit">共{{ totalItems }}条</div>
-                    </div>
-
-                    <div class="devide-page">
-                        <el-pagination background layout="prev, pager, next" :total="totalItems" :page-size="pageSize"
-                            :current-page.sync="currentPage" @current-change="handlePageChange">>
-                        </el-pagination>
-                    </div>
-                </div> -->
                 <Pagination :tabDatas="tabDatas" :pageSize="pageSize" :currentPage="currentPage"
                     :totalItems="totalItems" @currentTabDatas="currentTabDatas" />
             </div>
@@ -48,7 +36,7 @@ export default {
     components: { Pagination },
     data() {
         return {
-            videoDatas: [...this.tabDatas],
+            videoDatas: [],
             currentPage: 1,
             totalItems: 0,
             pageSize: 9,
@@ -159,6 +147,9 @@ export default {
     width: 100%;
     height: 200px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .doing-intro {

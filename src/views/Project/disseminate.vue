@@ -41,8 +41,8 @@
                 <p class="dynamic">{{ save.title }}</p>
 
                 <div class="info">
-                    <div class="info-browser">{{ $t('meet.browser') }}：1214</div>
-                    <div class="info-create">{{ $t('meet.create') }}：2018-05-18 08:27:46</div>
+                    <div class="info-browser">{{ $t('meet.browser') }}：{{ save.clickVolume }}</div>
+                    <div class="info-create">{{ $t('meet.create') }}：{{ save.releaseTime }}</div>
                 </div>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
@@ -72,7 +72,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            saveDatas: [...this.tabDatas],
+            saveDatas: [],
         };
     },
     mounted() {
@@ -81,7 +81,7 @@ export default {
     },
     methods: {
         getDissminateData(p = this.$store.state.lang.version) {
-            Project({ moduleType: '7', status: '1', version: p }).then(res => {
+            Project({ moduleType: '2', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.saveDatas = res.data.rows
                 }
@@ -149,6 +149,7 @@ export default {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 999;
 }
 
 .content-in {

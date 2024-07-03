@@ -6,14 +6,20 @@
             <div class="cont" v-for="item in detData" :key="item.hpId">
                 <div class="title" :class="$store.state.lang.isEn === 'en' ? 'titleEN' : 'title'">{{ item.title }}</div>
                 <div class="titletwo">
-                    <span v-show="item.clickVolume !== null">浏览次数:{{ item.clickVolume }}</span>
-                    <span v-show="item.createTime !== null">发布时间:{{ item.createTime }}</span>
+                    <span>{{ $t('meet.browser') }}:{{ item.clickVolume }}</span>
+                    <span>{{ $t('meet.create') }}:{{ item.releaseTime }}</span>
                 </div>
                 <div class="lines">
                     <div class="line"></div>
                     <div class="line"></div>
                 </div>
-                <div class="dsc" v-html="item.contentDetails"></div>
+                <div class="dsc" style=" margin-top: 15px;
+                font-size: 15px;
+                font-weight: 400;
+                letter-spacing: 0px;
+                line-height: 25px;
+                color: rgba(51, 51, 51, 1);
+                text-align: justify;" v-html="item.contentDetails"></div>
             </div>
         </div>
         <div class="footer">
@@ -167,7 +173,7 @@ export default {
 }
 
 .cont .titletwo span {
-    margin-right: 10px;
+    margin: 0 10px;
     height: 22px;
     font-size: 16px;
     font-weight: 400;

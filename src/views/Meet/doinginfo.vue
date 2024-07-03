@@ -407,7 +407,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            infoDatas: [...this.tabDatas],
+            infoDatas: [],
             name: '',
             gender: '',
             nationality: '',
@@ -473,7 +473,7 @@ export default {
 }
 
 .content-in {
-    width: 67%;
+    width: 100%;
     display: flex;
     flex-direction: column;
 }
@@ -511,7 +511,7 @@ export default {
 }
 
 .info-create {
-    width: 27%;
+    width: 28%;
     opacity: 1;
     font-size: 15px;
     font-weight: 400;
@@ -539,6 +539,9 @@ export default {
     width: 100%;
     height: 280px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .info-introall {
@@ -554,6 +557,9 @@ export default {
     width: 40%;
     height: 420px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .info-introall div {
@@ -626,6 +632,9 @@ export default {
 .act img {
     width: 100%;
     height: 200px;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .chairman-all {
@@ -650,6 +659,9 @@ export default {
     width: 120px;
     height: 160px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .chairman-intro {
@@ -697,6 +709,9 @@ export default {
     width: 600px;
     height: 280px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .address-right {
@@ -741,6 +756,9 @@ export default {
     width: 120px;
     height: 160px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .pre-in-all {
@@ -827,6 +845,9 @@ export default {
     width: 100%;
     height: 296px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .discuss {
@@ -873,6 +894,9 @@ export default {
     width: 120.88px;
     height: 160.96px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .organization-right {
@@ -1089,7 +1113,7 @@ export default {
 }
 
 .el-button img {
-    scale: 0.7;
+    scale: 0.5;
 }
 
 .el-button.is-round {

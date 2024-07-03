@@ -26,7 +26,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            serviceDatas: [...this.tabDatas],
+            serviceDatas: [],
         };
     },
     mounted() {

@@ -31,7 +31,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            introDatas: [...this.tabDatas]
+            introDatas: []
         };
     },
     mounted() {

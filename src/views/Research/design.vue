@@ -37,7 +37,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            designDatas: [...this.tabDatas],
+            designDatas: [],
             currentPage: 1,
             totalItems: 0,
             pageSize: 9,
@@ -156,6 +156,9 @@ export default {
     width: 100%;
     height: 200px;
     opacity: 1;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .image-caption {

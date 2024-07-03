@@ -43,7 +43,7 @@ export default {
     components: { Pagination },
     data() {
         return {
-            dynamicDatas: [...this.tabDatas],
+            dynamicDatas: [],
             // externalLink: this.$route.query.link,
             currentPage: 1,
             totalItems: 0,

@@ -587,6 +587,7 @@
         height: 143.25px;
         background-size: cover;
         background-position: center;
+        object-fit: cover;
     }
 
     .boxb .boxbInfo .boxbInfoItem span {

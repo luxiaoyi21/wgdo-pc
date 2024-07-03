@@ -20,7 +20,7 @@
                     <span>{{ $t('four.tomore') }} <i class="iconfont icon-youjiantou"></i></span>
                 </div>
             </div>
-            <div class="right">
+            <div class="right"  @click="detailsRoute(topDatas.type)">
                 <img :src="'http://www.wgdo.net' + topDatas.cover" alt="">
             </div>
         </div>
@@ -286,6 +286,7 @@ export default {
     height: 100%;
     background-size: cover;
     background-position: center;
+    object-fit: cover;
 }
 
 /* bottoms */
@@ -316,6 +317,7 @@ export default {
     height: 100%;
     background-size: cover;
     background-position: center;
+    object-fit: cover;
 }
 
 .bootomsItem .botTitle {

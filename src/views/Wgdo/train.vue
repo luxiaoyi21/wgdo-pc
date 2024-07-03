@@ -2,13 +2,14 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="dynamic">{{$t('wgdo.train')}}</p>
+                <p class="dynamic">{{ $t('wgdo.train') }}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
 
                 <div class="dynamic-dsc">
-                    <a :href="train.externalLink" class="doing-in" v-for="train in trainDatas" :key="train.greeninstituteId">
+                    <a :href="train.externalLink" class="doing-in" v-for="train in trainDatas"
+                        :key="train.greeninstituteId">
                         <div class="doing-img">
                             <img :src="'http://www.wgdo.net' + train.cover">
                             <div class="image-caption">
@@ -33,7 +34,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            trainDatas: [...this.tabDatas],
+            trainDatas: [],
         };
     },
     mounted() {
@@ -126,6 +127,9 @@ export default {
 .doing-img img {
     width: 100%;
     height: 200px;
+    background-size: cover;
+    background-position: center;
+    object-fit: cover;
 }
 
 .doing-img::after {

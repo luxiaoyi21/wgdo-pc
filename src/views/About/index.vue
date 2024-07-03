@@ -41,7 +41,8 @@ export default {
         };
     },
     mounted() {
-        this.getTabNameData('组织介绍');
+        this.getTabNameData();
+
         if (this.$store.state.lang.isEn === 'en') {
             this.getTabNameData('144')
         } else {

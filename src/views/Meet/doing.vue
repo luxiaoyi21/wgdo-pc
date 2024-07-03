@@ -33,7 +33,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            doingDatas: [...this.tabDatas],
+            doingDatas: [],
             showChild: false,
         };
     },

@@ -37,23 +37,24 @@
                 </router-link>
             </div>
 
-            <div class="content-in">
+            <div class="content-in" v-for="record in recordDatas" :key="record.benefitId">
 
                 <p class="dynamic">{{ $t('project.record') }}</p>
 
                 <div class="info">
-                    <div class="info-browser">{{ $t('meet.browser') }}：1214</div>
-                    <div class="info-create">{{ $t('meet.create') }}：2018-05-18 08:27:46</div>
+                    <div class="info-browser">{{ $t('meet.browser') }}：{{ record.clickVolume }}</div>
+                    <div class="info-create">{{ $t('meet.create') }}：{{ record.releaseTime }}</div>
                 </div>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div class="grip">
-                    <div class="grip-img">
+                    <div v-html="record.contentDetails"></div>
+                    <!-- <div class="grip-img">
                         <img src="https://img.js.design/assets/img/658a9871e3f029d323d8bcdd.png#ea751fabe158c298ef66e1cbd6395036"
                             alt="">
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -69,7 +70,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            recordDatas: [...this.tabDatas],
+            recordDatas: [],
         };
     },
     mounted() {
@@ -130,6 +131,7 @@ export default {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 999;
 }
 
 .content-in {

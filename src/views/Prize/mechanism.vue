@@ -78,7 +78,7 @@ export default {
     props: ['tabDatas'],
     data() {
         return {
-            mechanismDatas: [...this.tabDatas],
+            mechanismDatas: [],
         };
     },
     mounted() {
@@ -138,6 +138,7 @@ export default {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
+    z-index: 999;
 }
 
 .big-leader a {
