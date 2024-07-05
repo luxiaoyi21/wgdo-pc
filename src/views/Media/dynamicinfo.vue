@@ -36,24 +36,24 @@ import funs from '@/utils/index.js'
 
 export default {
     name: "Dynamicinfo",
-    props: ['tabDatas'],
+    props: ['tabDatas','id'],
     data() {
         return {
             dynamicinfoDatas: [],
-            // id: this.$route.query.id,
         };
     },
     mounted() {
         this.getDynamicinfoData()
-        // console.log(1111);
+        // console.log(this.$route.query.id);
     },
     methods: {
         getDynamicinfoData() {
             const id = this.$route.query.id;
             const p = this.$store.state.lang.version;
-            Media({ moduleType: '1', status: '1', version: p, id: id }).then(res => {
+            Media({ status: '1', version: p, id: id }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.dynamicinfoDatas = res.data.rows
+                    this.dynamicinfoDatas = res.data.rows.filter(row => row.mediacenterId === id);
+                    // console.log(this.dynamicinfoDatas);
                 }
             })
         },
@@ -66,7 +66,6 @@ export default {
         },
         '$route.query.id': {
             handler() {
-                // this.id = newId;
                 this.getDynamicinfoData();
             },
             immediate: true

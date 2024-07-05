@@ -442,7 +442,7 @@ export default {
             const id = this.$route.query.id;
             Meet({ moduleType: '1', status: '1', version: p, id: id }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.infoDatas = res.data.rows
+                    this.infoDatas = res.data.rows.filter(row => row.mediacenterId === id);
                 }
             })
         },

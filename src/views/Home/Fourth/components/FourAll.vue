@@ -4,9 +4,9 @@
         <div class="content">
             <div class="content-in">
                 <Breadcrumb :urlData="urlData" />
-                <p class="dynamic">{{$t('second.green')}}</p>
+                <p class="dynamic">{{$t('four.greendesign')}}</p>
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
-                <div v-if="$route.path === '/sedmore' ">
+                <div v-if="$route.path === '/fourall' ">
                     <div class="dynamic-dsc">
                         <div @click="sedTiaoZhuan(index)" class="dynamic-content" v-for="(dym,index) in moredetDatas"
                             :key="dym.mediacenterId">
@@ -53,7 +53,7 @@
     import funs from '@/utils/index.js'
 
     export default {
-        name: "MoreDet",
+        name: "FourAll",
         components: { Headers, Breadcrumb, Footers },
         data() {
             let moredetDatas = []
@@ -64,24 +64,23 @@
                 currentPage: 1,
                 totalItems: 0,
                 pageSize: 10,
-                urlData,
-                isShow: true
-            };
+                urlData
+            }
         },
         mounted() {
-            this.getMoredetData()
+            console.log(this.$route.path);
+            this.getFourthData()
             if (this.$store.state.lang.isEn !== 'en') {
                 this.urlData.push(
                     { path: '/', name: '首页' },
-                    { path: '/sedmore', name: '绿色设计观点' }
+                    { path: '/fourall', name: '世界绿色设计园' }
                 )
             } else {
                 this.urlData.push(
                     { path: '/', name: 'Home' },
-                    { path: '/sedmore', name: 'Green design perspective' }
+                    { path: '/fourall', name: 'World Green Design Park' }
                 )
             }
-            console.log(this.urlData, 'ddd');
         },
         computed: {
             currentTabDatas() {
@@ -91,18 +90,11 @@
             }
         },
         methods: {
-            getMoredetData(p = this.$store.state.lang.version) {
-                getContentList({ moduleType: '2', status: '1', version: p }).then(res => {
+            getFourthData(p = this.$store.state.lang.version) {
+                getContentList({ "moduleType": "5", "status": "1", version: p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                        this.moredetDatas = res.data.rows.map(row => {
-                            const timeData = this.gettime(row.releaseTime);
-                            return {
-                                ...row,
-                                year: timeData.year,
-                                timer: timeData.timer
-                            };
-                        });
-                        this.totalItems = res.data.rows.length;
+                        this.topDatas = res.data.rows[0]
+                        this.moredetDatas = res.data.rows
                     }
                 })
             },
@@ -119,7 +111,7 @@
             handlePageChange(newPage) { this.currentPage = newPage },
             sedTiaoZhuan(index) {
                 this.$router.push({
-                    path: '/sedmore/sedmoreinfo',
+                    path: '/fourall/fourallinfo',
                     query: { index }
                 })
             },
@@ -130,25 +122,30 @@
         watch: {
             "$store.state.lang.version": {
                 handler() {
-                    funs(this.getMoredetData(), this.$store.state.lang.version)
+                    funs(this.getFourthData(), this.$store.state.lang.version)
                     this.urlData = []
                     if (this.$store.state.lang.isEn !== 'en') {
                         this.urlData.push(
                             { path: '/', name: '首页' },
-                            { path: '/sedmore', name: '绿色设计观点' }
+                            { path: '/fourall', name: '世界绿色设计园' }
                         )
                     } else {
                         this.urlData.push(
                             { path: '/', name: 'Home' },
-                            { path: '/sedmore', name: 'Green design perspective' }
+                            { path: '/fourall', name: 'World Green Design Park' }
                         )
                     }
                 }
             },
             '$route'() {
-                if (this.$route.path === '/sedmore' && this.urlData.length >= 2) {
+                if (this.$route.path === '/fourall' && this.urlData.length >= 2) {
                     this.urlData.pop()
                 }
+            }
+        },
+        computed: {
+            isShow() {
+                return sessionStorage.getItem('isshow');
             }
         }
     }

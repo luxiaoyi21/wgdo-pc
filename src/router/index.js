@@ -16,12 +16,12 @@ const routes = [
     {
         path: '/sedmore',
         name: 'SedMore',
-        // component: () => import('@/views/Home/Second/components/MoreDet.vue'),
-        component: { render(c) { return c('router-view') } },
+        component: () => import('@/views/Home/Second/components/MoreDet.vue'),
+        // component: { render(c) { return c('router-view') } },
         meta: {
             toTop: true
         },
-        children:[
+        children: [
             {
                 // /sedmore/sedmoreinfo 绿色设计观点详情
                 path: 'sedmoreinfo',
@@ -29,6 +29,18 @@ const routes = [
                 component: () => import('@/views/Home/Second/components/sedmoreinfo.vue'),
                 meta: { auth: true },
             },
+        ]
+    },
+    {
+        path: '/fourall',
+        name: 'FourAll',
+        component: () => import('@/views/Home/Fourth/components/FourAll.vue'),
+        children: [
+            {
+                path: 'fourallinfo',
+                name: 'FourAllinfo',
+                component: () => import('@/views/Home/Fourth/components/FourAllinfo.vue')
+            }
         ]
     },
     {

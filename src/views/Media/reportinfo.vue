@@ -53,7 +53,7 @@ export default {
             const id = this.$route.query.id;
             Media({ moduleType: '3', status: '1', version: p, id: id }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.reportinfoData = res.data.rows
+                    this.reportinfoData = res.data.rows.filter(row => row.mediacenterId === id);
                 }
             })
         },

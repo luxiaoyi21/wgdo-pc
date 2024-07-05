@@ -1,7 +1,8 @@
 <template>
     <div class="item">
         <div class="content">
-            <div class="content-in" v-for="sedinfo in sedmoreinfoDatas" :key="sedinfo.mediacenterId">
+            <div class="content-in" v-if="sedmoreinfoDatas.length > 0" v-for="sedinfo in sedmoreinfoDatas"
+                :key="sedinfo.mediacenterId">
                 <p class="dynamic">{{ sedinfo.title }}</p>
                 <div class="info">
                     <div class="info-browser">{{ $t('meet.browser') }}：{{ sedinfo.clickVolume }}</div>
@@ -11,13 +12,13 @@
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
                 <div class="dynamic-dsc">
                     <div style="opacity: 1;
-                    font-size: 15px;
-                    font-weight: 400;
-                    letter-spacing: 0px;
-                    line-height: 25px;
-                    color: rgba(51, 51, 51, 1);
-                    text-align: justify;
-                    vertical-align: top;" v-html="sedinfo.contentDetails"></div>
+                        font-size: 15px;
+                        font-weight: 400;
+                        letter-spacing: 0px;
+                        line-height: 25px;
+                        color: rgba(51, 51, 51, 1);
+                        text-align: justify;
+                        vertical-align: top;" v-html="sedinfo.contentDetails"></div>
                 </div>
             </div>
         </div>
@@ -29,7 +30,7 @@
     import funs from '@/utils/index.js'
 
     export default {
-        name: "Sedinfo",
+        name: 'FourAllinfo',
         data() {
             return {
                 sedmoreinfoDatas: [],
@@ -53,11 +54,10 @@
                 }
             }
             this.getSecondData()
-            this.ImageStyles()
         },
         methods: {
             getSecondData(p = this.$store.state.lang.version) {
-                getContentList({ "moduleType": "2", "status": "1", version: p }).then(res => {
+                getContentList({ "moduleType": "5", "status": "1", version: p }).then(res => {
                     if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                         this.rightData = res.data.rows
                         this.rightData.forEach((v, index) => {
@@ -72,20 +72,7 @@
                         name: this.sedmoreinfoDatas[0].title
                     })
                 })
-            },
-            ImageStyles() {
-            const style = document.createElement('style');
-            style.type = 'text/css';
-            style.innerHTML = `
-                .dynamic-dsc img {
-                    width: 100%;
-                    
-                    background-size: cover;
-                    background-position: center;
-                }
-            `;
-            document.head.appendChild(style);
-        }
+            }
         },
         watch: {
             "$store.state.lang.version": {
@@ -96,7 +83,7 @@
         },
         beforeRouteLeave(to, from, next) {
             sessionStorage.removeItem('currentIndex')
-            next()
+            next();
         },
     }
 </script>

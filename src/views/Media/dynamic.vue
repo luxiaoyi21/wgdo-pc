@@ -53,9 +53,6 @@ export default {
             showChild: false,
         };
     },
-    created() {
-        // this.getMediaData()
-    },
     mounted() {
         this.getMediaData()
     },
@@ -65,9 +62,6 @@ export default {
             const end = start + this.pageSize;
             return this.dynamicDatas.slice(start, end);
         },
-        // Route() {
-        //     return router.currentRoute.value.fullPath;
-        // }
     },
     methods: {
         getMediaData(p = this.$store.state.lang.version) {
@@ -99,14 +93,13 @@ export default {
             this.currentPage = newPage;
         },
         handleLinkClick(id) {
-            const currentQuery = this.$route.query;
             this.showChild = true;
+            const currentQuery = this.$route.query;
             if (!currentQuery) {
                 this.$router.push({ name: 'Dynamicinfo' });
             } else {
-                // alert('已经跳转.');
+                // alert('已经跳转.')
             }
-            // console.log('Navigating to Dynamicinfo with id:', id);
         }
     },
     watch: {
@@ -116,17 +109,6 @@ export default {
             }
         },
     },
-    // beforeRouteUpdate(to, from, next) {
-    //     if (to.query.id !== from.query.id) {
-    //         this.getMediaData();
-    //     }
-    //     next();
-    // },
-    // beforeRouteEnter(to, from, next) {
-    //     next(vm => {
-    //         vm.getMediaData();
-    //     });
-    // },
 }
 </script>
 

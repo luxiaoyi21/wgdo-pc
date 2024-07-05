@@ -8,7 +8,7 @@
                         <div class="logoDscTop">世界绿色设计组织</div>
                         <div class="logoDscBot">World Green Design Organization</div>
                     </div> -->
-                <img src="@/static/imgs/alllogo.png" alt="">
+                <img :src="getLogoPath()" :style="getLogoStyle()" alt="Logo">
             </div>
             <div class="right">
                 <div class="search">
@@ -96,7 +96,21 @@ export default {
                     a.classList.add('ens');
                 });
             }
-        }
+        },
+        getLogoPath() {
+            if (this.$store.state.lang.isEn === 'en') {
+                return require('@/static/imgs/logoen.png');
+            } else {
+                return require('@/static/imgs/alllogo.png');
+            }
+        },
+        getLogoStyle() {
+            if (this.$store.state.lang.isEn === 'en') {
+                return { transform: 'scale(0.78) translateX(-54px)' };
+            } else {
+                return null;
+            }
+        },
     },
     watch: {
         "$store.state.lang.isText1Visible": {
@@ -195,7 +209,6 @@ a:active {
 
 .hTop .logo {
     margin-top: 23px;
-    width: 221px;
     height: 53px;
 }
 
