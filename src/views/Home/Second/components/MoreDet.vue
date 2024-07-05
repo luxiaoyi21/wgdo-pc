@@ -81,7 +81,7 @@
                     { path: '/sedmore', name: 'Green design perspective' }
                 )
             }
-            console.log(this.urlData, 'ddd');
+            // console.log(this.urlData, 'ddd');
         },
         computed: {
             currentTabDatas() {

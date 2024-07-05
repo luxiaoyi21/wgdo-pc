@@ -68,7 +68,7 @@
             }
         },
         mounted() {
-            console.log(this.$route.path);
+            // console.log(this.$route.path);
             this.getFourthData()
             if (this.$store.state.lang.isEn !== 'en') {
                 this.urlData.push(
