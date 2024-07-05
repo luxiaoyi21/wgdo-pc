@@ -11,7 +11,7 @@
                 <div class="carouselS">
                     <el-carousel indicator-position="outside" arrow="always">
                         <el-carousel-item v-for="item in leftData" :key="item.hpId">
-                            <a href="/media/dynamic">
+                            <router-link :to="{name:'Dynamicinfo'}">
                                 <div class="leftimg">
                                     <img :src="'http://www.wgdo.net' + item.cover" alt="">
                                 </div>
@@ -22,7 +22,7 @@
                                 <div :class="$store.state.lang.isEn === 'en' ? 'titlefourEN' : 'titlefour'">
                                     {{ item.intro }}
                                 </div>
-                            </a>
+                            </router-link>
                         </el-carousel-item>
                     </el-carousel>
                 </div>
