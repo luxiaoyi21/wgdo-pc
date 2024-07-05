@@ -16,10 +16,20 @@ const routes = [
     {
         path: '/sedmore',
         name: 'SedMore',
-        component: () => import('@/views/Home/Second/components/MoreDet.vue'),
+        // component: () => import('@/views/Home/Second/components/MoreDet.vue'),
+        component: { render(c) { return c('router-view') } },
         meta: {
             toTop: true
-        }
+        },
+        children:[
+            {
+                // /sedmore/sedmoreinfo 绿色设计观点详情
+                path: 'sedmoreinfo',
+                name: 'Sedmoreinfo',
+                component: () => import('@/views/Home/Second/components/sedmoreinfo.vue'),
+                meta: { auth: true },
+            },
+        ]
     },
     {
         path: '/details',

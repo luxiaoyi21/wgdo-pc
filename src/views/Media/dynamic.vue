@@ -254,6 +254,7 @@ export default {
     -webkit-box-orient: vertical;
     vertical-align: top;
     overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dynamic-dscall-buttom {

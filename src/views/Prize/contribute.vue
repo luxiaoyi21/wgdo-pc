@@ -1,6 +1,5 @@
 <template>
     <div class="item">
-        <!-- <router-view></router-view> -->
         <div class="content">
             <div class="big-leader">
                 <router-link :to="{ name: 'Contribute' }"
@@ -27,7 +26,7 @@
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
             </div>
-            <div class="content-in" v-for="contri in contriDatas" :key="contri.greenawardId">
+            <div class="content-in" v-for="contri in contriDatas" :key="contri.greenawardId" v-if="isShow">
 
                 <p class="dynamic">{{ contri.title }}</p>
 
@@ -43,6 +42,8 @@
                 text-align: justify;
                 vertical-align: top;" v-html="contri.contentDetails"></div>
             </div>
+
+            <router-view v-else></router-view>
         </div>
     </div>
 </template>
@@ -57,11 +58,13 @@ export default {
     data() {
         return {
             contriDatas: [],
+            isShow: true,
         };
     },
     mounted() {
         this.getContriData()
         this.addImageStyles();
+        // console.log(this.$route.matched.length > 0, '111');
     },
     methods: {
         getContriData(p = this.$store.state.lang.version) {
@@ -92,7 +95,16 @@ export default {
             handler() {
                 funs(this.getContriData(), this.$store.state.lang.version)
             }
-        }
+        },
+        "$route.matched.length": {
+            handler() {
+                if (this.$route.matched.length > 0) {
+                    this.isShow = false
+                } else {
+                    this.isShow = true
+                }
+            }
+        },
     },
 }
 </script>

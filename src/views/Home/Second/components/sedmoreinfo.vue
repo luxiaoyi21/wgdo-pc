@@ -1,15 +1,13 @@
 <template>
     <div class="item">
-        <!-- <router-view :key="$route.query.id" /> -->
         <div class="content">
-            <div class="content-in" v-if="dynamicinfoDatas.length > 0" v-for="dyninfo in dynamicinfoDatas"
-                :key="dyninfo.mediacenterId">
-                <!-- <div class="content-in"> -->
-                <p class="dynamic">{{ dyninfo.title }}</p>
+            <div class="content-in" v-if="sedmoreinfoDatas.length > 0" v-for="sedinfo in sedmoreinfoDatas"
+                :key="sedinfo.mediacenterId">
+                <p class="dynamic">{{ sedinfo.title }}</p>
 
                 <div class="info">
-                    <div class="info-browser">{{ $t('meet.browser') }}：{{ dyninfo.clickVolume }}</div>
-                    <div class="info-create">{{ $t('meet.create') }}：{{ dyninfo.releaseTime }}</div>
+                    <div class="info-browser">{{ $t('meet.browser') }}：{{ sedinfo.clickVolume }}</div>
+                    <div class="info-create">{{ $t('meet.create') }}：{{ sedinfo.releaseTime }}</div>
                 </div>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
@@ -23,7 +21,7 @@
                     line-height: 25px;
                     color: rgba(51, 51, 51, 1);
                     text-align: justify;
-                    vertical-align: top;" v-html="dyninfo.contentDetails"></div>
+                    vertical-align: top;" v-html="sedinfo.contentDetails"></div>
                 </div>
             </div>
         </div>
@@ -35,20 +33,20 @@ import { Media } from "@/api/requests.js";
 import funs from '@/utils/index.js'
 
 export default {
-    name: "Dynamicinfo",
+    name: "Sedinfo",
     props: ['tabDatas'],
     data() {
         return {
-            dynamicinfoDatas: [],
+            sedmoreinfoDatas: [],
             // id: this.$route.query.id,
         };
     },
     mounted() {
-        this.getDynamicinfoData()
+        this.getSedmoreinfoData()
         // console.log(1111);
     },
     methods: {
-        getDynamicinfoData() {
+        getSedmoreinfoData() {
             const id = this.$route.query.id;
             const p = this.$store.state.lang.version;
             Media({ moduleType: '1', status: '1', version: p, id: id }).then(res => {
@@ -61,13 +59,13 @@ export default {
     watch: {
         "$store.state.lang.version": {
             handler() {
-                funs(this.getDynamicinfoData(), this.$store.state.lang.version)
+                funs(this.getSedmoreinfoData(), this.$store.state.lang.version)
             }
         },
         '$route.query.id': {
             handler() {
                 // this.id = newId;
-                this.getDynamicinfoData();
+                this.getSedmoreinfoData();
             },
             immediate: true
         },

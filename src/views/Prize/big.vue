@@ -21,7 +21,7 @@
                 </router-link>
             </div>
 
-            <div class="content-in" v-for="big in bigDatas" :key="big.greenawardId">
+            <div class="content-in" v-for="big in bigDatas" :key="big.greenawardId" v-if="isShow">
                 <p class="dynamic">{{ big.title }}</p>
 
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
@@ -29,6 +29,7 @@
 
                 <div class="big-content" v-html="big.contentDetails"></div>
             </div>
+            <router-view v-else></router-view>
         </div>
     </div>
 </template>
@@ -43,6 +44,7 @@ export default {
     data() {
         return {
             bigDatas: [],
+            isShow: true,
         };
     },
     mounted() {
@@ -79,7 +81,16 @@ export default {
             handler() {
                 funs(this.getBigData(), this.$store.state.lang.version)
             }
-        }
+        },
+        "$route.matched.length": {
+            handler() {
+                if (this.$route.matched.length > 0) {
+                    this.isShow = false
+                } else {
+                    this.isShow = true
+                }
+            }
+        },
     },
 }
 </script>
