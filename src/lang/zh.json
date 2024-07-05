@@ -100,7 +100,11 @@
     "Introduction":"组织介绍",
     "structure":"组织架构",
     "figures":"重要人物",
-    "contact":"联系我们"
+    "contact":"联系我们",
+    "Korean": "韩国分会",
+    "UK": "英国分会",
+    "Germany": "德国分会",
+    "Norwegian": "挪威分会"
   },
   "meet": {
     "previewact": "活动预告",

@@ -24,11 +24,11 @@
                 <div class="enroll-in">
                     <p class="message">{{ $t('about.welcome') }}</p>
                     <div class="enroll-input">
-                        <el-input v-model="input" placeholder="" type="textarea" :autosize="{ minRows: 1.8 }"
-                            class="enroll-content">
+                        <el-input v-model="input" placeholder="" type="textarea"
+                            :autosize="{ minRows: 1.8, maxRows: 1.8 }" class="enroll-content">
                         </el-input>
 
-                        <el-button type="success" @click="Send">
+                        <el-button type="submit" @click="Send">
                             <img src="@/static/imgs/send.png" alt="">
                         </el-button>
                     </div>
@@ -197,6 +197,10 @@ export default {
     word-break: break-word;
     max-width: 100%;
     box-sizing: border-box;
+}
+
+.el-textarea__inner:focus {
+    font-size: 16px;
 }
 
 .el-button {

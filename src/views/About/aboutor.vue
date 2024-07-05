@@ -2,23 +2,23 @@
     <div class="item">
         <div class="leader">
             <div class="leader-in">
-                <span>组织介绍</span>
+                <span>{{ $t('about.Introduction') }}</span>
                 <i class="el-icon-arrow-right"></i>
             </div>
             <div class="leader-in">
-                <span>韩国分会</span>
+                <span>{{ $t('about.Korean') }}</span>
                 <i class="el-icon-arrow-right"></i>
             </div>
             <div class="leader-in">
-                <span>英国分会</span>
+                <span>{{ $t('about.UK') }}</span>
                 <i class="el-icon-arrow-right"></i>
             </div>
             <div class="leader-in">
-                <span>德国分会</span>
+                <span>{{ $t('about.Germany') }}</span>
                 <i class="el-icon-arrow-right"></i>
             </div>
             <div class="leader-in">
-                <span>挪威分会</span>
+                <span>{{ $t('about.Norwegian') }}</span>
                 <i class="el-icon-arrow-right"></i>
             </div>
         </div>
@@ -123,15 +123,16 @@ export default {
     margin: 10px 0;
     text-align: center;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     font-size: 14px;
     font-weight: 400;
     letter-spacing: 1px;
-    line-height: 18.56px;
+    line-height: 18px;
     color: rgba(102, 102, 102, 1);
     text-align: left;
     vertical-align: top;
+    padding: 0 10px;
 }
 
 .leader-in:active {

@@ -357,18 +357,18 @@
             </div>
 
             <div class="leader">
-                <div class="leader-in">峰会介绍</div>
-                <div class="leader-in">峰会倒计时</div>
-                <div class="leader-in">论坛主席</div>
-                <div class="leader-in">拟参会嘉宾</div>
-                <div class="leader-in">历届参会嘉宾</div>
-                <div class="leader-in">大会亮点</div>
-                <div class="leader-in">会议日程</div>
-                <div class="leader-in">分论坛讨论议题</div>
-                <div class="leader-in">分论坛讨论议题</div>
-                <div class="leader-in">组织介绍</div>
-                <div class="leader-in">峰会合作方式</div>
-                <div class="leader-in">参会指南</div>
+                <div class="leader-in">{{ $t('meet.Summit') }}</div>
+                <div class="leader-in">{{ $t('meet.Countdown') }}</div>
+                <div class="leader-in">{{ $t('meet.chairman') }}</div>
+                <div class="leader-in">{{ $t('meet.preview') }}</div>
+                <div class="leader-in">{{ $t('meet.back') }}</div>
+                <div class="leader-in">{{ $t('meet.Highlights') }}</div>
+                <div class="leader-in">{{ $t('meet.schedule') }}</div>
+                <div class="leader-in">{{ $t('meet.discuss') }}</div>
+                <div class="leader-in">{{ $t('meet.discuss') }}</div>
+                <div class="leader-in">{{ $t('meet.organization') }}</div>
+                <div class="leader-in">{{ $t('meet.mode') }}</div>
+                <div class="leader-in">{{ $t('meet.guide') }}</div>
             </div>
         </div>
 
@@ -403,7 +403,7 @@
                 </div>
 
                 <div style="display: flex;width:100%;justify-content: center;">
-                    <el-button type="success" @click="send" round>
+                    <el-button type="submit" @click="send" round>
                         <img src="@/static/imgs/send.png" alt="">
                         <p>{{ $t('meet.register') }}</p>
                     </el-button>
@@ -516,7 +516,7 @@ export default {
     opacity: 1;
     border-radius: 6px;
     background: linear-gradient(180deg, rgba(220, 235, 192, 1) 0%, rgba(203, 232, 139, 1) 100%);
-    margin: 16px 0 0 18px;
+    margin: 29px 0 0 18px;
 }
 
 .leader-in {
@@ -1168,6 +1168,7 @@ export default {
     background: rgba(255, 255, 255, 0.1);
     width: 200%;
     color: #fff;
+    border: none;
 }
 
 .el-textarea {
@@ -1177,6 +1178,7 @@ export default {
 :deep(.el-textarea__inner) {
     background: rgba(255, 255, 255, 0.1);
     color: #fff;
+    border: none;
 }
 
 .el-button img {
@@ -1191,10 +1193,16 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
+    background: rgba(165, 214, 63, 1);
+    border: none;
 }
 
 :deep(.el-button.is-round span) {
     display: flex;
     align-items: center;
+}
+
+:deep(.el-button.is-round span p) {
+    color: #fff;
 }
 </style>

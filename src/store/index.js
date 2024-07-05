@@ -39,6 +39,7 @@ const mutations = {
             lang.version = '1'
         } else if (lang.isEn === 'en') {
             lang.version = '2'
+            // document.body.style.fontFamily = 'Microsoft YaHei';
         }
     },
     getST({ lang }, datas) {

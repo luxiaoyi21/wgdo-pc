@@ -11,8 +11,9 @@
                             <div class="logoDscTop">世界绿色设计组织</div>
                             <div class="logoDscBot">World Green Design Organization</div>
                         </div> -->
-                        <img src="@/static/imgs/alllogo.png" alt="">
+                        <!-- <img src="@/static/imgs/alllogo.png" alt=""> -->
                         <!-- <img src="@/static/imgs/logoen.png" style="scale:0.9" alt=""> -->
+                        <img :src="getLogoPath()" :style="getLogoStyle()" alt="Logo">
                     </div>
                 </a>
                 <div class="right">
@@ -45,6 +46,7 @@
                     :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/media' }">
                     {{ $t('headernav.Mediacenter') }}
                 </router-link>
+                <!-- @click="setCurrentRoute('/media')" -->
                 <router-link to="/research" ref="changeLanguea"
                     :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/research' }">
                     {{ $t('headernav.Academicresearch') }}
@@ -79,6 +81,7 @@ export default {
         return {
             searchInp,
             lang,
+            currentRoute: '',
         }
     },
     created() {
@@ -118,6 +121,23 @@ export default {
         changeLang() {
             this.$store.commit('getLocalLang');
             this.$store.commit('getVersion')
+        },
+        getLogoPath() {
+            if (this.$store.state.lang.isEn === 'en') {
+                return require('@/static/imgs/logoen.png');
+            } else {
+                return require('@/static/imgs/alllogo.png');
+            }
+        },
+        getLogoStyle() {
+            if (this.$store.state.lang.isEn === 'en') {
+                return { transform: 'scale(0.78) translateX(-54px)' };
+            } else {
+                return null;
+            }
+        },
+        setCurrentRoute(route) {
+            this.currentRoute = route;
         },
     },
     watch: {
@@ -255,6 +275,7 @@ export default {
     background-color: rgba(255, 255, 255, 0);
     height: 30.48px;
     border: none;
+    color: #fff;
 }
 
 .right .rightList {

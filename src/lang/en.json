@@ -100,7 +100,11 @@
     "structure":"Organizational structure",
     "figures":"Important figures",
     "contact":"Contact us",
-    "welcome":"Welcome to leave us a message"
+    "welcome":"Welcome to leave us a message",
+    "Korean": "Korean branch",
+    "UK": "UK Branch",
+    "Germany": "Germany Branch",
+    "Norwegian": "Norwegian Branch"
   },
   "meet":{
     "previewact": "Event trailer",

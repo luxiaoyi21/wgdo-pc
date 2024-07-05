@@ -174,9 +174,9 @@ export default {
 /*未选中时字体颜色*/
 :deep(.el-tabs__item) {
     height: 60px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 400;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     line-height: 60px;
     color: rgba(150, 150, 150, 1);
     text-align: left;
@@ -186,9 +186,9 @@ export default {
 /*选中时字体颜色*/
 :deep(.el-tabs__item.is-active) {
     height: 60px;
-    font-size: 18px;
+    font-size: 16px;
     font-weight: 700;
-    letter-spacing: 1px;
+    letter-spacing: 0.5px;
     line-height: 60px;
     color: rgba(62, 73, 56, 1);
     text-align: left;

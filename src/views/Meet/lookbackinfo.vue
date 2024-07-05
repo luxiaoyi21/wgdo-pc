@@ -357,18 +357,18 @@
             </div>
 
             <div class="leader">
-                <div class="leader-in">峰会介绍</div>
-                <div class="leader-in">峰会倒计时</div>
-                <div class="leader-in">论坛主席</div>
-                <div class="leader-in">拟参会嘉宾</div>
-                <div class="leader-in">历届参会嘉宾</div>
-                <div class="leader-in">大会亮点</div>
-                <div class="leader-in">会议日程</div>
-                <div class="leader-in">分论坛讨论议题</div>
-                <div class="leader-in">分论坛讨论议题</div>
-                <div class="leader-in">组织介绍</div>
-                <div class="leader-in">峰会合作方式</div>
-                <div class="leader-in">参会指南</div>
+                <div class="leader-in">{{ $t('meet.Summit') }}</div>
+                <div class="leader-in">{{ $t('meet.Countdown') }}</div>
+                <div class="leader-in">{{ $t('meet.chairman') }}</div>
+                <div class="leader-in">{{ $t('meet.preview') }}</div>
+                <div class="leader-in">{{ $t('meet.back') }}</div>
+                <div class="leader-in">{{ $t('meet.Highlights') }}</div>
+                <div class="leader-in">{{ $t('meet.schedule') }}</div>
+                <div class="leader-in">{{ $t('meet.discuss') }}</div>
+                <div class="leader-in">{{ $t('meet.discuss') }}</div>
+                <div class="leader-in">{{ $t('meet.organization') }}</div>
+                <div class="leader-in">{{ $t('meet.mode') }}</div>
+                <div class="leader-in">{{ $t('meet.guide') }}</div>
             </div>
         </div>
 
@@ -499,7 +499,7 @@ export default {
     opacity: 1;
     border-radius: 6px;
     background: linear-gradient(180deg, rgba(220, 235, 192, 1) 0%, rgba(203, 232, 139, 1) 100%);
-    margin: 16px 0 0 18px;
+    margin: 29px 0 0 18px;
 }
 
 .leader-in {

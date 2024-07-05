@@ -28,7 +28,7 @@ export default {
     props: ['tabName', 'tabDatas'],
     data() {
         return {
-            activeName: this.tabName[0]?.children[0]?.classifyName,
+            activeName: '',
             currentNum: 1,
             localName: [],
             localDatas: [],
