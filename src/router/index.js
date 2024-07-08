@@ -17,7 +17,6 @@ const routes = [
         path: '/sedmore',
         name: 'SedMore',
         component: () => import('@/views/Home/Second/components/MoreDet.vue'),
-        // component: { render(c) { return c('router-view') } },
         meta: {
             toTop: true
         },
@@ -40,6 +39,18 @@ const routes = [
                 path: 'fourallinfo',
                 name: 'FourAllinfo',
                 component: () => import('@/views/Home/Fourth/components/FourAllinfo.vue')
+            }
+        ]
+    },
+    {
+        path: '/fiveall',
+        name: 'FiveAll',
+        component: () => import('@/views/Home/Five/components/FiveAll.vue'),
+        children: [
+            {
+                path: 'fiveinfo',
+                name: 'Fiveinfo',
+                component: () => import('@/views/Home/Five/components/Fiveinfo.vue')
             }
         ]
     },

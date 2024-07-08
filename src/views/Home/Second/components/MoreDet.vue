@@ -81,7 +81,6 @@
                     { path: '/sedmore', name: 'Green design perspective' }
                 )
             }
-            // console.log(this.urlData, 'ddd');
         },
         computed: {
             currentTabDatas() {
@@ -188,6 +187,10 @@
         text-align: left;
         vertical-align: top;
         margin-top: 30px;
+    }
+
+    .dynamic-content {
+        cursor: pointer;
     }
 
     .dsc-line {

@@ -16,14 +16,7 @@
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
 
                 <div class="dynamic-dsc">
-                    <div style="opacity: 1;
-                    font-size: 16px;
-                    font-weight: 400;
-                    letter-spacing: 0px;
-                    line-height: 25px;
-                    color: rgba(51, 51, 51, 1);
-                    text-align: justify;
-                    vertical-align: top;" v-html="dyninfo.contentDetails"></div>
+                    <div class="intro" v-html="dyninfo.contentDetails"></div>
                 </div>
             </div>
         </div>
@@ -175,12 +168,14 @@ export default {
     color: rgba(51, 51, 51, 1);
 }
 
-.dsc-intro {
-    font-size: 18px;
+.intro{
+    opacity: 1;
+    font-size: 16px;
     font-weight: 400;
     letter-spacing: 0px;
-    line-height: 30px;
+    line-height: 25px;
     color: rgba(51, 51, 51, 1);
     text-align: justify;
+    vertical-align: top;
 }
 </style>

@@ -15,16 +15,7 @@
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
 
                 <div class="dynamic-dsc">
-                    <div style="opacity: 1;
-                    font-size: 15px;
-                    font-weight: 400;
-                    letter-spacing: 0px;
-                    line-height: 25px;
-                    color: rgba(51, 51, 51, 1);
-                    text-align: justify;
-                    display: flex;
-                    justify-content: center;
-                    vertical-align: top;" v-html="reportinfo.contentDetails"></div>
+                    <div class="intro" v-html="reportinfo.contentDetails"></div>
                 </div>
 
                 <!-- <div class="dynamic-dsc">
@@ -49,6 +40,7 @@ export default {
     },
     mounted() {
         this.getReportinfoData()
+        this.ImageStyles()
     },
     methods: {
         getReportinfoData(p = this.$store.state.lang.version) {
@@ -59,6 +51,19 @@ export default {
                 }
             })
         },
+        ImageStyles() {
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                .intro img {
+                    width: 100%;
+                    
+                    background-size: cover;
+                    background-position: center;
+                }
+            `;
+            document.head.appendChild(style);
+        }
     },
     watch: {
         "$store.state.lang.version": {
@@ -157,8 +162,16 @@ export default {
     margin-bottom: 140px;
 }
 
-.dynamic-dsc img {
-    width: 100%;
-    height: 821px;
+.intro {
+    opacity: 1;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 25px;
+    color: rgba(51, 51, 51, 1);
+    text-align: justify;
+    vertical-align: top;
+    display: flex;
+    justify-content: center;
 }
 </style>

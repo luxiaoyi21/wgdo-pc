@@ -115,4 +115,18 @@ export default {
     display: flex;
     flex-direction: column;
 }
+
+::v-deep .intro-in p{
+    opacity: 1;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 25px;
+    color: rgba(51, 51, 51, 1);
+    text-align: justify;
+    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
 </style>

@@ -33,14 +33,7 @@
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
-                <div style="opacity: 1;
-                font-size: 15px;
-                font-weight: 400;
-                letter-spacing: 0px;
-                line-height: 25px;
-                color: rgba(51, 51, 51, 1);
-                text-align: justify;
-                vertical-align: top;" v-html="contri.contentDetails"></div>
+                <div class="intro" v-html="contri.contentDetails"></div>
             </div>
 
             <router-view v-else></router-view>
@@ -78,7 +71,7 @@ export default {
             const style = document.createElement('style');
             style.type = 'text/css';
             style.innerHTML = `
-                .content-in img {
+                .intro img {
                     width: 560px;
                     height: 436.4px;
                     mix-blend-mode: multiply;
@@ -173,5 +166,19 @@ export default {
     width: 100%;
     opacity: 0.3;
     border: 1px solid rgba(161, 161, 161, 1);
+}
+
+.intro {
+    opacity: 1;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 25px;
+    color: rgba(51, 51, 51, 1);
+    text-align: justify;
+    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 </style>

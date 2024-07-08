@@ -8,15 +8,7 @@
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div class="content-dsc">
-                    <p style="opacity: 1;
-                    font-size: 15px;
-                    font-weight: 400;
-                    font-family: 'Misans-Medium';
-                    letter-spacing: 0px;
-                    line-height: 25px;
-                    color: rgba(51, 51, 51, 1);
-                    text-align: justify;
-                    vertical-align: top;" v-html="ghome.contentDetails"></p>
+                    <p v-html="ghome.contentDetails"></p>
                 </div>
             </div>
         </div>
@@ -115,6 +107,20 @@ export default {
 
 .content-dsc {
     margin-bottom: 60px;
+}
+
+.content-dsc p {
+    opacity: 1;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 25px;
+    color: rgba(51, 51, 51, 1);
+    text-align: justify;
+    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .dsc-line {

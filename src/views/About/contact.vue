@@ -8,15 +8,7 @@
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div class="content-dsc" v-for="contact in contactDatas">
-                    <div style="margin-bottom:50px;
-                    opacity: 1;
-                    font-size: 15px;
-                    font-weight: 400;
-                    letter-spacing: 0px;
-                    line-height: 25px;
-                    color: rgba(51, 51, 51, 1);
-                    text-align: justify;
-                    vertical-align: top;" v-html="contact.contentDetails"></div>
+                    <div class="intro" style="margin-bottom:50px;" v-html="contact.contentDetails"></div>
                 </div>
             </div>
 
@@ -152,6 +144,20 @@ export default {
 .content-dsc {
     display: flex;
     flex-direction: column;
+}
+
+.intro {
+    opacity: 1;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 25px;
+    color: rgba(51, 51, 51, 1);
+    text-align: justify;
+    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
 .enroll {

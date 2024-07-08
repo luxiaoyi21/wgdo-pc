@@ -4,7 +4,7 @@
             <div class="boxaTitle">{{ $store.state.lang.titles[6] }}</div>
             <div class="boxaDsc">{{ $t('five.dsc') }}</div>
             <div class="tomore">
-                <a href="/prize">
+                <a href="/fiveall">
                     {{ $t('five.tomore') }} <i class="iconfont icon-youjiantou"></i>
                 </a>
             </div>
@@ -100,9 +100,7 @@
                 'color': '#3E4938',
                 'vertical - align': 'top'
             }
-            const style2 = {
-                'background': '#3E4938'
-            }
+            const style2 = { 'background': '#3E4938' }
             let leftImg = []
             let rightImgLists = []
             let getPrice = []
@@ -137,14 +135,12 @@
             },
             getIndex(i) {
                 this.$router.push({
-                    path: '/details',
-                    name: 'Details',
+                    path: '/fiveall/fiveinfo',
+                    name: 'Fiveinfo',
                     params: {
-                        datas: this.rightImgLists,
                         fromPath: this.$route.path,
                         fromName: this.$route.name,
-                        types: 'fiveList',
-                        orders: Number(i)
+                        orders: Number(i + 1)
                     }
                 })
             }
@@ -152,13 +148,12 @@
         computed: {
             detailsRoute() {
                 return {
-                    path: '/details',
-                    name: 'Details',
+                    path: '/fiveall/fiveinfo',
+                    name: 'Fiveinfo',
                     params: {
-                        datas: this.leftImg,
                         fromPath: this.$route.path,
                         fromName: this.$route.name,
-                        types: 'fiveAll'
+                        orders: Number(0)
                     }
                 }
             }

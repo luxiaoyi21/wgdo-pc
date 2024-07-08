@@ -102,7 +102,7 @@ export default {
     flex-wrap: wrap;
 }
 
-.intro {
+.intro{
     opacity: 1;
     font-size: 16px;
     font-weight: 400;
@@ -111,6 +111,5 @@ export default {
     color: rgba(51, 51, 51, 1);
     text-align: justify;
     vertical-align: top;
-    margin-bottom: 50px;
 }
 </style>

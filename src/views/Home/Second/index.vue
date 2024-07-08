@@ -158,6 +158,7 @@
 
     .left .titletwo {
         display: flex;
+        justify-content: space-between;
         align-items: center;
     }
 
@@ -173,7 +174,6 @@
 
     .left .titletwo .titletwoS a {
         padding-left: 15px;
-        left: 147px;
         width: 70.96px;
         height: 42.67px;
         font-size: 15.24px;
@@ -193,28 +193,28 @@
     /* carousel */
     .carouselS {
         position: relative;
-        margin-top: 61px;
+        margin-top: 31px;
         width: 579.1px;
-        max-height: 500px;
+        max-height: 620px;
     }
 
     .carouselS :deep(.el-carousel) {
-        max-height: 500px;
+        max-height: 600px;
     }
 
     .carouselS :deep(.el-carousel__container) {
-        max-height: 490px;
+        max-height: 600px;
     }
 
     .carouselS :deep(.el-carousel__item) {
-        max-height: 490px;
+        max-height: 600px;
     }
 
     /* 按钮rgba */
     .carouselS :deep(.el-carousel__indicators--horizontal) {
         position: absolute;
         left: -2px;
-        bottom: 30px;
+        top: 510px;
         width: 70%;
         height: 9.14px;
         text-align: left;
@@ -225,7 +225,7 @@
     }
 
     .carouselS :deep(.el-carousel__button) {
-        margin: 0 3px;
+        margin: 0px 3px;
         width: 9.14px;
         height: 9.14px;
         border-radius: 50%;
@@ -405,6 +405,10 @@
     .right {
         max-height: 630px;
         overflow: hidden;
+    }
+
+    .right .rightList {
+        cursor: pointer;
     }
 
     .right .rightList .rightListTitle {

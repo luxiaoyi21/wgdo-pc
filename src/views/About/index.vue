@@ -32,7 +32,7 @@ export default {
     data() {
         return {
             tabDatas: [],
-            currentNum: 1,
+            // currentNum: 1,
             name: [],
             tabName: [],
             gindex: -1,

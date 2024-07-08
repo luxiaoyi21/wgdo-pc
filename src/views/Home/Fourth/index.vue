@@ -2,7 +2,6 @@
     <div class="box">
         <div class="top">
             <div class="left">
-                <div class="titleone">World Green Design Park</div>
                 <div class="titletwo">
                     <div class="titletwoL">{{ $store.state.lang.titles[5] }}</div>
                     <div class="tomore">
@@ -132,27 +131,13 @@
         overflow: hidden;
     }
 
-    .top .left .titleone {
-        left: 181.35px;
-        top: 2375.85px;
-        width: 511.29px;
-        height: 42.67px;
-        font-size: 32px;
-        font-weight: 700;
-        letter-spacing: 0.76px;
-        line-height: 42.43px;
-        color: rgba(255, 255, 255, 1);
-        text-align: left;
-    }
-
     .top .left .titletwo {
         display: flex;
+        justify-content: space-between;
         align-items: center;
     }
 
     .top .left .titletwo .titletwoL {
-        left: 181.35px;
-        top: 2418.52px;
         height: 42.67px;
         font-size: 32px;
         font-weight: 500;
@@ -162,6 +147,7 @@
         text-align: left;
         vertical-align: top;
     }
+
 
     .top .left .titletwo .tomore a {
         margin-top: 11px;
@@ -185,7 +171,7 @@
     }
 
     .titlethrid {
-        margin-top: 75px;
+        margin-top: 25px;
         height: 26.67px;
         font-size: 19.81px;
         font-weight: 500;
@@ -197,46 +183,44 @@
         text-overflow: ellipsis;
     }
 
-
     .leftdsc {
         margin-top: 15px;
         width: 496.05px;
-        height: 81.53px;
+        /* height: 81.53px; */
         font-size: 15.24px;
         font-weight: 400;
         letter-spacing: 0.76px;
         line-height: 20.21px;
         color: rgba(255, 255, 255, 0.8);
         text-align: left;
+        -webkit-box-orient: vertical;
+        display: -webkit-box;
         overflow: hidden;
         text-overflow: ellipsis;
-        -webkit-line-clamp: 4;
-        display: -webkit-box;
         -webkit-box-orient: vertical;
+        -webkit-line-clamp: 6;
     }
 
     .leftdscEN {
         margin-top: 15px;
         width: 496.05px;
-        height: 81.53px;
+        /* height: 81.53px; */
         font-size: 15.24px;
         font-weight: 400;
         letter-spacing: 0.76px;
         line-height: 20.21px;
         color: rgba(255, 255, 255, 0.8);
+        text-align: justify;
+        display: -webkit-box;
         overflow: hidden;
         text-overflow: ellipsis;
-        -webkit-line-clamp: 4;
-        display: -webkit-box;
         -webkit-box-orient: vertical;
-        text-align: justify;
+        -webkit-line-clamp: 6;
     }
 
     .ook {
         display: block;
-        margin-top: 15px;
-        left: 181.35px;
-        top: 2674.55px;
+        margin-top: 60px;
         width: 167.64px;
         height: 38.1px;
         opacity: 1;
@@ -245,9 +229,11 @@
         text-align: center;
     }
 
+    .ook {
+        cursor: pointer;
+    }
+
     .ook span {
-        left: 694.16px;
-        top: 1653.49px;
         width: 60.96px;
         height: 20.57px;
         opacity: 1;
@@ -274,6 +260,10 @@
         object-fit: cover;
     }
 
+    .top .right {
+        cursor: pointer;
+    }
+
     .top .right img {
         width: 100%;
         height: 100%;
@@ -296,6 +286,10 @@
     .bootomsItem {
         display: flex;
         flex-direction: column;
+    }
+
+    .bootomsItem {
+        cursor: pointer;
     }
 
     .bootomsItem .botImgs {

@@ -37,6 +37,13 @@ export default {
             urlData: [],
         }
     },
+    created() {
+        this.activeName = this.tabName[0]?.children[0]?.classifyName;
+        this.$nextTick(() => {
+            // this.currentNum = 1;
+            this.handleClick({ $options: { propsData: { name: this.activeName } } });
+        });
+    },
     mounted() {
         this.getCurrentData()
 

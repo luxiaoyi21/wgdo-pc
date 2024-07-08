@@ -63,9 +63,8 @@ export default {
             const style = document.createElement('style');
             style.type = 'text/css';
             style.innerHTML = `
-                .content-in img {
+                .big-content img {
                     width: 560px;
-                    height: 436.4px;
                     mix-blend-mode: multiply;
                     opacity: 1;
                     margin: auto;
@@ -169,5 +168,8 @@ export default {
     vertical-align: top;
     margin-bottom: 50px;
     text-align: justify;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 </style>

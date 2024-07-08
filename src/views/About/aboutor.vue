@@ -31,14 +31,7 @@
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div style="margin-bottom: 50px;" v-for="or in orDatas" :key="or.aboutusId">
-                    <div style="opacity: 1;
-                    font-size: 15px;
-                    font-weight: 400;
-                    letter-spacing: 0px;
-                    line-height: 25px;
-                    color: rgba(51, 51, 51, 1);
-                    text-align: justify;
-                    vertical-align: top;" v-html="or.contentDetails"></div>
+                    <div class="intro" v-html="or.contentDetails"></div>
                 </div>
             </div>
         </div>
@@ -177,5 +170,19 @@ export default {
     width: 100%;
     opacity: 0.3;
     border: 1px solid rgba(161, 161, 161, 1);
+}
+
+.intro {
+    opacity: 1;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 25px;
+    color: rgba(51, 51, 51, 1);
+    text-align: justify;
+    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 </style>

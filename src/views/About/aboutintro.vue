@@ -8,14 +8,7 @@
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div style="margin-bottom: 50px;" v-for="intro in introDatas" :key="intro.aboutusId">
-                    <div style="opacity: 1;
-                    font-size: 15px;
-                    font-weight: 400;
-                    letter-spacing: 0px;
-                    line-height: 25px;
-                    color: rgba(51, 51, 51, 1);
-                    text-align: justify;
-                    vertical-align: top;" v-html="intro.contentDetails"></div>
+                    <div class="intro" v-html="intro.contentDetails"></div>
                 </div>
             </div>
         </div>
@@ -43,6 +36,7 @@ export default {
             Aboutus({ "moduleType": "1", "status": "1", version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.introDatas = res.data.rows
+                    // console.log(this.introDatas);
                 }
             })
         },
@@ -115,5 +109,19 @@ export default {
     width: 100%;
     opacity: 0.3;
     border: 1px solid rgba(161, 161, 161, 1);
+}
+
+.intro {
+    opacity: 1;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 25px;
+    color: rgba(51, 51, 51, 1);
+    text-align: justify;
+    vertical-align: top;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 </style>
