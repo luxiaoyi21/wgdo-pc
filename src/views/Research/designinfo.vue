@@ -15,7 +15,7 @@
 
                 <div class="dynamic-dsc">
                     <div style="opacity: 1;
-                    font-size: 15px;
+                    font-size: 16px;
                     font-weight: 400;
                     letter-spacing: 0px;
                     line-height: 25px;

@@ -40,8 +40,10 @@
                             </div>
                         </div>
                         <div class="contentRightR" v-if="rightListDatas.length > 0">
-                            <div class="contentRightRTitle">{{ rightListDatas[0].title }}</div>
-                            <div class="contentRightRText">
+                            <div class="contentRightRTitle" :title="rightListDatas[0].title">{{ rightListDatas[0].title
+                                }}</div>
+                            <div :class="$store.state.lang.isEN === 'en' ? 'contentRightRTextEN' : 'contentRightRText'"
+                                :title="rightListDatas[0].intro">
                                 {{ rightListDatas[0].intro }}
                             </div>
                         </div>
@@ -56,8 +58,10 @@
                             </div>
                         </div>
                         <div class="contentRightR">
-                            <div class="contentRightRTitle">{{ rightListDatas[1].title }}</div>
-                            <div class="contentRightRText">
+                            <div class="contentRightRTitle" :title="rightListDatas[1].title">{{ rightListDatas[1].title
+                                }}</div>
+                            <div :class="$store.state.lang.isEN === 'en' ? 'contentRightRTextEN' : 'contentRightRText'"
+                                :title="rightListDatas[1].intro">
                                 {{ rightListDatas[1].intro }}
                             </div>
                         </div>
@@ -72,8 +76,10 @@
                             </div>
                         </div>
                         <div class="contentRightR">
-                            <div class="contentRightRTitle">{{ rightListDatas[2].title }}</div>
-                            <div :class="$store.state.lang.isEN === 'en' ? 'contentRightRTextEN' : 'contentRightRText'">
+                            <div class="contentRightRTitle" :title="rightListDatas[2].title">{{ rightListDatas[2].title
+                                }}</div>
+                            <div :class="$store.state.lang.isEN === 'en' ? 'contentRightRTextEN' : 'contentRightRText'"
+                                :title="rightListDatas[2].intro">
                                 {{ rightListDatas[2].intro }}
                             </div>
                         </div>
@@ -422,19 +428,21 @@ span {
     letter-spacing: 0.76px;
     line-height: 22.23px;
     color: rgba(16, 16, 16, 1);
-    text-align: left;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    vertical-align: top;
     overflow: hidden;
     text-overflow: ellipsis;
-    white-space: nowarp;
+    text-align: left;
 }
 
 .contentRightRText {
     margin-top: 8px;
     width: 81%;
-    /*height: 60.96px;*/
     font-size: 15.24px;
     font-weight: 400;
-    letter-spacing: 0.76px;
+    word-spacing: 0.1em;
     line-height: 20.21px;
     color: rgba(16, 16, 16, 0.8);
     text-align: justify;
@@ -451,7 +459,7 @@ span {
     height: 60.96px;
     font-size: 15.24px;
     font-weight: 400;
-    letter-spacing: 0.76px;
+    word-spacing: 0.5px;
     color: rgba(16, 16, 16, 0.8);
     text-align: justify;
     overflow: hidden;

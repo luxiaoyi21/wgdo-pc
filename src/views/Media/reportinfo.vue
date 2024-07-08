@@ -22,6 +22,8 @@
                     line-height: 25px;
                     color: rgba(51, 51, 51, 1);
                     text-align: justify;
+                    display: flex;
+                    justify-content: center;
                     vertical-align: top;" v-html="reportinfo.contentDetails"></div>
                 </div>
 

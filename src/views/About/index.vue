@@ -31,9 +31,7 @@ export default {
     props: ["urlData"],
     data() {
         return {
-            // AboutDatas: [],
             tabDatas: [],
-            // tabclickDatas: '组织介绍',
             currentNum: 1,
             name: [],
             tabName: [],
@@ -74,7 +72,7 @@ export default {
         },
         getGindex(i) {
             this.gindex = i
-            // console.log(this.gindex)
+            // console.log(i)
         },
     },
     watch: {

@@ -115,7 +115,6 @@ export default {
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    z-index: 999;
     margin: 17px 20px 0 0;
 }
 
