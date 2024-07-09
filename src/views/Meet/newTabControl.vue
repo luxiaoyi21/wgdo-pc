@@ -41,6 +41,13 @@ export default {
             urlData: [],
         }
     },
+    created() {
+        this.activeName = this.tabName[0]?.children[0]?.classifyName;
+        this.$nextTick(() => {
+            this.currentNum = 1;
+            this.handleClick({ $options: { propsData: { name: this.activeName } } });
+        });
+    },
     mounted() {
         this.getCurrentData()
 
@@ -59,15 +66,18 @@ export default {
     },
     methods: {
         handleClick(tab) {
-            this.currentNum = Number(tab.index) + 1
-            // console.log(this.currentNum);
-            sessionStorage.setItem('currentNums', this.currentNum)
+            const index = parseInt(tab.index);
+            if (!isNaN(index)) {
+                this.currentNum = index + 1;
+                // this.currentNum = Number(tab.index) + 1
+                sessionStorage.setItem('currentNums', this.currentNum)
 
-            if (this.urlData.length > 1) {
-                this.urlData.pop()
+                if (this.urlData.length > 1) {
+                    this.urlData.pop()
+                }
+                let currentTabName = tab.$options.propsData.name
+                this.urlData.push({ name: currentTabName })
             }
-            let currentTabName = tab.$options.propsData.name
-            this.urlData.push({ name: currentTabName })
             // this.$forceUpdate()
         },
         getCurrentData() {
