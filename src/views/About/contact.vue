@@ -4,7 +4,7 @@
             <div class="content-in">
                 <p class="aintro">{{ $t('about.contact') }}</p>
 
-                <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
+                <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div class="content-dsc" v-for="contact in contactDatas">
@@ -132,7 +132,7 @@ export default {
     color: rgba(51, 51, 51, 1);
     text-align: left;
     vertical-align: top;
-    margin-top: 15px;
+    margin-top: 7px;
 }
 
 .dsc-line {

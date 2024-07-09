@@ -19,7 +19,8 @@
     "tomore": "more"
   },
   "third": {
-    "dsc": "As a bridge between users and products, social sharing plays an important role in the development process of products",
+    "title": "Conference Activities",
+    "dsc": "Aim to build a platform for international exchange and cooperation on green design and to promote global development towards a greener and eco-friendly future through thematic forum.",
     "tomore": "more",
     "active": "Activity notice"
   },
@@ -28,8 +29,8 @@
     "tomore": "Learn more"
   },
   "five": {
-    "pingpaixiangmu": "Brand project",
-    "dsc": "As a bridge between users and products, social sharing plays an important role in the development process of products",
+    "pingpaixiangmu": "Brand Projects",
+    "dsc": "Launch special brand projects to assist in realizing sustainable development by means of combining the application of green design at the macro, meso and micro level.",
     "tomore": "more",
     "learnmore": "Learn more",
     "greenprice": "International Award for Green Design",
@@ -37,8 +38,8 @@
     "seehistory": "View awards over the years"
   },
   "six": {
-    "huoban": "Business partner",
-    "dsc": "As a bridge between users and products, social sharing plays an important role in the development process of products"
+    "huoban": "Partnerships",
+    "dsc": "Accelerate the development and popularization of green design by emphasizing exchange and cooperation, co-innovation and social responsibility. Make contributions to building a green and healthy future together."
   },
   "footer": {
     "guanyuwomen": "About us",
@@ -97,7 +98,7 @@
   },
   "about":{
     "Introduction":"Organizational Introduction",
-    "structure":"Organizational structure",
+    "structure":"Organizational Structure",
     "figures":"Important figures",
     "contact":"Contact us",
     "welcome":"Welcome to leave us a message",

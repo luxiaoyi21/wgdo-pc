@@ -41,7 +41,7 @@
                 <router-view></router-view>
                 <p class="dynamic">{{ $t('project.publicity') }}</p>
 
-                <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
+                <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=""></div>
 
                 <div class="dynamic-dsc">
@@ -136,7 +136,7 @@ export default {
     justify-content: space-evenly;
     align-items: center;
     z-index: 999;
-    margin: 17px 20px 0 0;
+    margin: 13px 20px 0 0;
 }
 
 .big-leader a {
@@ -158,7 +158,7 @@ export default {
     color: rgba(51, 51, 51, 1);
     text-align: left;
     vertical-align: top;
-    margin-top: 15px;
+    margin-top: 7px;
 }
 
 .dsc-line {

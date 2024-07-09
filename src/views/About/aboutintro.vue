@@ -4,7 +4,7 @@
             <div class="content-in">
                 <p class="aintro">{{ $t('about.Introduction') }}</p>
 
-                <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
+                <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div style="margin-bottom: 50px;" v-for="intro in introDatas" :key="intro.aboutusId">
@@ -102,7 +102,7 @@ export default {
     color: rgba(51, 51, 51, 1);
     text-align: left;
     vertical-align: top;
-    margin-top: 15px;
+    margin-top: 7px;
 }
 
 .dsc-line {

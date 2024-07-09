@@ -1,7 +1,7 @@
 <template>
     <div class="box">
         <div class="top">
-            <div class="title">{{ $t('headernav.Conferenceactivity') }}</div>
+            <div class="title">{{ $t('third.title') }}</div>
             <!-- <div class="title">{{$store.state.lang.titles[3]}}</div> -->
             <div class="dsc">
                 {{ $t('third.dsc') }} </div>

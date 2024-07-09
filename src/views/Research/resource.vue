@@ -10,10 +10,9 @@
                         </div>
                         <el-button type="text" @click="toggleCheckbox">{{ $t('research.download') }}</el-button>
                     </div>
-
                 </div>
 
-                <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
+                <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" "></div>
 
                 <div class="dynamic-dsc" v-for="res in resourceDatas" :key="res.academicId">
@@ -192,7 +191,7 @@ export default {
 .titleintro {
     display: flex;
     justify-content: space-between;
-    margin-top: 15px;
+    margin-top: 7px;
 }
 
 .el-button {

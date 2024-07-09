@@ -8,8 +8,8 @@
                         <div class="logoDscTop">世界绿色设计组织</div>
                         <div class="logoDscBot">World Green Design Organization</div>
                     </div> -->
-                <img src="@/static/imgs/alllogo.png" alt="">
-            </div>
+                    <img :src="getLogoPath()" :style="getLogoStyle()" alt="Logo">
+                </div>
             <div class="right">
                 <div class="search">
                     <i class="iconfont icon-sousuo scarchI"></i>
@@ -79,6 +79,20 @@ export default {
         changeLang() {
             this.$store.commit('getLocalLang');
             this.$store.commit('getVersion')
+        },
+        getLogoPath() {
+            if (this.$store.state.lang.isEn === 'en') {
+                return require('@/static/imgs/logoen.png');
+            } else {
+                return require('@/static/imgs/alllogo.png');
+            }
+        },
+        getLogoStyle() {
+            if (this.$store.state.lang.isEn === 'en') {
+                return { transform: 'scale(0.78) translateX(-54px)' };
+            } else {
+                return null;
+            }
         },
         setLanguageStyles() {
             if (this.$store.state.lang.langs === '中文') {
@@ -195,7 +209,6 @@ a:active {
 
 .hTop .logo {
     margin-top: 23px;
-    width: 221px;
     height: 53px;
 }
 

@@ -30,7 +30,7 @@
             <div class="content-in" v-for="rule in ruleDatas" :key="rule.greenawardId">
                 <p class="dynamic">{{ rule.title }}</p>
 
-                <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
+                <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div class="rule-all">
@@ -130,7 +130,7 @@ export default {
     color: rgba(51, 51, 51, 1);
     text-align: left;
     vertical-align: top;
-    margin-top: 15px;
+    margin-top: 7px;
 }
 
 .dsc-line {

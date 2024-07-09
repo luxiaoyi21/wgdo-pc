@@ -185,14 +185,14 @@
 
     .leftdsc {
         margin-top: 15px;
-        width: 496.05px;
+        width: 100%;
         /* height: 81.53px; */
         font-size: 15.24px;
         font-weight: 400;
         letter-spacing: 0.76px;
         line-height: 20.21px;
         color: rgba(255, 255, 255, 0.8);
-        text-align: left;
+        text-align: justify;
         -webkit-box-orient: vertical;
         display: -webkit-box;
         overflow: hidden;
@@ -203,11 +203,12 @@
 
     .leftdscEN {
         margin-top: 15px;
-        width: 496.05px;
+        width: 100%;
         /* height: 81.53px; */
         font-size: 15.24px;
         font-weight: 400;
-        letter-spacing: 0.76px;
+        /*letter-spacing: 0.76px;*/
+        word-spacing: 0.2em;
         line-height: 20.21px;
         color: rgba(255, 255, 255, 0.8);
         text-align: justify;

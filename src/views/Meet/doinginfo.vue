@@ -14,7 +14,7 @@
                         <div class="info-create">{{ $t('meet.create') }}：{{ info.releaseTime }}</div>
                     </div>
 
-                    <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
+                    <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                     <div class="dsc-line" style=""></div>
 
                     <div class="info-introall">
@@ -543,7 +543,7 @@ export default {
     text-align: left;
     vertical-align: top;
     text-align: center;
-    margin-top: 40px;
+    margin-top: 7px;
 }
 
 .info {

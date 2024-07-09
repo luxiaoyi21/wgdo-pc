@@ -30,7 +30,7 @@
 
                 <p class="dynamic">{{ contri.title }}</p>
 
-                <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
+                <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div class="intro" v-html="contri.contentDetails"></div>
@@ -137,7 +137,7 @@ export default {
     justify-content: space-evenly;
     align-items: center;
     z-index: 999;
-    margin: 17px 20px 0 0;
+    margin: 14px 20px 0 0;
 }
 
 .big-leader a {
@@ -159,7 +159,7 @@ export default {
     color: rgba(51, 51, 51, 1);
     text-align: left;
     vertical-align: top;
-    margin-top: 15px;
+    margin-top: 7px;
 }
 
 .dsc-line {

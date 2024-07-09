@@ -2,7 +2,7 @@
     <div class="item">
         <div class="leader">
             <div class="leader-in">
-                <span>{{ $t('about.Introduction') }}</span>
+                <span>{{ $t('about.structure') }}</span>
                 <i class="el-icon-arrow-right"></i>
             </div>
             <div class="leader-in">
@@ -27,7 +27,7 @@
             <div class="content-in">
                 <p class="aintro">{{ $t('about.structure') }}</p>
 
-                <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
+                <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div style="margin-bottom: 50px;" v-for="or in orDatas" :key="or.aboutusId">
@@ -104,7 +104,7 @@ export default {
     opacity: 1;
     border-radius: 6px;
     background: rgba(220, 235, 192, 1);
-    margin: 16px 18px 0 0;
+    margin: 14px 18px 0 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -163,7 +163,7 @@ export default {
     color: rgba(51, 51, 51, 1);
     text-align: left;
     vertical-align: top;
-    margin-top: 15px;
+    margin-top: 7px;
 }
 
 .dsc-line {

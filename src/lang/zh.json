@@ -19,7 +19,8 @@
     "tomore": "查看更多"
   },
   "third": {
-    "dsc": "作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用",
+    "title": "会议活动",
+    "dsc": "旨在搭建绿色设计国际交流合作平台，通过主题论坛峰会，促进全球向更加绿色和生态友好的未来发展。",
     "tomore": "查看更多",
     "active": "活动预告"
   },
@@ -29,7 +30,7 @@
   },
   "five": {
     "pingpaixiangmu": "品牌项目",
-    "dsc": "作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用",
+    "dsc": "通过结合绿色设计在宏观、中观、微观中的应用，推出特色品牌项目，助力实现可持续发展。",
     "tomore": "查看更多",
     "learnmore": "了解详情",
     "greenprice": "绿色设计国际大奖",
@@ -38,7 +39,7 @@
   },
   "six": {
     "huoban": "合作伙伴",
-    "dsc": "作为用户和产品之间的桥梁社交分享在产品的发展过程中扮演了重要的角色分享时机在不同的时机分析用"
+    "dsc": "通过强调交流合作、共同创新和社会责任，加速绿色设计的发展和普及，为建设绿色、健康的未来做出贡献。"
   },
   "footer": {
     "guanyuwomen": "关于我们",
@@ -97,10 +98,10 @@
   },
   "about": {
     "welcome": "欢迎给我们留言",
-    "Introduction":"组织介绍",
-    "structure":"组织架构",
-    "figures":"重要人物",
-    "contact":"联系我们",
+    "Introduction": "组织介绍",
+    "structure": "组织架构",
+    "figures": "重要人物",
+    "contact": "联系我们",
     "Korean": "韩国分会",
     "UK": "英国分会",
     "Germany": "德国分会",
@@ -132,18 +133,18 @@
     "remark": "备注",
     "register": "立即报名"
   },
-  "dynamic":{
+  "dynamic": {
     "dynamics": "组织动态",
     "report": "媒体报道",
     "video": "论坛视频"
   },
-  "research":{
+  "research": {
     "design": "绿色设计报告",
     "download": "批量下载",
     "document": "下载文件",
     "resource": "共享资源"
   },
-  "project":{
+  "project": {
     "record": "绿丝带物资到货记录",
     "require": "需求填报",
     "inventory": "可信供方清单",
@@ -153,7 +154,7 @@
     "contactform": "联系方式",
     "glory": "绿丝带行动捐赠光荣榜"
   },
-  "prize":{
+  "prize": {
     "big": "绿色设计国际大奖",
     "rule": "评定规则",
     "persons": "2015国际奖获奖个人",
@@ -161,14 +162,14 @@
     "mechanism": "2011国际贡献奖获奖机构",
     "person": "2011国际贡献奖获奖个人"
   },
-  "wgdo":{
+  "wgdo": {
     "intro": "机构简介",
     "branch": "分支拓建",
     "service": "品牌服务",
     "train": "绿色设计培训",
     "policy": "绿色政策"
   },
-  "breadcrumb":{
+  "breadcrumb": {
     "about": "关于我们",
     "meet": "会议活动",
     "media": "媒体中心",

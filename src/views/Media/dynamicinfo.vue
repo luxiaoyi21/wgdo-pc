@@ -12,7 +12,7 @@
                     <div class="info-create">{{ $t('meet.create') }}：{{ dyninfo.releaseTime }}</div>
                 </div>
 
-                <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
+                <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
 
                 <div class="dynamic-dsc">
@@ -29,7 +29,7 @@ import funs from '@/utils/index.js'
 
 export default {
     name: "Dynamicinfo",
-    props: ['tabDatas','id'],
+    props: ['tabDatas', 'id'],
     data() {
         return {
             dynamicinfoDatas: [],
@@ -45,10 +45,18 @@ export default {
             const p = this.$store.state.lang.version;
             Media({ status: '1', version: p, id: id }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                    this.dynamicinfoDatas = res.data.rows.filter(row => row.mediacenterId === id);
-                    // console.log(this.dynamicinfoDatas);
+                    this.dynamicinfoDatas = [];
+                    res.data.rows.forEach(rows => {
+                        if (rows.mediacenterId === id) {
+                            this.dynamicinfoDatas.push(rows);
+                        }
+                    });
+                    console.log(id)
+                    console.log(this.dynamicinfoDatas);
                 }
-            })
+            }).catch(error => {
+                console.error('Error fetching data:', error);
+            });
         },
     },
     watch: {
@@ -106,7 +114,7 @@ export default {
     color: rgba(51, 51, 51, 1);
     text-align: center;
     vertical-align: top;
-    margin-top: 15px;
+    margin-top: 7px;
 }
 
 .info {
@@ -168,7 +176,7 @@ export default {
     color: rgba(51, 51, 51, 1);
 }
 
-.intro{
+.intro {
     opacity: 1;
     font-size: 16px;
     font-weight: 400;

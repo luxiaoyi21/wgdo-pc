@@ -290,7 +290,7 @@
 
     .titlethr {
         margin-top: 31px;
-        width: 579.05px;
+        width: 100%;
         height: 35.05px;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -305,14 +305,14 @@
 
     .titlefour {
         margin-top: 11px;
-        width: 548.05px;
+        width: 100%;
         opacity: 1;
         font-size: 15.24px;
         font-weight: 400;
         letter-spacing: 0.76px;
         line-height: 20.21px;
         color: rgba(255, 255, 255, 0.8);
-        text-align: left;
+        text-align: justify;
         display: -webkit-box;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -322,16 +322,15 @@
 
     .titlefourEN {
         margin-top: 11px;
-        left: 143.25px;
-        top: 1292.32px;
-        width: 548.05px;
+        width: 100%;
         opacity: 1;
         font-size: 15.24px;
         font-weight: 400;
-        letter-spacing: 0.76px;
+        /*letter-spacing: 0.76px;*/
+        word-spacing: 0.2em;
         line-height: 20.21px;
         color: rgba(255, 255, 255, 0.8);
-        text-align: left;
+        text-align: justify;
         display: -webkit-box;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -456,6 +455,11 @@
         text-align: justify;
         word-break: keep-all;
         text-align-last: left;
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
     }
 
     .right .rightList .rightListLine {
