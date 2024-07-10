@@ -37,13 +37,14 @@ export default {
     },
     mounted() {
         this.getDynamicinfoData()
+        this.ImageStyles()
         // console.log(this.$route.query.id);
     },
     methods: {
         getDynamicinfoData() {
             const id = this.$route.query.id;
             const p = this.$store.state.lang.version;
-            Media({ status: '1', version: p, id: id }).then(res => {
+            Media({ moduleType: '1', status: '1', version: p, id: id }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.dynamicinfoDatas = [];
                     res.data.rows.forEach(rows => {
@@ -51,13 +52,26 @@ export default {
                             this.dynamicinfoDatas.push(rows);
                         }
                     });
-                    console.log(id)
-                    console.log(this.dynamicinfoDatas);
+                    // console.log(id)
+                    // console.log(this.dynamicinfoDatas);
                 }
             }).catch(error => {
                 console.error('Error fetching data:', error);
             });
         },
+        ImageStyles() {
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                .intro img {
+                    width: 100%;
+                    
+                    background-size: cover;
+                    background-position: center;
+                }
+            `;
+            document.head.appendChild(style);
+        }
     },
     watch: {
         "$store.state.lang.version": {

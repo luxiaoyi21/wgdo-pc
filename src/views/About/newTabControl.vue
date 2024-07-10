@@ -55,6 +55,10 @@ export default {
         setTimeout(() => {
             this.activeName = this.tabName[0]?.children[0]?.classifyName;
             this.handleClick({ $options: { propsData: { name: this.activeName } } });
+
+            this.$nextTick(() => {
+                this.$forceUpdate()
+            });
         }, 500);
 
         this.routesData = this.$router.options.routes
@@ -79,7 +83,6 @@ export default {
                 let currentTabName = tab.$options.propsData.name
                 this.urlData.push({ name: currentTabName })
             }
-            // this.$forceUpdate()
         },
         getCurrentData() {
             let cn = sessionStorage.getItem('currentNums')
@@ -116,7 +119,7 @@ export default {
                     sessionStorage.setItem('ln', JSON.stringify(this.localName))
                 })
             }
-        }
+        },
     },
     watch: {
         'currentNum': {

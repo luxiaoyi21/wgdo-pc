@@ -415,7 +415,9 @@
 
 <script>
 import { Meet } from "@/api/requests.js";
+import { Mark } from "@/api/requests.js";
 import funs from '@/utils/index.js'
+import { Message } from 'element-ui'
 
 export default {
     name: "Previewinfo",
@@ -462,14 +464,44 @@ export default {
             document.head.appendChild(style);
         },
         async send() {
-            console.log('提交的信息：', {
-                name: this.name,
-                gender: this.gender,
-                nationality: this.nationality,
-                contact: this.contact,
-                remark: this.remark,
-            });
-        }
+            if (!this.name || !this.gender || !this.nationality || !this.contact) {
+                Message({
+                    message: '请填写完整信息',
+                    type: 'warning'
+                });
+                return;
+            }
+
+            try {
+                const response = await Mark({
+                    name: this.name,
+                    gender: this.gender,
+                    nationality: this.nationality,
+                    contact: this.contact,
+                    remark: this.remark
+                });
+
+                console.log('报名成功:', response.data);
+
+                Message({
+                    message: '报名成功',
+                    type: 'success'
+                });
+
+                this.name = '';
+                this.gender = '';
+                this.nationality = '';
+                this.contact = '';
+                this.remark = '';
+            } catch (error) {
+                console.error('报名失败:', error);
+
+                Message({
+                    message: '报名失败，请稍后再试',
+                    type: 'error'
+                });
+            }
+        },
     },
     watch: {
         "$store.state.lang.version": {

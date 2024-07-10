@@ -26,7 +26,7 @@
             <div class="contentRight">
                 <div class="contentRightTop">
                     <!-- <div class="contentRightTile"> {{ $t('third.active') }} </div> -->
-                    <div class="title">{{ $store.state.lang.titles[3] }}</div>
+                    <div class="title">{{ $store.state.lang.titles[4] }}</div>
                     <div class="tmore">
                         <a href="/meet/preview">{{ $t('third.tomore') }}<i class="iconfont icon-youjiantou"></i></a>
                     </div>

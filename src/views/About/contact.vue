@@ -32,7 +32,9 @@
 
 <script>
 import { Aboutus } from '@/api/requests.js'
+import { Message } from '@/api/requests.js'
 import funs from '@/utils/index.js'
+import { Message as ElMessage } from 'element-ui'
 
 export default {
     name: "Contact",
@@ -55,27 +57,28 @@ export default {
             })
         },
         async Send() {
+            // console.log(this.input)
             if (this.input.trim() !== '') {
                 try {
                     const response = await Message({ message: this.input });
-                    console.log('服务器响应:', response.data);
+                    // console.log('服务器响应:', response.data);
 
-                    this.$message({
+                    ElMessage({
                         message: '信息发送成功',
                         type: 'success'
                     });
 
                     this.input = '';
                 } catch (error) {
-                    console.error('发送信息时出错:', error);
+                    // console.error('发送信息时出错:', error);
 
-                    this.$message({
+                    ElMessage({
                         message: '信息发送失败',
                         type: 'error'
                     });
                 }
             } else {
-                this.$message({
+                ElMessage({
                     message: '输入内容不能为空',
                     type: 'warning'
                 });

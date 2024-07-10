@@ -1,26 +1,26 @@
 <template>
     <div class="item">
         <div class="leader">
-            <div class="leader-in">
+            <a href="#" ref="leadertop" class="leader-in">
                 <span>{{ $t('about.structure') }}</span>
                 <i class="el-icon-arrow-right"></i>
-            </div>
-            <div class="leader-in">
+            </a>
+            <a href="#" class="leader-in">
                 <span>{{ $t('about.Korean') }}</span>
                 <i class="el-icon-arrow-right"></i>
-            </div>
-            <div class="leader-in">
+            </a>
+            <a href="#" class="leader-in">
                 <span>{{ $t('about.UK') }}</span>
                 <i class="el-icon-arrow-right"></i>
-            </div>
-            <div class="leader-in">
+            </a>
+            <a href="#" class="leader-in">
                 <span>{{ $t('about.Germany') }}</span>
                 <i class="el-icon-arrow-right"></i>
-            </div>
-            <div class="leader-in">
+            </a>
+            <a href="#" class="leader-in">
                 <span>{{ $t('about.Norwegian') }}</span>
                 <i class="el-icon-arrow-right"></i>
-            </div>
+            </a>
         </div>
 
         <div class="content">
@@ -128,6 +128,17 @@ export default {
     padding: 0 10px;
 }
 
+/*
+.leader-in #leadertop {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 19.89px;
+    color: rgba(51, 51, 51, 1);
+    text-align: left;
+    vertical-align: top;
+}
+*/
 .leader-in:active {
     font-size: 15px;
     font-weight: 600;

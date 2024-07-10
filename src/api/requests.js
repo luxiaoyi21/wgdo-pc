@@ -43,10 +43,10 @@ export const Aboutus = async function (params) {
     })
 }
 
-//发送留言信息 没接口
+//发送留言信息
 export const Message = async function (params) {
     return await instanceRequest({
-        url: '/content/aboutus/list?pageNum=1&pageSize=10',
+        url: '/message/leaveMessage/list',
         method: 'post',
         data: params
     })
@@ -58,6 +58,15 @@ export const Meet = async function (params) {
         url: '/content/conference/list?pageNum=1&pageSize=10',
         method: 'GET',
         params
+    })
+}
+
+//提交报名信息
+export const Mark = async function (params) {
+    return await instanceRequest({
+        url: '/message/signUp/list',
+        method: 'post',
+        data: params
     })
 }
 

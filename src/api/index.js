@@ -4,7 +4,7 @@ import router from '@/router/index.js'
 const instanceRequest = axios.create({
     baseURL: 'http://www.wgdo.net/prod-api/',
     // baseURL: 'http://106.3.97.14:9002/prod-api/',
-    timeout: 20000,
+    timeout: 300000,
     headers: {
         'Content-Type': 'application/json'
     }

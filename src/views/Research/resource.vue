@@ -32,18 +32,6 @@
                     </div>
                 </div>
 
-                <!-- <div class="dynamic-data">
-                    <div class="dynamic-data-num">
-                        <div class="data-page">第{{ currentPage }}页</div>
-                        <div class="data-limit">共{{ totalItems }}条</div>
-                    </div>
-
-                    <div class="devide-page">
-                        <el-pagination background layout="prev, pager, next" :total="totalItems" :page-size="pageSize"
-                            :current-page.sync="currentPage" @current-change="handlePageChange">>
-                        </el-pagination>
-                    </div>
-                </div> -->
                 <Pagination :tabDatas="tabDatas" :pageSize="pageSize" :currentPage="currentPage"
                     :totalItems="totalItems" @currentTabDatas="currentTabDatas" />
             </div>
@@ -98,7 +86,7 @@ export default {
                 return;
             }
 
-            const fullUrl = 'http://106.3.97.14:9002' + url;
+            const fullUrl = 'http://www.wgdo.net' + url;
             const fileName = url.split('/').pop();
 
             try {
