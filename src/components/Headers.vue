@@ -131,7 +131,7 @@ export default {
         },
         getLogoStyle() {
             if (this.$store.state.lang.isEn === 'en') {
-                return { transform: 'scale(0.78) translateX(-54px)' };
+                return { transform: 'scale(0.78) translateX(-4vw)' };
             } else {
                 return null;
             }

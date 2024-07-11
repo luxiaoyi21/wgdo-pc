@@ -179,6 +179,7 @@ export default {
     text-align: justify;
     vertical-align: top;
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 </style>

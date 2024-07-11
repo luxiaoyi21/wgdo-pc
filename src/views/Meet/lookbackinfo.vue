@@ -874,7 +874,6 @@ export default {
 .schedule-left {
     display: flex;
     flex-direction: column;
-    width: 50%;
     opacity: 1;
     justify-content: space-evenly;
 }
