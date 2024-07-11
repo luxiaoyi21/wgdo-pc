@@ -21,16 +21,27 @@ export default {
         }
     },
     mounted() {
-      
+
     },
     computed: {
-      
+
     },
     methods: {
         addBreadcrumb(item) {
             const newItem = { name: '组织动态详情', path: `${item.path}/dynamicinfo` };
             this.$emit('update:urlData', [...this.urlData, newItem]);
-        }
+        },
+        // navigateTo(item, index) {
+        //     const currentPath = this.$route.path;  // 获取当前路由路径
+        //     const targetPath = item.path;
+
+        //     if (currentPath === targetPath) {
+        //         alert('您当前已经在该页面！');
+        //     } else {
+        //         const slicedData = this.urlData.slice(0, index + 1);
+        //         this.$emit('update:urlData', slicedData);
+        //     }
+        // }
     }
 }
 </script>

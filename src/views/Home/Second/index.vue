@@ -4,6 +4,7 @@
             <div class="left">
                 <div class="titletwo">
                     <span class="titletwoF">{{ $store.state.lang.titles[1] }}</span>
+                    <!-- <span class="titletwoF">{{ $t('second.zuzhidongtai') }}</span> -->
                     <span class="titletwoS">
                         <a href="/media/dynamic">{{ $t('second.more') }}<i class="iconfont icon-youjiantou"></i></a>
                     </span>
@@ -164,7 +165,7 @@ export default {
 
 .left .titletwo .titletwoF {
     height: 42.67px;
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 600;
     letter-spacing: 0.76px;
     line-height: 42.43px;

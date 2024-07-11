@@ -3,7 +3,8 @@
         <div class="top">
             <div class="left">
                 <div class="titletwo">
-                    <div class="titletwoL">{{ $store.state.lang.titles[5] }}</div>
+                    <!-- <div class="titletwoL">{{ $store.state.lang.titles[5] }}</div> -->
+                    <div class="titletwoL">{{ $t('four.greendesign') }}</div>
                     <div class="tomore">
                         <router-link :to="detailsRouteALL">
                             {{ $t('third.tomore') }}
@@ -112,8 +113,8 @@ export default {
 }
 
 .left {
-    max-width: 511.29px;
     position: relative;
+    margin-right: 3.1vw;
 }
 
 /* top */
@@ -140,7 +141,7 @@ export default {
 
 .top .left .titletwo .titletwoL {
     height: 42.67px;
-    font-size: 32px;
+    font-size: 30px;
     font-weight: 600;
     letter-spacing: 0.76px;
     line-height: 42.43px;

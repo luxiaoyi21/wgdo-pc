@@ -82,6 +82,8 @@ export default {
             searchInp,
             lang,
             currentRoute: '',
+            // logoStyleEn: { transform: 'scale(0.78) translateX(-4vw)' },
+            // logoStyle: null,
         }
     },
     created() {
@@ -94,6 +96,11 @@ export default {
         //     this.$refs.changeLanguea.classList.add('zhs')
         // }
     },
+    // computed: {
+    //     getLogoStyle() {
+    //         return this.$store.state.lang.isEn === 'en' ? this.logoStyleEn : this.logoStyle;
+    //     }
+    // },
     mounted() {
         // this.lang = this.$store.state.lang.langs
         this.$nextTick(() => {
@@ -398,6 +405,7 @@ export default {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-right: -0.9vw;
 }
 
 .zhBottom a:hover {

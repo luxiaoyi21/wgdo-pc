@@ -8,8 +8,8 @@
                         <div class="logoDscTop">世界绿色设计组织</div>
                         <div class="logoDscBot">World Green Design Organization</div>
                     </div> -->
-                    <img :src="getLogoPath()" :style="getLogoStyle()" alt="Logo">
-                </div>
+                <img :src="getLogoPath()" :style="getLogoStyle()" alt="Logo">
+            </div>
             <div class="right">
                 <div class="search">
                     <i class="iconfont icon-sousuo scarchI"></i>
@@ -68,7 +68,9 @@ export default {
         let lang = '中文'
         return {
             searchInp,
-            lang
+            lang,
+            // logoStyleEn: { transform: 'scale(0.78) translateX(-4vw)' },
+            // logoStyle: null,
         }
     },
     mounted() {
@@ -378,6 +380,7 @@ a:active {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-right: -0.9vw;
 }
 
 .zhBottom a:hover {
