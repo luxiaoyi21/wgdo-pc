@@ -93,11 +93,11 @@ export default {
             style.innerHTML = `
                 .content-in img:nth-of-type(1) {
                     width: 100%;
-                    height: 323px;
+                    height:100%;
                 },
                 .content-in img:nth-of-type(2) {
-                    width: 589px;
-                    height: 883px;
+                    width: 100%;
+                    height:100%;
         }
             `;
             document.head.appendChild(style);
@@ -134,6 +134,7 @@ export default {
     display: flex;
     justify-content: center;
     align-content: center;
+    flex-direction: column;
 }
 
 .big-leader {

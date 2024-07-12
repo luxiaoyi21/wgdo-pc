@@ -3,8 +3,8 @@
         <div class="top">
             <div class="left">
                 <div class="titletwo">
-                    <!-- <div class="titletwoL">{{ $store.state.lang.titles[5] }}</div> -->
-                    <div class="titletwoL">{{ $t('four.greendesign') }}</div>
+                    <div class="titletwoL">{{ $store.state.lang.titles[5] }}</div>
+                    <!-- <div class="titletwoL">{{ $t('four.greendesign') }}</div> -->
                     <div class="tomore">
                         <router-link :to="detailsRouteALL">
                             {{ $t('third.tomore') }}

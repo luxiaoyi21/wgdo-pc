@@ -63,7 +63,7 @@
                 moredetDatas,
                 currentPage: 1,
                 totalItems: 0,
-                pageSize: 10,
+                pageSize: 5,
                 urlData,
                 isShow: true
             };

@@ -46,6 +46,7 @@ export default {
             }
         }
         this.getFiveData()
+        this.ImageStyles()
     },
     methods: {
         getFiveData(p = this.$store.state.lang.version) {
@@ -80,6 +81,19 @@ export default {
                     })
                 }
             })
+        },
+        ImageStyles() {
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                .intro img {
+                    width: 100%;
+                    
+                    background-size: cover;
+                    background-position: center;
+                }
+            `;
+            document.head.appendChild(style);
         }
     },
     watch: {

@@ -75,15 +75,36 @@ export default {
     },
     mounted() {
         this.getGloryData()
+        this.ImageStyles()
     },
     methods: {
         getGloryData(p = this.$store.state.lang.version) {
-            Project({ moduleType: '5', status: '1', version: p }).then(res => {
+            const id = this.$route.query.id;
+            Project({ moduleType: '2', status: '1', version: p, id: id }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.gloryDatas = res.data.rows
+                    // const targetData = res.data.rows.find(row => row.id === id); 
+                    // if (targetData) {
+                    //     this.gloryDatas = [targetData];
+                    // }
+                    // this.gloryDatas = res.data.rows.filter(row => row.benefitId === id);
                 }
             })
-        }
+        },
+        ImageStyles() {
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                .content-in img {
+                    height:100%;
+                    
+                    background-size: cover;
+                    background-position: center;
+                    object-fit: cover;
+                }
+            `;
+            document.head.appendChild(style);
+        },
     },
     watch: {
         "$store.state.lang.version": {

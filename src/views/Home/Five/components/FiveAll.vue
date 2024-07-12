@@ -62,7 +62,7 @@ export default {
             moredetDatas,
             currentPage: 1,
             totalItems: 0,
-            pageSize: 10,
+            pageSize: 5,
             urlData,
             isShow: true
         };
@@ -96,6 +96,7 @@ export default {
                     // this.leftImg = leftImg
                     // this.rightImgLists = rightImgLists
                     this.moredetDatas = res.data.rows
+                    this.totalItems = res.data.rows.length;
                 }
             })
         },
@@ -200,7 +201,7 @@ export default {
     display: flex;
     border-bottom: 1px solid rgba(161, 161, 161, 1);
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
 }
 
 .dynamic-img {

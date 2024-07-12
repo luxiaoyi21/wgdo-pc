@@ -66,7 +66,7 @@ export default {
             moredetDatas,
             currentPage: 1,
             totalItems: 0,
-            pageSize: 10,
+            pageSize: 5,
             urlData
         }
     },
@@ -98,6 +98,7 @@ export default {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.topDatas = res.data.rows[0]
                     this.moredetDatas = res.data.rows
+                    this.totalItems = res.data.rows.length;
                 }
             })
         },

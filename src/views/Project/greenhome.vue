@@ -1,7 +1,18 @@
 <template>
     <div class="item">
-        <div class="content">
-            <div class="content-in" v-for="ghome in ghomeDatas" :key="ghome.benefitId">
+        <div class="content" v-for="ghome in ghomeDatas" :key="ghome.benefitId">
+            <div class="leader" v-if="shouldShowLeader">
+                <a href="#" ref="leadertop" class="leader-in">
+                    <span>{{ ghome.title }}</span>
+                    <i class="el-icon-arrow-right"></i>
+                </a>
+                <a href="#" class="leader-in">
+                    <span>{{ $t('about.Korean') }}</span>
+                    <i class="el-icon-arrow-right"></i>
+                </a>
+            </div>
+
+            <div class="content-in">
                 <p class="aintro">{{ ghome.title }}</p>
 
                 <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
@@ -25,6 +36,7 @@ export default {
     data() {
         return {
             ghomeDatas: [],
+            shouldShowLeader: false,
         };
     },
     mounted() {
@@ -86,6 +98,47 @@ export default {
     justify-content: center;
     align-content: center;
 }
+
+.leader {
+    width: 230px;
+    height: 20%;
+    opacity: 1;
+    border-radius: 6px;
+    background: rgba(220, 235, 192, 1);
+    margin: 14px 18px 0 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.leader-in {
+    width: 100%;
+    margin: 10px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 18px;
+    color: rgba(102, 102, 102, 1);
+    text-align: left;
+    vertical-align: top;
+    padding: 0 10px;
+}
+
+.leader-in:active {
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 19.89px;
+    color: rgba(51, 51, 51, 1);
+    text-align: left;
+    vertical-align: top;
+}
+
 
 .content-in {
     width: 100%;

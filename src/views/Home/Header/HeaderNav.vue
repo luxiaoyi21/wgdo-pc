@@ -364,6 +364,7 @@ a:active {
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    margin-right: -0.9vw;
 }
 
 .ens {

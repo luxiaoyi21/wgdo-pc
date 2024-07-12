@@ -55,6 +55,18 @@ const routes = [
         ]
     },
     {
+        path: '/caseall',
+        name: 'CaseAll',
+        component: () => import('@/views/Home/Sixth/components/caseall.vue'),
+        children: [
+            {
+                path: 'caseinfo',
+                name: 'Caseinfo',
+                component: () => import('@/views/Home/Sixth/components/caseinfo.vue')
+            }
+        ]
+    },
+    {
         path: '/details',
         name: 'Details',
         component: () => import('@/components/Details.vue'),
@@ -84,6 +96,12 @@ const routes = [
         path: '/about',
         name: 'About',
         component: () => import('@/views/About/index'),
+        meta: {
+            breadcrumbName: {
+                en: 'About',
+                zh: '关于我们',
+            }
+        },
         children: [
             {
                 path: 'aboutintro',
@@ -115,6 +133,12 @@ const routes = [
     {
         path: '/meet',
         name: 'Meet',
+        meta: {
+            breadcrumbName: {
+                en: 'Meet',
+                zh: '会议活动',
+            }
+        },
         component: () => import('@/views/Meet/index'),
         children: [
             {
@@ -175,12 +199,13 @@ const routes = [
     {
         path: '/media',
         name: 'Media',
-        // name: '媒体中心',
+        meta: {
+            breadcrumbName: {
+                en: 'Media',
+                zh: '媒体中心',
+            }
+        },
         component: () => import('@/views/Media/index'),
-        // meta: {
-        //     name_zh: '媒体中心',
-        //     name_en: 'Media',
-        // },
         children: [
             {
                 // /Media/dynamic 组织动态
@@ -230,6 +255,12 @@ const routes = [
     {
         path: '/research',
         name: 'Research',
+        meta: {
+            breadcrumbName: {
+                en: 'Research',
+                zh: '学术研究',
+            }
+        },
         component: () => import('@/views/Research/index'),
         children: [
             {
@@ -276,6 +307,12 @@ const routes = [
     {
         path: '/project',
         name: 'Project',
+        meta: {
+            breadcrumbName: {
+                en: 'Project',
+                zh: '公益项目',
+            }
+        },
         component: () => import('@/views/Project/index'),
         children: [
             {
@@ -336,6 +373,12 @@ const routes = [
     {
         path: '/prize',
         name: 'Prize',
+        meta: {
+            breadcrumbName: {
+                en: 'Prize',
+                zh: '国际绿奖',
+            }
+        },
         component: () => import('@/views/Prize/index'),
         children: [
             // 绿色设计国际大奖
@@ -400,6 +443,12 @@ const routes = [
     {
         path: '/wgdo',
         name: 'Wgdo',
+        meta: {
+            breadcrumbName: {
+                en: 'Wgdo',
+                zh: 'WGDO绿研院',
+            }
+        },
         component: () => import('@/views/Wgdo/index'),
         children: [
             {
@@ -441,6 +490,21 @@ const routes = [
     },
     // 绿叶标
 ]
+
+// router.beforeEach((to, from, next) => {
+//     let breadcrumbData = [];
+//     let matchedRoutes = to.matched.slice(1);
+//     matchedRoutes.forEach(route => {
+//         if (router.meta && router.meta.breadcrumbName) {
+//             breadcrumbData.push({
+//                 name: router.meta.breadcrumbName[this.$store.state.lang.isEn]
+//             });
+//         }
+//     });
+
+//     store.commit('updateBreadcrumbData', breadcrumbData);
+//     next();
+// });
 
 const router = new VueRouter({
     routes,

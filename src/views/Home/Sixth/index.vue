@@ -11,10 +11,15 @@
             <div class="boxbTop">
                 <TitleStyle :isTitle="$store.state.lang.titles[10]" :styles="boxTitleStyleB" :style2="style2" />
             </div>
+            <div class="tomore">
+                <a href="/caseall">
+                    {{ $t('five.tomore') }} <i class="iconfont icon-youjiantou"></i>
+                </a>
+            </div>
             <div class="boxbContent">
                 <vue-seamless-scroll :data="sixTwo" :class-option="classOption">
                     <ul class="ul-item">
-                        <li class=" boxbContentItem" v-for="t in sixTwo" :key="t.hpId">
+                        <li class=" boxbContentItem" v-for="t in sixTwo" :key="t.hpId" @click="toCaseinfo(index)">
                             <img :src="'http://www.wgdo.net' + t.cover" alt="">
                             <div class="dsc">{{ t.title }}</div>
                         </li>
@@ -114,6 +119,18 @@ export default {
                     this.sixFour = res.data.rows
                 }
             })
+        },
+        toCaseinfo(i) {
+            this.$router.push({
+                path: 'caseinfo',
+                name: 'Caseinfo',
+                params: {
+                    fromPath: this.$route.path,
+                    fromName: this.$route.name,
+                    datas: this.rightData[i],//数据不对
+                    orders: i
+                }
+            })
         }
     },
     watch: {
@@ -185,6 +202,27 @@ export default {
     align-items: center;
 }
 
+.tomore{
+    margin-top: 11px;
+}
+
+.tomore a {
+    width: 60.96px;
+    height: 20.57px;
+    font-size: 15.24px;
+    font-weight: 500;
+    letter-spacing: 0px;
+    line-height: 20.21px;
+    color: rgba(166, 225, 99, 1);
+    text-align: right;
+    vertical-align: top;
+}
+
+.tomore a i {
+    display: inline-block;
+    position: relative;
+    top: 1px;
+}
 
 .boxb .boxbContent {
     margin-top: 50px;

@@ -44,9 +44,9 @@
                 <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=""></div>
 
-                <div class="dynamic-dsc">
+                <div class="dynamic-dsc" v-if="isShow">
                     <div class="dynamic-content" v-for="(pub, index) in pubDatas" :key="pub.benefitId"
-                        @click="toNext(index)">
+                        @click="toNext(pub.benefitId)">
                         <div class="dynamic-dscall">
                             <div class="dynamic-dscall-top">{{ pub.title }}</div>
                         </div>
@@ -54,6 +54,7 @@
                         <div class="grip-time">{{ pub.createTime }}</div>
                     </div>
                 </div>
+                <router-view v-else></router-view>
             </div>
         </div>
     </div>
@@ -69,11 +70,12 @@ export default {
     data() {
         return {
             pubDatas: [],
-            show: false,
+            isShow: true,
         };
     },
     mounted() {
         this.getPubData()
+        // this.toNext()
     },
     methods: {
         getPubData(p = this.$store.state.lang.version) {
@@ -83,11 +85,15 @@ export default {
                 }
             })
         },
-        toNext(index) {
-            // this.show = true
-            if (index === 0) {
+        toNext(benefitId) {
+            // console.log(benefitId);
+            // this.isShow = true
+            // const currentQuery = this.$route.query;
+            if (benefitId) {
+                // this.$router.push({ path: '/Project/publicity/record', query: { id: benefitId } });
                 this.$router.push({ path: '/Project/publicity/record' });
-            } else if (index === 1) {
+            } else if (benefitId) {
+                // this.$router.push({ path: '/Project/publicity/glory', query: { id: benefitId } });
                 this.$router.push({ path: '/Project/publicity/glory' });
             } else { }
         }
@@ -97,7 +103,16 @@ export default {
             handler() {
                 funs(this.getPubData(), this.$store.state.lang.version)
             }
-        }
+        },
+        "$route.matched.length": {
+            handler() {
+                if (this.$route.matched.length > 0) {
+                    this.isShow = false
+                } else {
+                    this.isShow = true
+                }
+            }
+        },
     },
 }
 </script>
@@ -127,7 +142,7 @@ export default {
 
 .big-leader {
     width: 200px;
-    height:20%;
+    height: 20%;
     opacity: 1;
     border-radius: 6px;
     background: rgba(220, 235, 192, 1);

@@ -4,7 +4,8 @@
         <el-breadcrumb class="ebc" separator-class="el-icon-arrow-left">
             <el-breadcrumb-item v-for="item in urlData" :to="{ path: item.path }">
                 <i class="iconfont icon-zuojiantou" id="lef"></i>
-                {{ item.name }}
+                <!-- {{ item.name }} -->
+                {{ getBreadcrumbName(item) }}
             </el-breadcrumb-item>
         </el-breadcrumb>
     </div>
@@ -18,31 +19,45 @@ export default {
     props: ['urlData'],
     data() {
         return {
+            // currentPath: [],
         }
     },
     mounted() {
-
+        // this.updateBreadcrumb();
     },
     computed: {
 
     },
     methods: {
-        addBreadcrumb(item) {
-            const newItem = { name: '组织动态详情', path: `${item.path}/dynamicinfo` };
-            this.$emit('update:urlData', [...this.urlData, newItem]);
-        },
-        // navigateTo(item, index) {
-        //     const currentPath = this.$route.path;  // 获取当前路由路径
-        //     const targetPath = item.path;
+        // addBreadcrumb(item) {
+        //     const newItem = { name: '组织动态详情', path: `${item.path}/dynamicinfo` };
+        //     this.$emit('update:urlData', [...this.urlData, newItem]);
+        // },
+        getBreadcrumbName(item) {
+            if (item.meta && item.meta.breadcrumbName) {
+                let language = this.$store.state.lang.isEn;
+                if (item.meta.breadcrumbName[language]) {
+                    return item.meta.breadcrumbName[language];
+                }
 
-        //     if (currentPath === targetPath) {
-        //         alert('您当前已经在该页面！');
-        //     } else {
-        //         const slicedData = this.urlData.slice(0, index + 1);
-        //         this.$emit('update:urlData', slicedData);
-        //     }
-        // }
-    }
+            }
+            return item.name;
+        },
+        popBreadcrumb() {
+            this.$emit('update:urlData', this.urlData.slice(0, -1));
+        },
+        // updateBreadcrumb() {
+        //     const matchedRoutes = this.$route.matched;
+        //     const currentRouteIndex = matchedRoutes.findIndex(route => route.path === this.$route.path);
+        //     this.currentPath = matchedRoutes.slice(0, currentRouteIndex + 1).map(route => ({
+        //         name: route.meta.breadcrumbName || route.name,
+        //         path: route.path,
+        //     }));
+        // },
+    },
+    watch: {
+        // $route: 'updateBreadcrumb',
+    },
 }
 </script>
 

@@ -47,6 +47,7 @@ export default {
             }
         }
         this.getSecondData()
+        this.ImageStyles()
     },
     methods: {
         getSecondData(p = this.$store.state.lang.version) {
@@ -65,6 +66,19 @@ export default {
                     name: this.sedmoreinfoDatas[0].title
                 })
             })
+        },
+        ImageStyles() {
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                .intro img {
+                    width: 100%;
+                    
+                    background-size: cover;
+                    background-position: center;
+                }
+            `;
+            document.head.appendChild(style);
         }
     },
     watch: {

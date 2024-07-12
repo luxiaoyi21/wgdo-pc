@@ -77,6 +77,13 @@ export default {
                 this.urlData.push(v)
             }
         });
+        // this.routesData.forEach(v => {
+        //     if (v.name === this.currentRoute.name) {
+        //         const title = this.$store.state.lang.isEn === 'en' ? 'About Us' : '关于我们';
+        //         this.urlData.push({ name: v.name, title: title });
+        //         console.log(v.name);
+        //     }
+        // });
 
         // if (!this.tabLoaded) {
         //     const currentTab = sessionStorage.getItem('currentTab');
