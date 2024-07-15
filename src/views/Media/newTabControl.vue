@@ -55,6 +55,7 @@ export default {
         this.routesData.forEach(v => {
             if (v.name === this.currentRoute.name) {
                 this.urlData.push(v)
+                // console.log(this.urlData);
             }
         });
     },

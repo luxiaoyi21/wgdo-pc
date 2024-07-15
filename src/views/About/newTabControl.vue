@@ -29,7 +29,7 @@ export default {
     data() {
         return {
             activeName: '',
-            currentNum: 1,
+            currentNum: '',
             localName: [],
             localDatas: [],
             routesData: [],
@@ -41,21 +41,8 @@ export default {
     created() {
         this.activeName = this.tabName[0]?.children[0]?.classifyName;
         this.$nextTick(() => {
-            // const currentTab = sessionStorage.getItem('currentTab');
-            // if (currentTab) {
-            //     this.currentNum = parseInt(currentTab);
-            //     const tab = this.tabName[0]?.children[this.currentNum - 1];
-            //     if (tab) {
-            //         this.handleClick({ $options: { propsData: { name: tab.classifyName, index: this.currentNum - 1 } } });
-            //     }
-            // } else {
-            //     this.currentNum = 1;
-            //     this.handleClick({ $options: { propsData: { name: this.activeName, index: 0 } } });
-            // }
-            this.$nextTick(() => {
-                this.currentNum = 1;
-                this.handleClick({ $options: { propsData: { name: this.activeName } } });
-            });
+            this.currentNum = 1;
+            this.handleClick({ $options: { propsData: { name: this.activeName } } });
         });
     },
     mounted() {
@@ -77,53 +64,13 @@ export default {
                 this.urlData.push(v)
             }
         });
-        // this.routesData.forEach(v => {
-        //     if (v.name === this.currentRoute.name) {
-        //         const title = this.$store.state.lang.isEn === 'en' ? 'About Us' : '关于我们';
-        //         this.urlData.push({ name: v.name, title: title });
-        //         console.log(v.name);
-        //     }
-        // });
-
-        // if (!this.tabLoaded) {
-        //     const currentTab = sessionStorage.getItem('currentTab');
-        //     if (currentTab) {
-        //         this.currentNum = parseInt(currentTab);
-        //         const tab = this.tabName[0]?.children[this.currentNum - 1];
-        //         if (tab) {
-        //             this.activeName = tab.classifyName;
-        //             this.$nextTick(() => {
-        //                 this.handleClick({
-        //                     $options: {
-        //                         propsData: {
-        //                             name: this.activeName,
-        //                             index: this.currentNum - 1
-        //                         }
-        //                     }
-        //                 });
-        //             });
-        //         }
-        //     } else {
-        //         this.tabLoaded = true;
-        //         this.handleClick({
-        //             $options: {
-        //                 propsData: {
-        //                     name: this.activeName,
-        //                     index: 0
-        //                 }
-        //             }
-        //         });
-        //     }
-        // }
     },
     methods: {
         handleClick(tab) {
             const index = parseInt(tab.index);
             if (!isNaN(index)) {
                 this.currentNum = index + 1;
-                // this.currentNum = Number(tab.index) + 1
                 sessionStorage.setItem('currentNums', this.currentNum)
-                // sessionStorage.setItem('currentTab', tab.$options.propsData.index + 1);
 
                 if (this.urlData.length > 1) {
                     this.urlData.pop()

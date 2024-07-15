@@ -6,9 +6,9 @@
                 <Breadcrumb :urlData="urlData" />
                 <p class="dynamic">{{ $t('titlestyle.sixone') }}</p>
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
-                <div v-if="$route.path === '/fiveall'">
+                <div v-if="$route.path === '/caseall'">
                     <div class="dynamic-dsc">
-                        <div @click="sedTiaoZhuan(index)" class="dynamic-content" v-for="(dym, index) in moredetDatas"
+                        <div @click="sedTiaoZhuan(index)" class="dynamic-content" v-for="(dym, index) in caseallDatas"
                             :key="dym.mediacenterId">
                             <div class="dynamic-img">
                                 <img :src="'http://www.wgdo.net' + dym.cover" alt="">
@@ -50,16 +50,16 @@ import Headers from "@/components/Headers.vue";
 import Breadcrumb from '@/components/Breadcrumb'
 import Footers from "@/views/Home/Footer/index.vue";
 import funs from '@/utils/index.js'
-//数据没弄好
+
 export default {
     name: "MoreDet",
     components: { Headers, Breadcrumb, Footers },
     data() {
-        let moredetDatas = []
+        let caseallDatas = []
         let urlData = []
         let totalItems = 0
         return {
-            moredetDatas,
+            caseallDatas,
             currentPage: 1,
             totalItems: 0,
             pageSize: 5,
@@ -68,11 +68,11 @@ export default {
         };
     },
     mounted() {
-        this.getFiveData()
+        this.getSixData()
         if (this.$store.state.lang.isEn !== 'en') {
             this.urlData.push(
                 { path: '/', name: '首页' },
-                { path: '/fiveall', name: '合作案例' }
+                { path: '/caseall', name: '合作案例' }
             )
         } else {
             this.urlData.push(
@@ -85,17 +85,17 @@ export default {
         currentTabDatas() {
             const start = (this.currentPage - 1) * this.pageSize;
             const end = start + this.pageSize;
-            return this.moredetDatas.slice(start, end);
+            return this.caseallDatas.slice(start, end);
         }
     },
     methods: {
-        getFiveData(p = this.$store.state.lang.version) {
-            getContentList({ "moduleType": "6", "status": "1", version: p }).then(res => {
+        getSixData(p = this.$store.state.lang.version) {
+            getContentList({ "moduleType": "10", "status": "1", version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     // let [leftImg, ...rightImgLists] = res.data.rows
                     // this.leftImg = leftImg
                     // this.rightImgLists = rightImgLists
-                    this.moredetDatas = res.data.rows
+                    this.caseallDatas = res.data.rows
                     this.totalItems = res.data.rows.length;
                 }
             })
@@ -113,7 +113,7 @@ export default {
         handlePageChange(newPage) { this.currentPage = newPage },
         sedTiaoZhuan(index) {
             this.$router.push({
-                path: '/fiveall/fiveinfo',
+                path: '/caseall/caseinfo',
                 query: { index }
             })
         },
@@ -124,23 +124,23 @@ export default {
     watch: {
         "$store.state.lang.version": {
             handler() {
-                funs(this.getFiveData(), this.$store.state.lang.version)
+                funs(this.getSixData(), this.$store.state.lang.version)
                 this.urlData = []
                 if (this.$store.state.lang.isEn !== 'en') {
                     this.urlData.push(
                         { path: '/', name: '首页' },
-                        { path: '/fiveall', name: '品牌项目' }
+                        { path: '/caseall', name: '合作案例' }
                     )
                 } else {
                     this.urlData.push(
                         { path: '/', name: 'Home' },
-                        { path: '/fiveall', name: 'Brand project' }
+                        { path: '/caseall', name: 'Collaboration Cases' }
                     )
                 }
             }
         },
         '$route'() {
-            if (this.$route.path === '/fiveall' && this.urlData.length >= 2) {
+            if (this.$route.path === '/caseall' && this.urlData.length >= 2) {
                 this.urlData.pop()
             }
         }
@@ -217,6 +217,7 @@ export default {
     background: rgba(204, 204, 204, 1);
     background-size: cover;
     background-position: center;
+    object-fit: cover;
 }
 
 .dynamic-dscall {

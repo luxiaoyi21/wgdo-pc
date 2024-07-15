@@ -35,32 +35,32 @@
             </div>
             <div ref="changeLangue" :class="$store.state.lang.langs === '中文' ? 'zhBottom' : 'enBottom'">
                 <router-link to="/about" ref="changeLanguea"
-                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/about' }">
+                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/about' || $route.path.startsWith('/about/') }">
                     {{ $t('headernav.Aboutus') }}
                 </router-link>
                 <router-link to="/meet" ref="changeLanguea"
-                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/meet' }">
+                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/meet' || $route.path.startsWith('/meet/') }">
                     {{ $t('headernav.Conferenceactivity') }}
                 </router-link>
                 <router-link to="/media" ref="changeLanguea"
-                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/media' }">
+                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/media' || $route.path.startsWith('/media/') }">
                     {{ $t('headernav.Mediacenter') }}
                 </router-link>
                 <!-- @click="setCurrentRoute('/media')" -->
                 <router-link to="/research" ref="changeLanguea"
-                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/research' }">
+                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/research' || $route.path.startsWith('/research/') }">
                     {{ $t('headernav.Academicresearch') }}
                 </router-link>
                 <router-link to="/project" ref="changeLanguea"
-                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/project' }">
+                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/project' || $route.path.startsWith('/project/') }">
                     {{ $t('headernav.Publicwelfareproject') }}
                 </router-link>
                 <router-link to="/prize" ref="changeLanguea"
-                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/prize' }">
+                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/prize' || $route.path.startsWith('/prize/') }">
                     {{ $t('headernav.InternationalGreenAward') }}
                 </router-link>
                 <router-link to="/wgdo" ref="changeLanguea"
-                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/wgdo' }">
+                    :class="{ 'isEn': $store.state.lang.isEn === 'en', 'ha': $store.state.lang.isEn !== 'en', 'active': $route.path === '/wgdo' || $route.path.startsWith('/wgdo/') }">
                     {{ $t('headernav.WGDOGreenResearchInstitute') }}
                 </router-link>
                 <router-link to="http://lyb.wgdo.net/" ref="changeLanguea"

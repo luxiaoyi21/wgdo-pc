@@ -54,9 +54,16 @@ export default {
         //         path: route.path,
         //     }));
         // },
+        updateUrlData(newUrlData) {
+            // console.log(newUrlData);
+        },
     },
     watch: {
         // $route: 'updateBreadcrumb',
+        urlData: {
+            handler: 'updateUrlData',
+            immediate: true
+        }
     },
 }
 </script>

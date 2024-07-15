@@ -7,7 +7,7 @@
 
         <div class="devide-page">
             <el-pagination background layout="prev, pager, next" :total="totalItems" :page-size="pageSize"
-                :current-page.sync="currentPage" @current-change="handlePageChange">>
+                :current-page.sync="localCurrentPage" @current-change="handlePageChange">>
             </el-pagination>
         </div>
     </div>
@@ -19,23 +19,23 @@ export default {
     props: ['tabDatas', 'currentPage', 'totalItems', 'pageSize'],
     data() {
         return {
-
+            localCurrentPage: this.currentPage
         }
     },
     computed: {
         currentTabDatas() {
-            const start = (this.currentPage - 1) * this.pageSize;
+            const start = (this.localCurrentPage - 1) * this.pageSize;
             const end = start + this.pageSize;
             return this.tabDatas.slice(start, end);
         }
     },
     methods: {
         handlePageChange(newPage) {
-            this.currentPage = newPage;
+            this.localCurrentPage = newPage;
+            this.$emit('update:currentPage', newPage);
         }
     }
 }
-
 </script>
 
 <style scoped>

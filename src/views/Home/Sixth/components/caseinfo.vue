@@ -1,16 +1,16 @@
 <template>
     <div class="item">
         <div class="content">
-            <div class="content-in" v-for="sedinfo in sedmoreinfoDatas" :key="sedinfo.mediacenterId">
-                <p class="dynamic">{{ sedinfo.title }}</p>
+            <div class="content-in" v-for="caseinfo in caseinfoDatas" :key="caseinfo.mediacenterId">
+                <p class="dynamic">{{ caseinfo.title }}</p>
                 <div class="info">
-                    <div class="info-browser">{{ $t('meet.browser') }}：{{ sedinfo.clickVolume }}</div>
-                    <div class="info-create">{{ $t('meet.create') }}：{{ sedinfo.releaseTime }}</div>
+                    <div class="info-browser">{{ $t('meet.browser') }}：{{ caseinfo.clickVolume }}</div>
+                    <div class="info-create">{{ $t('meet.create') }}：{{ caseinfo.releaseTime }}</div>
                 </div>
                 <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
                 <div class="dynamic-dsc">
-                    <div class="intro" v-html="sedinfo.contentDetails"></div>
+                    <div class="intro" v-html="caseinfo.contentDetails"></div>
                 </div>
             </div>
         </div>
@@ -25,7 +25,7 @@ export default {
     name: "Sedinfo",
     data() {
         return {
-            sedmoreinfoDatas: [],
+            caseinfoDatas: [],
             cindex: Number(0)
         }
     },
@@ -45,26 +45,26 @@ export default {
                 sessionStorage.setItem('currentIndex', this.cindex)
             }
         }
-        this.getSecondData()
+        this.getSixData()
         this.ImageStyles()
     },
     methods: {
-        getSecondData(p = this.$store.state.lang.version) {
-            getContentList({ "moduleType": "2", "status": "1", version: p }).then(res => {
+        getSixData(p = this.$store.state.lang.version) {
+            getContentList({ "moduleType": "10", "status": "1", version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.rightData = res.data.rows
                     this.rightData.forEach((v, index) => {
-                        console.log(this.cindex, 'c');
+                        // console.log(this.cindex, 'c');
                         if (index === this.cindex) {
-                            console.log(v, 'vvv');
-                            this.sedmoreinfoDatas.pop()
-                            this.sedmoreinfoDatas.push(v)
+                            // console.log(v, 'vvv');
+                            this.caseinfoDatas.pop()
+                            this.caseinfoDatas.push(v)
                         }
                     })
                 }
                 this.$emit('childrenUrl', {
-                    path: '/sedmore/sedmoreinfo',
-                    name: this.sedmoreinfoDatas[0]?.title
+                    path: '/caseall/caseinfo',
+                    name: this.caseinfoDatas[0]?.title
                 })
             })
         },
@@ -85,7 +85,7 @@ export default {
     watch: {
         "$store.state.lang.version": {
             handler() {
-                funs(this.getSecondData(), this.$store.state.lang.version)
+                funs(this.getSixData(), this.$store.state.lang.version)
             }
         }
     },

@@ -21,8 +21,8 @@
                     </div>
                 </div>
 
-                <Pagination :tabDatas="tabDatas" :pageSize="pageSize" :currentPage="currentPage"
-                    :totalItems="totalItems" @currentTabDatas="currentTabDatas" />
+                <Pagination :tabDatas="tabDatas" :current-page.sync="currentPage" :totalItems="totalItems"
+                    :page-size="pageSize" @update:currentPage="handlePageChange" />
             </div>
         </div>
     </div>
@@ -62,12 +62,16 @@ export default {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.personDatas = res.data.rows
                     this.totalItems = res.data.rows.length;
+                    // this.currentTabDatas = this.personDatas.slice(0, this.totalItems);
                 }
             })
         },
         handlePageChange(newPage) {
             this.currentPage = newPage;
-        }
+        },
+        // getTabData() {
+        //     return this.personDatas.slice(0, this.totalItems);
+        // }
     },
     watch: {
         "$store.state.lang.version": {
