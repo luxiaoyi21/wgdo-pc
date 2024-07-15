@@ -1,10 +1,10 @@
 <template>
     <div class="item">
         <div class="leader">
-            <a href="#" ref="leadertop" class="leader-in">
+            <div ref="leadertop" class="leader-title">
                 <span>{{ $t('about.structure') }}</span>
                 <i class="el-icon-arrow-right"></i>
-            </a>
+            </div>
             <a href="#" class="leader-in">
                 <span>{{ $t('about.Korean') }}</span>
                 <i class="el-icon-arrow-right"></i>
@@ -111,6 +111,23 @@ export default {
     justify-content: center;
 }
 
+.leader-title {
+    width: 100%;
+    margin: 10px 0;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 19.89px;
+    color: rgba(51, 51, 51, 1);
+    text-align: left;
+    vertical-align: top;
+    padding: 0 10px;
+}
+
 .leader-in {
     width: 100%;
     margin: 10px 0;
@@ -128,17 +145,6 @@ export default {
     padding: 0 10px;
 }
 
-/*
-.leader-in #leadertop {
-    font-size: 15px;
-    font-weight: 600;
-    letter-spacing: 1px;
-    line-height: 19.89px;
-    color: rgba(51, 51, 51, 1);
-    text-align: left;
-    vertical-align: top;
-}
-*/
 .leader-in:active {
     font-size: 15px;
     font-weight: 600;

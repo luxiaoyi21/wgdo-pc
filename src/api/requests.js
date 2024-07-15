@@ -46,8 +46,8 @@ export const Aboutus = async function (params) {
 //发送留言信息
 export const Message = async function (params) {
     return await instanceRequest({
-        url: '/message/leaveMessage/list',
-        method: 'post',
+        url: '/message/leaveMessage',
+        method: 'POST',
         data: params
     })
 }
@@ -64,8 +64,8 @@ export const Meet = async function (params) {
 //提交报名信息
 export const Mark = async function (params) {
     return await instanceRequest({
-        url: '/message/signUp/list',
-        method: 'post',
+        url: '/message/signUp',
+        method: 'POST',
         data: params
     })
 }

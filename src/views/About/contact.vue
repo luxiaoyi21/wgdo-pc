@@ -223,8 +223,7 @@ export default {
 
 .el-button img {
     opacity: 1;
-    scale: 0.5;
-    margin-top: -10px;
+    scale: 0.7;
 }
 
 .el-input__inner {

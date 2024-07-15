@@ -44,7 +44,14 @@ const mutations = {
     },
     getST({ lang }, datas) {
         lang.titles = datas
-    }
+    },
+    getSubmit({ submit }) {
+        if (submit.Message === 'message') {
+            submit.type = '1'
+        } else if (submit.Mark === 'mark') {
+            submit.type = '2'
+        }
+    },
 }
 
 const actions = {
