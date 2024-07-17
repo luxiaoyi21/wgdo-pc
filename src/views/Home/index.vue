@@ -68,10 +68,10 @@ export default {
     mounted() {
         // window.addEventListener('scroll', this.handleScroll);
         this.getHeaderNav()
-        if (this.$store.state.lang.version === '2') {
-            getTitle('143')
-        } else {
+        if (this.$store.state.lang.version === '1') {
             getTitle('1')
+        } else {
+            getTitle('143')
         }
     },
     methods: {

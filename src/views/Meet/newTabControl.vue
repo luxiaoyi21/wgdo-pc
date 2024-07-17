@@ -217,4 +217,9 @@ export default {
     position: relative;
     margin: 0;
 }
+
+:deep(.el-tabs__content) {
+    overflow: visible;
+    position: relative;
+}
 </style>

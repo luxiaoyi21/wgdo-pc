@@ -438,6 +438,16 @@ export default {
     mounted() {
         this.getPreviewinfoData()
         this.ImageStyles()
+
+        // const leaderElement = document.querySelector('.leader');
+        // const initialTop = leaderElement.getBoundingClientRect().top;
+
+        // window.addEventListener('scroll', function () {
+        //     const scrollDistance = window.scrollY;
+
+        //     leaderElement.style.top = `${-7.4 + scrollDistance * 0.1}vw`;
+        //     leaderElement.style.right = `${-16.63295}vw`;
+        // });
     },
     methods: {
         getPreviewinfoData(p = this.$store.state.lang.version) {
@@ -493,6 +503,8 @@ export default {
                 this.nationality = '';
                 this.contact = '';
                 this.remark = '';
+
+                this.$router.push({ path: '/login' });
             } catch (error) {
                 console.error('报名失败:', error);
 
@@ -526,6 +538,7 @@ export default {
     background: rgba(255, 255, 255, 1);
     display: flex;
     flex-direction: column;
+    position: relative;
 }
 
 .content {
@@ -534,6 +547,7 @@ export default {
     display: flex;
     justify-content: center;
     align-content: center;
+    position: relative;
 }
 
 .content-in {
@@ -543,12 +557,15 @@ export default {
 }
 
 .leader {
+    position: absolute;
+    margin-top: -7.4vw;
+    right: -16.63295vw;
     width: 280px;
-    height: 20%;
     opacity: 1;
     border-radius: 6px;
     background: linear-gradient(180deg, rgba(220, 235, 192, 1) 0%, rgba(203, 232, 139, 1) 100%);
-    margin: 29px 0 0 18px;
+    transform: scale(0.6);
+    z-index: 999;
 }
 
 .leader-in {
@@ -657,7 +674,7 @@ export default {
 }
 
 .info-introall img {
-    width: 40%;
+    width: 60%;
     height: 420px;
     opacity: 1;
     background-size: cover;
@@ -1143,13 +1160,14 @@ export default {
 }
 
 .enroll {
-    width: 100%;
-    height: 631px;
+    width: 149%;
+    height: 431px;
     opacity: 1;
     background: rgba(62, 73, 56, 1);
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: -33.3vh;
 }
 
 .enroll-in {

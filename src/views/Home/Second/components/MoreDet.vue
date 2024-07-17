@@ -4,11 +4,11 @@
         <div class="content">
             <div class="content-in">
                 <Breadcrumb :urlData="urlData" />
-                <p class="dynamic">{{$t('second.green')}}</p>
-                <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;"></div>
-                <div v-if="$route.path === '/sedmore' ">
+                <p class="dynamic" v-if="showDynamicContent">{{ $t('second.green') }}</p>
+                <div class="dsc-line" style="margin-top: 15px; margin-bottom: 5px;" v-if="showDynamicContent"></div>
+                <div v-if="$route.path === '/sedmore'">
                     <div class="dynamic-dsc">
-                        <div @click="sedTiaoZhuan(index)" class="dynamic-content" v-for="(dym,index) in moredetDatas"
+                        <div @click="sedTiaoZhuan(index)" class="dynamic-content" v-for="(dym, index) in moredetDatas"
                             :key="dym.mediacenterId">
                             <div class="dynamic-time">
                                 <div class="dynamic-time-top">{{ dym.timer }}</div>
@@ -46,272 +46,277 @@
 </template>
 
 <script>
-    import { getContentList } from "@/api/requests.js";
-    import Headers from "@/components/Headers.vue";
-    import Breadcrumb from '@/components/Breadcrumb'
-    import Footers from "@/views/Home/Footer/index.vue";
-    import funs from '@/utils/index.js'
+import { getContentList } from "@/api/requests.js";
+import Headers from "@/components/Headers.vue";
+import Breadcrumb from '@/components/Breadcrumb'
+import Footers from "@/views/Home/Footer/index.vue";
+import funs from '@/utils/index.js'
 
-    export default {
-        name: "MoreDet",
-        components: { Headers, Breadcrumb, Footers },
-        data() {
-            let moredetDatas = []
-            let urlData = []
-            let totalItems = 0
+export default {
+    name: "MoreDet",
+    components: { Headers, Breadcrumb, Footers },
+    data() {
+        let moredetDatas = []
+        let urlData = []
+        let totalItems = 0
+        return {
+            moredetDatas,
+            currentPage: 1,
+            totalItems: 0,
+            pageSize: 5,
+            urlData,
+            isShow: true,
+            showDynamicContent: true,
+        };
+    },
+    mounted() {
+        this.getMoredetData()
+        if (this.$store.state.lang.isEn !== 'en') {
+            this.urlData.push(
+                { path: '/', name: '首页' },
+                { path: '/sedmore', name: '绿色设计观点' }
+            )
+        } else {
+            this.urlData.push(
+                { path: '/', name: 'Home' },
+                { path: '/sedmore', name: 'Green design perspective' }
+            )
+        }
+        if (this.$route.path === '/sedmore/sedmoreinfo') {
+            this.showDynamicContent = false;
+        }
+    },
+    computed: {
+        currentTabDatas() {
+            const start = (this.currentPage - 1) * this.pageSize;
+            const end = start + this.pageSize;
+            return this.moredetDatas.slice(start, end);
+        }
+    },
+    methods: {
+        getMoredetData(p = this.$store.state.lang.version) {
+            getContentList({ moduleType: '2', status: '1', version: p }).then(res => {
+                if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.moredetDatas = res.data.rows.map(row => {
+                        const timeData = this.gettime(row.releaseTime);
+                        return {
+                            ...row,
+                            year: timeData.year,
+                            timer: timeData.timer
+                        };
+                    });
+                    this.totalItems = res.data.rows.length;
+                }
+            })
+        },
+        gettime(t) {
+            const originalDate = new Date(t);
+            const year = originalDate.getFullYear();
+            const month = ('0' + (originalDate.getMonth() + 1)).slice(-2)
+            const day = ('0' + originalDate.getDate()).slice(-2)
             return {
-                moredetDatas,
-                currentPage: 1,
-                totalItems: 0,
-                pageSize: 5,
-                urlData,
-                isShow: true
+                year: year,
+                timer: month + "-" + day,
             };
         },
-        mounted() {
-            this.getMoredetData()
-            if (this.$store.state.lang.isEn !== 'en') {
-                this.urlData.push(
-                    { path: '/', name: '首页' },
-                    { path: '/sedmore', name: '绿色设计观点' }
-                )
-            } else {
-                this.urlData.push(
-                    { path: '/', name: 'Home' },
-                    { path: '/sedmore', name: 'Green design perspective' }
-                )
-            }
+        handlePageChange(newPage) { this.currentPage = newPage },
+        sedTiaoZhuan(index) {
+            this.$router.push({
+                path: '/sedmore/sedmoreinfo',
+                query: { index }
+            })
         },
-        computed: {
-            currentTabDatas() {
-                const start = (this.currentPage - 1) * this.pageSize;
-                const end = start + this.pageSize;
-                return this.moredetDatas.slice(start, end);
-            }
-        },
-        methods: {
-            getMoredetData(p = this.$store.state.lang.version) {
-                getContentList({ moduleType: '2', status: '1', version: p }).then(res => {
-                    if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
-                        this.moredetDatas = res.data.rows.map(row => {
-                            const timeData = this.gettime(row.releaseTime);
-                            return {
-                                ...row,
-                                year: timeData.year,
-                                timer: timeData.timer
-                            };
-                        });
-                        this.totalItems = res.data.rows.length;
-                    }
-                })
-            },
-            gettime(t) {
-                const originalDate = new Date(t);
-                const year = originalDate.getFullYear();
-                const month = ('0' + (originalDate.getMonth() + 1)).slice(-2)
-                const day = ('0' + originalDate.getDate()).slice(-2)
-                return {
-                    year: year,
-                    timer: month + "-" + day,
-                };
-            },
-            handlePageChange(newPage) { this.currentPage = newPage },
-            sedTiaoZhuan(index) {
-                this.$router.push({
-                    path: '/sedmore/sedmoreinfo',
-                    query: { index }
-                })
-            },
-            handleChildrenUrl(i) {
-                this.urlData.push(i)
-            }
-        },
-        watch: {
-            "$store.state.lang.version": {
-                handler() {
-                    funs(this.getMoredetData(), this.$store.state.lang.version)
-                    this.urlData = []
-                    if (this.$store.state.lang.isEn !== 'en') {
-                        this.urlData.push(
-                            { path: '/', name: '首页' },
-                            { path: '/sedmore', name: '绿色设计观点' }
-                        )
-                    } else {
-                        this.urlData.push(
-                            { path: '/', name: 'Home' },
-                            { path: '/sedmore', name: 'Green design perspective' }
-                        )
-                    }
+        handleChildrenUrl(i) {
+            this.urlData.push(i)
+        }
+    },
+    watch: {
+        "$store.state.lang.version": {
+            handler() {
+                funs(this.getMoredetData(), this.$store.state.lang.version)
+                this.urlData = []
+                if (this.$store.state.lang.isEn !== 'en') {
+                    this.urlData.push(
+                        { path: '/', name: '首页' },
+                        { path: '/sedmore', name: '绿色设计观点' }
+                    )
+                } else {
+                    this.urlData.push(
+                        { path: '/', name: 'Home' },
+                        { path: '/sedmore', name: 'Green design perspective' }
+                    )
                 }
-            },
-            '$route'() {
-                if (this.$route.path === '/sedmore' && this.urlData.length >= 2) {
-                    this.urlData.pop()
-                }
+            }
+        },
+        '$route'() {
+            if (this.$route.path === '/sedmore' && this.urlData.length >= 2) {
+                this.urlData.pop()
             }
         }
     }
+}
 </script>
 
 <style scoped>
-    .item {
-        width: 100%;
-        opacity: 1;
-        background: rgba(255, 255, 255, 1);
-        display: flex;
-        flex-direction: column;
-    }
+.item {
+    width: 100%;
+    opacity: 1;
+    background: rgba(255, 255, 255, 1);
+    display: flex;
+    flex-direction: column;
+}
 
-    .content {
-        width: 100%;
-        opacity: 1;
-        background: rgba(242, 241, 221, 1);
-        display: flex;
-        justify-content: center;
-        align-content: center;
-    }
+.content {
+    width: 100%;
+    opacity: 1;
+    background: rgba(242, 241, 221, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
 
-    .content-in {
-        width: 67%;
-        display: flex;
-        flex-direction: column;
-    }
+.content-in {
+    width: 67%;
+    display: flex;
+    flex-direction: column;
+}
 
-    .dynamic {
-        opacity: 1;
-        font-size: 24px;
-        font-weight: 700;
-        letter-spacing: 1px;
-        line-height: 37.13px;
-        color: rgba(51, 51, 51, 1);
-        text-align: left;
-        vertical-align: top;
-        margin-top: 30px;
-    }
+.dynamic {
+    opacity: 1;
+    font-size: 24px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    line-height: 37.13px;
+    color: rgba(51, 51, 51, 1);
+    text-align: left;
+    vertical-align: top;
+    margin-top: 30px;
+}
 
-    .dynamic-content {
-        cursor: pointer;
-    }
+.dynamic-content {
+    cursor: pointer;
+}
 
-    .dsc-line {
-        width: 100%;
-        opacity: 0.3;
-        border: 1px solid rgba(161, 161, 161, 1);
-    }
+.dsc-line {
+    width: 100%;
+    opacity: 0.3;
+    border: 1px solid rgba(161, 161, 161, 1);
+}
 
-    .dynamic-dsc {
-        display: flex;
-        flex-direction: column;
-    }
+.dynamic-dsc {
+    display: flex;
+    flex-direction: column;
+}
 
-    .dynamic-content {
-        width: 100%;
-        height: 120px;
-        display: flex;
-        border-bottom: 1px solid rgba(161, 161, 161, 1);
-        align-items: center;
-    }
+.dynamic-content {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    border-bottom: 1px solid rgba(161, 161, 161, 1);
+    align-items: center;
+}
 
-    .dynamic-time {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 12%;
-    }
+.dynamic-time {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 12%;
+}
 
-    .dynamic-time-top {
-        opacity: 1;
-        font-size: 22px;
-        font-weight: 400;
-        letter-spacing: 1px;
-        line-height: 30px;
-        color: rgba(165, 214, 63, 1);
-        text-align: left;
-        vertical-align: top;
-    }
+.dynamic-time-top {
+    opacity: 1;
+    font-size: 22px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 30px;
+    color: rgba(165, 214, 63, 1);
+    text-align: left;
+    vertical-align: top;
+}
 
-    .dynamic-time-buttom {
-        opacity: 1;
-        font-size: 20px;
-        font-weight: 400;
-        letter-spacing: 1px;
-        line-height: 30px;
-        color: rgba(62, 73, 56, 1);
-        text-align: left;
-        vertical-align: top;
-    }
+.dynamic-time-buttom {
+    opacity: 1;
+    font-size: 20px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 30px;
+    color: rgba(62, 73, 56, 1);
+    text-align: left;
+    vertical-align: top;
+}
 
-    .dynamic-blank {
-        opacity: 1;
-        display: flex;
-        align-items: center;
-    }
+.dynamic-blank {
+    opacity: 1;
+    display: flex;
+    align-items: center;
+}
 
-    .dynamic-blankin {
-        width: 60px;
-        opacity: 1;
-        transform: rotate(130deg);
-        border: 1px solid rgb(202, 202, 202);
-    }
+.dynamic-blankin {
+    width: 60px;
+    opacity: 1;
+    transform: rotate(130deg);
+    border: 1px solid rgb(202, 202, 202);
+}
 
-    .dynamic-dscall {
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        width: 153%;
-    }
+.dynamic-dscall {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 153%;
+}
 
-    .dynamic-dscall-top {
-        flex-grow: 1;
-        opacity: 1;
-        height: 25%;
-        font-size: 18px;
-        font-weight: 600;
-        letter-spacing: 1px;
-        line-height: 26.52px;
-        color: rgba(40, 40, 40, 1);
-        text-align: justify;
-        display: -webkit-box;
-        -webkit-line-clamp: 1;
-        -webkit-box-orient: vertical;
-        vertical-align: top;
-        overflow: hidden;
-        text-overflow: ellipsis;
-    }
+.dynamic-dscall-top {
+    flex-grow: 1;
+    opacity: 1;
+    height: 25%;
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    line-height: 26.52px;
+    color: rgba(40, 40, 40, 1);
+    text-align: justify;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    vertical-align: top;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
 
-    .dynamic-dscall-buttom {
-        flex-grow: 1;
-        opacity: 1;
-        height: 70%;
-        font-size: 16px;
-        font-weight: 400;
-        letter-spacing: 0px;
-        line-height: 23.87px;
-        color: rgba(51, 51, 51, 1);
-        text-align: justify;
-        vertical-align: top;
-        overflow: hidden;
-        display: -webkit-box;
-        -webkit-line-clamp: 3;
-        -webkit-box-orient: vertical;
-        text-overflow: ellipsis;
-    }
+.dynamic-dscall-buttom {
+    flex-grow: 1;
+    opacity: 1;
+    height: 70%;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0px;
+    line-height: 23.87px;
+    color: rgba(51, 51, 51, 1);
+    text-align: justify;
+    vertical-align: top;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    text-overflow: ellipsis;
+}
 
-    .dynamic-data {
-        width: 100%;
-        height: 120px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-    }
+.dynamic-data {
+    width: 100%;
+    height: 120px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
 
-    .dynamic-data-num {
-        width: 12%;
-        display: flex;
-        justify-content: space-between;
-    }
+.dynamic-data-num {
+    width: 12%;
+    display: flex;
+    justify-content: space-between;
+}
 
-    .foot {
-        background: rgba(166, 225, 99, 1);
-    }
+.foot {
+    background: rgba(166, 225, 99, 1);
+}
 </style>

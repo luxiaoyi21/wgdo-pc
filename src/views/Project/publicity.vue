@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="big-leader">
-                <a href="" style="display: flex; align-items: center;justify-content: space-between;width:80%">
+                <a href="#" style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.require') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>
@@ -19,7 +19,7 @@
                     <i class="el-icon-arrow-right"></i>
                 </router-link>
 
-                <a href="" style="display: flex; align-items: center;justify-content: space-between;width:80%">
+                <a href="#" style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('project.news') }}</span>
                     <i class="el-icon-arrow-right"></i>
                 </a>

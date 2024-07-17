@@ -494,12 +494,15 @@ export default {
 }
 
 .leader {
+    position: absolute;
+    margin-top: -7.4vw;
+    right: -16.63295vw;
     width: 280px;
-    height: 20%;
     opacity: 1;
     border-radius: 6px;
     background: linear-gradient(180deg, rgba(220, 235, 192, 1) 0%, rgba(203, 232, 139, 1) 100%);
-    margin: 29px 0 0 18px;
+    transform: scale(0.6);
+    z-index: 999;
 }
 
 .leader-in {

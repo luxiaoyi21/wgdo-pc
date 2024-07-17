@@ -4,7 +4,7 @@ import router from '@/router/index.js'
 const instanceRequest = axios.create({
     baseURL: 'http://www.wgdo.net/prod-api/',
     // baseURL: 'http://106.3.97.14:9002/prod-api/',
-    timeout: 300000,
+    timeout: 30000,
     headers: {
         'Content-Type': 'application/json'
     }
@@ -14,9 +14,9 @@ instanceRequest.interceptors.request.use(config => {
     const stoken = sessionStorage.getItem('stoken')
     const token = localStorage.getItem('token');
     if (stoken) {
-        config.headers = { 'Authorization': JSON.parse(stoken) }
+        config.headers = Object.assign({}, config.headers, { 'Authorization': JSON.parse(stoken) });
     } else if (token) {
-        config.headers = { 'Authorization': JSON.parse(token) };
+        config.headers = Object.assign({}, config.headers, { 'Authorization': JSON.parse(token) });
     }
     return config
 }, err => {
@@ -27,8 +27,8 @@ instanceRequest.interceptors.response.use(response => {
     response.headers['Access-Control-Allow-Origin'] = '*'
     if (response.data.code === 401) {
         setTimeout(() => {
-            sessionStorage.clear('stoken')
-            localStorage.clear('token');
+            sessionStorage.removeItem('stoken')
+            localStorage.removeItem('token');
         }, 1000);
         if (router.currentRoute.path !== '/login') {
             router.push('/login').then(() => {

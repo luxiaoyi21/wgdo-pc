@@ -4,8 +4,8 @@
         <div class="content">
             <div class="content-in">
                 <Breadcrumb :urlData="urlData" />
-                <p class="dynamic">{{ $t('four.greendesign') }}</p>
-                <div class="dsc-line" style="margin-top: 15px; margin-bottom: 0px;"></div>
+                <p class="dynamic" v-if="showDynamicContent">{{ $t('four.greendesign') }}</p>
+                <div class="dsc-line" v-if="showDynamicContent" style="margin-top: 15px; margin-bottom: 0px;"></div>
                 <div v-if="$route.path === '/fourall'">
                     <div class="dynamic-dsc">
                         <div @click="sedTiaoZhuan(index)" class="dynamic-content" v-for="(dym, index) in moredetDatas"
@@ -67,7 +67,8 @@ export default {
             currentPage: 1,
             totalItems: 0,
             pageSize: 5,
-            urlData
+            urlData,
+            showDynamicContent: true,
         }
     },
     mounted() {
@@ -76,14 +77,17 @@ export default {
         if (this.$store.state.lang.isEn !== 'en') {
             this.urlData.push(
                 { path: '/', name: '首页' },
-                { path: '/fourall', name: '世界绿色设计园' }
+                { path: '/fourall', name: '世界绿色设计之都' }
             )
         } else {
             this.urlData.push(
                 { path: '/', name: 'Home' },
-                { path: '/fourall', name: 'World Green Design Park' }
+                { path: '/fourall', name: 'World Green Design Capital' }
             )
         }
+        // if (this.$route.path === '/fourall/fourallinfo') {
+        //     this.showDynamicContent = false;
+        // }
     },
     computed: {
         currentTabDatas() {
@@ -131,12 +135,12 @@ export default {
                 if (this.$store.state.lang.isEn !== 'en') {
                     this.urlData.push(
                         { path: '/', name: '首页' },
-                        { path: '/fourall', name: '世界绿色设计园' }
+                        { path: '/fourall', name: '世界绿色设计之都' }
                     )
                 } else {
                     this.urlData.push(
                         { path: '/', name: 'Home' },
-                        { path: '/fourall', name: 'World Green Design Park' }
+                        { path: '/fourall', name: 'World Green Design Capital' }
                     )
                 }
             }
@@ -245,8 +249,7 @@ export default {
     padding: 20px 0;
 }
 
-.dscall-top {
-}
+.dscall-top {}
 
 .dscall-title {
     flex-grow: 1;

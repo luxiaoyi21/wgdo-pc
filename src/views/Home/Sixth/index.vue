@@ -204,6 +204,7 @@ export default {
 
 .tomore{
     margin-top: 11px;
+    margin-left: 1vw;
 }
 
 .tomore a {

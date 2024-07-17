@@ -13,7 +13,8 @@
             <div class="right">
                 <div class="search">
                     <i class="iconfont icon-sousuo scarchI"></i>
-                    <el-input class="searchIn" v-model="searchInp" :placeholder="$t('headernav.search')" />
+                    <el-input class="searchIn" v-model="searchInp" :placeholder="$t('headernav.search')"
+                        @input="searchItems" />
                 </div>
                 <div class="rightList">
                     <div class="login"><a href="login">{{ $t('headernav.Login') }}</a></div>
@@ -63,14 +64,14 @@ import i18n from '@/lang/index.js'
 
 export default {
     name: 'HeaderNav',
+    props: ['tabDatas'],
     data() {
         let searchInp = ''
         let lang = '中文'
         return {
             searchInp,
             lang,
-            // logoStyleEn: { transform: 'scale(0.78) translateX(-4vw)' },
-            // logoStyle: null,
+            searchResults: [],
         }
     },
     mounted() {
@@ -112,7 +113,23 @@ export default {
                     a.classList.add('ens');
                 });
             }
-        }
+        },
+        searchItems(res) {
+            if (res.data) {
+                if (Array.isArray(res.data.rows) && res.data.rows.length > 0) {
+                    this.searchResults = res.data.rows.filter(row => {
+                        return row.title.toLowerCase().includes(this.searchInp.toLowerCase());
+                    });
+                    console.log('Search results:', this.searchResults);
+                } else {
+                    this.searchResults = [];
+                    console.log('No rows found in data:', res.data);
+                }
+            } else {
+                this.searchResults = [];
+                console.log('No data in response:', res);
+            }
+        },
     },
     watch: {
         "$store.state.lang.isText1Visible": {
