@@ -437,7 +437,7 @@ span {
     /*height: 60.96px;*/
     font-size: 15.24px;
     font-weight: 400;
-    letter-spacing: 0.76px;
+    word-spacing: 0.1vw;
     line-height: 20.21px;
     color: rgba(16, 16, 16, 0.8);
     text-align: justify;
@@ -454,7 +454,7 @@ span {
     height: 60.96px;
     font-size: 15.24px;
     font-weight: 400;
-    letter-spacing: 0.76px;
+    word-spacing: 0.1vw;
     color: rgba(16, 16, 16, 0.8);
     text-align: justify;
     overflow: hidden;
