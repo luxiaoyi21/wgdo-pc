@@ -9,8 +9,9 @@
                 <div class="dsc-line" style=""></div>
 
                 <div class="dynamic-dsc" v-for="dym in dynamicDatas" :key="dym.mediacenterId">
-                    <router-link :to="{ name: 'Dynamicinfo', query: { id: dym.mediacenterId } }" class="dynamic-content"
-                        @click.native="handleLinkClick()">
+                    <router-link
+                        :to="isSecondLink(index) ? { name: 'Dynamicinfo', query: { id: dym.mediacenterId } } : { path: dym.externalLink }"
+                        class="dynamic-content" @click.native="handleLinkClick()">
                         <div class="dynamic-time">
                             <div class="dynamic-time-top">{{ dym.timer }}</div>
                             <div class="dynamic-time-buttom">{{ dym.year }}</div>
@@ -64,6 +65,9 @@ export default {
         },
     },
     methods: {
+        isSecondLink(index) {
+            return index % 2 === 0;
+        },
         getMediaData(p = this.$store.state.lang.version) {
             Media({ moduleType: '1', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {

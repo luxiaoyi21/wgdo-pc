@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="aintro">{{$t('wgdo.branch')}}</p>
+                <p class="aintro">{{ $t('wgdo.branch') }}</p>
 
                 <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
@@ -10,9 +10,9 @@
                 <div style="margin-bottom: 50px;">
                     <div v-for="(branch, index) in branchDatas" :key="branch.greeninstituteId">
                         <div class="intro">
-                            <div class="left" ref="left1">
+                            <a :href="branch.externalLink" class="left" ref="left1">
                                 <img :src="'http://www.wgdo.net' + branch.cover">
-                            </div>
+                            </a>
 
                             <div class="right">
                                 <div class="right-top" ref="right1">

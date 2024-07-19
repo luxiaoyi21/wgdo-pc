@@ -22,7 +22,7 @@ import { getContentList } from '@/api/requests.js'
 import funs from '@/utils/index.js'
 
 export default {
-    name: "Sedinfo",
+    name: "Caseinfo",
     data() {
         return {
             caseinfoDatas: [],

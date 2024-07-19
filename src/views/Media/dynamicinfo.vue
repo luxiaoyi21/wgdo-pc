@@ -37,8 +37,7 @@ export default {
     },
     mounted() {
         this.getDynamicinfoData()
-        this.ImageStyles()
-        // console.log(this.$route.query.id);
+        this.Styles()
     },
     methods: {
         getDynamicinfoData() {
@@ -52,14 +51,12 @@ export default {
                             this.dynamicinfoDatas.push(rows);
                         }
                     });
-                    // console.log(id)
-                    // console.log(this.dynamicinfoDatas);
                 }
             }).catch(error => {
                 console.error('Error fetching data:', error);
             });
         },
-        ImageStyles() {
+        Styles() {
             const style = document.createElement('style');
             style.type = 'text/css';
             style.innerHTML = `

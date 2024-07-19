@@ -9,8 +9,10 @@
                 <div class="dsc-line" style=" "></div>
 
                 <div class="dynamic-dsc">
-                    <router-link :to="{ name: 'Reportinfo', query: { id: video.mediacenterId } }"
-                        class="dynamic-content" @click.native="handleLinkClick()" v-for="video in reportDatas" :key="video.mediacenterId">
+                    <router-link
+                        :to="isSecondLink(index) ? { name: 'Reportinfo', query: { id: video.mediacenterId } } : { path: video.externalLink }"
+                        class="dynamic-content" @click.native="handleLinkClick()" v-for="video in reportDatas"
+                        :key="video.mediacenterId">
                         <div class="dynamic-time">
                             <div class="dynamic-time-top">{{ video.timer }}</div>
                             <div class="dynamic-time-buttom">{{ video.year }}</div>
@@ -46,6 +48,9 @@ export default {
         this.getReportData()
     },
     methods: {
+        isSecondLink(index) {
+            return index % 2 === 0;
+        },
         getReportData(p = this.$store.state.lang.version) {
             Media({ moduleType: '3', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {

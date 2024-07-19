@@ -10,8 +10,10 @@
                 <div class="dsc-line" style="margin-bottom: 15px;"></div>
 
                 <div class="dynamic-dsc">
-                    <router-link :to="{ name: 'Designinfo', query: { id: design.academicId } }" class="doing-in"
-                        v-for="design in designDatas" @click.native="handleLinkClick()" :key="design.academicId">
+                    <router-link
+                        :to="isSecondLink(index) ? { name: 'Designinfo', query: { id: design.academicId } } : { path: design.externalLink }"
+                        class="doing-in" v-for="design in designDatas" @click.native="handleLinkClick()"
+                        :key="design.academicId">
                         <div class="doing-img">
                             <img :src="'http://www.wgdo.net' + design.cover" alt="">
                         </div>
@@ -55,6 +57,9 @@ export default {
         this.getDesignData()
     },
     methods: {
+        isSecondLink(index) {
+            return index % 2 === 0;
+        },
         getDesignData(p = this.$store.state.lang.version) {
             Research({ moduleType: '1', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {

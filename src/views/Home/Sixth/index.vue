@@ -122,13 +122,13 @@ export default {
         },
         toCaseinfo(i) {
             this.$router.push({
-                path: 'caseinfo',
+                path: '/caseall/caseinfo',
                 name: 'Caseinfo',
                 params: {
                     fromPath: this.$route.path,
                     fromName: this.$route.name,
-                    datas: this.rightData[i],//数据不对
-                    orders: i
+                    datas: this.sixTwo[i],
+                    orders: Number(i)
                 }
             })
         }

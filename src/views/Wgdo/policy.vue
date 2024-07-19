@@ -2,7 +2,7 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="aintro">{{$t('wgdo.policy')}}</p>
+                <p class="aintro">{{ $t('wgdo.policy') }}</p>
 
                 <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
@@ -38,6 +38,7 @@ export default {
     },
     mounted() {
         this.getPolicyData()
+        // this.Styles()
     },
     methods: {
         getPolicyData(p = this.$store.state.lang.version) {
@@ -46,7 +47,22 @@ export default {
                     this.policyDatas = res.data.rows
                 }
             })
-        }
+        },
+        // Styles() {
+        //     const style = document.createElement('style');
+        //     style.type = 'text/css';
+        //     style.innerHTML = `
+        //         .intro p {
+        //             background-color: transparent;
+
+        //         }
+
+        //         .content-in h1 {
+        //             background-color: transparent;
+        //         }
+        //     `;
+        //     document.head.appendChild(style);
+        // }
     },
     watch: {
         "$store.state.lang.version": {
@@ -116,7 +132,7 @@ export default {
     flex-direction: column;
 }
 
-::v-deep .intro-in p{
+::v-deep .intro-in p {
     opacity: 1;
     font-size: 16px;
     font-weight: 400;

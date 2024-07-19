@@ -29,7 +29,7 @@ export default {
     },
     mounted() {
         this.getAboutintroData();
-        this.addImageStyles();
+        this.Styles();
     },
     methods: {
         getAboutintroData(p = this.$store.state.lang.version) {
@@ -40,7 +40,7 @@ export default {
                 }
             })
         },
-        addImageStyles() {
+        Styles() {
             const style = document.createElement('style');
             style.type = 'text/css';
             style.innerHTML = `
@@ -49,6 +49,10 @@ export default {
                     
                     background-size: cover;
                     background-position: center;
+                }
+
+                .content-in p {
+                    font-size: 16px;
                 }
             `;
             document.head.appendChild(style);

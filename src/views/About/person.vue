@@ -9,9 +9,9 @@
 
                 <div class="dynamic-dsc">
                     <div class="dsc-in" v-for="person in personDatas" :key="person.aboutusId">
-                        <div class="dsc-left">
+                        <a :href="person.externalLink" class="dsc-left">
                             <img :src="'http://www.wgdo.net' + person.figureHeadportrait" alt="">
-                        </div>
+                        </a>
 
                         <div class="dsc-right">
                             <p class="person-name">{{ person.figureName }}</p>

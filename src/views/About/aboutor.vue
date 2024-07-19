@@ -52,7 +52,7 @@ export default {
     },
     mounted() {
         this.getAboutorData();
-        this.addImageStyles();
+        this.Styles();
     },
     methods: {
         getAboutorData(p = this.$store.state.lang.version) {
@@ -62,7 +62,7 @@ export default {
                 }
             })
         },
-        addImageStyles() {
+        Styles() {
             const style = document.createElement('style');
             style.type = 'text/css';
             style.innerHTML = `

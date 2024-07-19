@@ -2,15 +2,15 @@
     <div class="item">
         <div class="content">
             <div class="content-in">
-                <p class="aintro">{{$t('wgdo.intro')}}</p>
+                <p class="aintro">{{ $t('wgdo.intro') }}</p>
 
                 <div class="dsc-line" style="margin-top: 10px; margin-bottom: 5px;"></div>
                 <div class="dsc-line" style=" margin-bottom: 15px;"></div>
 
                 <div class="intro" v-for="intro in introDatas" :key="intro.greeninstituteId">
-                    <div class="left">
+                    <a :href="intro.externalLink" class="left">
                         <img :src="'http://www.wgdo.net' + intro.cover">
-                    </div>
+                    </a>
 
                     <div class="right">
                         <div class="right-top">
@@ -43,8 +43,8 @@ export default {
         this.getIntroData()
     },
     methods: {
-        getIntroData(p=this.$store.state.lang.version) {
-            getWgdo({ moduleType: '1', status: '1',version:p }).then(res => {
+        getIntroData(p = this.$store.state.lang.version) {
+            getWgdo({ moduleType: '1', status: '1', version: p }).then(res => {
                 if (res.data && Array.isArray(res.data.rows) && res.data.rows.length > 0) {
                     this.introDatas = res.data.rows
                 }

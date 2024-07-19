@@ -86,14 +86,9 @@ export default {
             })
         },
         toNext(benefitId) {
-            // console.log(benefitId);
-            // this.isShow = true
-            // const currentQuery = this.$route.query;
             if (benefitId) {
-                // this.$router.push({ path: '/Project/publicity/record', query: { id: benefitId } });
                 this.$router.push({ path: '/Project/publicity/record' });
             } else if (benefitId) {
-                // this.$router.push({ path: '/Project/publicity/glory', query: { id: benefitId } });
                 this.$router.push({ path: '/Project/publicity/glory' });
             } else { }
         }
