@@ -5,19 +5,19 @@
                 <router-link :to="{ name: 'Big' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('prize.big') }}</span>
-                    <i class="el-icon-arrow-right"></i>
+                    <!-- <i class="el-icon-arrow-right"></i> -->
                 </router-link>
 
                 <router-link :to="{ name: 'bRule' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('prize.rule') }}</span>
-                    <i class="el-icon-arrow-right"></i>
+                    <!-- <i class="el-icon-arrow-right"></i> -->
                 </router-link>
 
                 <router-link :to="{ name: 'bPersonal' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:80%">
                     <span>{{ $t('prize.persons') }}</span>
-                    <i class="el-icon-arrow-right"></i>
+                    <!-- <i class="el-icon-arrow-right"></i> -->
                 </router-link>
             </div>
 

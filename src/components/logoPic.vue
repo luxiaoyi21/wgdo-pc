@@ -58,7 +58,7 @@
         height: 76.2px;
         background-size: cover;
         background-position: center;
-        filter: grayscale(1);
+        /*filter: grayscale(1);*/
         opacity: 1;
     }
 

@@ -85,9 +85,9 @@ export default {
                 { path: '/fourall', name: 'World Green Design Capital' }
             )
         }
-        // if (this.$route.path === '/fourall/fourallinfo') {
-        //     this.showDynamicContent = false;
-        // }
+        if (this.$route.path === '/fourall/fourallinfo') {
+            this.showDynamicContent = false;
+        }
     },
     computed: {
         currentTabDatas() {

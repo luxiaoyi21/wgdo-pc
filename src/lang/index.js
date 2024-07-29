@@ -6,7 +6,7 @@ import zh from '@/lang/zh.json'
 Vue.use(VueI18n)
 
 const langData = JSON.parse(sessionStorage.getItem('langData'))
-const defaultLocale = langData && langData.lang && langData.lang.isEn ? langData.lang.isEn : 'en'
+const defaultLocale = langData && langData.lang && langData.lang.isEn ? langData.lang.isEn : 'zh'
 
 export const i18n = new VueI18n({
     locale: defaultLocale,

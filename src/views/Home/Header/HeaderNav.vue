@@ -67,7 +67,7 @@ export default {
     props: ['tabDatas'],
     data() {
         let searchInp = ''
-        let lang = '中文'
+        let lang = 'En'
         return {
             searchInp,
             lang,
@@ -98,7 +98,7 @@ export default {
             }
         },
         setLanguageStyles() {
-            if (this.$store.state.lang.langs === '中文') {
+            if (this.$store.state.lang.langs === 'En') {
                 this.$refs.changeLangue.classList.remove('enBottom');
                 this.$refs.changeLangue.classList.add('zhBottom');
                 document.querySelectorAll('.changeLanguea').forEach(a => {

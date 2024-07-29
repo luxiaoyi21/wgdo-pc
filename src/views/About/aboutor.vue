@@ -3,23 +3,23 @@
         <div class="leader">
             <div ref="leadertop" class="leader-title">
                 <span>{{ $t('about.structure') }}</span>
-                <i class="el-icon-arrow-right"></i>
+                <!-- <i class="el-icon-arrow-right"></i> -->
             </div>
             <a href="#" class="leader-in">
                 <span>{{ $t('about.Korean') }}</span>
-                <i class="el-icon-arrow-right"></i>
+                <!-- <i class="el-icon-arrow-right"></i> -->
             </a>
             <a href="#" class="leader-in">
                 <span>{{ $t('about.UK') }}</span>
-                <i class="el-icon-arrow-right"></i>
+                <!-- <i class="el-icon-arrow-right"></i> -->
             </a>
             <a href="#" class="leader-in">
                 <span>{{ $t('about.Germany') }}</span>
-                <i class="el-icon-arrow-right"></i>
+                <!-- <i class="el-icon-arrow-right"></i> -->
             </a>
             <a href="#" class="leader-in">
                 <span>{{ $t('about.Norwegian') }}</span>
-                <i class="el-icon-arrow-right"></i>
+                <!-- <i class="el-icon-arrow-right"></i> -->
             </a>
         </div>
 
@@ -99,7 +99,7 @@ export default {
 }
 
 .leader {
-    width: 230px;
+    width: 15%;
     height: 20%;
     opacity: 1;
     border-radius: 6px;
@@ -116,7 +116,7 @@ export default {
     margin: 10px 0;
     text-align: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     font-size: 15px;
     font-weight: 600;
@@ -133,7 +133,7 @@ export default {
     margin: 10px 0;
     text-align: center;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     font-size: 14px;
     font-weight: 400;

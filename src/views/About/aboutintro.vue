@@ -52,7 +52,7 @@ export default {
                 }
 
                 .content-in p {
-                    font-size: 16px;
+                    font-size: 12pt;
                 }
             `;
             document.head.appendChild(style);

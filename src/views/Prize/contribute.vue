@@ -5,25 +5,25 @@
                 <router-link :to="{ name: 'Contribute' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;">
                     <span>{{ $t('prize.contribute') }}</span>
-                    <i class="el-icon-arrow-right"></i>
+                    <!-- <i class="el-icon-arrow-right"></i> -->
                 </router-link>
 
                 <router-link :to="{ name: 'cRule' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;">
                     <span>{{ $t('prize.rule') }}</span>
-                    <i class="el-icon-arrow-right"></i>
+                    <!-- <i class="el-icon-arrow-right"></i> -->
                 </router-link>
 
                 <router-link :to="{ name: 'cPersonal' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;">
                     <span>{{ $t('prize.person') }}</span>
-                    <i class="el-icon-arrow-right"></i>
+                    <!-- <i class="el-icon-arrow-right"></i> -->
                 </router-link>
 
                 <router-link :to="{ name: 'Mechanism' }"
                     style="display: flex; align-items: center;justify-content: space-between;width:95%;">
                     <span>{{ $t('prize.mechanism') }}</span>
-                    <i class="el-icon-arrow-right"></i>
+                    <!-- <i class="el-icon-arrow-right"></i> -->
                 </router-link>
             </div>
             <div class="content-in" v-for="contri in contriDatas" :key="contri.greenawardId" v-if="isShow">

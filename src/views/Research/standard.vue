@@ -1,6 +1,40 @@
 <template>
     <div class="item">
         <div class="content">
+            <div class="big-leader">
+                <router-link :to="{ name: '' }"
+                    style="display: flex; align-items: center;justify-content: space-between;width:80%">
+                    <span style="font-size: 15px;
+font-weight: 600;
+letter-spacing: 1px;
+line-height: 19.89px;
+color: rgba(51, 51, 51, 1);
+text-align: left;
+vertical-align: top;">绿色设计国际标准1</span>
+                    <!-- <span>{{ $t('prize.big') }}</span> -->
+                    <!-- <i class="el-icon-arrow-right"></i> -->
+                </router-link>
+
+                <router-link :to="{ name: '' }"
+                    style="display: flex; align-items: center;justify-content: space-between;width:80%">
+                    <!-- <span>{{ $t('prize.rule') }}</span> -->
+                    <span style="font-size: 14px;
+font-weight: 500;
+letter-spacing: 1px;
+line-height: 18.56px;
+color: rgba(85, 85, 85, 1);
+text-align: left;
+vertical-align: top;">绿色设计国际标准2</span>
+                    <!-- <i class="el-icon-arrow-right"></i> -->
+                </router-link>
+
+                <!-- <router-link :to="{ name: 'bPersonal' }"
+                    style="display: flex; align-items: center;justify-content: space-between;width:80%">
+                    <span>{{ $t('prize.persons') }}</span>
+                    <i class="el-icon-arrow-right"></i>
+                </router-link> -->
+            </div>
+
             <div class="content-in" v-for="str in standardDatas" :key="str.academicId">
                 <p class="dynamic">{{ str.title }}</p>
 
@@ -29,6 +63,7 @@ export default {
     },
     mounted() {
         this.getStandardData()
+        this.Styles()
     },
     methods: {
         getStandardData(p = this.$store.state.lang.version) {
@@ -37,6 +72,23 @@ export default {
                     this.standardDatas = res.data.rows
                 }
             })
+        },
+        Styles() {
+            const style = document.createElement('style');
+            style.type = 'text/css';
+            style.innerHTML = `
+                .content-in img {
+                    width: 100%;
+                    
+                    background-size: cover;
+                    background-position: center;
+                }
+
+                .content-in p {
+                    font-size: 16px;
+                }
+            `;
+            document.head.appendChild(style);
         }
     },
     watch: {
@@ -72,8 +124,25 @@ export default {
     align-content: center;
 }
 
+.big-leader {
+    width: 20%;
+    height: 20%;
+    opacity: 1;
+    border-radius: 6px;
+    background: rgba(220, 235, 192, 1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    margin: 14px 20px 0 0;
+}
+
+.big-leader a {
+    margin: 8px 0;
+}
+
 .content-in {
-    width: 100%;
+    width: 80%;
     display: flex;
     flex-direction: column;
 }

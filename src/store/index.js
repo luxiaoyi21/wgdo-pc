@@ -19,8 +19,8 @@ const state = {
         token: ''
     },
     lang: {
-        isEn: 'en',
-        version: '2',
+        isEn: 'zh',
+        version: '1',
         isText1Visible: false,
         langs: '中文',
         titles: []
