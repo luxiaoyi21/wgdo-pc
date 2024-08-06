@@ -50,7 +50,7 @@
                         <p class="chairman">{{ $t('meet.chairman') }}</p>
 
                         <div class="chairman-all">
-                            <div class="intro-in">
+                            <!-- <div class="intro-in">
                                 <div class="chairman-img">
                                     <img src="https://img.js.design/assets/img/658a283d24c60bfaf888fd7a.png#efa7891e9abd3f2ad0c66835caee57e8"
                                         alt="">
@@ -76,7 +76,7 @@
                                     </div>
                                     <div class="chairman-intro-buttom">——欧洲议会对华关系代表团主席议员　乔·莱恩</div>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                     </div>
@@ -96,7 +96,7 @@
                         <p class="pre-person">{{ $t('meet.preview') }}</p>
 
                         <div class="pre-all">
-                            <div class="pre-in">
+                            <!-- <div class="pre-in">
                                 <div class="pre-in-img">
                                     <img src="https://img.js.design/assets/img/66277836b04e9e24cb45331f.jpg#15730a82d3719e83ca1d337c78c96af2"
                                         alt="">
@@ -177,7 +177,7 @@
                                         中国建筑装饰协会会长<br>
                                         大会亮点</p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -185,7 +185,7 @@
                         <p class="pre-person">{{ $t('meet.back') }}</p>
 
                         <div class="pre-all">
-                            <div class="pre-in">
+                            <!-- <div class="pre-in">
                                 <div class="pre-in-img">
                                     <img src="https://img.js.design/assets/img/66277836b04e9e24cb45331f.jpg#15730a82d3719e83ca1d337c78c96af2"
                                         alt="">
@@ -266,7 +266,7 @@
                                         中国建筑装饰协会会长<br>
                                         大会亮点</p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
 
@@ -298,7 +298,7 @@
                         <p class="organization">{{ $t('meet.organization') }}</p>
 
                         <div class="organization-person">
-                            <div class="organization-in">
+                            <!-- <div class="organization-in">
                                 <div class="organization-left">
                                     <img src="https://img.js.design/assets/img/66277df46c43aedeb924869b.jpg#ad7737cc94600affb0e1310325010ab4"
                                         alt="">
@@ -335,7 +335,7 @@
                                     <p class="organization-intro">北京光华设计发展基金会理事长</p>
                                     <p class="organization-intro">wgdo组织执委</p>
                                 </div>
-                            </div>
+                            </div> -->
                         </div>
 
                         <div class="organization-details" v-html="info.introduction"></div>
